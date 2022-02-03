@@ -1,7 +1,7 @@
 from app.main import get_human_age
 
 
-def test_dog_age_equal_to_zero():
+def test_animal_age_equal_to_zero():
     goals = get_human_age(0, 100)
     assert goals == [0, 17]
 
