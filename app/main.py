@@ -1,5 +1,6 @@
 def get_human_age(cat_age, dog_age):
-    cat_to_human, dog_to_human = convert_to_human(cat_age, 15, 9, 4), convert_to_human(dog_age, 15, 9, 5)
+    cat_to_human = convert_to_human(cat_age, 15, 9, 4)
+    dog_to_human = convert_to_human(dog_age, 15, 9, 5)
     return [cat_to_human, dog_to_human]
 
 
