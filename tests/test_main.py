@@ -25,5 +25,5 @@ def test_should_return_two_for_dog_if_age_from_24_to_28():
     assert get_human_age(0, dog)[1] == 2
 
 
-def test_should_return_right_result_for_cat_and_dog():
+def test_should_return_result_for_cat_more_than_27_and_dog_more_than_28():
     assert get_human_age(100, 100) == [21, 17]
