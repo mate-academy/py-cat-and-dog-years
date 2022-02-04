@@ -12,13 +12,13 @@ def test_animal_age_in_range_16_23():
 
 
 def test_cat_age_in_range_24_27():
-    assert get_human_age(26, 0) == [3, 0]
-    assert get_human_age(27, 0) == [3, 0]
+    assert get_human_age(26, 0) == [2, 0]
+    assert get_human_age(25, 0) == [2, 0]
 
 
 def test_dog_age_in_range_24_28():
-    assert get_human_age(0, 25) == [0, 3]
-    assert get_human_age(0, 26) == [0, 3]
+    assert get_human_age(0, 25) == [0, 2]
+    assert get_human_age(0, 26) == [0, 2]
 
 
 def test_cat_older_then_27_and_dog_older_then_28():
