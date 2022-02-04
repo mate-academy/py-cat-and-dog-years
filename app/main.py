@@ -10,5 +10,3 @@ def convert_to_human(cat_age, first_year, second_year, each_year):
     if cat_age < first_year + second_year:
         return 1
     return 2 + (cat_age - first_year - second_year) // each_year
-
-
