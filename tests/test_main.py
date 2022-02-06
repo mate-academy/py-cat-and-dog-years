@@ -1,25 +1,19 @@
 from app.main import get_human_age
 
 
-def test_cat_age_under_15():
-    goals = get_human_age(14, 29)
+def test_age_under_15():
+    goals = get_human_age(14, 13)
 
     assert goals[0] == 0
 
 
-def test_dog_age_under_15():
-    goals = get_human_age(25, 14)
-
-    assert goals[1] == 0
-
-
-def test_cat_age_under_24():
+def test_cat_age_15_to_23():
     goals = get_human_age(23, 24)
 
     assert goals[0] == 1
 
 
-def test_dog_age_under_24():
+def test_dog_age_15_to_23():
     goals = get_human_age(26, 23)
 
     assert goals[1] == 1
