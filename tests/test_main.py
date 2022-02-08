@@ -1,7 +1,7 @@
 from app.main import get_human_age
 
 
-def test_income_zero_and_return_zero():
+def test_input_is_equal_to_zero():
     assert get_human_age(0, 0) == [0, 0]
 
 
@@ -23,5 +23,5 @@ def test_dog_next_every_5_years():
     assert get_human_age(36, 36) == [5, 4]
 
 
-def test_incom_larg_numbers():
+def test_input_is_larg_numbers():
     assert get_human_age(36578, 74695) == [9140, 14936]
