@@ -20,20 +20,20 @@ def test_dog_age_15_to_23():
 
 
 def test_cat_age_after_24():
-    goals1 = get_human_age(36, 12)
-    goals2 = get_human_age(46, 16)
-    goals3 = get_human_age(269, 13)
+    young_cat = get_human_age(36, 12)
+    middle_cat = get_human_age(46, 16)
+    very_old_cat = get_human_age(269, 13)
 
-    assert goals1[0] == 5
-    assert goals2[0] == 7
-    assert goals3[0] == 63
+    assert young_cat[0] == 5
+    assert middle_cat[0] == 7
+    assert very_old_cat[0] == 63
 
 
 def test_dog_age_after_24():
-    goals1 = get_human_age(22, 32)
-    goals2 = get_human_age(16, 25)
-    goals3 = get_human_age(18, 574)
+    middle_dog = get_human_age(22, 32)
+    young_dog = get_human_age(16, 25)
+    very_old_dog = get_human_age(18, 574)
 
-    assert goals1[1] == 3
-    assert goals2[1] == 2
-    assert goals3[1] == 112
+    assert middle_dog[1] == 3
+    assert young_dog[1] == 2
+    assert very_old_dog[1] == 112
