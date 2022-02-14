@@ -15,3 +15,4 @@ def test_two_years():
 def test_second_year_and_greater():
     assert get_human_age(30, 30) == [3, 3]
     assert get_human_age(32, 32) == [4, 3]
+    assert get_human_age(50, 50) == [8, 7]
