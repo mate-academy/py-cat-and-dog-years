@@ -6,11 +6,11 @@ def test_input_is_equal_to_zero():
 
 
 def test_cat_and_dog_first_15_years():
-    assert get_human_age(14, 14) == [0, 0]
-    assert get_human_age(15, 15) == [1, 1]
+    assert get_human_age(14, 14) == [0, 0]    
 
 
 def test_cat_and_dog_next_9_years():
+    assert get_human_age(15, 15) == [1, 1]
     assert get_human_age(23, 23) == [1, 1]
 
 
