@@ -16,3 +16,7 @@ def test_checking_differences_between_low_numbers():
 
 def test_checking_a_differences_between_large_numbers():
     assert get_human_age(100, 100) == [21, 17]
+
+
+def test_checking_equal_different_numbers():
+    assert get_human_age(24, 25) == [2, 2]
