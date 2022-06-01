@@ -26,12 +26,3 @@ def test_get_second_human_year_from_cat_and_dog_age():
     human_age = get_human_age(cat_age, dog_age)
 
     assert human_age == [2, 2]
-
-
-def test_get_second_human_year_from_cat_and_dog_age():
-    cat_age = 28
-    dog_age = 29
-
-    human_age = get_human_age(cat_age, dog_age)
-
-    assert human_age == [3, 3]
