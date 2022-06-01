@@ -7,7 +7,7 @@ class TestGetHumanAge:
         assert goals == [0, 0]
 
     def test_convert_age_if_animal_age_closely_to_first_human_year(self):
-        goals = get_human_age(17, 17)
+        goals = get_human_age(14, 14)
         assert goals == [0, 0]
 
     def test_convert_age_if_animal_age_between_1_and_2_human_age(self):
