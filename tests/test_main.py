@@ -51,7 +51,10 @@ class TestGetHumanAge:
             dog_age,
             expected_result
     ):
-        assert get_human_age(cat_age, dog_age) == expected_result
+        assert get_human_age(cat_age, dog_age) == expected_result, (
+            f"Function 'get_human_age_correctly' should return {expected_result},"
+            f"when (cat_age, dog_age) equal to ({cat_age, dog_age})"
+        )
 
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected_error",
