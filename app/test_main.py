@@ -21,7 +21,6 @@ def test_should_return_correct_first_ages(cat_age, dog_age, expected):
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (27, 28, [2, 2]),
-        (100, 100, [21, 17])
     ]
 )
 def test_should_return_correct_second_ages(cat_age, dog_age, expected):
