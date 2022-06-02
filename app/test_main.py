@@ -11,5 +11,3 @@ class TestHumanAge:
 
     def test_get_human_age_animal_very_old(self):
         assert get_human_age(100, 100) == [21, 17]
-
-
