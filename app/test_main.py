@@ -13,6 +13,6 @@ from app.main import get_human_age
                                        id="test 3 years for cat, "
                                           "and 2 year for dog"),
                           pytest.param(88, [18, 14], id="count years")])
-def test_(age, expected):
+def test_get_human_age(age, expected):
     human_age = get_human_age(age, age)
     assert human_age == expected
