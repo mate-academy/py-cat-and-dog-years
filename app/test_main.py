@@ -15,3 +15,7 @@ def test_cat_from_24():
 
 def test_dog_from_24():
     assert get_human_age(0, 26)[1] == 2
+
+
+def test_great():
+    assert get_human_age(100, 100) == [21, 17]
