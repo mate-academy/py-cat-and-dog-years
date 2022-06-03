@@ -43,6 +43,6 @@ from app.main import get_human_age
         ),
     ]
 )
-def test_(age, expected):
+def test_get_human_age(age, expected):
     human_age = get_human_age(age, age)
     assert human_age == expected
