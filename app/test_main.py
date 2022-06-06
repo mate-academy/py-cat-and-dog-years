@@ -9,5 +9,8 @@ class TestHumanAge:
     def test_get_human_age_animal_age_elder_one(self):
         assert get_human_age(16, 16) == [1, 1]
 
+    def test_get_human_age_animal_equal_two(self):
+        assert get_human_age(27, 27) == [2, 2]
+
     def test_get_human_age_animal_very_old(self):
         assert get_human_age(100, 100) == [21, 17]
