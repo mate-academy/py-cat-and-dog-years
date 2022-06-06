@@ -3,22 +3,13 @@ import pytest
 from app.main import get_human_age
 
 
-@pytest.mark.parametrize("arg1, arg2", [(15, 15), ])
-def test_type_return_get_human_age(arg1, arg2):
-    assert isinstance(get_human_age(arg1, arg2), list)
+def test_type_return_get_human_age():
+    assert isinstance(get_human_age(15, 15), list)
 
 
-@pytest.mark.parametrize("arg1, arg2", [(15, 15), ])
-def test_len_list_return_get_human_age(arg1, arg2):
-    assert len(get_human_age(arg1, arg2)) == 2
-
-
-@pytest.mark.parametrize("args", [(15, 15)])
+@pytest.mark.parametrize("args", [(15, 15), (0, 0)])
 def test_type_return_value_in_list_get_human_age(args):
-    f = True
-    for i in range(len(get_human_age(*args))):
-        f = isinstance(get_human_age(*args)[i], int)
-    assert f
+    assert all(isinstance(i, int) for i in get_human_age(*args))
 
 
 @pytest.mark.parametrize(
