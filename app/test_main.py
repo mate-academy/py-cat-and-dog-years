@@ -14,7 +14,7 @@ def test_cat_and_dog_ages_give_one_human_age():
 
 
 def test_cat_and_dog_ages_give_two_human_age():
-    assert get_human_age(16, 23) == [1, 1]
+    assert get_human_age(25, 27) == [2, 2]
 
 
 def test_the_same_cat_and_dog_age_give_different_human_age():
