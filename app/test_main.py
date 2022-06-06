@@ -9,7 +9,7 @@ def test_type_return_get_human_age():
 
 @pytest.mark.parametrize("args", [(15, 15), (0, 0)])
 def test_type_return_value_in_list_get_human_age(args):
-    assert all(isinstance(i, int) for i in get_human_age(*args))
+    assert all(isinstance(result, int) for result in get_human_age(*args))
 
 
 @pytest.mark.parametrize(
