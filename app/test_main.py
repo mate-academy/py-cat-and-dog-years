@@ -23,4 +23,3 @@ def test_5_next_dog_years_after_24_return_extra_human_year():
 
 def test_very_old_cat_dog_ages():
     assert get_human_age(100, 100) == [21, 17]
-
