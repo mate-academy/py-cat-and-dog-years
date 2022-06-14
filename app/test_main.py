@@ -20,4 +20,3 @@ def test_get_human_age_check_dog_years_are_converted_correctly():
     assert get_human_age(24, 24)[1] == 2
     assert get_human_age(28, 28)[1] == 2
     assert get_human_age(100, 100)[1] == 17
-
