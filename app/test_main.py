@@ -1,3 +1,5 @@
 from app.main import get_human_age
 
-# write your code here
+
+def test_cat_and_god_years_convert():
+    assert get_human_age(100, 100) == [21, 17]
