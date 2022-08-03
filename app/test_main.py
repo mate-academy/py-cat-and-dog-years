@@ -3,7 +3,9 @@ import pytest
 from app.main import get_human_age
 
 
-@pytest.mark.parametrize("cat_age,dog_age,result_in_year",
+@pytest.mark.parametrize("cat_age,"
+                         "dog_age,"
+                         "result_in_year",
                          [
                              pytest.param(14, 14, [0, 0],
                                           id="14 cat/dog years are 0 human"),
