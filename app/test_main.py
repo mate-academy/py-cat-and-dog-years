@@ -16,6 +16,9 @@ class TestGetHumanAge:
             (100, 100, [21, 17])
         ]
     )
-    def test_should_return_valid_values(self, cat_age, dog_age, expected_value):
+    def test_should_return_valid_values(self,
+                                        cat_age,
+                                        dog_age,
+                                        expected_value):
         result = get_human_age(cat_age, dog_age)
         assert result == expected_value
