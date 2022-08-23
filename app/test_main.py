@@ -31,3 +31,7 @@ def test_cat_start_third_human_year_dog_end_second_human_year():
 
 def test_cat_dog_various_human_years():
     assert get_human_age(100, 100) == [21, 17]
+
+
+def test_cat_dog_negative_age():
+    assert get_human_age(-20, -1) == [0, 0]
