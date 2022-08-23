@@ -48,6 +48,18 @@ class TestGetHumanAge:
                 [3, 4],
                 id="correct convert after 28 years "
             ),
+            pytest.param(
+                -28,
+                -34,
+                [0, 0],
+                id="convert negative ages"
+            ),
+            pytest.param(
+                300,
+                500,
+                [71, 97],
+                id="convert large ages"
+            ),
         ]
     )
     def test_get_human_ages(
