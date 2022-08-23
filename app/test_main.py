@@ -25,4 +25,4 @@ def test_if_dog_age_is_more_than_23_every_5_next_years_give_1_extra_human_year()
 
 def test_human_age_is_int():
     human_age = get_human_age(1, 99)
-    assert isinstance(human_age[0], int) and isinstance(human_age[1], int) == True
+    assert isinstance(human_age[0], int) and isinstance(human_age[1], int) is True
