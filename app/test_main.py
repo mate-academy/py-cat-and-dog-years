@@ -13,7 +13,8 @@ class TestGetHumanAge:
             pytest.param(23, 23, [1, 1], id="checking before second year"),
             pytest.param(24, 24, [2, 2], id="checking second year"),
             pytest.param(27, 27, [2, 2], id="checking before third year"),
-            pytest.param(28, 28, [3, 2], id="checking third cats and second dogs year"),
+            pytest.param(28, 28, [3, 2], id="checking third cats and "
+                                            "second dogs year"),
             pytest.param(100, 100, [21, 17], id="checking very old pensioners")
         ]
     )
