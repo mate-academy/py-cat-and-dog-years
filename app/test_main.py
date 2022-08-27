@@ -16,10 +16,7 @@ def test_func_return_list():
 
 
 def test_if_arguments_equal_zero():
-    try:
-        assert get_human_age(0, 0) == [0, 1]
-    except AssertionError:
-        print("0 cat/dog years should convert into 0 human age.")
+    assert get_human_age(0, 0) == [0, 0]
 
 
 def test_if_arguments_equal_negative_value():
