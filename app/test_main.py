@@ -22,7 +22,8 @@ class TestGetHumanAge:
                 28,
                 29,
                 [3, 3],
-                id="28 cat years and 29 dog years should convert into 3 human ages"
+                id="28 cat years and 29 dog years"
+                   " should convert into 3 human ages"
             )
         ]
 
