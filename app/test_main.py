@@ -38,4 +38,3 @@ class TestGetHumanAge:
                                             dog_age,
                                             expected_value):
         assert get_human_age(cat_age, dog_age) == expected_value
-
