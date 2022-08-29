@@ -7,9 +7,6 @@ class TestGetHumanAge:
         with pytest.raises(TypeError):
             get_human_age([14], "14")
 
-    def test_should_return_int(self):
-        assert isinstance(get_human_age(24, 24.1)[1], int)
-
     @pytest.mark.parametrize(
         "cat_age,dog_age,expected_value",
         [
