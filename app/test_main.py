@@ -10,29 +10,50 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age,dog_age,expected_value",
         [
-            pytest.param(
-                100,
-                100,
-                [21, 17],
-                id="should return cat's and dog's age in human"
+            (
+                -1,
+                -1,
+                [0, 0]
             ),
-            pytest.param(
-                6,
-                6,
-                [0, 0],
-                id="should return zero if cat's or dog's age is under 15"
+            (
+                14,
+                14,
+                [0, 0]
             ),
-            pytest.param(
+            (
+                15,
+                15,
+                [1, 1]
+            ),
+            (
                 23,
                 23,
-                [1, 1],
-                id="should return 1 if cat's and dog's age >= 15 or <= 23"
+                [1, 1]
             ),
-            pytest.param(
+            (
+                24,
+                24,
+                [2, 2]
+            ),
+            (
+                25,
+                25,
+                [2, 2]
+            ),
+            (
+                28,
+                28,
+                [3, 2]
+            ),
+            (
                 32,
                 33,
-                [4, 3],
-                id="test when values are boundary"
+                [4, 3]
+            ),
+            (
+                100,
+                100,
+                [21, 17]
             )
         ]
     )
