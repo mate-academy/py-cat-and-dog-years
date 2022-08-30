@@ -27,6 +27,12 @@ class TestGetHumanAge:
                 23,
                 [1, 1],
                 id="should return 1 if cat's and dog's age >= 15 or <= 23"
+            ),
+            pytest.param(
+                32,
+                33,
+                [4, 3],
+                id="test when values are boundary"
             )
         ]
     )
