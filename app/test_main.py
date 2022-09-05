@@ -16,6 +16,11 @@ def test_when_one_age_zero():
     assert result == [1, 0]
 
 
+def test_cross_human_year_14_cats_years():
+    result = get_human_age(14, 15)
+    assert result == [0, 1]
+
+
 def test_third_human_year():
     result = get_human_age(28, 28)
     assert result == [3, 2]
