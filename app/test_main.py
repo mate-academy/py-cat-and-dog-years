@@ -14,8 +14,3 @@ def test_should_return_0_when_age_is_0():
 def test_should_return_correct_age_when_input_is_float():
     age = get_human_age(15.9, 0.7)
     assert age == [1, 0]
-
-
-def test_should_return_0_when_age_is_negative():
-    age = get_human_age(-9, 19)
-    assert age == [0, 1]
