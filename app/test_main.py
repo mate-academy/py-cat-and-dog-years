@@ -16,5 +16,5 @@ class TestGetHumanAge:
     def test_the_next_9_cat_and_dog_years_give_1_more_human_year(self):
         assert get_human_age(17, 23) == [1, 1]
 
-    def test_every_4_next_cat_years_and_every_5_next_dog_years_give_1_extra_human_year(self):
+    def test_every_4_next_cat_and_5_next_dog_years_give_1_extra_year(self):
         assert get_human_age(32, 44) == [4, 6]
