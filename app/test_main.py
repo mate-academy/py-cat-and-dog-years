@@ -17,8 +17,8 @@ def test_should_return_2_when_age_is_24():
     assert get_human_age(24, 24) == [2, 2]
 
 
-def test_should_return_3_when_age_is_28():
-    assert get_human_age(28, 28) == [3, 3]
+def test_should_return_3_when_age_is_28_and_29():
+    assert get_human_age(28, 29) == [3, 3]
 
 
 def test_every_next4_cat_and_next5_dog_years_give_1_extra_year():
