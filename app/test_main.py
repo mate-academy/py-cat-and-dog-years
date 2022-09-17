@@ -16,5 +16,3 @@ def test_equal_right_result():
 
 def test_result_should_is_list():
     assert isinstance(get_human_age(10, 10), list)
-
-
