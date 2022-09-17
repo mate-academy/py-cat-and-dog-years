@@ -24,8 +24,3 @@ def test_should_return_zeros_if_ages_are_negative():
 def test_should_return_correct_result_with_big_numbers():
     cat_age, dog_age = 340, 280
     assert get_human_age(cat_age, dog_age) == [81, 53]
-
-
-
-
-
