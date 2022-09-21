@@ -56,5 +56,5 @@ import pytest
         ),
     ]
 )
-def test_return_right_age(self, cat_age, dog_age, expected_error_in_list):
+def test_return_right_age(cat_age, dog_age, expected_error_in_list):
     assert get_human_age(cat_age, dog_age) == expected_error_in_list
