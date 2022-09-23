@@ -45,6 +45,5 @@ class TestMain:
             self,
             cat_age,
             dog_age,
-            expected_result
-            ):
+            expected_result):
         assert get_human_age(cat_age, dog_age) == expected_result
