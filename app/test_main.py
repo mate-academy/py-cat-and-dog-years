@@ -4,7 +4,7 @@ import pytest
 
 class TestGetHumanAge:
     @pytest.mark.parametrize(
-        "cat_years,dog_years,excepted_years",
+        "cat_years, dog_years, expected_years",
         [
             pytest.param(
                 0,
@@ -50,5 +50,5 @@ class TestGetHumanAge:
     def test_human_age_correctly(self,
                                  cat_years: int,
                                  dog_years: int,
-                                 excepted_years: list):
-        assert get_human_age(cat_years, dog_years) == excepted_years
+                                 expected_years: list):
+        assert get_human_age(cat_years, dog_years) == expected_years
