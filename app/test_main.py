@@ -38,14 +38,15 @@ class TestGetHumanAge:
                 28,
                 28,
                 [3, 2],
-                id=" should return 3 for cat and 2"
+                id="Should return 3 for cat and 2"
                    " for dog when years equal to 28."),
 
             pytest.param(
                 100,
                 100,
                 [21, 17],
-                id="100, 100 -> should work correct with big numbers")])
+                id="100, 100 -> should work"
+                   " correct with big numbers")])
     def test_human_age_correctly(self,
                                  cat_years: int,
                                  dog_years: int,
