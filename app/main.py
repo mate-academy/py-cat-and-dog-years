@@ -13,4 +13,4 @@ def convert_to_human(animal_age, first_year, second_year, each_year):
 
 
 if __name__ == '__main__':
-    print(get_human_age(100, 100))
+    print(get_human_age(28, 29))
