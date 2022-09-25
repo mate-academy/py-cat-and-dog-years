@@ -10,47 +10,49 @@ from app.main import get_human_age
             0,
             0,
             [0, 0],
-            id="should return [0, 0] when inputs are equal to zeros"
+            id="should return [0, 0] when cat_age = dog_age = 0"
         ),
         pytest.param(
             14,
             14,
             [0, 0],
-            id="should return [0, 0] when inputs are "
-               "one less than 1 human year"
+            id="should return [0, 0] when cat_age = dog_age = 14"
         ),
         pytest.param(
             15,
             15,
             [1, 1],
-            id="should return [1, 1] when inputs are exactly 1 human year"
+            id="should return [1, 1] when cat_age = dog_age = 15"
         ),
         pytest.param(
             23,
             23,
             [1, 1],
-            id="should return [1, 1] when inputs are "
-               "one less than 2 human years"
+            id="should return [1, 1] when cat_age = dog_age = 23"
         ),
         pytest.param(
             24,
             24,
             [2, 2],
-            id="should return [2, 2] when inputs are exactly 2 human years"
+            id="should return [2, 2] when cat_age = dog_age = 24"
         ),
         pytest.param(
             27,
             28,
             [2, 2],
-            id="should return [2, 2] when inputs are "
-               "one less than 3 human years"
+            id="should return [2, 2] when cat_age = 27 and dog_age = 28"
         ),
         pytest.param(
             28,
             29,
             [3, 3],
-            id="should return [3, 3] when inputs are "
-               "exactly 3 human years"
+            id="should return [3, 3] when cat_age = 28 and dog_age = 29"
+        ),
+        pytest.param(
+            105,
+            105,
+            [22, 18],
+            id="should return [22, 18] when cat_age = dog_age = 105"
         ),
     ]
 )
