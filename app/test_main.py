@@ -9,13 +9,27 @@ import pytest
             0,
             0,
             [0, 0],
-            id="when human years less than 15 function should return 0"
+            id="When human years less than 15 function should return 0 year"
+        ),
+        pytest.param(
+            14,
+            14,
+            [0, 0],
+            id="When human years less than 15 function should return 0 year"
         ),
         pytest.param(
             15,
             15,
             [1, 1],
-            id="When human years between 15 and 24 function should return 1"
+            id="When human years between 15 and 24 "
+               "function should return 1 year"
+        ),
+        pytest.param(
+            23,
+            23,
+            [1, 1],
+            id="When human years between 15 and 24 "
+               "function should return 1 year"
         ),
         pytest.param(
             24,
