@@ -5,25 +5,37 @@ import pytest
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
-        (
-            28,
-            28,
-            [3, 2]
-        ),
-        (
+        pytest.param(
             0,
             0,
-            [0, 0]
+            [0, 0],
+            id="when human years less than 15 function should return 0"
         ),
-        (
+        pytest.param(
             15,
             15,
-            [1, 1]
+            [1, 1],
+            id="When human years between 15 and 24 function should return 1"
         ),
-        (
+        pytest.param(
+            24,
+            24,
+            [2, 2],
+            id="When human years between 25 and 28 function should return 2"
+        ),
+        pytest.param(
+            28,
+            28,
+            [3, 2],
+            id="When human years is 28 function should return "
+               "3 cats and 2 dogs years"
+        ),
+        pytest.param(
             100,
             100,
-            [21, 17]
+            [21, 17],
+            id="When human years is 100 function should return "
+               "21 cats and 17 dogs years"
         )
     ]
 )
