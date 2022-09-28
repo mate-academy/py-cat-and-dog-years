@@ -44,8 +44,8 @@ import pytest
     ]
 )
 def test_human_ages_correctly(
-        cat_age,
-        dog_age,
-        human_age
+        cat_age: int,
+        dog_age: int,
+        human_age: list
 ):
     assert get_human_age(cat_age, dog_age) == human_age
