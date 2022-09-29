@@ -2,7 +2,7 @@ from app.main import get_human_age
 
 
 def test_zero_ages():
-    assert get_human_age(16, 14) == [1, 0]
+    assert get_human_age(15, 14) == [1, 0]
 
 
 def test_first_ages():
