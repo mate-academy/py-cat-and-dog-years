@@ -28,7 +28,7 @@ class TestPetAgeInHumanYears:
                 23,
                 23,
                 [1, 1],
-                id="given age is under 24"
+                id="given age is in range 15 < age < 24"
             ),
             pytest.param(
                 24,
@@ -40,19 +40,19 @@ class TestPetAgeInHumanYears:
                 27,
                 27,
                 [2, 2],
-                id="given age is under cat and dog limitation"
+                id="given pets age is in range 24 < age < 28"
             ),
             pytest.param(
                 28,
                 28,
                 [3, 2],
-                id="given age return plus year to cat"
+                id="given cat age == 28 and dog age is < 29"
             ),
             pytest.param(
                 100,
                 100,
                 [21, 17],
-                id="given age for long-living pets"
+                id="given big age for long-living pets"
             )
         ])
     def test_pets_age_for_correct_results(self, cat_age: int,
