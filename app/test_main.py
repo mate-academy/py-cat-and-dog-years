@@ -41,5 +41,3 @@ def test_big_numbers_of_years():
     goals = get_human_age(100, 100)
 
     assert goals == [21, 17]
-
-
