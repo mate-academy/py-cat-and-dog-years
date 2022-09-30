@@ -19,3 +19,7 @@ def test_twenty_four_years_should_convert_into_two_human_years():
 
 def test_twenty_eight_and_twenty_nine_should_convert_into_three():
     assert get_human_age(28, 29) == [3, 3]
+
+
+def test_hundred_should_convert_into_twenty_one_and_seventeen():
+    assert get_human_age(100, 100) == [21, 17]
