@@ -23,5 +23,3 @@ def test_for_extra_ages():
 
 def test_should_return_zeros_for_ages_less_than_0():
     assert [0, 0] == get_human_age(-213, -523423)
-
-
