@@ -1,6 +1,6 @@
-import pytest
-
 from typing import List
+
+import pytest
 
 from app.main import get_human_age
 
