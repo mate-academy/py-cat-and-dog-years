@@ -17,7 +17,7 @@ def test_should_return_different_result_for_28_pets_ages():
     assert [3, 2] == get_human_age(28, 28)
 
 
-def test_for_extra_ages():
+def test_for_larger_ages():
     assert [21, 17] == get_human_age(100, 100)
 
 
