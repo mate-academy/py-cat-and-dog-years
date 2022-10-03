@@ -17,7 +17,7 @@ class TestGetHumanAge:
                 14,
                 2,
                 [0, 0],
-                id= "Test should return zeros when ages less than 15"
+                id="Test should return zeros when ages less than 15"
             ),
             pytest.param(
                 23,
@@ -51,8 +51,7 @@ class TestGetHumanAge:
             dog_age,
             ages_of_cat_and_dog_to_human_age
     ):
-        assert (
-                get_human_age(cat_age, dog_age)
-                ==
-                ages_of_cat_and_dog_to_human_age
-        )
+        assert (get_human_age(
+            cat_age,
+            dog_age
+        ) == ages_of_cat_and_dog_to_human_age)
