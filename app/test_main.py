@@ -32,6 +32,6 @@ def test_should_return_correct_age_if_animal_age_is_more_than_24():
     assert result == [21, 17]
 
 
-def test_should_raise_error_if_any_of_animal_age_is_less_than_0():
+def test_should_raise_error_if_any_of_animal_age_not_an_integer():
     with pytest.raises(TypeError):
         get_human_age("haha", 100)
