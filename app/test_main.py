@@ -4,7 +4,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age,dog_age,expected_age",
+    "cat_age,dog_age,expected_ages",
     [
         pytest.param(0, 0, [0, 0],
                      id="should return [0, 0] if pets ages equal zeros"),
@@ -22,5 +22,5 @@ from app.main import get_human_age
                      id="should return [21, 17] if pets ages are equal 100")
     ]
 )
-def test_get_human_age(cat_age, dog_age, expected_age):
-    assert get_human_age(cat_age, dog_age) == expected_age
+def test_get_human_age(cat_age, dog_age, expected_ages):
+    assert get_human_age(cat_age, dog_age) == expected_ages
