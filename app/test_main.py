@@ -11,4 +11,3 @@ def test_should_return_proper_age_if_animal_years_are_more_than_23():
 
 def test_should_return_proper_age_if_cat_age_28_dog_age_29():
     assert get_human_age(28, 29) == [3, 3]
-
