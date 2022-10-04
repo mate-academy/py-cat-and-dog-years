@@ -32,7 +32,7 @@ from app.main import get_human_age
         ),
         pytest.param(
             100, 100, [21, 17],
-            id="Should return [100, 100] if animals ages are 100"
+            id="Should return [21, 17] if animals ages are 100"
         )
     ]
 )
