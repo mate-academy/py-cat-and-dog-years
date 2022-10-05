@@ -21,7 +21,8 @@ class TestGetHumanAge:
             ),
             pytest.param(
                 23, 23, [1, 1],
-                id="test should return [1, 1] when cat and dog age in range 16-23"
+                id="test should return [1, 1] when cat "
+                   "and dog age in range 16-23"
             ),
             pytest.param(
                 24, 24, [2, 2],
@@ -29,17 +30,21 @@ class TestGetHumanAge:
             ),
             pytest.param(
                 27, 28, [2, 2],
-                id="test should return [2, 2] when cat age in range 25-27 and dog age in range 25-28"
+                id="test should return [2, 2] when cat age in range "
+                   "25-27 and dog age in range 25-28"
             ),
             pytest.param(
                 28, 29, [3, 3],
-                id="test should return [3, 3] when cat age == 28 and dog age == 29"
+                id="test should return [3, 3] when cat age == 28 "
+                   "and dog age == 29"
             ),
             pytest.param(
                 35, 47, [4, 6],
-                id="test should return [4, 6] when cat age == 35 and dog age == 47"
+                id="test should return [4, 6] when cat age == 35 "
+                   "and dog age == 47"
             )
         ]
     )
-    def test_should_return_age_converted_to_human(self, cat_age, dog_age, human_age):
+    def test_should_return_age_converted_to_human(self, cat_age,
+                                                  dog_age, human_age):
         assert get_human_age(cat_age, dog_age) == human_age
