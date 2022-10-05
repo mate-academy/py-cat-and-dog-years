@@ -10,7 +10,7 @@ import pytest
         pytest.param(15, 15, [1, 1], id="test 15 cat/dog years"),
         pytest.param(23, 23, [1, 1], id="test above 15 cat/dog years"),
         pytest.param(24, 24, [2, 2], id="test every 9 cat/dog years"),
-        pytest.param(27, 27, [2, 2], id="test after 9 before 4/5 cat/dog years"),
+        pytest.param(27, 27, [2, 2], id="test after 9 cat/dog years"),
         pytest.param(28, 28, [3, 2], id="test every 4/5 cat/dog years"),
         pytest.param(100, 100, [21, 17], id="test repeated 4/5 cat/dog years")
     ]
