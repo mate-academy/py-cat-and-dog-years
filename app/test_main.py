@@ -28,5 +28,5 @@ class TestDogAge:
             ),
         ]
     )
-    def test_dog_age(self, cat, dog, human):
+    def test_dog_age(self, cat: int, dog: int, human: list[int]) -> None:
         assert get_human_age(cat, dog) == human
