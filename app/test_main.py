@@ -45,5 +45,5 @@ from app.main import get_human_age
     ]
 )
 def test_should_return_age_converted_to_human(cat_age: int, dog_age: int,
-                                              human_age: list[int]) -> None:
+                                              human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
