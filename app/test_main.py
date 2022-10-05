@@ -21,5 +21,5 @@ from app.main import get_human_age
                      id="should return [21, 17] if pets ages are equal 100")
     ]
 )
-def test_get_human_age(cat_age, dog_age, expected_ages):
+def test_get_human_age(cat_age: int, dog_age: int, expected_ages: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_ages
