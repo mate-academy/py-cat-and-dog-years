@@ -19,6 +19,3 @@ def test_first_human_year():
 
 def test_big_ages():
     assert get_human_age(100, 100) == [21, 17]
-
-
-
