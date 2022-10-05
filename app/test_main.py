@@ -16,7 +16,7 @@ class TestDogAge:
             (100, 17)
         ]
     )
-    def test_for_dog(self, age, result):
+    def test_for_dog(self, age: int, result: int) -> None:
 
         assert get_human_age(0, age)[1] == result
 
@@ -35,6 +35,6 @@ class TestCatAge:
             (100, 21)
         ]
     )
-    def test_for_dog(self, age, result):
+    def test_for_dog(self, age: int, result: int) -> None:
 
         assert get_human_age(age, 0)[0] == result
