@@ -14,7 +14,7 @@ class TestCatAndDogYears:
             ),
             pytest.param(
                 14, 14, [0, 0],
-                id="Should return [0, 0] when years < 15 or <= 14 years"
+                id="Should return [0, 0] when years < 15 years"
             ),
             pytest.param(
                 15, 15, [1, 1],
@@ -28,11 +28,11 @@ class TestCatAndDogYears:
             ),
             pytest.param(
                 28, 28, [3, 2],
-                id="Should return [3, 2] when cat age and dog equals 28"
+                id="Should return [3, 2] when cat age and dog age equals 28"
             ),
             pytest.param(
                 100, 100, [21, 17],
-                id="Should return [21, 17] when cat age and dog equals 100"
+                id="Should return [21, 17] when cat age and dog age equals 100"
             )
         ]
     )
