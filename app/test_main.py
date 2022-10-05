@@ -45,5 +45,5 @@ from app.main import get_human_age
         )
     ]
 )
-def test_get_human_age(cat_and_dog_years, expected_years):
+def test_get_human_age(cat_and_dog_years: tuple, expected_years: list) -> None:
     assert get_human_age(*cat_and_dog_years) == expected_years
