@@ -31,4 +31,3 @@ def test_cat_older_then_dog():
 
 def test_dog_older_then_cat():
     assert get_human_age(30, 15) == [3, 1]
-
