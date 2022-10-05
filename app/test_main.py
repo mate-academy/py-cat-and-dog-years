@@ -25,5 +25,5 @@ def test_age_equals_or_more_than_third_year() -> None:
     assert get_human_age(28, 29) == [3, 3]
 
 
-def test_should_work_with_great_age() -> None:
+def test_should_work_with_greater_age() -> None:
     assert get_human_age(100, 100) == [21, 17]
