@@ -19,3 +19,8 @@ def test_second_year() -> None:
 def test_cat_dog_each_year() -> None:
     human_age = get_human_age(28, 29)
     assert human_age == [3, 3]
+
+
+def test_different_results_cat_dog() -> None:
+    human_age = get_human_age(100, 100)
+    assert human_age == [21, 17]
