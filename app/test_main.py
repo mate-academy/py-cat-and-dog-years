@@ -9,7 +9,7 @@ from app.main import get_human_age
         pytest.param(
             (14, 14),
             [0, 0],
-            id="13 cat and dog years equal 0 human year"
+            id="14 cat and dog years equal 0 human year"
         ),
         pytest.param(
             (15, 15),
@@ -29,7 +29,7 @@ from app.main import get_human_age
         pytest.param(
             (28, 28),
             [3, 2],
-            id="24 cat and dog years equal 3 and 2 human years"
+            id="28 cat and dog years equal 3 and 2 human years"
         ),
         pytest.param(
             (29, 29),
