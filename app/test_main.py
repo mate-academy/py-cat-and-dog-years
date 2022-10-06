@@ -11,16 +11,24 @@ from app.main import get_human_age
             id="animal age is 0"
         ),
         pytest.param(
-            10, 10, [0, 0],
+            14, 14, [0, 0],
             id="animal age less than 15"
         ),
         pytest.param(
-            16, 19, [1, 1],
+            15, 15, [1, 1],
+            id="animal age is more 15 and less 23"
+        ),
+        pytest.param(
+            23, 23, [1, 1],
             id="animal age is more 15 and less 23"
         ),
         pytest.param(
             23.9, 23.1, [1, 1],
             id="animal age with remainder"
+        ),
+        pytest.param(
+            24, 24, [2, 2],
+            id="animal age is more 23"
         ),
         pytest.param(
             28, 28, [3, 2],
