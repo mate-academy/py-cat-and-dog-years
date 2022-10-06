@@ -11,7 +11,7 @@ import pytest
         ),
         pytest.param(
             15, 15, [1, 1],
-            id="Human age should be [1, 1] when cat and dog ages is 0"
+            id="Human age should be [1, 1] when cat and dog ages is 1"
         ),
         pytest.param(
             23, 23, [1, 1],
