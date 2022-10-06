@@ -37,6 +37,4 @@ def test_convert_correctly(cat_years: int,
                            dog_years: int,
                            human_age: list) -> None:
 
-    result = get_human_age(cat_years, dog_years)
-
-    assert result == human_age
+    assert get_human_age(cat_years, dog_years) == human_age
