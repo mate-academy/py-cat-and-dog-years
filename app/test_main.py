@@ -9,21 +9,33 @@ def test_negative_ages() -> None:
     assert get_human_age(-1, -2) == [0, 0]
 
 
-def test_age_less_than_first_year() -> None:
-    assert get_human_age(11, 12) == [0, 0]
+def test_age_lower_than_1_year() -> None:
+    assert get_human_age(14, 14) == [0, 0]
 
 
-def test_age_equals_or_more_than_first_year() -> None:
-    assert get_human_age(15, 17) == [1, 1]
+def test_age_equals_to_1_year() -> None:
+    assert get_human_age(15, 15) == [1, 1]
 
 
-def test_age_equals_or_more_than_second_year() -> None:
-    assert get_human_age(26, 24) == [2, 2]
+def test_age_between_1_and_2_years() -> None:
+    assert get_human_age(23, 23) == [1, 1]
 
 
-def test_age_equals_or_more_than_third_year() -> None:
+def test_age_equals_to_2_years() -> None:
+    assert get_human_age(24, 24) == [2, 2]
+
+
+def test_age_between_2_and_3_years() -> None:
+    assert get_human_age(27, 27) == [2, 2]
+
+
+def test_age_equals_to_3_years_for_cat() -> None:
+    assert get_human_age(28, 28) == [3, 2]
+
+
+def test_age_equals_to_3_years_for_all_animals() -> None:
     assert get_human_age(28, 29) == [3, 3]
 
 
-def test_should_work_with_greater_age() -> None:
+def test_age_more_then_10_years() -> None:
     assert get_human_age(100, 100) == [21, 17]
