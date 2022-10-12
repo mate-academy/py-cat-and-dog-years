@@ -1,4 +1,5 @@
 import pytest
+
 from app.main import get_human_age
 
 
@@ -12,9 +13,9 @@ class TestHumanAge:
                 id="When age human and animals equal"
             ),
             pytest.param(
-              14, 14,
-              [0, 0],
-              id="Still animals age equal 0 human ages"
+                14, 14,
+                [0, 0],
+                id="Still animals age equal 0 human ages"
             ),
             pytest.param(
                 15, 15,
@@ -40,7 +41,7 @@ class TestHumanAge:
     )
     def test_cats_and_dogs_ages_in_human_convert(
             self,
-            cat_ages,
-            dog_ages,
-            human_age):
+            cat_ages: int,
+            dog_ages: int,
+            human_age: list) -> None:
         assert get_human_age(cat_ages, dog_ages) == human_age
