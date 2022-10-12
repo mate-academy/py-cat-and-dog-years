@@ -5,7 +5,7 @@ def test_zero_ages() -> None:
     assert get_human_age(0, 0) == [0, 0]
 
 
-def test_age_lower_than_first_year() -> None:
+def test_age_lower_first_year() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
 
