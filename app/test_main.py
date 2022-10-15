@@ -26,10 +26,13 @@ from app.main import get_human_age
             id="should return [2, 2] for cat and dog with age equal to 24"
         ),
         pytest.param(
+<<<<<<< HEAD
             27, 27, [2, 2],
             id="should return [2, 2] for cat and dog with age 27"
         ),
         pytest.param(
+=======
+>>>>>>> 6b8665f66228d3a50b61d14a169d4e3903486e84
             28, 28, [3, 2],
             id="should return [3, 2] for cat and dog with age 28"
         ),

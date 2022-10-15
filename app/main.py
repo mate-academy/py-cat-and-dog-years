@@ -5,7 +5,14 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
 
 
 def convert_to_human(
+<<<<<<< HEAD
         animal_age: int, first_year: int, second_year: int, each_year: int
+=======
+        animal_age: int,
+        first_year: int,
+        second_year: int,
+        each_year: int
+>>>>>>> 6b8665f66228d3a50b61d14a169d4e3903486e84
 ) -> int:
     if animal_age < first_year:
         return 0
