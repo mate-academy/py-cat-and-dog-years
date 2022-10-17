@@ -32,7 +32,7 @@ class TestPetsHumanAge:
         assert get_human_age(24, 24) == [2, 2], \
             "24 years should convert into 2 human age."
 
-    def test_should_convert_over_24_year_without_rounding(self) -> None:
+    def test_should_convert_over_24_year_border(self) -> None:
         assert get_human_age(27, 28) == [3, 3], \
             "27/28 years should convert into 3 human age."
 
