@@ -1,6 +1,6 @@
 # Cat and Dog years
 
-Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before start.
+Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
 
 Inside `app/test_main.py`, write tests for `get_human_age` function that 
 takes two integers `cat_age` (my cat's age in cat years) and `dog_age` 
@@ -41,3 +41,5 @@ Run `pytest app/` to check if function pass your tests.
 
 Run `pytest --numprocesses=auto tests/` to check if your tests cover all boundary conditions
 and pass task tests.
+
+### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
