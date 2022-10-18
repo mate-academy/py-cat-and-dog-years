@@ -17,4 +17,3 @@ def test_when_dog_age_is_less_than_0() -> None:
 def test_should_raise_error_if_incorrect_data_type() -> None:
     with pytest.raises(TypeError):
         assert get_human_age("sf", [])
-
