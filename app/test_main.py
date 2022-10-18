@@ -26,9 +26,9 @@ def test_correct_when_the_parameters_are_greater_than_23() -> None:
     assert get_human_age(75, 75) == [14, 12]
 
 
-def test_should_return_first_year():
+def test_should_return_first_year() -> None:
     assert get_human_age(15, 15) == [1, 1]
 
 
-def test_should_return_different_values():
+def test_should_return_different_values() -> None:
     assert get_human_age(28, 28) == [3, 2]
