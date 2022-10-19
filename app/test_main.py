@@ -7,11 +7,19 @@ def test_should_return_expected_animal_ages() -> None:
 
 
 def test_when_cat_age_is_less_than_0() -> None:
-    assert get_human_age(-10, 100) == [0, 17]
+    assert get_human_age(-10, 23) == [0, 1]
 
 
 def test_when_dog_age_is_less_than_0() -> None:
-    assert get_human_age(100, -1) == [21, 0]
+    assert get_human_age(23, -1) == [1, 0]
+
+
+def test_should_return_0_when_both_ages_is__0() -> None:
+    assert get_human_age(0, 0) == [0, 0]
+
+
+def test_when_function_resive_realy_large_numbers() -> None:
+    assert get_human_age(100, 100) == [21, 17]
 
 
 def test_should_raise_error_if_incorrect_data_type() -> None:
