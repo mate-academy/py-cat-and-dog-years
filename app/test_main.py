@@ -2,7 +2,7 @@ from app.main import get_human_age
 
 
 def test_should_return_0_if_animal_age_less_then_15() -> None:
-    assert get_human_age(12, 12) == [0, 0]
+    assert get_human_age(14, 14) == [0, 0]
 
 
 def test_should_return_1_if_animal_age_equal_to_15() -> None:
@@ -10,7 +10,7 @@ def test_should_return_1_if_animal_age_equal_to_15() -> None:
 
 
 def test_should_return_1_if_animal_age_is_less_then_24() -> None:
-    assert get_human_age(20, 20) == [1, 1]
+    assert get_human_age(23, 23) == [1, 1]
 
 
 def test_should_return_2_if_animal_age_is_24() -> None:
