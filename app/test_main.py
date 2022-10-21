@@ -26,10 +26,26 @@ def test_should_return_double_one_when_ages_are_15() -> None:
     assert get_human_age(15, 15) == [1, 1]
 
 
+def test_should_return_double_one_when_ages_are_23() -> None:
+    assert get_human_age(23, 23) == [1, 1]
+
+
+def test_should_return_double_two_when_ages_are_24() -> None:
+    assert get_human_age(24, 24) == [2, 2]
+
+
+def test_should_return_double_two_when_ages_are_27() -> None:
+    assert get_human_age(27, 27) == [2, 2]
+
+
+def test_should_return_three_two_when_ages_are_28() -> None:
+    assert get_human_age(28, 28) == [3, 2]
+
+
 def test_when_function_receive_large_numbers() -> None:
     assert get_human_age(100, 100) == [21, 17]
 
 
 def test_should_raise_error_if_incorrect_data_type() -> None:
     with pytest.raises(TypeError):
-        assert get_human_age("sf", [])
+        assert get_human_age("sf", 1.1)
