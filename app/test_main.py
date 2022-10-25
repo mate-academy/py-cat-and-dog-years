@@ -1,3 +1,4 @@
+import pytest
 from app.main import get_human_age
 
 
@@ -40,3 +41,8 @@ def test_cat_and_dog_years_more_than_2_human_years() -> None:
 
 def test_large_years_numbers() -> None:
     assert get_human_age(1800, 9555) == [446, 1908]
+
+
+def test_incorrect_data_received() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", "17")
