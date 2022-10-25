@@ -1,13 +1,13 @@
 from app.main import get_human_age
 
 
-def test_function_must_return_list() -> None:
-    assert isinstance(get_human_age(0, 0), list)
-
-
 def test_number_of_years_must_be_integer() -> None:
-    func_result = get_human_age(25, 25)
-    assert func_result == [int(func_result[0]), int(func_result[1])]
+    assert get_human_age(25, 25) == [int(get_human_age(25, 25)[0]),
+                                     int(get_human_age(25, 25)[1])]
+
+
+def test_negative_number_of_years_must_be_zero() -> None:
+    assert get_human_age(-10, -10) == [0, 0]
 
 
 def test_cat_and_dog_min_years_life() -> None:
@@ -36,3 +36,7 @@ def test_max_cat_and_dog_years_to_2_human_years() -> None:
 
 def test_cat_and_dog_years_more_than_2_human_years() -> None:
     assert get_human_age(28, 28) == [3, 2]
+
+
+def test_large_years_numbers() -> None:
+    assert get_human_age(1800, 9555) == [446, 1908]
