@@ -49,7 +49,7 @@ class TestConvertAge:
     def test_raising_error_correctly(
         self, cat_age: int,
         dog_age: int,
-        excepted_error
+        excepted_error: type
     ) -> None:
         with pytest.raises(excepted_error):
             get_human_age(cat_age, dog_age)
