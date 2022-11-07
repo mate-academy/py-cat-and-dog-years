@@ -2,7 +2,7 @@ from app.main import get_human_age
 
 
 def test_zero_values() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+    assert get_human_age(0, 0) == [0, 0], "test zero values"
 
 
 def test_convert_1() -> None:
