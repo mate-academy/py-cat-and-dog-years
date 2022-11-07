@@ -22,4 +22,8 @@ def test_convert_4() -> None:
 
 
 def test_convert_5() -> None:
-    assert (27, 27) == [2, 2], "test convert to [2, 2] human ages"
+    assert get_human_age(27, 27) == [2, 2], "test convert to [2, 2] human ages"
+
+
+def test_convert_6() -> None:
+    assert get_human_age(28, 27) == [3, 2], "test convert to [3, 2] human ages"
