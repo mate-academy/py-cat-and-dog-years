@@ -26,6 +26,10 @@ def test_should_convert_into_two_human_ages2() -> None:
     assert get_human_age(27, 28) == [2, 2], "test convert to [2, 2] human ages"
 
 
+def test_should_convert_into_two_human_ages3() -> None:
+    assert get_human_age(28, 29) == [3, 3], "test convert to [3, 3] human ages"
+
+
 def test_negative_values() -> None:
     assert get_human_age(-1, -1) == [0, 0]
 
