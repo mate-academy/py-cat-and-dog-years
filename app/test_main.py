@@ -27,8 +27,7 @@ def test_should_convert_into_two_human_ages2() -> None:
 
 
 def test_negative_values() -> None:
-    with pytest.raises(ValueError):
-        get_human_age(-1, -1)
+    assert get_human_age(-1, -1) == [0, 0]
 
 
 def test_large_values() -> None:
