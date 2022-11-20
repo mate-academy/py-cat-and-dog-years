@@ -32,4 +32,3 @@ def test_check_if_previous_number_did_not_change() -> None:
     assert (
         result is not result1
     )
-
