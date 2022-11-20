@@ -13,6 +13,3 @@ def convert_to_human(
         return 1
     return 2 + (animal_age - first_year - second_year) // each_year
 
-
-
-print(get_human_age(34,90))
