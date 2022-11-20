@@ -30,6 +30,6 @@ def test_check_if_previous_number_did_not_change() -> None:
     result = get_human_age(22, 100)
     result1 = get_human_age(22, 100)
     assert (
-        result == result1
+        result is not result1
     )
 
