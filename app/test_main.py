@@ -22,7 +22,7 @@ def test_get_correct_age_for_animals_with_out_of_normal_range() -> None:
 
 def test_get_correct_data_type_for_function_or_raise_error() -> None:
     with pytest.raises(TypeError):
-        assert get_human_age([], ()) is not list
+        get_human_age("20", "20")
 
 
 def test_check_if_previous_number_did_not_change() -> None:
