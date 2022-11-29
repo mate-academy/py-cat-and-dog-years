@@ -3,8 +3,20 @@ import pytest
 from app.main import get_human_age
 
 
-def test_get_human_age() -> None:
+def test_if_function_gives_correct_output() -> None:
     assert get_human_age(88, 88) == [18, 14]
+
+
+def test_if_age_is_less_than_one_human_year() -> None:
+    assert get_human_age(14, 5) == [0, 0]
+
+
+def test_animals_age_equals_to_one_human_year() -> None:
+    assert get_human_age(15, 20) == [1, 1]
+
+
+def test_animals_age_equals_to_two_human_years() -> None:
+    assert get_human_age(25, 27) == [2, 2]
 
 
 def test_if_output_changed_with_previous_value() -> None:
