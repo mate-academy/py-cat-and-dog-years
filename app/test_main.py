@@ -1,31 +1,27 @@
-import pytest
 from app.main import get_human_age
 
 
-class TestGetAgeHuman:
+def test_get_human_age_return_zero_if_animals_age_is_zero() -> None:
+    assert get_human_age(0, 0) == [0, 0]
 
-    @pytest.mark.parametrize(
-        "cat_age,dog_age,expected_result",
-        [
-            pytest.param(
-                28,
-                28,
-                [3, 2],
-                id="test function calculates age correctly"
-            ),
-            pytest.param(
-                15,
-                12,
-                [1, 0],
-                id="test function return 0 for animal which age "
-                   "is less than human's year"
-            ),
-        ]
-    )
-    def test_function_calculations(
-            self,
-            cat_age: int,
-            dog_age: int,
-            expected_result: list
-    ) -> None:
-        assert get_human_age(cat_age, dog_age) == expected_result
+
+def test_14_or_less_cat_or_dog_years_should_convert_into_0_human_age() -> None:
+    assert get_human_age(14, 14) == [0, 0]
+    assert get_human_age(12, 13) == [0, 0]
+
+
+def test_15_cat_or_dog_years_should_convert_into_1_human_age() -> None:
+    assert get_human_age(15, 15) == [1, 1]
+
+
+def test_27_cat_and_28_dog_years_should_convert_into_2_human_age() -> None:
+    assert get_human_age(27, 28) == [2, 2]
+
+
+def test_28_cat_and_29_dog_years_should_convert_into_2_human_age() -> None:
+    assert get_human_age(28, 29) == [3, 3]
+
+
+def test_get_human_age_calculates_correctly() -> None:
+    assert get_human_age(28, 28) == [3, 2]
+    assert get_human_age(100, 100) == [21, 17]
