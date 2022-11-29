@@ -14,14 +14,7 @@ class TestGetAgeHuman:
                 id="test function calculates age correctly"
             ),
             pytest.param(
-                13,
-                12,
-                [0, 0],
-                id="test function return [0, 0] when animals ages "
-                   "are less than human's year"
-            ),
-            pytest.param(
-                18,
+                15,
                 12,
                 [1, 0],
                 id="test function return 0 for animal which age "
