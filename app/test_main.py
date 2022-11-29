@@ -3,16 +3,16 @@ import pytest
 from app.main import get_human_age
 
 
-def test_if_function_gives_correct_output() -> None:
-    assert get_human_age(88, 88) == [18, 14]
-
-
 def test_if_age_is_less_than_one_human_year() -> None:
     assert get_human_age(14, 5) == [0, 0]
 
 
 def test_animals_age_equals_to_one_human_year() -> None:
     assert get_human_age(15, 20) == [1, 1]
+
+
+def test_if_function_gives_correct_output_when_age_is_bigger_than_3() -> None:
+    assert get_human_age(88, 88) == [18, 14]
 
 
 def test_animals_age_equals_to_two_human_years() -> None:
