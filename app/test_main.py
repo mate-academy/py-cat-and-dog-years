@@ -7,8 +7,8 @@ from app.main import get_human_age, convert_to_human
     "cat_age,dog_age,expected_result",
     [
         pytest.param(
-        100, 100, [17, 21],
-        id="result_should_be_correct"
+            100, 100, [17, 21],
+            id="result_should_be_correct"
         ),
         pytest.param(
             15, 15, [1, 1],
