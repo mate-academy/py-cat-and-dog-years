@@ -4,18 +4,18 @@ from app.main import get_human_age, convert_to_human
 
 
 @pytest.mark.parametrize(
-    "testing_cat_age, testing_dog_age, expected_result",
+    "cat_age,dog_age,expected_result",
     [
+        pytest.param(
+        100, 100, [17, 21],
+        id="result_should_be_correct"
+        ),
         pytest.param(
             15, 15, [1, 1],
             id="result_should_be_correct"
         ),
         pytest.param(
             24, 24, [2, 2],
-            id="result_should_be_correct"
-        ),
-        pytest.param(
-            100, 100, [21, 17],
             id="result_should_be_correct"
         ),
         pytest.param(
@@ -29,14 +29,14 @@ from app.main import get_human_age, convert_to_human
     ]
 )
 def test_should_check_correct_data(
-        testing_cat_age: int,
-        testing_dog_age: int,
+        cat_age: int,
+        dog_age: int,
         expected_result: list) -> None:
-    assert get_human_age(testing_cat_age, testing_dog_age) == expected_result
+    assert get_human_age(cat_age, dog_age) == expected_result
 
 
 @pytest.mark.parametrize(
-    "animal_age, first_year, second_year, each_year_cat,expected_result",
+    "animal_age,first_year,second_year,each_year_cat,expected_result",
     [
         pytest.param(
             15.3, 14.1, 9.1, 3, 1,
