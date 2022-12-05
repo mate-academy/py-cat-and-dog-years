@@ -20,7 +20,7 @@ def test_animals_age_equals_to_two_human_years() -> None:
 
 
 def test_if_output_changed_with_previous_value() -> None:
-    assert get_human_age(30, 33) is not get_human_age(30, 33)
+    assert get_human_age(28, 29) == get_human_age(31, 33)
 
 
 def test_if_age_is_zero() -> None:
