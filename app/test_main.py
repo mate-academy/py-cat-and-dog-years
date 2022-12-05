@@ -19,7 +19,7 @@ def test_animals_age_equals_to_two_human_years() -> None:
     assert get_human_age(25, 27) == [2, 2]
 
 
-def test_if_output_of_two_functions_is_equal_when_given_values_are_different_but_in_the_same_range() -> None:
+def test_outputs_when_values_are_different_but_in_the_same_range() -> None:
     assert get_human_age(28, 29) == get_human_age(31, 33)
 
 
