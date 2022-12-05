@@ -37,4 +37,4 @@ def test_if_age_number_is_too_big() -> None:
 
 def test_if_age_value_is_not_integer() -> None:
     with pytest.raises(TypeError):
-        get_human_age("twenty", 25)
+        get_human_age("twenty", 26)
