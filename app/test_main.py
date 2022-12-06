@@ -18,4 +18,8 @@ def test_animal_age_equal_to_two_human_years() -> None:
 
 
 def test_different_rules_when_animal_age_more_then_two_human_years() -> None:
+    assert get_human_age(28, 28) == [3, 2]
+
+
+def test_different_rules_when_animal_age_really_large_numbers() -> None:
     assert get_human_age(99, 99) == [20, 17]
