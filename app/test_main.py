@@ -1,6 +1,10 @@
 from app.main import get_human_age
 
 
+def test_should_return_list() -> None:
+    assert isinstance(get_human_age(1, 0), list)
+
+
 def test_should_return_zero_if_age_less_then_one_year() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
@@ -19,3 +23,7 @@ def test_should_return_same_years_if_ages_are_different() -> None:
 
 def test_should_return_zero_if_ages_are_less_then_zero() -> None:
     assert get_human_age(-50, -3) == [0, 0]
+
+
+def test_should_return_zero_if_age_is_zero() -> None:
+    assert get_human_age(0, 0) == [0, 0]
