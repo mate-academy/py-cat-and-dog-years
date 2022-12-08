@@ -15,3 +15,7 @@ def test_should_return_different_years_if_ages_are_one_hundred() -> None:
 
 def test_should_return_same_years_if_ages_are_different() -> None:
     assert get_human_age(27, 28) == [2, 2]
+
+
+def test_should_return_zero_if_ages_are_less_then_zero() -> None:
+    assert get_human_age(-50, -3) == [0, 0]
