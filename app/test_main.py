@@ -44,3 +44,8 @@ def test_negative_numbers(cat_age: int, dog_age: int, result: list) -> None:
     assert (
         get_human_age(cat_age, dog_age) == result
     ), "Age shouldn't be negative number."
+
+
+def test_type_of_parameters():
+    with pytest.raises(TypeError):
+        get_human_age("1", 1)
