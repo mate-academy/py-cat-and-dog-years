@@ -23,5 +23,3 @@ def test_should_convert_to_if_age_less_then_28_and_29() -> None:
 
 def test_should_convert_to_3_or_more_if_age_more_then_27_and_28() -> None:
     assert get_human_age(28, 29) == [3, 3]
-
-
