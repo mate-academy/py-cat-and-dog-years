@@ -24,18 +24,3 @@ def test_should_convert_into_human_age(
         result: list
 ) -> None:
     assert get_human_age(cat, dog) == result
-
-
-@pytest.mark.parametrize(
-    "cat, dog, expected_error",
-    [
-        pytest.param(-1, -1, ValueError, id="should not be less then 0"),
-    ]
-)
-def test_less_then_0(
-        cat: int,
-        dog: int,
-        expected_error: str
-) -> None:
-    with pytest.raises(expected_error):
-        get_human_age(cat, dog)
