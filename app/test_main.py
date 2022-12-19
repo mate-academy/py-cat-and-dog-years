@@ -16,7 +16,7 @@ class TestGetHumanAge:
                                         cat_age: str,
                                         dog_age,
                                         result: list) -> None:
-        assert get_human_age(cat_age, dog_age) == result
+        assert get_human_age(cat_age: str, dog_age: str) == result
 
     def test_get_human_age_value_is_not_int(self) -> None:
         with pytest.raises(TypeError):
