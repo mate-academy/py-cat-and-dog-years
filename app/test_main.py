@@ -15,5 +15,5 @@ import pytest
         (get_human_age(100, 100), [21, 17])
     ]
 )
-def test_get_human_age(example_input, expected):
+def test_get_human_age(example_input: list, expected: list) -> None:
     assert example_input == expected
