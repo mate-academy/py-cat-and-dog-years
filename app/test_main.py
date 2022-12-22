@@ -35,7 +35,7 @@ def test_raises_exception_if_bool() -> None:
         pytest.param(200, 200, id="Input cannot be really large numbers")
     ]
 )
-def test_input_int_out_of_normal_range(cat_age: int, dog_age: int):
+def test_input_int_out_of_normal_range(cat_age: int, dog_age: int) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
