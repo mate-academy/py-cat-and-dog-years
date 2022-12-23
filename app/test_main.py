@@ -5,15 +5,15 @@ import pytest
 @pytest.mark.parametrize(
     "example_input, expected",
     [
-        (get_human_age(0, 0), [0, 0]),
-        (get_human_age(14, 14), [0, 0]),
-        (get_human_age(15, 15), [1, 1]),
-        (get_human_age(23, 23), [1, 1]),
-        (get_human_age(24, 24), [2, 2]),
-        (get_human_age(27, 27), [2, 2]),
-        (get_human_age(28, 28), [3, 2]),
-        (get_human_age(100, 100), [21, 17])
+        ((0, 0), [0, 0]),
+        ((14, 14), [0, 0]),
+        ((15, 15), [1, 1]),
+        ((23, 23), [1, 1]),
+        ((24, 24), [2, 2]),
+        ((27, 27), [2, 2]),
+        ((28, 28), [3, 2]),
+        ((100, 100), [21, 17])
     ]
 )
-def test_get_human_age(example_input: list, expected: list) -> None:
-    assert example_input == expected
+def test_get_human_age(example_input: tuple, expected: list) -> None:
+    assert get_human_age(example_input[0], example_input[1]) == expected
