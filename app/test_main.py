@@ -12,32 +12,9 @@ def test_raises_exception_if_str() -> None:
         get_human_age("a", "")
 
 
-def test_raises_exception_if_float() -> None:
-    with pytest.raises(TypeError):
-        get_human_age(0.1, 2.325)
-
-
 def test_raises_exception_if_list() -> None:
     with pytest.raises(TypeError):
         get_human_age([1, 2], [2, 3])
-
-
-def test_raises_exception_if_bool() -> None:
-    with pytest.raises(TypeError):
-        get_human_age(True, False)
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age",
-    [
-        pytest.param(-1, -2, id="Input cannot be negative"),
-        pytest.param(0, 0, id="Input cannot be 0"),
-        pytest.param(200, 200, id="Input cannot be really large numbers")
-    ]
-)
-def test_input_int_out_of_normal_range(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
 
 
 @pytest.mark.parametrize(
@@ -52,6 +29,13 @@ def test_input_int_out_of_normal_range(cat_age: int, dog_age: int) -> None:
         pytest.param(27, 27, [2, 2], id="Cat and dog age == 27"),
         pytest.param(28, 28, [3, 2], id="Cat and dog age == 28"),
         pytest.param(100, 100, [21, 17], id="Cat and dog age == 100"),
+        pytest.param(
+            123456,
+            12345678,
+            [30860, 2469132],
+            id="Input really big numbers"),
+        pytest.param(0, 0, [0, 0], id="Cat and dog age == 0"),
+        pytest.param(-2, -1, [0, 0], id="Input is negative")
     ]
 )
 def test_returns_correct_values(
