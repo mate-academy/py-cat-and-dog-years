@@ -8,6 +8,13 @@ class TestGetHumanAge:
         "cat_years,dog_years,expected_result",
         [
             pytest.param(
+                -15,
+                -15,
+                [0, 0],
+                id="should check negative age"
+            ),
+
+            pytest.param(
                 0,
                 0,
                 [0, 0],
@@ -58,3 +65,33 @@ class TestGetHumanAge:
             expected_result: list
     ) -> None:
         assert get_human_age(cat_years, dog_years) == expected_result
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age",
+        [
+            pytest.param(
+                "0",
+                "0",
+                id="when data is string"
+            ),
+
+            pytest.param(
+                [0],
+                [0],
+                id="when data is list"
+            ),
+
+            pytest.param(
+                {0},
+                {0},
+                id="when data is set"
+            ),
+        ]
+    )
+    def test_type_of_result(
+            self,
+            cat_age: int,
+            dog_age: int
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
