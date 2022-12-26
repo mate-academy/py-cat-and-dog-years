@@ -37,5 +37,10 @@ class TestGetHumanAge:
 
         ]
     )
-    def test_converting_to_human_age_correctly(self, cat_years: int, dog_years: int, expected_result: list) -> None:
+    def test_converting_to_human_age_correctly(
+            self,
+            cat_years: int,
+            dog_years: int,
+            expected_result: list
+    ) -> None:
         assert get_human_age(cat_years, dog_years) == expected_result
