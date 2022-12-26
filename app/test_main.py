@@ -28,6 +28,6 @@ class TestConvert:
         assert get_human_age(cat_age, dog_age) == result
 
 
-def test_negative_numbers_exception() -> None:
+def test_not_integer_type_exception() -> None:
     with pytest.raises(TypeError):
         get_human_age("1", 1)
