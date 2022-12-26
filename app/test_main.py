@@ -8,6 +8,20 @@ class TestGetHumanAge:
         "cat_years,dog_years,expected_result",
         [
             pytest.param(
+                0,
+                0,
+                [0, 0],
+                id="should check age is 0"
+            ),
+
+            pytest.param(
+                13.5,
+                13.5,
+                [0, 0],
+                id="should check age, which not an integer"
+            ),
+
+            pytest.param(
                 13,
                 13,
                 [0, 0],
