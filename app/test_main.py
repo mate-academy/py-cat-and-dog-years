@@ -27,3 +27,7 @@ def test_for_more_than_two_years() -> None:
 def test_output_is_not_float() -> None:
     for age in get_human_age(15, 87):
         assert isinstance(age, int)
+
+
+def test_input_is_not_float() -> None:
+    assert get_human_age(28.9, 28.7) == [3, 2]
