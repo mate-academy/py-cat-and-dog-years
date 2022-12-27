@@ -16,7 +16,7 @@ import pytest
 
     ],
 )
-def test_should_be_add_zero(cat_age, dog_age, result) -> None:
+def test_should_be_add_zero(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
 
 
@@ -34,7 +34,11 @@ def test_should_be_add_zero(cat_age, dog_age, result) -> None:
 
     ],
 )
-def test_should_convert_age_into_human_age(cat_age, dog_age, result) -> None:
+def test_should_convert_age_into_human_age(
+        cat_age: int,
+        dog_age: int,
+        result: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == result
 
 
@@ -52,5 +56,9 @@ def test_should_convert_age_into_human_age(cat_age, dog_age, result) -> None:
 
     ],
 )
-def test_should_convert_age_into_one_human_age(cat_age, dog_age, result) -> None:
+def test_should_convert_age_into_one_human_age(
+        cat_age: int,
+        dog_age: int,
+        result: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == result
