@@ -37,4 +37,3 @@ def test_output_should_change_with_different_input(
 def test_incorrect_type_input(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
-
