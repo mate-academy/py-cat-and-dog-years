@@ -47,20 +47,18 @@ class TestCheckAge:
     )
     def test_correct_output(
             self,
-            cat_age: Any,
-            dog_age: Any,
+            cat_age: int,
+            dog_age: int,
             expected: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
-        assert isinstance(expected[0] and expected[1], int)
 
     @pytest.mark.parametrize(
         "cat_age,dog_age",
         [
-            pytest.param(
-                "1", "1",
-                id="if ages are string"
-            )
+            ("1", "1"),
+            ("1", 1),
+            (1, "1")
         ]
     )
     def test_should_raise_type_error_if_age_is_string(
