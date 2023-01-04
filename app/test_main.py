@@ -37,6 +37,11 @@ class TestCheckAge:
                 28, 29,
                 [3, 3],
                 id="28/29 cat/dog years should convert into 3 human age."
+            ),
+            pytest.param(
+                100, 100,
+                [21, 17],
+                id="100 cat/dog years should convert into 23/17 human age."
             )
         ]
     )
@@ -47,6 +52,7 @@ class TestCheckAge:
             expected: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
+        assert isinstance(expected[0] and expected[1], int)
 
     @pytest.mark.parametrize(
         "cat_age,dog_age",
