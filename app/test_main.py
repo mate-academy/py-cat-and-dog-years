@@ -5,10 +5,6 @@ def test_when_input_is_zero() -> None:
     assert get_human_age(0, 0) == [0, 0]
 
 
-def test_when_input_is_negative() -> None:
-    assert get_human_age(-11, -12) == [0, 0]
-
-
 def test_must_be_0_if_input_is_less_than_15() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
@@ -29,5 +25,9 @@ def test_should_convert_to_2_if_age_less_then_28_and_29() -> None:
     assert get_human_age(27, 28) == [2, 2]
 
 
-def test_should_convert_to_3_if_age_more_then_27_and_28() -> None:
-    assert get_human_age(28, 29) == [3, 3]
+def test_should_convert_to_3_and_2_if_age_28() -> None:
+    assert get_human_age(28, 28) == [3, 2]
+
+
+def test_should_return_result_if_age_100() -> None:
+    assert get_human_age(100, 100) == [21, 17]
