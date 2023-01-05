@@ -11,6 +11,30 @@ def test_resive_data_out_of_normal_range() -> None:
     assert get_human_age(-1, 0) == [0, 0]
 
 
-def test_receives_an_incorrect_type_of_data() -> None:
+def test_resive_data_of_large_numbers() -> None:
+    assert get_human_age(1000, 0) == [0, 0]
+
+
+def test_receives_an_str_type_of_data() -> None:
     with pytest.raises(TypeError):
-        get_human_age("15", 12.5)
+        get_human_age("15", 1)
+
+
+def test_receives_an_float_type_of_data() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(14.5, 1)
+
+
+def test_receives_an_list_type_of_data() -> None:
+    with pytest.raises(TypeError):
+        get_human_age([], 1)
+
+
+def test_receives_an_dict_type_of_data() -> None:
+    with pytest.raises(TypeError):
+        get_human_age({}, 1)
+
+
+def test_receives_an_set_type_of_data() -> None:
+    with pytest.raises(TypeError):
+        get_human_age((), 1)
