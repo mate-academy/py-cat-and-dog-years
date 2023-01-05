@@ -13,7 +13,7 @@ class TestGetHumanAge:
             pytest.param(24, 24, [2, 2], id="should return two"),
             pytest.param(27, 28, [2, 2], id="should return two"),
             pytest.param(28, 29, [3, 3], id="should return three"),
-            pytest.param(-12, -3, [0, 0], id="should return two"),
+            pytest.param(-12, -3, [0, 0], id="should return zero"),
             pytest.param(100, 100, [21, 17], id="should return two"),
         ],
     )
@@ -24,8 +24,11 @@ class TestGetHumanAge:
 
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected_error",
-        [pytest.param("cat", "4", TypeError,
-                      id="should raise error if not list")],
+        [
+            pytest.param("cat", "4", TypeError,
+                         id="should raise error if not list"),
+            pytest.param("10", "10", TypeError,
+                         id="should raise error if not list")],
     )
     def test_raising_errors_correctly(self, cat_age: int,
                                       dog_age: int,
