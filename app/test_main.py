@@ -1,3 +1,5 @@
+import pytest
+
 from app.main import get_human_age
 
 
@@ -21,9 +23,18 @@ def test_second_year_animal_life_ceil_value() -> None:
     assert get_human_age(27, 27) == [2, 2]
 
 
-def test_lasr_each_year_animal_life_for_cat() -> None:
+def test_last_each_year_animal_life_for_cat() -> None:
     assert get_human_age(28, 28) == [3, 2]
 
 
-def test_lasr_each_year_animal_life_for_dog() -> None:
+def test_last_each_year_animal_life_for_dog() -> None:
     assert get_human_age(29, 29) == [3, 3]
+
+
+def test_last_each_year_animal_life_for_big_numbers() -> None:
+    assert get_human_age(100, 100) == [21, 17]
+
+
+def test_receive_string_value() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("29", "29")
