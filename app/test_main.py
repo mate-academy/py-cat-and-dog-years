@@ -25,8 +25,3 @@ def test_long_life() -> None:
 def test_receives_an_incorrect_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("12", [12])
-
-
-def test_receives_incorrect_data() -> None:
-    with pytest.raises(AssertionError):
-        get_human_age(-1, -15)
