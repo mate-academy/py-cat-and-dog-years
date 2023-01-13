@@ -1,3 +1,5 @@
+import pytest
+
 from app.main import get_human_age
 
 
@@ -19,3 +21,8 @@ def test_should_return_correct_value_when_age_is_less_than_29() -> None:
 
 def test_should_return_correct_value_when_age_is_100() -> None:
     assert get_human_age(100, 100) == [21, 17]
+
+
+def test_should_raise_error_when_age_is_incorrect_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("27", "27")
