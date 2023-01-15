@@ -21,6 +21,12 @@ class TestGetHumanAge:
                 id="output must not be changed with the previous value"
             ),
             pytest.param(
+                14,
+                14,
+                [0, 0],
+                id="should work when data value < 15"
+            ),
+            pytest.param(
                 0,
                 0,
                 [0, 0],
@@ -37,6 +43,13 @@ class TestGetHumanAge:
                 -2,
                 [0, 0],
                 id="should work with negative numbers"
+            ),
+            pytest.param(
+                28,
+                28,
+                [3, 2],
+                id=("should consider the age conversion difference"
+                    " between cats and dogs")
             ),
         ]
     )
