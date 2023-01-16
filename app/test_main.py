@@ -1,4 +1,5 @@
 from app.main import get_human_age
+import pytest
 
 
 def test_age_equal_zero() -> None:
@@ -31,3 +32,8 @@ def test_age_equal_28() -> None:
 
 def test_age_less_zero() -> None:
     assert (get_human_age(-1, -10) == [0, 0])
+
+
+def test_receives_an_incorrect_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("12", [12])
