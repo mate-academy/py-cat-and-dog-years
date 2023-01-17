@@ -28,8 +28,8 @@ class TestCatDogYears:
     @pytest.mark.parametrize(
         "cat_years,dog_years",
         [
-            (-1, 0),
-            (14, -1),
+            (-1, -1),
+            (-14, -1),
         ]
     )
     def test_negative_values_errors(
@@ -37,16 +37,14 @@ class TestCatDogYears:
             cat_years: int,
             dog_years: int,
     ) -> None:
-        with pytest.raises(AssertionError):
-            assert cat_years > 0
-            assert dog_years > 0
+        assert get_human_age(cat_years, dog_years) == [0, 0]
 
     @pytest.mark.parametrize(
         "cat_years,dog_years,exception_error",
         [
             pytest.param(
                 "t", 0, TypeError,
-                id="should rise error when wrong type"
+                id="should raise error when wrong type"
             ),
         ]
     )
