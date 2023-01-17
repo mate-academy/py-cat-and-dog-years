@@ -62,4 +62,5 @@ class TestAgeCheck:
             dog_age: int,
             expected_result: list
     ) -> None:
+
         assert get_human_age(cat_age, dog_age) == expected_result
