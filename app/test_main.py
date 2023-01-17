@@ -39,17 +39,20 @@ class TestAgeCheck:
             pytest.param(
                 27, 28,
                 [2, 2],
-                id="27, 28 years of cat/dog age should convert into 2 human age"
+                id="27, 28 years of cat/dog age "
+                   "should convert into 2 human age"
             ),
             pytest.param(
                 28, 29,
                 [3, 3],
-                id="28, 29 years of cat/dog age should convert into 3 human age"
+                id="28, 29 years of cat/dog age "
+                   "should convert into 3 human age"
             ),
             pytest.param(
                 100, 100,
                 [21, 17],
-                id="100 years of cat/dog age should convert into 21/17 human age."
+                id="100 years of cat/dog age "
+                   "should convert into 21/17 human age."
             ),
         ]
     )
