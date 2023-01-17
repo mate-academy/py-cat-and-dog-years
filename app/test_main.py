@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
@@ -64,3 +65,35 @@ class TestAgeCheck:
     ) -> None:
 
         assert get_human_age(cat_age, dog_age) == expected_result
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age",
+        [
+            ("17", "17"),
+            ("11", 11),
+            (5, "5")
+        ]
+    )
+    def test_should_raise_type_error_if_age_is_string(
+            self,
+            cat_age: Any,
+            dog_age: Any
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age",
+        [
+            ([17], [17]),
+            ([11], 11),
+            (5, [5])
+        ]
+    )
+    def test_should_raise_type_error_if_age_is_list(
+            self,
+            cat_age: Any,
+            dog_age: Any
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
