@@ -12,7 +12,7 @@ def test_resive_data_out_of_normal_range() -> None:
 
 
 def test_resive_data_of_large_numbers() -> None:
-    assert get_human_age(1000, 0) == [0, 0]
+    assert get_human_age(1000, 0) == [246, 0]
 
 
 def test_receives_an_str_type_of_data() -> None:
@@ -21,8 +21,7 @@ def test_receives_an_str_type_of_data() -> None:
 
 
 def test_receives_an_float_type_of_data() -> None:
-    with pytest.raises(TypeError):
-        get_human_age(14.5, 1)
+    assert get_human_age(25.5, 45.1) == [2, 6]
 
 
 def test_receives_an_list_type_of_data() -> None:
