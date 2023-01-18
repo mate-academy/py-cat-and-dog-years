@@ -37,3 +37,8 @@ def test_age_less_zero() -> None:
 def test_receives_an_incorrect_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("12", [12])
+
+
+def test_receives_an_incorrect_type_one_argument() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("12", 12)
