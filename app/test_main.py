@@ -5,7 +5,7 @@ from typing import Any
 
 class TestAge:
     @pytest.mark.parametrize(
-        "initial_1, initial_2, result",
+        "cat_age, dog_age, expected",
         [
             pytest.param(
                 28, 28,
@@ -31,14 +31,14 @@ class TestAge:
     )
     def test_get_human_age(
             self,
-            initial_1: float,
-            initial_2: float,
-            result: list,
+            cat_age: float,
+            dog_age: float,
+            expected: list,
     ) -> None:
-        assert get_human_age(initial_1, initial_2) == result
+        assert get_human_age(cat_age, dog_age) == expected
 
     @pytest.mark.parametrize(
-        "initial_1, initial_2, expected_error",
+        "cat_age, dog_age, expected_error",
         [
             pytest.param(
                 "15", 1, TypeError,
@@ -60,9 +60,9 @@ class TestAge:
     )
     def test_get_human_age_errors(
             self,
-            initial_1: Any,
-            initial_2: Any,
+            cat_age: Any,
+            dog_age: Any,
             expected_error: Any,
     ) -> None:
         with pytest.raises(expected_error):
-            get_human_age(initial_1, initial_2)
+            get_human_age(cat_age, dog_age)
