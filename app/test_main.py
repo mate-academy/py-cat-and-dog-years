@@ -2,38 +2,56 @@ import pytest
 from app.main import get_human_age
 
 
-def test_check_that_it_is_not_changed_with_previous_value() -> None:
-    get_human_age(15, 15)
-    assert get_human_age(28, 28) == [3, 2]
+class TestAge:
+    @pytest.mark.parametrize(
+        "initial_1, initial_2, result",
+        [
+            pytest.param(
+                28, 28,
+                [3, 2],
+                id="test check that it is not changed with previous value"
+            ),
+            pytest.param(
+                -1, 0,
+                [0, 0],
+                id="test receives data out of normal range"
+            ),
+            pytest.param(
+                1000, 0,
+                [246, 0],
+                id="test receives data of large numbers"
+            ),
+            pytest.param(
+                25.5, 45.1,
+                [2, 6],
+                id="test receives an float type of data"
+            )
+        ]
+    )
+    def test_get_human_age(self, initial_1, initial_2, result):
+        assert get_human_age(initial_1, initial_2) == result
 
-
-def test_resive_data_out_of_normal_range() -> None:
-    assert get_human_age(-1, 0) == [0, 0]
-
-
-def test_resive_data_of_large_numbers() -> None:
-    assert get_human_age(1000, 0) == [246, 0]
-
-
-def test_receives_an_str_type_of_data() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("15", 1)
-
-
-def test_receives_an_float_type_of_data() -> None:
-    assert get_human_age(25.5, 45.1) == [2, 6]
-
-
-def test_receives_an_list_type_of_data() -> None:
-    with pytest.raises(TypeError):
-        get_human_age([], 1)
-
-
-def test_receives_an_dict_type_of_data() -> None:
-    with pytest.raises(TypeError):
-        get_human_age({}, 1)
-
-
-def test_receives_an_set_type_of_data() -> None:
-    with pytest.raises(TypeError):
-        get_human_age((), 1)
+    @pytest.mark.parametrize(
+        "initial_1, initial_2, expected_error",
+        [
+            pytest.param(
+                "15", 1, TypeError,
+                id="test receives an str type of data"
+            ),
+            pytest.param(
+                [], 1, TypeError,
+                id="test receives an list type of data"
+            ),
+            pytest.param(
+                {}, 1, TypeError,
+                id="test receives an dict type of data"
+            ),
+            pytest.param(
+                (), 1, TypeError,
+                id="test receives an set type of data"
+            )
+        ]
+    )
+    def test_get_human_age_errors(self, initial_1, initial_2, expected_error):
+        with pytest.raises(expected_error):
+            get_human_age(initial_1, initial_2)
