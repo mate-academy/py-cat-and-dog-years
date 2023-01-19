@@ -1,5 +1,6 @@
 import pytest
 from app.main import get_human_age
+from typing import Any
 
 
 class TestAge:
@@ -28,7 +29,12 @@ class TestAge:
             )
         ]
     )
-    def test_get_human_age(self, initial_1, initial_2, result):
+    def test_get_human_age(
+            self,
+            initial_1: float,
+            initial_2: float,
+            result: list,
+    ) -> None:
         assert get_human_age(initial_1, initial_2) == result
 
     @pytest.mark.parametrize(
@@ -52,6 +58,11 @@ class TestAge:
             )
         ]
     )
-    def test_get_human_age_errors(self, initial_1, initial_2, expected_error):
+    def test_get_human_age_errors(
+            self,
+            initial_1: Any,
+            initial_2: Any,
+            expected_error: Any,
+    ) -> None:
         with pytest.raises(expected_error):
             get_human_age(initial_1, initial_2)
