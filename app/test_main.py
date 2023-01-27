@@ -1,10 +1,12 @@
-from app.main import get_human_age
 import pytest
+from typing import Any
+
+from app.main import get_human_age
 
 
 class TestConvertAge:
     @pytest.mark.parametrize(
-        "animals_age,into_human_age",
+        "animals_age,human_age",
         [
             ((-2, -2), [0, 0]),
             ((0, 0), [0, 0]),
@@ -30,6 +32,23 @@ class TestConvertAge:
     def test_cat_dog_years_should_convert_into_human_age(
             self,
             animals_age: tuple,
-            into_human_age: list
+            human_age: list
     ) -> None:
-        assert get_human_age(*animals_age) == into_human_age
+        assert get_human_age(*animals_age) == human_age
+
+    @pytest.mark.parametrize(
+        "animals_age,expected_error",
+        [
+            (("19", "18"), TypeError),
+        ],
+        ids=[
+            "should raise TypeError if takes string values",
+        ]
+    )
+    def test_should_raise_error_if_takes_string_values(
+            self,
+            animals_age: tuple,
+            expected_error: Any
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(*animals_age)
