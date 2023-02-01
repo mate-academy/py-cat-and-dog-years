@@ -6,4 +6,4 @@ def test_get_human_age_convert_to_four() -> None:
 
 
 def test_get_human_age_convert_different() -> None:
-    assert get_human_age(14, 31) == [0, 1]
+    assert get_human_age(14, 28) == [0, 2]
