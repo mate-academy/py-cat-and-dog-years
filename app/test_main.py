@@ -33,7 +33,8 @@ class TestsGetHumanAge:
             ),
             pytest.param(
                 100, 100, [21, 17],
-                id="should return [21, 17]"),
+                id="should return [21, 17]"
+            ),
 
         ]
     )
