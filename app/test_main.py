@@ -2,7 +2,7 @@ import pytest
 from app.main import get_human_age
 
 
-def test_incorrect_type_of_data():
+def test_incorrect_type_of_data() -> None:
     with pytest.raises(TypeError):
         get_human_age("1", "1")
 
