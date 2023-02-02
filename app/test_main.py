@@ -2,6 +2,11 @@ import pytest
 from app.main import get_human_age
 
 
+def test_incorrect_type_of_data():
+    with pytest.raises(TypeError):
+        get_human_age("1", "1")
+
+
 @pytest.mark.parametrize(
     "cat_years, dog_years, result",
     [
@@ -16,7 +21,7 @@ from app.main import get_human_age
         (2000, 2000, [496, 397]),
     ]
 )
-def test_cryptocurrency_action_result(
+def test_get_human_age_result(
         cat_years: int,
         dog_years: int,
         result: list
