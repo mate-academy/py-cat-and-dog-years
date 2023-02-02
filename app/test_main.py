@@ -1,6 +1,5 @@
 from app.main import get_human_age
 import pytest
-from typing import Any
 
 
 class TestsGetHumanAge:
@@ -35,6 +34,10 @@ class TestsGetHumanAge:
                 100, 100, [21, 17],
                 id="should return [21, 17]"
             ),
+            pytest.param(
+                -1, -1, [0, 0],
+                id="should return [0, 0]"
+            ),
 
         ]
     )
@@ -59,7 +62,7 @@ class TestsGetHumanAge:
             self,
             cat_age_input: int,
             dog_age_input: int,
-            expected_error: Any
+            expected_error: Exception
     ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age_input, dog_age_input)
