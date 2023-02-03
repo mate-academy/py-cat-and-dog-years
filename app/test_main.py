@@ -80,6 +80,7 @@ class TestGetHumanAge:
             assert 0 < initial_cat_age < 100
             assert 0 < initial_dog_age < 100
 
+
 class TestConvertToHuman:
     @pytest.mark.parametrize(
         "initial_animal_age,first_year,"
