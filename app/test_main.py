@@ -3,7 +3,7 @@ from app.main import get_human_age
 
 
 def test_should_return_list() -> None:
-    assert isinstance(get_human_age(10, 10), list)
+    assert isinstance(get_human_age(10, 10), list), "Result should be a 'list'"
 
 
 class TestGetHumanAge:
