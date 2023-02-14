@@ -20,6 +20,6 @@ from app.main import get_human_age
 def test_should_return_correct_value_for_get_human_age(
         cat_age: int,
         dog_age: int,
-        expected_human_age: List[int, int]
+        expected_human_age: List[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
