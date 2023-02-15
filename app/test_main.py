@@ -11,7 +11,6 @@ from app.main import get_human_age
         (14, 14, [0, 0]),
         (23, 23, [1, 1]),
         (100, 100, [21, 17]),
-
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
