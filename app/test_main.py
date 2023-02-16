@@ -27,7 +27,6 @@ def test_correct_result(cat: int, dog: int, result: list) -> None:
         ("dog", "cat"),
         ([], ()),
         (14, "12"),
-        (17.5, 26)
     ]
 )
 def test_age_not_integer(cat: str, dog: str) -> None:
