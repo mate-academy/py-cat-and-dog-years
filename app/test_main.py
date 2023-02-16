@@ -18,9 +18,7 @@ from app.main import get_human_age
     ]
 )
 def test_correct_result(cat: int, dog: int, result: list) -> None:
-    assert (
-            get_human_age(cat, dog) == result
-    ), f"Your function should return correct age for cat and dog {cat}, {dog} != {result}"
+    assert (get_human_age(cat, dog) == result)
 
 
 @pytest.mark.parametrize(
