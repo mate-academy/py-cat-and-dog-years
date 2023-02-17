@@ -1,5 +1,6 @@
-from app.main import get_human_age
 import pytest
+
+from app.main import get_human_age
 
 
 class TestGetHumanAge:
@@ -43,7 +44,6 @@ class TestGetHumanAge:
             initial_ages: tuple,
             expected_result: list
     ) -> None:
-
         assert get_human_age(*initial_ages) == expected_result
 
     @pytest.mark.parametrize(
