@@ -12,6 +12,10 @@ def test_should_return_zeros_when_take_zeros() -> None:
     assert get_human_age(0, 0) == [0, 0]
 
 
+def test_should_return_zero_when_take_negative() -> None:
+    assert get_human_age(-10, -10) == [0, 0]
+
+
 def test_should_return_zeros_when_age_lower_than_15() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
