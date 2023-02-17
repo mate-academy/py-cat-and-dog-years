@@ -15,6 +15,17 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17])
+    ],
+    ids=[
+        "should return correct result",
+        "should return correct result",
+        "should return correct result",
+        "should return correct result",
+        "should return correct result",
+        "should return correct result",
+        "should return correct result",
+        "should return correct result",
+        "should return correct result"
     ]
 )
 def test_correct_result(cat: int, dog: int, result: list) -> None:
