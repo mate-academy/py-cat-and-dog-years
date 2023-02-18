@@ -11,21 +11,11 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age, dog_age, result",
         [
-            pytest.param(
-                0, 0, [0, 0],
-            ),
-            pytest.param(
-                14, 14, [0, 0],
-            ),
-            pytest.param(
-                23, 23, [1, 1],
-            ),
-            pytest.param(
-                28, 28, [3, 2],
-            ),
-            pytest.param(
-                100, 100, [21, 17],
-            ),
+            pytest.param(0, 0, [0, 0],),
+            pytest.param(14, 14, [0, 0],),
+            pytest.param(23, 23, [1, 1],),
+            pytest.param(28, 28, [3, 2],),
+            pytest.param(100, 100, [21, 17],)
         ],
         ids=[
             "With animal age 0 should return [0, 0]",
