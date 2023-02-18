@@ -45,6 +45,6 @@ class TestErrorTypes:
         with pytest.raises(TypeError, match=r".* missing 1 *."):
             get_human_age(1)
 
-    def test_type_error_expected_2_ints(self) -> None:
+    def test_type_error_expected_2_ints_mate(self) -> None:
         with pytest.raises(TypeError):
-            get_human_age(1, False)
+            get_human_age(1, "1")
