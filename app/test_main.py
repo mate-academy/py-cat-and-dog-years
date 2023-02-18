@@ -33,10 +33,10 @@ class TestHumanCatDogYears:
     )
     def test_results_should_equal_correct_period(
             self,
-            cat_years,
-            dog_years,
-            human_years
-    ):
+            cat_years: int | float,
+            dog_years: int | float,
+            human_years: int | float
+    ) -> None:
         assert get_human_age(cat_years, dog_years) == human_years
 
 
