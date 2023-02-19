@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -43,9 +45,9 @@ class TestExpectionsConvertAnimalAgeToHuman:
     )
     def test_raising_error_correctly(
             self,
-            cat_age,
-            dog_age,
-            expected_error
+            cat_age: Any,
+            dog_age: Any,
+            expected_error: [TypeError]
     ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
