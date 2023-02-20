@@ -66,24 +66,7 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
-    @pytest.mark.parametrize(
-        "initial_cat_age,initial_dog_age,expected_error",
-        [
-            pytest.param(
-                "cat_age",
-                20,
-                TypeError,
-                id="should raise TypeError if input is not integer or float"
-            ),
-
-
-        ]
-    )
-    def test_correct_input_output_data_types(
-            self,
-            initial_cat_age: int,
-            initial_dog_age: int,
-            expected_error: TypeError
-    ) -> None:
+    def test_correct_raise_error_if_input_data_type_wrong(self) -> None:
         with pytest.raises(TypeError):
-            get_human_age(initial_cat_age, initial_dog_age)
+            get_human_age("cat_age", 25)
+            get_human_age(99, "dog_age")
