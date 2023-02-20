@@ -17,15 +17,16 @@ from app.main import get_human_age
         (100, 100, [21, 17])
     ],
     ids=[
-        "should return correct result",
-        "should return correct result",
-        "should return correct result",
-        "should return correct result",
-        "should return correct result",
-        "should return correct result",
-        "should return correct result",
-        "should return correct result",
-        "should return correct result"
+        "should return correct human age for cat:0 and dog:0",
+        "should return correct human age for cat:-27 and dog:15",
+        "should return correct human age for cat:14 and dog:14",
+        "should return correct human age for cat:15 and dog:15",
+        "should return correct human age for cat:23 and dog:23",
+        "should return correct human age for cat:24 and dog:24",
+        "should return correct human age for cat:27 and dog:27",
+        "should return correct human age for cat:28 and dog:28",
+        "should return correct human age for cat:100 and dog:100",
+
     ]
 )
 def test_correct_result(cat: int, dog: int, result: list) -> None:
