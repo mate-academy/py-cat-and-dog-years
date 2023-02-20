@@ -60,9 +60,9 @@ class TestGetHumanAge:
     )
     def test_with_different_data_sets(
             self,
-            cat_age,
-            dog_age,
-            result
+            cat_age: int,
+            dog_age: int,
+            result: list[int]
     ) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
@@ -81,9 +81,9 @@ class TestGetHumanAge:
     )
     def test_correct_input_output_data_types(
             self,
-            initial_cat_age,
-            initial_dog_age,
-            expected_error
+            initial_cat_age: int,
+            initial_dog_age: int,
+            expected_error: TypeError
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(initial_cat_age, initial_dog_age)
