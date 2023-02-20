@@ -13,13 +13,22 @@ class TestGetHumanAge:
                 id="Human age is zero when pets age are zero",
             ),
             pytest.param(
-                14, 14, [0, 0], id="Human age is zero when pets age < 15"
+                14,
+                14,
+                [0, 0],
+                id="Human age is zero when pets age < 15"
             ),
             pytest.param(
-                24, 24, [2, 2], id="Human age is 2 when pets age == 24"
+                24,
+                24,
+                [2, 2],
+                id="Human age is 2 when pets age == 24"
             ),
             pytest.param(
-                27, 27, [2, 2], id="Human age is 2 when pets age == 27"
+                27,
+                27,
+                [2, 2],
+                id="Human age is 2 when pets age == 27"
             ),
             pytest.param(
                 28,
