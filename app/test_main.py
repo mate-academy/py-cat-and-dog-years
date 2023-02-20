@@ -31,6 +31,10 @@ class TestGetHumanAge:
                 25.2, 25.2, [2.0, 2.0],
                 id="should work properly with float values"
             ),
+            pytest.param(
+                "28", "28", TypeError,
+                id="expected to raise TypeError when not int or float passed"
+            )
         ]
     )
     def test_cat_and_d0g_age_to_human_age(
@@ -39,22 +43,10 @@ class TestGetHumanAge:
             dog_age: int,
             human_years: list
     ) -> None:
-        assert get_human_age(cat_age, dog_age) == human_years
 
-    @pytest.mark.parametrize(
-        "cat_age,dog_age,expected_error",
-        [
-            pytest.param(
-                "28", "28", TypeError,
-                id="expected to raise TypeError when not int or float passed"
-            )
-        ]
-    )
-    def test_raising_correct_errors(
-            self,
-            cat_age: int,
-            dog_age: int,
-            expected_error: Exception
-    ) -> None:
-        with pytest.raises(expected_error):
-            get_human_age(cat_age, dog_age)
+        if human_years == TypeError:
+            with pytest.raises(TypeError):
+                get_human_age(cat_age, dog_age)
+
+        else:
+            assert get_human_age(cat_age, dog_age) == human_years
