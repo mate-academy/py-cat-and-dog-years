@@ -37,16 +37,18 @@ class TestGetHumanAge:
             )
         ]
     )
-    def test_cat_and_d0g_age_to_human_age(
+    def test_cat_and_dog_age_to_human_age(
             self,
             cat_age: int,
             dog_age: int,
             human_years: list
     ) -> None:
+        assert get_human_age(cat_age, dog_age) == human_years
 
-        if human_years == TypeError:
-            with pytest.raises(TypeError):
-                get_human_age(cat_age, dog_age)
-
-        else:
-            assert get_human_age(cat_age, dog_age) == human_years
+    def test_correct_input(
+            self,
+            cat_age: int,
+            dog_age: int,
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
