@@ -26,10 +26,9 @@ def test_get_human_age(
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        ("28", 100),
-        ([1], 100),
-        ([], 100),
-        ({}, 100),
+        pytest.param("28", 100, id="type_error_string_instead_of_integer"),
+        pytest.param([1], 100, id="type_error_list_instead_of_integer"),
+        pytest.param({}, 100, id="type_error_dict_instead_of_integer"),
     ]
 )
 def test_type_error(cat_age: int, dog_age: int) -> None:
