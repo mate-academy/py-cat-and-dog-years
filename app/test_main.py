@@ -25,7 +25,7 @@ from app.main import get_human_age
         "should return correct human age for cat:24 and dog:24",
         "should return correct human age for cat:27 and dog:27",
         "should return correct human age for cat:28 and dog:28",
-        "should return correct human age for cat:100 and dog:100",
+        "should return correct human age for cat:10000 and dog:10000",
 
     ]
 )
