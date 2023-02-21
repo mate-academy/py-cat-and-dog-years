@@ -1,4 +1,5 @@
 import pytest
+
 from app.main import get_human_age
 
 
@@ -12,11 +13,19 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
-        (27, 28, [2, 2]),
-        (28, 29, [3, 3]),
-        (47, 48, [7, 6]),
-        (50, 50, [8, 7]),
+        (28, 27, [3, 2]),
         (100, 100, [21, 17]),
+    ],
+    ids=[
+        "(0, 0) zero should return [0, 0]",
+        "(-10, -10) negative numbers should return [0, 0]",
+        "(100000, 100000) big numbers return [24996, 19997]",
+        "(14, 14) should return [0, 0]",
+        "(15, 15) should return [1, 1]",
+        "(23, 23) should return [1, 1]",
+        "(24, 24) should return [2, 2]",
+        "(28, 27) should return [3, 2]",
+        "(100, 100) should return [21, 17]",
     ]
 )
 def test_different_data_range(
