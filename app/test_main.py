@@ -13,6 +13,12 @@ from app.main import get_human_age
             id="test should return zeros when arguments are 0"
         ),
         pytest.param(
+            -1,
+            -1,
+            [0, 0],
+            id="test should return zeros when arguments are negative"
+        ),
+        pytest.param(
             14,
             14,
             [0, 0],
@@ -37,6 +43,18 @@ from app.main import get_human_age
             id="test should return 2 when arguments are 24"
         ),
         pytest.param(
+            27,
+            27,
+            [2, 2],
+            id="test should return 2 when arguments are 27"
+        ),
+        pytest.param(
+            28,
+            28,
+            [3, 2],
+            id="test should return 3 and 2 when arguments are 28"
+        ),
+        pytest.param(
             100,
             100,
             [21, 17],
@@ -44,10 +62,9 @@ from app.main import get_human_age
         )
     ]
 )
-def test_of_get_human_age(
-        cat_age: int,
-        dog_age: int,
-        expected_result: list) -> None:
+def test_of_get_human_age(cat_age: int,
+                          dog_age: int,
+                          expected_result: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
