@@ -16,8 +16,23 @@ class TestConvertAnimalAgeToHuman:
             (24, 24, [2, 2]),
             (27, 27, [2, 2]),
             (28, 28, [3, 2]),
+            (72, 29, [14, 3]),
+            (34, 11, [4, 0]),
             (100, 100, [21, 17]),
             (-1, -1, [0, 0]),
+        ],
+        ids=[
+            f"cat 0, dog 0",
+            f"cat 14, dog 14",
+            f"cat 15, dog 15",
+            f"cat 23, dog 23",
+            f"cat 24, dog 24",
+            f"cat 27, dog 27",
+            f"cat 28, dog 28",
+            f"cat 72, dog 29",
+            f"cat 34, dog 11",
+            f"cat 100, dog 100",
+            f"cat -1, dog -1",
         ],
     )
     def test_converting_age(
@@ -28,8 +43,6 @@ class TestConvertAnimalAgeToHuman:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_ages
 
-
-class TestExpectionsConvertAnimalAgeToHuman:
     @pytest.mark.parametrize(
         "cat_age,dog_age,expected_error",
         [
