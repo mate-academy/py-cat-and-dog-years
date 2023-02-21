@@ -1,5 +1,5 @@
-from app.main import get_human_age
 import pytest
+from app.main import get_human_age
 
 
 class TestGetHumanAge:
@@ -33,7 +33,14 @@ class TestGetHumanAge:
             pytest.param(
                 28, 28, [3, 2],
                 id="different human age of dog and cat at 28 years"
-            )
+            ),
+            pytest.param(
+                45, 45, [7, 6],
+                id="different age of cat and dog with big age"
+            ),
+            pytest.param(1000, 1000, [246, 197],
+                         id="test working with big numbers"
+                         )
         ]
     )
     def test_age(self,
