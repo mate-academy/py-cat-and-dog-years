@@ -17,7 +17,11 @@ from app.main import get_human_age
         (150, 150, [33, 27])
     ]
 )
-def test_get_different_results_same_input(cat_age: int, dog_age: int, expected: list) -> None:
+def test_get_different_results_same_input(
+    cat_age: int,
+    dog_age: int,
+    expected: list
+) -> None:
     assert (
         get_human_age(cat_age, dog_age) == expected
     ), f"{cat_age} for cat and {dog_age} for dog should return {expected}"
