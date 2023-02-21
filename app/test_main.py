@@ -14,7 +14,7 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        (10000, 10000, [2496, 1997])
     ],
     ids=[
         "should return correct human age for cat:0 and dog:0",
