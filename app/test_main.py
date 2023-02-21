@@ -1,8 +1,15 @@
+import pytest
+
 from app.main import get_human_age
 
 
 def test_returns_list() -> None:
     assert type(get_human_age(1, 1)) is list
+
+
+def test_raises_type_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("cat", 5)
 
 
 def test_not_positive_years() -> None:
