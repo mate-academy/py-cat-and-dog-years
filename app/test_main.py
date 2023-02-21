@@ -30,10 +30,6 @@ class TestGetHumanAge:
             pytest.param(
                 25.2, 25.2, [2.0, 2.0],
                 id="should work properly with float values"
-            ),
-            pytest.param(
-                "28", "28", TypeError,
-                id="expected to raise TypeError when not int or float passed"
             )
         ]
     )
@@ -45,10 +41,7 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_years
 
-    def test_correct_input(
-            self,
-            cat_age: int,
-            dog_age: int,
-    ) -> None:
-        with pytest.raises(TypeError):
-            get_human_age(cat_age, dog_age)
+
+def test_correct_input() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("28", "28")
