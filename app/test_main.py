@@ -8,9 +8,10 @@ class TestGetHumanAgeClass:
         "cat_age,dog_age,human_age",
         [
             pytest.param(0, 0, [0, 0],
-                         id="must return 0"),
+                         id="must return 0 if cat age and dog age 0"),
             pytest.param(14, 14, [0, 0],
-                         id="must return 0"),
+                         id="must return 0 "
+                            "if cat age and dog age < 15"),
             pytest.param(15, 15, [1, 1],
                          id="must return 1 for cat, 1 for dog"),
             pytest.param(23, 23, [1, 1],
