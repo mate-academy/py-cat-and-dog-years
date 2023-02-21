@@ -1,4 +1,5 @@
 import pytest
+
 from app.main import get_human_age
 
 
@@ -11,7 +12,10 @@ class TestGetHumanAge:
                 0, 0, [0, 0],
                 id="return is 0 when inputs are 0"
             ),
-
+            pytest.param(
+                14, 14, [0, 0],
+                id="14 equals 0 for both"
+            ),
             pytest.param(
                 -29, 29, [0, 3],
                 id="return 0 when age is negative"
@@ -23,8 +27,17 @@ class TestGetHumanAge:
 
             ),
             pytest.param(
+                23, 23, [1, 1],
+                id="test 23 for both equals 1"
+            ),
+
+            pytest.param(
                 25, 25, [2, 2],
                 id="return 2 when age > 24"
+            ),
+            pytest.param(
+                27, 29, [2, 3],
+                id="test 27 of cat equals 2 and dog 29 equals 3"
             ),
             pytest.param(
                 30, 30, [3, 3],
@@ -46,9 +59,7 @@ class TestGetHumanAge:
     def test_age(self,
                  cat_age: int,
                  dog_age: int,
-                 expected: list
-                 ) -> None:
-
+                 expected: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
     @pytest.mark.parametrize(
