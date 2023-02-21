@@ -39,13 +39,13 @@ class TestGetHumanAge:
     )
     def test_is_correct_result(
             self,
-            cat_age,
-            dog_age,
-            expected
-    ):
+            cat_age: int,
+            dog_age: int,
+            expected: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_if_input_is_correct():
+def test_if_input_is_correct() -> None:
     with pytest.raises(TypeError):
         get_human_age("-1", [])
