@@ -27,9 +27,21 @@ class TestGetHumanAge:
                 id="should calculate second year"
             ),
             pytest.param(
+                24,
+                24,
+                [2, 2],
+                id="should calculate third year same"
+            ),
+            pytest.param(
                 28,
                 28,
                 [3, 2],
+                id="should calculate third year differently"
+            ),
+            pytest.param(
+                27,
+                29,
+                [2, 3],
                 id="should calculate third year differently"
             ),
             pytest.param(
@@ -52,8 +64,8 @@ class TestGetHumanAge:
             ),
             pytest.param(
                 0,
-                20,
-                [0, 1],
+                0,
+                [0, 0],
                 id="should return 0 if input age is zero"
             ),
         ]
