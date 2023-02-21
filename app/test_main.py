@@ -4,7 +4,7 @@ from app.main import get_human_age
 
 class TestChecksNumberAnswer:
     @pytest.mark.parametrize(
-    "cat_age, dog_age, human_age",
+        "cat_age, dog_age, human_age",
         [
             pytest.param(0, 0, [0, 0], id="if age equal zero"),
             pytest.param(14, 14, [0, 0], id="if age less one"),
@@ -17,8 +17,12 @@ class TestChecksNumberAnswer:
             pytest.param(-3, -1, [0, 0], id="if age less zero")
         ]
     )
-
-    def test_checks_number_answer(self, cat_age, dog_age, human_age):
+    def test_checks_number_answer(
+            self,
+            cat_age: int,
+            dog_age: int,
+            human_age: list[int]
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
 
 
