@@ -16,7 +16,11 @@ from app.main import get_human_age
         pytest.param(28, 29, [3, 3], id="cat 28, dog 29 years old"),
     ],
 )
-def test_get_human_age(cat_age: int,
-                       dog_age: int,
-                       expected_result: list) -> None:
+def test_get_human_age(
+        cat_age: int, dog_age: int, expected_result: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
+
+
+def test_get_human_age_if_wring_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("20", [20])
