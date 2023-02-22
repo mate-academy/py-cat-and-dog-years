@@ -28,7 +28,7 @@ class TestGetHumanAgeClass:
                          id="must return 0"),
         ]
     )
-    def test_to_age(
+    def test_to_age_cat_and_dog_to_human_age(
             self,
             cat_age: int,
             dog_age: int,
