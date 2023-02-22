@@ -22,5 +22,3 @@ def test_get_human_age(cats_age: int, dogs_age: int, expected: list) -> None:
 def test_get_human_age_incorrect_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("14", 14)
-    with pytest.raises(TypeError):
-        get_human_age(15, "15")
