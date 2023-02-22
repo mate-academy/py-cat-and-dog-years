@@ -53,7 +53,7 @@ def test_get_human_age(cat_years: int, dog_years: int, expected: list) -> bool:
     ],
 )
 def test_correct_error_get_human_age(
-    cat_years: int, dog_years: int, expected_error: list
+    cat_years: int, dog_years: int, expected_error: str
 ) -> bool:
     with pytest.raises(expected_error):
         get_human_age(cat_years, dog_years)
