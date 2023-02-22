@@ -5,7 +5,6 @@ from app.main import get_human_age
 
 class TestGetHumanAge:
     @pytest.mark.parametrize(
-
         "cat_age,dog_age,expected",
         [
             pytest.param(
@@ -52,8 +51,7 @@ class TestGetHumanAge:
                 id="different age of cat and dog with big age"
             ),
             pytest.param(1000, 1000, [246, 197],
-                         id="test working with big numbers"
-                         )
+                         id="test working with big numbers")
         ]
     )
     def test_age(self,
