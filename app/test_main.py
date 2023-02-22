@@ -36,4 +36,4 @@ def test_can_sum(cat_age: int, dog_age: int, result: list[int]) -> None:
 
 def test_raise_typeerror_if_not_integer() -> None:
     with pytest.raises(TypeError):
-        get_human_age(get_human_age("100", "100"))
+        get_human_age("100", "100")
