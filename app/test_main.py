@@ -8,21 +8,24 @@ def test_raises_type_error() -> None:
         get_human_age("cat", 5)
 
 
-def test_not_positive_years() -> None:
-    assert get_human_age(-1, 0) == [0, 0]
-
-
-def test_0_human_year() -> None:
-    assert get_human_age(13, 14) == [0, 0]
-
-
-def test_1_human_year() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_2_human_years() -> None:
-    assert get_human_age(24, 25) == [2, 2]
-
-
-def test_more_human_years() -> None:
-    assert get_human_age(29, 35) == [3, 4]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, human_age",
+    [
+        (-1, 0, [0, 0]),
+        (13, 14, [0, 0]),
+        (23, 23, [1, 1]),
+        (24, 25, [2, 2]),
+        (29, 35, [3, 4]),
+        (183, 211, [41, 39])
+    ],
+    ids=[
+        "not positive numbers should return [0, 0]",
+        "test zero human years",
+        "test one human year",
+        "test two human years",
+        "test different human years for cat and dog",
+        "test bigger numbers"
+    ]
+)
+def test_get_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
+    assert get_human_age(cat_age, dog_age) == human_age
