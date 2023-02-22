@@ -52,6 +52,12 @@ def test_raise_error_when_incorect_value() -> None:
             100,
             [21, 17],
             id="Result equal to [21, 17] when both values equal to 100"
+        ),
+        pytest.param(
+            -1,
+            -1,
+            [0, 0],
+            id="Result are [0, 0], Values should be positive"
         )
     ]
 )
@@ -61,5 +67,5 @@ def test_get_human_age_correct(
         expected: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-    # veeeery hard task(((
+
 
