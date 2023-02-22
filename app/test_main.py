@@ -1,3 +1,56 @@
 from app.main import get_human_age
 
-# write your code here
+import pytest
+
+
+class TestsGetHumanAge:
+    @pytest.mark.parametrize(
+        "cat_age_input, dog_age_input, expected_age",
+        [
+            pytest.param(
+                0, 0, [0, 0],
+                id="should return [0, 0]"
+            ),
+            pytest.param(
+                15, 15, [1, 1],
+                id="should return [1, 1]"
+            ),
+            pytest.param(
+                23, 23, [1, 1],
+                id="should return [1, 1]"
+            ),
+            pytest.param(
+                100, 100, [21, 17],
+                id="should return [21, 17]"
+            ),
+            pytest.param(
+                -20, -20, [0, 0],
+                id="should return [0, 0]"
+            ),
+        ]
+    )
+    def test_calculations(
+            self,
+            cat_age_input: int,
+            dog_age_input: int,
+            expected_age: list
+    ) -> None:
+        assert get_human_age(cat_age_input, dog_age_input) == expected_age
+
+    @pytest.mark.parametrize(
+        "cat_age_input, dog_age_input, expected_error",
+        [
+            pytest.param(
+                "1", 1, TypeError,
+                id="type cat_age_input and dog_age_input is int"
+            )
+        ]
+    )
+    def test_errors(
+            self,
+            cat_age_input: int,
+            dog_age_input: int,
+            expected_error: Exception
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age_input, dog_age_input)
