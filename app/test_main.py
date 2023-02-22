@@ -67,5 +67,3 @@ def test_get_human_age_correct(
         expected: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-
-
