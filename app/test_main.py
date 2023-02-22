@@ -46,7 +46,7 @@ class TestGetHumanAge:
     def test_modify_correctly(self, cat: int, dog: int, result: list) -> None:
         assert get_human_age(cat, dog) == result
 
-#
-# def test_input_correctly() -> None:
-#     with pytest.raises(TypeError):
-#         get_human_age("3", [8])
+
+def test_input_correctly() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("3", [8])
