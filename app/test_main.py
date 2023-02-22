@@ -27,3 +27,10 @@ class TestGetHumanAge:
         self, cat_age: int, dog_age: int, expected: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
+
+
+class TestIncomingDataType:
+    def test_wrong_data_type_str(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("1", 1)
+
