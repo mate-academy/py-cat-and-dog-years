@@ -1,15 +1,21 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_if_animals_years_are_zeros() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize("animal_age, human_age", [
+    ((14, 14), [0, 0]),
+    ((15, 15), [1, 1]),
+    ((23, 23), [1, 1]),
+    ((24, 24), [2, 2]),
+    ((27, 28), [2, 2]),
+    ((28, 29), [3, 3]),
+    ((100, 100), [21, 17]),
+    ((0, 0), [0, 0])
+])
+def test_specific_animal_ages(animal_age: int, human_age: list) -> None:
+    assert get_human_age(*animal_age) == human_age
 
 
-def test_specific_animal_ages() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 28) == [2, 2]
-    assert get_human_age(28, 29) == [3, 3]
-    assert get_human_age(100, 100) == [21, 17]
+def test_if_input_is_correct() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("9", [11])
