@@ -1,4 +1,5 @@
 import pytest
+
 from app.main import get_human_age
 
 
@@ -24,15 +25,33 @@ from app.main import get_human_age
             id="test zeros when cat and dog ages is 14"
         ),
         pytest.param(
+            15,
+            15,
+            [1, 1],
+            id="test human age 1 for animal age 15"
+        ),
+        pytest.param(
             23,
             23,
             [1, 1],
             id="test human age 1 for animal ages 23"
         ),
         pytest.param(
+            24,
+            24,
+            [2, 2],
+            id="test human age 2 for animal ages 24"
+        ),
+        pytest.param(
             28,
             28,
             [3, 2],
+            id="test different human ages when animal ages is the same"
+        ),
+        pytest.param(
+            29,
+            29,
+            [3, 3],
             id="test different human ages when animal ages is the same"
         ),
         pytest.param(
