@@ -21,6 +21,6 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
-def test_get_human_age_if_wring_type() -> None:
+def test_get_human_age_if_wrong_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("20", [20])
