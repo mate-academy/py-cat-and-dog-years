@@ -1,3 +1,5 @@
+import pytest
+
 from app.main import get_human_age
 
 
@@ -23,3 +25,8 @@ def test_cat_and_dog_age_convert_when_age_greater_than_27():
 
 def test_cat_and_dog_age_convert_when_age_is_a_big_number():
     assert get_human_age(100, 100) == [21, 17]
+
+
+def test_should_raise_error():
+    with pytest.raises(TypeError):
+        get_human_age("15", "25")
