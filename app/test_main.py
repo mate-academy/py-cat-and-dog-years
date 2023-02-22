@@ -52,12 +52,10 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cate_age,dog_age,expected_error",
         [
-            pytest.param(
-                5,
-                "5",
-                TypeError,
-                id="should raise error when parameters aren't numbers"
-            )
+            pytest.param(5,
+                         "5",
+                         TypeError,
+                         id="should raise error when param's aren't numbers")
         ]
     )
     def test_raising_errors_correctly(
