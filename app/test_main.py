@@ -40,11 +40,8 @@ class TestGetHumanAge:
     )
     def test_data_boundary_conditions(
             self,
-            cat_age,
-            dog_age,
-            expected_res
-    ):
+            cat_age: int,
+            dog_age: int,
+            expected_res: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_res
-
-
-
