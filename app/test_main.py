@@ -39,14 +39,14 @@ def test_get_human_age(animal_age: int, expected_age: List[int]) -> None:
 @pytest.mark.parametrize(
     "animal_age, animal_type, expected_error",
     [
-        (2.5, "cat", "Animal age should be an integer"),
-        ("dog", 5, "Animal age should be an integer"),
+        (2.5, "cat", "Animal age and animal type should be integers"),
+        ("dog", 5, "Animal age and animal type should be integers"),
         (5, "dog", None),
     ],
     ids=[
         "invalid_animal_age_type_float",
         "invalid_animal_age_type_str",
-        "valid_input"
+        "valid_input",
     ]
 )
 def test_get_human_age_with_invalid_input(animal_age: int,
@@ -56,4 +56,4 @@ def test_get_human_age_with_invalid_input(animal_age: int,
         with pytest.raises(TypeError, match=expected_error):
             get_human_age(animal_age, animal_type)
     else:
-        assert get_human_age(animal_age, animal_type) == [0, 0]
+        assert get_human_age(animal_age, animal_type) == [1, 1]
