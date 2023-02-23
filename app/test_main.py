@@ -1,4 +1,5 @@
 from app.main import get_human_age
+
 import pytest
 
 
@@ -10,6 +11,13 @@ import pytest
         (14, 14, [0, 0]),
         (23, 23, [1, 1]),
         (100, 100, [21, 17]),
+    ],
+    ids=[
+        "-1, -1 should return [0, 0]",
+        "0, 0 should return [0, 0]",
+        "14, 14 should return [0, 0]",
+        "23, 23 should return [1, 1]",
+        "100, 100 should return [21, 17]",
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
