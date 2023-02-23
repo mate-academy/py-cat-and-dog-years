@@ -16,6 +16,7 @@ def test_raises_type_error() -> None:
         (20, 22, [1, 1]),
         (24, 25, [2, 2]),
         (30, 36, [3, 4]),
+        (120, 120, [26, 21])
     ],
     ids=[
         "not positive numbers should return [0, 0]",
@@ -23,6 +24,7 @@ def test_raises_type_error() -> None:
         "test one human year",
         "test two human years",
         "test different human years for cat and dog",
+        "test wih big numbers",
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
