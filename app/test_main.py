@@ -22,3 +22,8 @@ import pytest
 )
 def test_get_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+def test_get_human_age_with_incorect_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(get_human_age("abc", []))
