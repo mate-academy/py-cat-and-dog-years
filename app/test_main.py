@@ -24,16 +24,8 @@ def test_function_human_age(
     assert get_human_age(cat_years, dog_years) == expected_result
 
 
-@pytest.mark.parametrize(
-    "cat_years,dog_years,expected_result",
-    [
-        pytest.param("20", 20, TypeError, id="test with bad params")
-    ]
-)
-def test_on_raising_errors(
-        cat_years: int,
-        dog_years: int,
-        expected_result: TypeError
-) -> None:
-    with pytest.raises(expected_result):
+def test_on_raising_errors() -> None:
+    cat_years = "20"
+    dog_years = 20
+    with pytest.raises(TypeError):
         get_human_age(cat_years, dog_years)
