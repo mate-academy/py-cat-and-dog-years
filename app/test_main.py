@@ -1,4 +1,5 @@
 import pytest
+from typing import List
 from app.main import get_human_age
 
 
@@ -17,7 +18,7 @@ from app.main import get_human_age
         (100000, [24996, 19997]),
     ]
 )
-def test_get_human_age(animal_age, expected_age) -> None:
+def test_get_human_age(animal_age: int, expected_age: List[int]) -> None:
     assert get_human_age(animal_age, animal_age) == expected_age
 
 
@@ -28,4 +29,3 @@ def test_get_human_age_with_invalid_input() -> None:
         get_human_age("dog", 5)
     with pytest.raises(TypeError, match="Animal age should be an integer"):
         get_human_age(5, "dog")
-
