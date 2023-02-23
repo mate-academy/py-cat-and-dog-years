@@ -15,3 +15,5 @@ check that it is not changed with previous value;
 * if function resive data out of normal range, 
 such as negative numbers, zero, or realy large numbers;
 * if the function receives an incorrect type of data it raises the correct exception.
+
+3. Use ```@pytest.mark.parametrize```
