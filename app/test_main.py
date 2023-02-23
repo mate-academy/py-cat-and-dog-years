@@ -6,7 +6,8 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
-        pytest.param(0, 14, [0, 0], id="animals' age is less then 15"),
+        pytest.param(0, 0, [0, 0], id="animals' age is 0"),
+        pytest.param(14, 14, [0, 0], id="animals' age is less then 15"),
         pytest.param(
             15, 23, [1, 1], id="animals' age is more then 15 less then 24"
         ),
@@ -15,6 +16,6 @@ from app.main import get_human_age
     ],
 )
 def test_function_return_expected_values(
-    cat_age: int, dog_age: int, result: list
+        cat_age: int, dog_age: int, result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
