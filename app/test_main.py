@@ -43,7 +43,7 @@ def test_get_human_age(animal_age: int, expected_age: List[int]) -> None:
         (5, "dog", "Animal age and animal type should be integers")
     ],
     ids=[
-        "invalid_animal_age_type_float",
+        "invalid_animal_age_type_int",
         "invalid_animal_type_type_str"
     ]
 )
