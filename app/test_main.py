@@ -13,11 +13,10 @@ from app.main import get_human_age
     ((28, 28), [3, 2]),
     ((100, 100), [21, 17])
 ])
-def test_get_human_age(input_age, expected_output):
+def test_get_human_age(input_age: int, expected_output: int) -> None:
     assert get_human_age(*input_age) == expected_output
 
 
 def test_raise_error_when_incorect_value() -> None:
     with pytest.raises(TypeError):
         get_human_age(2, "2")
-
