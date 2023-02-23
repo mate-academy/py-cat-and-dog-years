@@ -2,7 +2,6 @@ import pytest
 from typing import List
 from app.main import get_human_age
 
-
 @pytest.mark.parametrize(
     "animal_age, expected_age",
     [
@@ -36,17 +35,6 @@ def test_get_human_age(animal_age: int, expected_age: List[int]) -> None:
     assert get_human_age(animal_age, animal_age) == expected_age
 
 
-@pytest.mark.parametrize(
-    "animal_age, animal_type, expected_error",
-    [
-        (2, "cat", "'<' not supported between instances"),
-    ],
-    ids=[
-        "animal_age_int_and_animal_type_str"
-    ]
-)
-def test_get_human_age_with_invalid_input(animal_age: int,
-                                          animal_type: str,
-                                          expected_error: str) -> None:
-    with pytest.raises(TypeError, match=expected_error):
-        get_human_age(animal_age, animal_type)
+def test_get_human_age_with_invalid_input() -> None:
+    with pytest.raises(TypeError, match="'<' not supported between instances"):
+        get_human_age(2, "cat")
