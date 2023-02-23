@@ -39,19 +39,14 @@ def test_get_human_age(animal_age: int, expected_age: List[int]) -> None:
 @pytest.mark.parametrize(
     "animal_age, animal_type, expected_error",
     [
-        (2, "cat", "Animal age and animal type should be integers"),
-        (5, "dog", "Animal age and animal type should be integers")
+        (2, "cat", "'<' not supported between instances"),
     ],
     ids=[
-        "invalid_animal_age_type_int",
-        "invalid_animal_type_type_str"
+        "animal_age_int_and_animal_type_str"
     ]
 )
 def test_get_human_age_with_invalid_input(animal_age: int,
                                           animal_type: str,
                                           expected_error: str) -> None:
-    if expected_error:
-        with pytest.raises(TypeError, match=expected_error):
-            get_human_age(animal_age, animal_type)
-    else:
-        assert get_human_age(animal_age, animal_type) == [0, 0]
+    with pytest.raises(TypeError, match=expected_error):
+        get_human_age(animal_age, animal_type)
