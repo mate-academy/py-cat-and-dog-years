@@ -8,24 +8,27 @@ class TestGetHumanAgeClass:
         "cat_age,dog_age,human_age",
         [
             pytest.param(0, 0, [0, 0],
-                         id="must return 0 if cat age and dog age 0"),
+                         id="Human age is zero when pets age are zero"),
             pytest.param(14, 14, [0, 0],
-                         id="must return 0 "
-                            "if cat age and dog age < 15"),
+                         id="Human age is zero when pets age < 15"),
             pytest.param(15, 15, [1, 1],
-                         id="must return 1 for cat, 1 for dog"),
+                         id="Human age is 1 when pets age are == 15"),
             pytest.param(23, 23, [1, 1],
-                         id="must return 1 for cat, 1 for dog"),
+                         id="Human age is 1 when pets age == 23"),
             pytest.param(24, 24, [2, 2],
-                         id="must return 2 for cat, 2 for dog"),
+                         id="Human age is 2 when pets age == 24"),
             pytest.param(27, 27, [2, 2],
-                         id="must return 2 for cat, 2 for dog"),
+                         id="Human age is 2 when pets age == 27"),
             pytest.param(28, 28, [3, 2],
-                         id="must return 3 for cat, 2 for dog"),
+                         id="Human age for car is 3 when cat age is 28 and "
+                            "human age for dog is 2 when dog age 28"),
+            pytest.param(28, 28, [3, 2],
+                         id="Human age is 3 when"
+                            " cat age is 28 and dog age 29"),
             pytest.param(100, 100, [21, 17],
-                         id="must return 0"),
+                         id="100 in Human age when cat is 21 and dog is 17"),
             pytest.param(-1, -1, [0, 0],
-                         id="must return 0"),
+                         id="Human age is zero when pets age is negative"),
         ]
     )
     def test_to_age_cat_and_dog_to_human_age(
