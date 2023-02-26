@@ -4,27 +4,34 @@ from app.main import get_human_age
 
 age_values_data = [
     (0, 0, [0, 0]),
+    (14, 14, [0, 0]),
     (15, 15, [1, 1]),
+    (23, 23, [1, 1]),
     (24, 24, [2, 2]),
-    (14, 16, [0, 1]),
-    (16, 14, [1, 0]),
     (27, 27, [2, 2]),
-    (100, 59, [21, 9]),
+    (28, 29, [3, 3]),
+    (-2, -3, [0, 0]),
+    (1256987, 268852, [314242, 53767])
 ]
 
 id_values = [
-    "list should be equal to [0, 0] when the values less then 15",
-    "list should be equal to [1, 1] when the values between 15 and 23",
-    "list should be equal to [2, 2] when the values are equal to 24",
-    "list should be equal to [0, 1] "
-    "when the cat age is less then 15 and dog age is between 15 and 23",
-    "list should be equal to [1, 0] "
-    "when the cat age between 15 and 23 and dog age is less then 15",
-    "list should be equal to [2, 2] "
-    "when reminder less then 'each_year' parameter",
-    "list should be equal to [100, 59] "
-    "when the cat and dog age are bigger then `sum((first_yer, second_yer, "
-    "each_yer -1))",
+    "list should be equal to [0, 0] when the values are less then 15",
+    "list should be equal to [0, 0] when the values "
+    "are equal 'zero' yer top edge(14)",
+    "list should be equal to [1, 1] when the values "
+    "are equal 'first' yer bottom edge(15)",
+    "list should be equal to [1, 1] when the values "
+    "are equal 'first' yer top edge(23)",
+    "list should be equal to [2, 2] when the values "
+    "are equal 'second' yer bottom edge(24)",
+    "list should be equal to [2, 2] when the values "
+    "are top edge of 'second' yer: "
+    "bottom edge + 'each_yer'",
+    "list should be equal to [3, 3] when the values "
+    "are bigger than 'second' top edge",
+    "list should be equal to [0, 0] when the values are negative",
+    "list should be equal to [314242, 53767] when the function"
+    " is handling large numbers like '1256987', '268852'"
 ]
 
 
@@ -37,3 +44,9 @@ def test_get_human_age_with_different_values(
         expected: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+def test_raise_an_error_if_values_are_incorrect_type():
+    with pytest.raises(TypeError):
+        get_human_age("15", 15)
+        get_human_age(15, "15")
