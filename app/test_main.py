@@ -46,7 +46,7 @@ def test_get_human_age_with_different_values(
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_raise_an_error_if_values_are_incorrect_type():
+def test_raise_an_error_if_values_are_incorrect_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("15", 15)
         get_human_age(15, "15")
