@@ -6,6 +6,18 @@ from app.main import get_human_age
     "cat_age, dog_age, expected_years",
     [
         pytest.param(
+            -1, 8, [0, 0],
+            id="should return 0, 0"
+        ),
+        pytest.param(
+            2, -10, [0, 0],
+            id="should return 0, 0"
+        ),
+        pytest.param(
+            -2, -25, [0, 0],
+            id="should return 0, 0"
+        ),
+        pytest.param(
             0, 0, [0, 0],
             id="should return 0, 0"
         ),
@@ -73,20 +85,24 @@ def test_get_correct_human_age(cat_age: (int, float),
     "cat_age, dog_age, expected_years",
     [
         pytest.param(
-            -1, 8, [0, 0],
+            "one", "five", [0, 0],
             id="should return 0, 0"
         ),
         pytest.param(
-            2, -10, [0, 0],
+            "two", "ten", [0, 0],
             id="should return 0, 0"
         ),
         pytest.param(
-            -2, -25, [0, 0],
+            "fifteenth", "twenty five", [0, 0],
+            id="should return 0, 0"
+        ),
+        pytest.param(
+            "fifty", "fifty", [0, 0],
             id="should return 0, 0"
         )
     ]
 )
-def test_negative_age(cat_age: int,
-                      dog_age: int,
-                      expected_years: list) -> None:
+def test_when_string_years(cat_age: (int, str),
+                           dog_age: (int, str),
+                           expected_years: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_years
