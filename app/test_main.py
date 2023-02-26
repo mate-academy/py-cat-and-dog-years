@@ -17,7 +17,8 @@ from app.main import get_human_age
         pytest.param(33, 35, [4, 4], id="4 years, we discard the reminder"),
         pytest.param(127, 100, [27, 17], id="big years value"),
         pytest.param(-120, -1, [0, 0], id="negative years"),
-        pytest.param(1234567890, 987654321, [308641968, 197530861], id="large numbers"),
+        pytest.param(1234567890, 987654321,
+                     [308641968, 197530861], id="large numbers"),
 
     ]
 )
