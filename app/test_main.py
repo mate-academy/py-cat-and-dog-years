@@ -81,28 +81,6 @@ def test_get_correct_human_age(cat_age: (int, float),
     assert get_human_age(cat_age, dog_age) == expected_years
 
 
-@pytest.mark.parametrize(
-    "cat_age, dog_age, expected_years",
-    [
-        pytest.param(
-            "one", "five", [0, 0],
-            id="should return 0, 0"
-        ),
-        pytest.param(
-            "two", "ten", [0, 0],
-            id="should return 0, 0"
-        ),
-        pytest.param(
-            "fifteenth", "twenty five", [0, 0],
-            id="should return 0, 0"
-        ),
-        pytest.param(
-            "fifty", "fifty", [0, 0],
-            id="should return 0, 0"
-        )
-    ]
-)
-def test_when_string_years(cat_age: (int, str),
-                           dog_age: (int, str),
-                           expected_years: list) -> None:
-    assert get_human_age(cat_age, dog_age) == expected_years
+def test_typeerror_when_not_int() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", "25")
