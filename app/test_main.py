@@ -7,7 +7,7 @@ from app.main import get_human_age
     "cat_age,dog_age",
     [
         (0, 0),
-        (14, 14),
+        (14, 14)
     ]
 )
 def test_first_15_years_give_1_human_year(
@@ -61,8 +61,9 @@ def test_input_out_of_range(
 @pytest.mark.parametrize(
     "cat_age,dog_age",
     [
-        ("string", 0),
-        ([5], {5})
+        pytest.param("string", 0, id="string"),
+        pytest.param([1], 0, id="list"),
+        pytest.param({1}, 0, id="dict")
     ]
 )
 def test_type_error_exception(cat_age: int, dog_age: int) -> None:
