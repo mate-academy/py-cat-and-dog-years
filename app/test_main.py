@@ -13,24 +13,13 @@ from app.main import get_human_age
         pytest.param(24, 24, [2, 2], id="24 years"),
         pytest.param(27, 27, [2, 2], id="27 years"),
         pytest.param(28, 28, [3, 2], id="28 years"),
-        pytest.param(100, 100, [21, 17], id="100 years")
+        pytest.param(100, 100, [21, 17], id="100 years"),
+        pytest.param(0, 0, [0, 0], id="Zero values"),
+        pytest.param(-1, -1, [0, 0], id="Negative values"),
+        pytest.param(1000, 10000, [246, 1997], id="Large values")
     ]
 )
 def test_return_value(
-        cat_age: int, dog_age: int, result: list[int]
-) -> None:
-    assert get_human_age(cat_age, dog_age) == result
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age,result",
-    [
-        (0, 0, [0, 0]),
-        (-1, -1, [0, 0]),
-        (1000, 10000, [246, 1997])
-    ]
-)
-def test_input_out_of_range(
         cat_age: int, dog_age: int, result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
