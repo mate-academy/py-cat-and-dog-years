@@ -4,41 +4,19 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age,dog_age",
-    [
-        (0, 0),
-        (14, 14)
-    ]
-)
-def test_first_15_years_give_1_human_year(
-        cat_age: int, dog_age: int
-) -> None:
-    assert get_human_age(cat_age, dog_age) == [0, 0]
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age",
-    [
-        (15, 15),
-        (23, 23)
-    ]
-)
-def test_next_9_years_give_1_more_human_year(
-        cat_age: int, dog_age: int
-) -> None:
-    assert get_human_age(cat_age, dog_age) == [1, 1]
-
-
-@pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
-        (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        pytest.param(0, 0, [0, 0], id="0 years"),
+        pytest.param(14, 14, [0, 0], id="14 years"),
+        pytest.param(15, 15, [1, 1], id="15 years"),
+        pytest.param(23, 23, [1, 1], id="23 years"),
+        pytest.param(24, 24, [2, 2], id="24 years"),
+        pytest.param(27, 27, [2, 2], id="27 years"),
+        pytest.param(28, 28, [3, 2], id="28 years"),
+        pytest.param(100, 100, [21, 17], id="100 years")
     ]
 )
-def test_every_4_and_5_years_give_an_extra_human_year(
+def test_return_value(
         cat_age: int, dog_age: int, result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
