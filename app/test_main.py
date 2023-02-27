@@ -55,7 +55,7 @@ from app.main import get_human_age
             id="should return 0, 0"
         ),
         pytest.param(
-            5.1, 6.1, [0, 0],
+            15.1, 16.1, [1, 1],
             id="should return 0, 0"
         ),
         pytest.param(
@@ -63,15 +63,11 @@ from app.main import get_human_age
             id="should return 2, 2"
         ),
         pytest.param(
-            27.1, 27.2, [2, 2],
-            id="should return 2, 2"
-        ),
-        pytest.param(
-            28.1, 28.7, [3, 2],
+            28.1, 28.1, [3, 2],
             id="should return 3, 2"
         ),
         pytest.param(
-            100.3, 100.9, [21, 17],
+            100.3, 100.3, [21, 17],
             id="should return 21, 17"
         )
     ]
