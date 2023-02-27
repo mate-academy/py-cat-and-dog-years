@@ -24,7 +24,7 @@ class TestGetHumanAge:
             ),
             pytest.param(
                 24, 24, [2, 2],
-                id="should return [2, 2] for next 9 animal (years after age of 15)"
+                id="should return [2, 2] for next 9 animal (after age of 15)"
             ),
             pytest.param(
                 28, 28, [3, 2],
