@@ -36,6 +36,11 @@ class TestHumanAge:
                 23,
                 23,
                 [1, 1]
+            ),
+            (
+                110,
+                150,
+                [23, 27]
             )
         ]
     )
@@ -46,3 +51,27 @@ class TestHumanAge:
         human_age: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,error",
+        [
+            (
+                [34.8],
+                [23.0],
+                TypeError
+            ),
+            (
+                "hi",
+                "7",
+                TypeError
+            )
+        ]
+    )
+    def test_should_raise_error_if_age_is_not_integer(
+        self,
+        cat_age: any,
+        dog_age: any,
+        error: any
+    ) -> None:
+        with pytest.raises(error):
+            get_human_age(cat_age, dog_age)
