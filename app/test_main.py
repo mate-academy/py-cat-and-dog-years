@@ -12,6 +12,7 @@ from app.main import get_human_age
         (14.489, 14.789, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
+        (23.6848, 23.159, [1, 1]),
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
         (28, 29, [3, 3]),
@@ -24,6 +25,7 @@ from app.main import get_human_age
         "float non zero age in animals years - zero age in human years",
         "get first human year",
         "get first human year upper value",
+        "float animals years for first human year(upper value)",
         "get second human year",
         "get second human year upper value",
         "get third human year for cat and dog age value",
@@ -39,4 +41,4 @@ def test_can_sum(cat_age: int, dog_age: int, result: list[int]) -> None:
 
 def test_raise_typeerror_if_not_integer() -> None:
     with pytest.raises(TypeError):
-        get_human_age(get_human_age("100", "100"))
+        get_human_age("100", "100")
