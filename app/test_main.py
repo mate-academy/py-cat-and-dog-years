@@ -18,8 +18,14 @@ from app.main import get_human_age
         "calculate age of cats or dogs who are elder than 28"
     ]
 )
-def test_calculate_right_values(cat_age: int, dog_age: int, human_age: list) -> None:
-    assert(
-            get_human_age(cat_age, dog_age) == human_age
-    ), f"Human age should be equal to {human_age[0]} if cat age is {cat_age}"
-    f"and {human_age[1]} if dog age is {dog_age}"
+def test_calculate_right_values(
+        cat_age: int,
+        dog_age: int,
+        human_age: list
+) -> None:
+    assert (
+        get_human_age(cat_age, dog_age) == human_age
+    ), (
+        f"Human age should be equal to {human_age[0]} if cat age is {cat_age}"
+        f"and {human_age[1]} if dog age is {dog_age}"
+    )
