@@ -1,6 +1,6 @@
-from app.main import get_human_age
-
 import pytest
+
+from app.main import get_human_age
 
 
 class TestsGetHumanAge:
@@ -27,6 +27,22 @@ class TestsGetHumanAge:
                 -20, -20, [0, 0],
                 id="should return [0, 0]"
             ),
+            pytest.param(
+                2000, 2000, [496, 397],
+                id="should return [496, 397]"
+            ),
+            pytest.param(
+                27, 27, [2, 2],
+                id="should return [2, 2]"
+            ),
+            pytest.param(
+                28, 28, [3, 2],
+                id="should return [3, 2]"
+            ),
+            pytest.param(
+                14, 14, [0, 0],
+                id="should return [0, 0]"
+            ),
         ]
     )
     def test_calculations(
@@ -37,20 +53,8 @@ class TestsGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age_input, dog_age_input) == expected_age
 
-    @pytest.mark.parametrize(
-        "cat_age_input, dog_age_input, expected_error",
-        [
-            pytest.param(
-                "1", 1, TypeError,
-                id="type cat_age_input and dog_age_input is int"
-            )
-        ]
-    )
     def test_errors(
             self,
-            cat_age_input: int,
-            dog_age_input: int,
-            expected_error: Exception
     ) -> None:
-        with pytest.raises(expected_error):
-            get_human_age(cat_age_input, dog_age_input)
+        with pytest.raises(TypeError):
+            get_human_age("1", 1)
