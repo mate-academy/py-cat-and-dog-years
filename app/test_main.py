@@ -19,3 +19,8 @@ def test_get_human_age(
         result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+def test_function_raises_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", 10)
