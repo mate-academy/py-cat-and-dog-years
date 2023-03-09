@@ -40,5 +40,5 @@ class TestConvertYears:
             )
         ]
     )
-    def test_convert_age_correctly(self, cat_age, dog_age, human_age):
+    def test_convert_age_correctly(self, cat_age, dog_age, human_age) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
