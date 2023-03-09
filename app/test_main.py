@@ -1,25 +1,44 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_should_return_zeroes_when_integers_are_zeroes() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+class TestConvertYears:
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,human_age",
+        [
+            pytest.param(
+                0, 0,
+                [0, 0],
+                id="should return zeroes when integers are zeroes"
 
-
-def test_should_return_zeroes_when_integers_less_first_year() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_one_when_integers_less_second_year() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_one_when_integers_less_third_year() -> None:
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_should_return_validates_years_for_each_animal() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_check_huge_numbers() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+            ),
+            pytest.param(
+                14, 14,
+                [0, 0],
+                id="should return zeroes when integers less first year"
+            ),
+            pytest.param(
+                15, 15,
+                [1, 1],
+                id="should return one when integers less second year"
+            ),
+            pytest.param(
+                27, 27,
+                [2, 2],
+                id="should return one when integers less third year"
+            ),
+            pytest.param(
+                28, 28,
+                [3, 2],
+                id="should return validates years for each animal"
+            ),
+            pytest.param(
+                100, 100,
+                [21, 17],
+                id="should check huge numbers"
+            )
+        ]
+    )
+    def test_convert_age_correctly(self, cat_age, dog_age, human_age):
+        assert get_human_age(cat_age, dog_age) == human_age
