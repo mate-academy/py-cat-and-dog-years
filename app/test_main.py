@@ -37,6 +37,22 @@ def test_get_correct_human_age(
     assert get_human_age(cat_age, dog_age) == human_age
 
 
-def test_raise_error_when_incorrect_type() -> None:
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("5", "5"),
+        ([5], [5]),
+        ({5}, {5}),
+        ((5, 6, 7), (5, 6, 7))
+    ],
+    ids=[
+        "pet age should be int, not str",
+        "pet age should be int, not list",
+        "pet age should be int, not set",
+        "pet age should be int, not tuple"
+
+    ]
+)
+def test_raise_error_when_incorrect_type(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
-        get_human_age("20", [20])
+        get_human_age(cat_age, dog_age)
