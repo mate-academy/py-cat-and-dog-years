@@ -22,5 +22,5 @@ class TestAgeCatDog:
             dog_age: int,
             cat_human_age: int,
             dog_human_age: int) -> None:
-        assert get_human_age(cat_age, dog_age)\
-               == [cat_human_age, dog_human_age]
+        assert (get_human_age(cat_age, dog_age)
+               == [cat_human_age, dog_human_age])
