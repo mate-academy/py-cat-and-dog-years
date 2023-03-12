@@ -47,3 +47,9 @@ class TestConvertYears:
             human_age: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+    def test_correct_instance(self):
+        cat_age = "10"
+        dog_age = "42"
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
