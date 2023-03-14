@@ -47,8 +47,28 @@ class TestConvertYears:
     )
     def test_convert_to_human_age(
             self,
-            cat_years: int,
-            dog_years: int,
+            cat_years: int | float,
+            dog_years: int | float,
             human_years: int
     ) -> None:
         assert get_human_age(cat_years, dog_years) == human_years
+
+    @pytest.mark.parametrize(
+        "cat_years,dog_years,expected_error",
+        [
+            pytest.param(
+                "28",
+                "29",
+                TypeError,
+                id="should raise error type of data string"
+            )
+        ]
+    )
+    def test_raising_errors(
+            self,
+            cat_years: int | float,
+            dog_years: int | float,
+            expected_error: Exception
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_years, dog_years)
