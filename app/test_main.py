@@ -26,7 +26,7 @@ class TestConvertYears:
             pytest.param(
                 27, 27,
                 [2, 2],
-                id="should return one when integers less third year"
+                id="should return two when integers less third year"
             ),
             pytest.param(
                 28, 28,
@@ -48,8 +48,32 @@ class TestConvertYears:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
 
-    def test_correct_instance(self) -> None:
-        cat_age = "10"
-        dog_age = "42"
-        with pytest.raises(TypeError):
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,error",
+        [
+            pytest.param(
+                "10", "42",
+                TypeError,
+                id="should return error than values are incorrect type"
+            ),
+            pytest.param(
+                [10], [20],
+                TypeError,
+                id="should return error than values are incorrect type"
+            ),
+            pytest.param(
+                (), (),
+                TypeError,
+                id="should return error than values are incorrect type"
+            ),
+            pytest.param(
+                {}, {},
+                TypeError,
+                id="should return error than values are incorrect type"
+            )
+        ]
+    )
+    def test_capture_errors(self, cat_age, dog_age, error) -> None:
+        with pytest.raises(error):
             get_human_age(cat_age, dog_age)
