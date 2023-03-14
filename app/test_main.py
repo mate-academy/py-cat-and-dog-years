@@ -1,5 +1,5 @@
 import pytest
-
+from typing import Any
 from app.main import get_human_age
 
 
@@ -48,32 +48,31 @@ class TestConvertYears:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
 
-
     @pytest.mark.parametrize(
-        "cat_age,dog_age,error",
+        "cat_age,dog_age",
         [
             pytest.param(
                 "10", "42",
-                TypeError,
                 id="should return error than values are incorrect type"
             ),
             pytest.param(
                 [10], [20],
-                TypeError,
                 id="should return error than values are incorrect type"
             ),
             pytest.param(
                 (), (),
-                TypeError,
                 id="should return error than values are incorrect type"
             ),
             pytest.param(
                 {}, {},
-                TypeError,
                 id="should return error than values are incorrect type"
             )
         ]
     )
-    def test_capture_errors(self, cat_age, dog_age, error) -> None:
-        with pytest.raises(error):
+    def test_capture_errors(
+            self,
+            cat_age: Any,
+            dog_age: Any
+    ) -> None:
+        with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
