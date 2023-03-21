@@ -39,6 +39,24 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
-    def test_for_correct_parameters(self) -> None:
+
+class TestCorrectParameters:
+    @pytest.mark.parametrize(
+        "cat_age,dog_age",
+        [
+            ("23", "23"),
+            (17, "22"),
+            ("ase", 21),
+            ([2, 3, 4], "rty"),
+            ({1: "1"}, ["p", "n", "h"]),
+            (("w", 4, {}), 33),
+            (1234, [1, 2, 3])
+        ]
+    )
+    def test_for_correct_parameters(
+            self,
+            cat_age: int,
+            dog_age: int
+    ) -> None:
         with pytest.raises(TypeError):
-            get_human_age("2", 1)
+            get_human_age(cat_age, dog_age)
