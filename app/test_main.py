@@ -1,33 +1,27 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_get_animal_age_0() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_get_animal_age_14() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_get_animal_age_15() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_get_animal_age_23() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_get_animal_age_24() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_get_animal_age_27() -> None:
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_get_animal_age_28() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_get_animal_age_100() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_human_age",
+    [
+        (-14, -14, [0, 0]),
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+        ("14", 14, TypeError),
+        (14, "14", TypeError),
+    ],
+)
+def test_get_human_age(cat_age: int, dog_age: int, expected_human_age: int) -> None:
+    if expected_human_age == TypeError:
+        with pytest.raises(expected_human_age):
+            get_human_age(cat_age, dog_age)
+    else:
+        assert get_human_age(cat_age, dog_age) == expected_human_age
