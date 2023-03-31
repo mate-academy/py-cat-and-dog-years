@@ -19,7 +19,11 @@ from app.main import get_human_age
         (14, "14", TypeError),
     ],
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected_human_age: int) -> None:
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected_human_age: int
+) -> None:
     if expected_human_age == TypeError:
         with pytest.raises(expected_human_age):
             get_human_age(cat_age, dog_age)
