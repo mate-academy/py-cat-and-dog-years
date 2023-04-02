@@ -30,3 +30,8 @@ class TestGetHumanAge:
                                        result: list
                                        ) -> None:
         assert get_human_age(cat_age, dog_age) == result
+
+
+def test_human_age_correct_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("3", None)
