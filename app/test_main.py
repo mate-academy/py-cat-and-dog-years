@@ -5,9 +5,9 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_years,dog_years",
     [
-        (i, j)
-        for i in [0, 7, 15, 22, 24, 26, 31]
-        for j in [0, 7, 15, 22, 24, 26, 31]
+        (cat_years_no_human_age, dog_years_no_human_age)
+        for cat_years_no_human_age in [0, 7, 15, 22, 24, 26, 31]
+        for dog_years_no_human_age in [0, 7, 15, 22, 24, 26, 31]
     ]
 )
 def test_if_result_has_right_format(cat_years: int, dog_years: int) -> None:
