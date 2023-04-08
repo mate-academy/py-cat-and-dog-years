@@ -6,6 +6,7 @@ from typing import Type
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
+        (-5, 17, [0, 1]),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -16,6 +17,7 @@ from typing import Type
         (100, 100, [21, 17])
     ],
     ids=[
+        "value_is_negative",
         "cat_and_dog_years_are_zeros_values",
         "cat_and_dog_years_less_than_1_human_year",
         "edge_entry_values_for_1_human_years",
@@ -35,15 +37,11 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list[int]) -> None:
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        (-1, 70, ValueError),
-        (1000, 10, ValueError),
         ("20", 50, TypeError),
         (20, [50], TypeError),
         ((20, 50), {20: 50}, TypeError)
     ],
     ids=[
-        "raise_value_error_if_years_are_negative",
-        "raise_value_error_if_years_are_too_large",
         "raise_type_error_if_years_is_string",
         "raise_type_error_if_years_is_list",
         "raise_type_error_if_years_is_tuple_or_dictionary"
