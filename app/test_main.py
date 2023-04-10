@@ -33,5 +33,5 @@ def test_should_convert_extra_dog_years() -> None:
 def test_incorrect_type_of_data() -> None:
     try:
         get_human_age("28", [28])
-    except TypeError as e:
+    except TypeError:
         assert "'<' not supported between instances of 'str' and 'int'"
