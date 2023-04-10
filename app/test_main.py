@@ -10,49 +10,55 @@ class TestGetHumanAge:
                 0,
                 0,
                 [0, 0],
-                id="does not work correctly with the value zero"
+                id="should work correctly with the value zero"
             ),
             pytest.param(
                 100,
                 100,
                 [21, 17],
-                id="does not work correctly with a large value"
+                id="should work correctly with a normal value"
             ),
             pytest.param(
                 23,
                 23,
                 [1, 1],
-                id="does not work correctly with a normal value"
+                id="should work correctly with a normal value"
             ),
             pytest.param(
                 -2,
                 -3,
                 [0, 0],
-                id="does not work correctly with a negative value"
+                id="should work correctly with a negative value"
             ),
             pytest.param(
                 27,
                 27,
                 [2, 2],
-                id="does not work correctly with a normal value"
+                id="should work correctly with a normal value"
             ),
             pytest.param(
                 14,
                 14,
                 [0, 0],
-                id="does not work correctly with a normal value"
+                id="should work correctly with a normal value"
             ),
             pytest.param(
                 15,
                 15,
                 [1, 1],
-                id="does not work correctly with a normal value"
+                id="should work correctly with a normal value"
             ),
             pytest.param(
                 28,
                 28,
                 [3, 2],
-                id="does not work correctly with a normal value"
+                id="should work correctly with a normal value"
+            ),
+            pytest.param(
+                1000,
+                1000,
+                [246, 197],
+                id="should work correctly with a large value"
             )
         ])
     def test_convert_to_human_correctly(self,
