@@ -29,6 +29,30 @@ class TestGetHumanAge:
                 -3,
                 [0, 0],
                 id="does not work correctly with a negative value"
+            ),
+            pytest.param(
+                27,
+                27,
+                [2, 2],
+                id="does not work correctly with a normal value"
+            ),
+            pytest.param(
+                14,
+                14,
+                [0, 0],
+                id="does not work correctly with a normal value"
+            ),
+            pytest.param(
+                15,
+                15,
+                [1, 1],
+                id="does not work correctly with a normal value"
+            ),
+            pytest.param(
+                28,
+                28,
+                [3, 2],
+                id="does not work correctly with a normal value"
             )
         ])
     def test_convert_to_human_correctly(self,
