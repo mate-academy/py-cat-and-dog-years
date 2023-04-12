@@ -39,7 +39,7 @@ def test_correct_raise_error_if_input_data_type_wrong() -> None:
         raise AssertionError("Expected TypeError not raised for string input")
 
     try:
-        get_human_age(99, "dog_age")
+        get_human_age(98, "dog_age")
     except TypeError:
         pass
     else:
