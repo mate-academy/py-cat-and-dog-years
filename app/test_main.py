@@ -30,8 +30,17 @@ def test_should_convert_extra_dog_years() -> None:
     assert get_human_age(16, 29) == [1, 3]
 
 
-def test_incorrect_type_of_data() -> None:
+def test_correct_raise_error_if_input_data_type_wrong() -> None:
     try:
-        get_human_age("28", [28])
+        get_human_age("cat_age", 25)
     except TypeError:
-        assert "'<' not supported between instances of 'str' and 'int'"
+        pass
+    else:
+        raise AssertionError("Expected TypeError not raised for string input")
+
+    try:
+        get_human_age(99, "dog_age")
+    except TypeError:
+        pass
+    else:
+        raise AssertionError("Expected TypeError not raised for integer input")
