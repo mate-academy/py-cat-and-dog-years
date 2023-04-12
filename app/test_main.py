@@ -12,7 +12,7 @@ import pytest
     (28, 28, [3, 2]),
     (16, 29, [1, 3])
 ])
-def test_get_human_age(cat_age, dog_age, expected) -> None:
+def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
