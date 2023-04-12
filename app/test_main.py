@@ -1,46 +1,24 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_should_return_zero_when_input_zero_years() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (0, 0, [0, 0]),
+    (-5, 1, [0, 0]),
+    (5, -1, [0, 0]),
+    (12, 14, [0, 0]),
+    (15, 15, [1, 1]),
+    (24, 24, [2, 2]),
+    (28, 28, [3, 2]),
+    (16, 29, [1, 3])
+])
+def test_get_human_age(cat_age, dog_age, expected) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_should_return_zero_when_input_negative_values() -> None:
-    assert get_human_age(-5, 1) == [0, 0]
-    assert get_human_age(5, -1) == [0, 0]
-
-
-def test_should_convert_animal_years_younger_than_1_human() -> None:
-    assert get_human_age(12, 14) == [0, 0]
-
-
-def test_should_convert_15_animals_to_1_human_year() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_verify_increase_on_1_more_human_year() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_should_convert_extra_cat_years() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_convert_extra_dog_years() -> None:
-    assert get_human_age(16, 29) == [1, 3]
-
-
-def test_correct_raise_error_if_input_data_type_wrong() -> None:
-    try:
+def test_should_raise_error_if_input_data_type_wrong() -> None:
+    with pytest.raises(TypeError):
         get_human_age("cat_age", 25)
-    except TypeError:
-        pass
-    else:
-        raise AssertionError("Expected TypeError not raised for string input")
 
-    try:
+    with pytest.raises(TypeError):
         get_human_age(98, "dog_age")
-    except TypeError:
-        pass
-    else:
-        raise AssertionError("Expected TypeError not raised for integer input")
