@@ -7,6 +7,14 @@ from app.main import get_human_age
     "cat_age, dog_age, human_age",
     [
         pytest.param(
+            1000, 1000, [246, 197],
+            id="function should handle large numbers"
+        ),
+        pytest.param(
+            -1, -1, [0, 0],
+            id="cat`s/dog`s age should be positive integer"
+        ),
+        pytest.param(
             14, 14, [0, 0],
             id="correct first year for dog/cat"
         ),
@@ -35,3 +43,29 @@ def test_get_human_age(
     assert (
         get_human_age(cat_age, dog_age) == human_age
     )
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, error",
+    [
+        pytest.param(
+            3, "4", TypeError,
+            id="cat`s/dog`s age should be integer"
+        ),
+        pytest.param(
+            3, [6], TypeError,
+            id="cat`s/dog`s age should be integer"
+        ),
+        pytest.param(
+            {3: 6}, 2, TypeError,
+            id="cat`s/dog`s age should be integer"
+        ),
+    ]
+)
+def test_get_human_age_raise_errors_correctly(
+        cat_age: int,
+        dog_age: int,
+        error: Exception
+) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_age, dog_age)
