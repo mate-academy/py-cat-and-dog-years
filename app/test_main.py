@@ -8,7 +8,7 @@ def test_should_return_zeros_when_animals_ages_less_then_15() -> None:
     assert goal1 == goal2 == [0, 0]
 
 
-def test_should_return_1_when_animals_ages_more_than_14_and_has_no_extra_life() -> None:
+def test_should_return_1_when_ages_more_than_14_and_no_extra_life() -> None:
     goal1 = get_human_age(15, 15)
     goal2 = get_human_age(23, 23)
 
