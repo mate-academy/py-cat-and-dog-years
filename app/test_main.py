@@ -16,7 +16,8 @@ from app.main import get_human_age
         pytest.param(24, 24, [2, 2],
                      id="Check correct result 2 year"),
         pytest.param(28, 28, [3, 2],
-                     id="Check when ages are the same, result must be different"),
+                     id="Check when ages are the same, "
+                        "result must be different"),
         pytest.param(100, 100, [21, 17],
                      id="Check when cat's and dog's age are big value"),
         pytest.param(-15, -15, [0, 0],
