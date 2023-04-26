@@ -34,7 +34,7 @@ def test_get_human_age_diff_values(
 def test_get_human_age_wrong_types(
         cat_age: int,
         dog_age: int,
-        error: Exception
+        error: TypeError
 ) -> None:
     with pytest.raises(error):
         get_human_age(cat_age, dog_age)
