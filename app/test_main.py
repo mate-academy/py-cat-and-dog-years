@@ -7,7 +7,7 @@ from app.main import get_human_age
     [
         pytest.param(3, 6, [0, 0], id="less than 1 year"),
         pytest.param(15, 15, [1, 1], id="1 year"),
-        pytest.param(27, 18, [2, 2], id="2 years"),
+        pytest.param(27, 28, [2, 2], id="2 years"),
         pytest.param(29, 29, [3, 3], id="3 years"),
         pytest.param(50, 50, [8, 7], id="add different extra years"),
         pytest.param(1000, 1000, [246, 197], id="big values"),
