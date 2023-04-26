@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
@@ -30,3 +31,23 @@ def test_get_human_age(
         human_age_result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age_result
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, error",
+    [
+        pytest.param("", "", TypeError,
+                     id="Should return TypeError when STR"),
+        pytest.param([], [], TypeError,
+                     id="Should return TypeError when LIST"),
+        pytest.param({1: 2}, 2, TypeError,
+                     id="TypeError, cat`s/dog`s age should be integer")
+    ]
+)
+def test_get_human_age_typing(
+        cat_age: Any,
+        dog_age: Any,
+        error: Exception
+) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_age, dog_age)
