@@ -12,10 +12,14 @@ import pytest
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        (-10, -10, [0, 0]),
+        (-15, 15, [0, 1]),
+        (15, -15, [1, 0]),
+        (1500, 1000, [371, 197])
     ]
 )
-def test_expected_result_cannot_be_negative(
+def test_expected_result_cannot_be_negative_and_really_big_numbers(
         cat_age: int,
         dog_age: int,
         expected_result: list
