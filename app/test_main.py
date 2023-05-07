@@ -12,7 +12,6 @@ from app.main import get_human_age
         pytest.param(24, 24, [2, 2], id="test 24 years (15 plus 9)"),
         pytest.param(28, 28, [3, 2],
                      id="test the difference after second human year"),
-        # pytest.param(31.8, 33.5, [3, 3], id="test floats"),
     ]
 )
 def test_human_age(cat_age: int, dog_age: int, result: list) -> None:
