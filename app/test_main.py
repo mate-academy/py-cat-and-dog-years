@@ -1,6 +1,7 @@
 import pytest
 
 from app.main import get_human_age
+from typing import NoReturn
 
 
 @pytest.mark.parametrize(
@@ -40,6 +41,8 @@ def test_check_animal_age_for_human(cat_age: int, dog_age: int,
                      id="should return TypeError when animals ages is dict")
     ]
 )
-def test_should_raise_error(cat_age: int, dog_age: int, error) -> None:
+def test_should_raise_error(cat_age: int,
+                            dog_age: int,
+                            error: NoReturn) -> None:
     with pytest.raises(error):
         get_human_age(cat_age, dog_age)
