@@ -24,7 +24,7 @@ from typing import NoReturn
     ]
 )
 def test_check_animal_age_for_human(cat_age: int, dog_age: int,
-                                    human_result: list) -> None:
+                                    human_result: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == human_result
 
 
