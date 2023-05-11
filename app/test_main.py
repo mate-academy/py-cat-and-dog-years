@@ -8,6 +8,12 @@ class TestGetHumanAge:
         "cat_age, dog_age, expected_result",
         [
             pytest.param(
+                -1,
+                -1,
+                [0, 0],
+                id="should return zeros if ages is negative numbers",
+            ),
+            pytest.param(
                 0,
                 0,
                 [0, 0],
@@ -59,12 +65,6 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected_error",
         [
-            pytest.param(
-                -1,
-                -1,
-                ValueError,
-                id="should raise ValueError if age is negative number",
-            ),
             pytest.param(
                 [],
                 5,
