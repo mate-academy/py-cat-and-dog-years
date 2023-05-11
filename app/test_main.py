@@ -1,5 +1,4 @@
 import pytest
-from typing import Any
 from app.main import get_human_age
 
 
