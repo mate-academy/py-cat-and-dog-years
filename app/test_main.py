@@ -41,6 +41,20 @@ class TestGetHumanAge:
                 [3, 2],
                 id="should return correct year if human years are different",
             ),
+
+            pytest.param(
+                100,
+                100,
+                [21, 17],
+                id="should return correct year for big numbers",
+            ),
+
+            pytest.param(
+                1000,
+                1000,
+                [246, 197],
+                id="should return correct year for really big numbers",
+            ),
         ]
     )
     def test_return_correct_age(
@@ -55,7 +69,7 @@ class TestGetHumanAge:
         ]
     )
     def test_raise_typeerror(
-            self, cat_age: Any, dog_age: Any, error: type[TypeError]
+            self, cat_age: int, dog_age: int, error: type[TypeError]
     ) -> None:
         with pytest.raises(error):
             get_human_age(cat_age, dog_age)
