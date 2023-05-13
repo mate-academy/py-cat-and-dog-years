@@ -10,7 +10,7 @@ class TestDifferentAges:
                 0,
                 0,
                 [0, 0],
-                id="Function should work correct with when arguments are equal 0"
+                id="Function should work correct with when arguments = 0"
             ),
             pytest.param(
                 0,
@@ -56,9 +56,9 @@ class TestDifferentAges:
         ])
     def test_different_ages(
             self,
-            cat_age,
-            dog_age,
-            expected_value
+            cat_age: int,
+            dog_age: int,
+            expected_value: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_value
 
