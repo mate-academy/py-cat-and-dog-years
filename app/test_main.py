@@ -31,6 +31,3 @@ def test_with_cat_age_equal_to_three() -> None:
 
 def test_with_both_ages_equal_to_100() -> None:
     assert get_human_age(100, 100) == [21, 17]
-
-
-
