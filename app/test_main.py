@@ -1,5 +1,5 @@
 import pytest
-from typing import Any
+from typing import Type
 from app.main import get_human_age
 
 
@@ -82,6 +82,6 @@ def test_get_human_age_with_correct_value(
 )
 def test_raising_errors_correctly(cat_age: int,
                                   dog_age: int,
-                                  expected_error: Any) -> None:
+                                  expected_error: Type[Exception]) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
