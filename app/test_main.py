@@ -41,3 +41,10 @@ class TestMain:
                                        human_age: list
                                        ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+    def test_check_incorrect_input_type(self,) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("cat", "dog")
+            get_human_age([], {})
+            get_human_age(1, "dog")
+            get_human_age("cat", 1)
