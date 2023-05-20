@@ -3,19 +3,37 @@ import pytest
 from app.main import get_human_age
 
 
-def test_when_cat_and_dog_less_than_1_human_year() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-    assert get_human_age(14, 14) == [0, 0]
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (0, 0, [0, 0]),
+    (14, 14, [0, 0]),
+])
+def test_when_cat_and_dog_less_than_1_human_year(
+        cat_age: int,
+        dog_age: int,
+        expected: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_when_cat_and_dog_have_1_human_year() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (15, 15, [1, 1]),
+    (23, 23, [1, 1]),
+])
+def test_when_cat_and_dog_have_1_human_year(
+        cat_age: int,
+        dog_age: int,
+        expected: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_cat_and_dog_are_more_than_2_years_old() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (28, 28, [3, 2]),
+    (100, 100, [21, 17]),
+])
+def test_cat_and_dog_are_more_than_2_years_old(
+        cat_age: int,
+        dog_age: int,
+        expected: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected", [
