@@ -36,6 +36,12 @@ class TestConvertAnimalAgeToHumanAge:
                 100,
                 [21, 17],
                 id="human age is 21 and 17 when cat and dog ages are both 100"
+            ),
+            pytest.param(
+                -100,
+                -100,
+                [0, 0],
+                id="human age is 0 when animal ages are negative"
             )
         ]
     )
@@ -45,5 +51,25 @@ class TestConvertAnimalAgeToHumanAge:
             dog_age: int,
             human_age: list
     ) -> None:
-        human_age_result = get_human_age(cat_age, dog_age)
-        assert human_age_result == human_age
+        assert get_human_age(cat_age, dog_age) == human_age
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_error",
+        [
+            pytest.param(
+                "hello",
+                True,
+                TypeError,
+                id=("human_age_result function should rise type error "
+                    "when parameters are neither integers or floats")
+            )
+        ]
+    )
+    def test_raise_error_correctly(
+            self,
+            cat_age: str,
+            dog_age: int,
+            expected_error: TypeError
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
