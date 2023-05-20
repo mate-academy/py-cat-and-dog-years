@@ -27,7 +27,10 @@ def test_cat_and_dog_are_more_than_2_years_old() -> None:
     (1.5, 3, ValueError),
     (2, 3.5, ValueError),
 ])
-def test_get_human_age(cat_age, dog_age, expected):
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected: list or type) -> None:
     if isinstance(expected, list):
         assert get_human_age(cat_age, dog_age) == expected
     else:
