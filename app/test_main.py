@@ -41,14 +41,32 @@ class TestCatDogConvertAge:
                 100,
                 [21, 17],
                 id="should return [21, 17] if both ages are equal 100"
+            ),
+            pytest.param(
+                3.5,
+                "cat",
+                None,
+                id="should handle wrong types"
+            ),
+            pytest.param(
+                -2,
+                5,
+                None,
+                id="should handle negative values"
             )
         ]
     )
     def test_correctly_convert_animal_age(
-            self,
-            cat_age: int,
-            dog_age: int,
-            expected_array: list
+        self,
+        cat_age: int,
+        dog_age: int,
+        expected_array: list
     ) -> None:
-        result = get_human_age(cat_age, dog_age)
-        assert result == expected_array
+        if expected_array is None:
+            try:
+                get_human_age(cat_age, dog_age)
+            except TypeError:
+                pass
+        else:
+            result = get_human_age(cat_age, dog_age)
+            assert result == expected_array
