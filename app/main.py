@@ -12,3 +12,8 @@ def convert_to_human(
     if animal_age < first_year + second_year:
         return 1
     return 2 + (animal_age - first_year - second_year) // each_year
+
+
+print(get_human_age(100, 100))
+age = 2 + (100 - 15 - 9) // 4
+print(age)
