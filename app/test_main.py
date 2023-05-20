@@ -29,20 +29,22 @@ from app.main import get_human_age
         "check negative values"
     ]
 )
-def test_if_convertion_to_human_years_correct(cat_age: int, dog_age: int, result: list) -> None:
+def test_if_convertion_to_human_years_correct(
+    cat_age: int, dog_age: int, result: list
+) -> None:
     assert (
         get_human_age(cat_age, dog_age) == result
     )
 
 
 @pytest.mark.parametrize(
-        "cat_age, dog_age",
-        [
-            ("67", "78"),
-            (6, None),
-            (6, [5, 6]),
-            ({"cat": 7}, {"dog": 18})
-        ]
+    "cat_age, dog_age",
+    [
+        ("67", "78"),
+        (6, None),
+        (6, [5, 6]),
+        ({"cat": 7}, {"dog": 18})
+    ]
 )
 def test_value_type(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
