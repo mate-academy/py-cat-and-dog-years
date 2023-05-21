@@ -13,7 +13,12 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        (-1, 15, [0, 1]),
+        (14, -2, [0, 0]),
+        (-15, -15, [0, 0]),
+        (28, -28, [3, 0]),
+        (14.5, 23.2, [0, 1]),
     ],
     ids=[
         "function should return 0 if the age of the animals is 0",
@@ -23,9 +28,12 @@ from app.main import get_human_age
         "function should return 2 if the age of the animals 24",
         "function should return 2 if the age of the animals < 27",
         "function should correctly count the age of dogs and cats over 28",
-        "function should correctly count the age of dogs and cats over 28"
-
-
+        "function should correctly count the age of dogs and cats over 28",
+        "function should return 0 if input less then 0",
+        "function should return 0 if input less then 0",
+        "function should return 0 if input less then 0",
+        "function should return 0 if input less then 0",
+        "function should work even if input is float type",
     ]
 )
 def test_get_human_age(cat_years: int, dog_years: int, result: list) -> None:
