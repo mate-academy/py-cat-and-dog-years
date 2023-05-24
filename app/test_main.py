@@ -33,4 +33,4 @@ def test_list_elements_should_be_in_order_and_calculation_correctly(
     cat_to_human, dog_to_human = result
     assert (
         get_human_age(cat_age, dog_age) == [cat_to_human, dog_to_human]
-    ), "List elements should be in order and calculation correctly"
+    ), "List elements should be in order and calculation should be correct"
