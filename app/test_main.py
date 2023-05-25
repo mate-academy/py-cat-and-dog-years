@@ -2,6 +2,11 @@ import pytest
 from app.main import get_human_age
 
 
+def test_data_should_have_right_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(1.4, [19])
+
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, result",
     [
