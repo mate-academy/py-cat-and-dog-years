@@ -9,6 +9,11 @@ def test_get_human_age_return_list() -> None:
     assert isinstance(get_human_age(15, 15), list)
 
 
+def test_incorrect_input_data_type_() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", [15])
+
+
 def test_numeric_values_in_returned_list() -> None:
     for age in get_human_age(15, 15.0):
         assert isinstance(age, (int, float))
@@ -96,9 +101,8 @@ def test_common_functional(cat_age: Union[int, float],
             "general test scale test",
             ]
 )
-def test_functional_requirements_compliance(cat_age: Union[int, float],
-                                            dog_age: Union[int, float],
-                                            expected_result: List[Union[int,
-                                                                        float]]
-                                            ) -> None:
+def test_functional_from_requirements(cat_age: Union[int, float],
+                                      dog_age: Union[int, float],
+                                      expected_result: List[Union[int, float]]
+                                      ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
