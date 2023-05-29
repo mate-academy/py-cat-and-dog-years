@@ -21,13 +21,14 @@ class TestGetHumanAge:
                 24, 24, [2, 2], id="should return 2 if pets age is 24"
             ),
             pytest.param(
-                27, 28, [2, 2], id="should return 2 if cat age below 28 and dog age below 29"
+                27, 28, [2, 2], id="should return 2 if cat/dog age below 28/29"
             ),
             pytest.param(
-                28, 29, [3, 3], id="should return 3 if cat age is 28 and dog age is 29"
+                28, 29, [3, 3], id="should return 3 if cat/dog age is 28/29"
             ),
             pytest.param(
-                34, 45, [4, 6], id="should return correct age if cat age above 28 and dog age above 29"
+                34, 45, [4, 6],
+                id="should return correct age if cat/dog age above 28/29"
             ),
         ]
     )
