@@ -6,6 +6,23 @@ from app.main import get_human_age
 
 class TestGetHumanAge:
     @pytest.mark.parametrize(
+        "cat_age,dog_age,exception",
+        [
+            pytest.param(
+                "234", [4, 5, 2], TypeError,
+                id="Should raise TypeError on incorrect arguments"
+            ),
+        ]
+    )
+    def test_throw_correct_exceptions(
+            self,
+            cat_age: int,
+            dog_age: int,
+            exception: tuple) -> None:
+        with pytest.raises(exception):
+            get_human_age(cat_age, dog_age)
+
+    @pytest.mark.parametrize(
         "cat_age,dog_age,expected_result",
         [
             pytest.param(
