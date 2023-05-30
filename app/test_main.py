@@ -51,6 +51,10 @@ class TestGetHumanAge:
                 -34, -45, [0, 0],
                 id="should return 0 age if pet age below 0"
             ),
+            pytest.param(
+                5423659, 4575234, [1355910, 915044],
+                id="should return correct age if pet age is huge number"
+            ),
         ]
     )
     def test_get_human_age_correctly(
