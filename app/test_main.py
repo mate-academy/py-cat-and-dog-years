@@ -1,6 +1,5 @@
 import pytest
 
-
 from app.main import get_human_age
 
 
@@ -18,7 +17,8 @@ class TestGetHumanAge:
             self,
             cat_age: int,
             dog_age: int,
-            exception: tuple) -> None:
+            exception: tuple
+    ) -> None:
         with pytest.raises(exception):
             get_human_age(cat_age, dog_age)
 
@@ -46,6 +46,10 @@ class TestGetHumanAge:
             pytest.param(
                 34, 45, [4, 6],
                 id="should return correct age if cat/dog age above 28/29"
+            ),
+            pytest.param(
+                -34, -45, [0, 0],
+                id="should return 0 age if pet age below 0"
             ),
         ]
     )
