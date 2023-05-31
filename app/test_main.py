@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -50,3 +52,29 @@ def test_correct_convert_animal_age_to_human_age(
         human_age: list[int, int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "animal_age",
+    [
+        pytest.param(
+            (None, None),
+            id="input type must be int, not NoneType"
+        ),
+        pytest.param(
+            ("None", "None"),
+            id="input type must be int, not str"
+        ),
+        pytest.param(
+            ({"None": None}, {"None": None}),
+            id="input type must be int, not dict"
+        ),
+        pytest.param(
+            ((1, 2), (1, 2)),
+            id="input type must be int, not tuple"
+        )
+    ]
+)
+def test_correct_input_type(animal_age: tuple) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(*animal_age)
