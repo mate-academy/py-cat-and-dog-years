@@ -7,6 +7,12 @@ from app.main import get_human_age
     "cat_age,dog_age,human_age",
     [
         pytest.param(
+            -0,
+            -1,
+            [0, 0],
+            id="Negative cat/dog years should convert into 0 human age"
+        ),
+        pytest.param(
             14,
             14,
             [0, 0],
