@@ -28,7 +28,7 @@ def test_cat_and_dog_years_in_human_years_correctly(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, expected_error",
     [pytest.param(-1, 1, 0, id="should return 0 in human year"),
      pytest.param([1], 1, TypeError,
                   id="should raise error when cat age is list"),
