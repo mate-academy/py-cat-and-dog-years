@@ -3,8 +3,8 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, expected_result",
-        [pytest.param(-1, -1,[0, 0],
+    "cat_age, dog_age, expected_result", [
+         pytest.param(-1, -1, [0, 0],
                       id="should return first 15 dog and cat years in"
                          " human year"),
          pytest.param(14, 14, [0, 0],
