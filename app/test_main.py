@@ -1,27 +1,24 @@
+import pytest
 from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_result",
-    [pytest.param(14, 14, [0, 0],
-                  id="should return first 15 dog and cat years in "
-                     "human year"),
-     pytest.param(28, 29, [3, 3],
-                  id="should return every 5 next dog and cat years in "
-                     "human years"),
-     pytest.param(27, 28, [2, 2],
-                  id="should return every 5 next dog and cat years in "
-                     "human years"),
-     pytest.param(23, 23, [1, 1],
-                  id="should return next 9 dog and cat years in human year"),
-     pytest.param(24, 24, [2, 2],
-                  id="should return every 5 next dog and cat years in "
-                     "human years"),
-     pytest.param(15, 15, [1, 1],
-                  id="should return next 9 dog and cat years in human year")])
-@pytest.mark.parametrize(
-    "cat_age, dog_age, expected_error",
-    [pytest.param(-1, 1, 0, id="should return 0 in human year")])
+        [pytest.param(-1, -1,[0, 0],
+                      id="should return first 15 dog and cat years in"
+                         " human year"),
+         pytest.param(14, 14, [0, 0],
+                      id="should return first 15 dog and cat years in "
+                         "human year"),
+         pytest.param(28, 29, [3, 3],
+                      id="should return every 5 next dog year in "
+                         "human year"),
+         pytest.param(15, 15, [1, 1],
+                      id="should return the next 9 dog and cat years "
+                         "in human year"),
+         pytest.param(28, 28, [3, 2],
+                      id="should return every 4 next cat year in "
+                         "human year")])
 def test_cat_and_dog_years_in_human_years_correctly(
         cat_age: int,
         dog_age: int,
