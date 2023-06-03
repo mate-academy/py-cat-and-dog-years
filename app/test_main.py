@@ -58,6 +58,6 @@ def test_cat_and_dog_years_in_human_years_correctly(
         ("10", "5"),
     ],
 )
-def test_with_wrong_types(cat_age, dog_age):
+def test_with_wrong_types(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
