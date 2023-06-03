@@ -50,10 +50,14 @@ def test_cat_and_dog_years_in_human_years_correctly(
     assert get_human_age(cat_age, dog_age) == result
 
 
-def test_with_wrong_types() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("10", 5),
+        (10, "5"),
+        ("10", "5"),
+    ],
+)
+def test_with_wrong_types(cat_age, dog_age):
     with pytest.raises(TypeError):
-        get_human_age("10", 5)
-    with pytest.raises(TypeError):
-        get_human_age(10, "5")
-    with pytest.raises(TypeError):
-        get_human_age("10", "5")
+        get_human_age(cat_age, dog_age)
