@@ -48,3 +48,12 @@ def test_cat_and_dog_years_in_human_years_correctly(
         cat_age: int, dog_age: int, result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+def test_with_wrong_types() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", 5)
+    with pytest.raises(TypeError):
+        get_human_age(10, "5")
+    with pytest.raises(TypeError):
+        get_human_age("10", "5")
