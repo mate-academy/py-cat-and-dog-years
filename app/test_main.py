@@ -18,6 +18,9 @@ from app.main import get_human_age
                      "in human year"),
      pytest.param(28, 28, [3, 2],
                   id="should return every 4 next cat year in "
+                     "human year"),
+     pytest.param(100, 100, [21, 17],
+                  id="should return every 4 next cat year in "
                      "human year")])
 def test_cat_and_dog_years_in_human_years_correctly(
         cat_age: int,
