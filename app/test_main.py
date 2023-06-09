@@ -55,4 +55,3 @@ def test_age_correctly(initial_age: list, expect_age: list) -> None:
 def test_raising_error(initial_age: list, expect_error: any) -> None:
     with pytest.raises(expect_error):
         assert get_human_age(initial_age)
-
