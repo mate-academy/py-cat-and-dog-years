@@ -1,3 +1,45 @@
+import pytest
+
+
 from app.main import get_human_age
 
-# write your code here
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_human_age",
+    [
+        pytest.param(
+            0, 0, [0, 0],
+            id="dog and cat ages equal to 0 should return 0 human years"
+        ),
+        pytest.param(
+            14, 14, [0, 0],
+            id="dog and cat ages lesser than 15 should return 0 human years"
+        ),
+        pytest.param(
+            15, 15, [1, 1],
+            id="dog and cat ages from 15 to 24 should return 1 human years"
+        ),
+        pytest.param(
+            23, 23, [1, 1],
+            id="dog and cat ages from 15 to 24 should return 1 human years"
+        ),
+        pytest.param(
+            24, 24, [2, 2],
+            id="dog and cat ages after 23 should return calculated human years"
+        ),
+        pytest.param(
+            27, 27, [2, 2],
+            id="dog and cat ages after 23 should return calculated human years"
+        ),
+        pytest.param(
+            28, 28, [3, 2],
+            id="dog and cat ages after 23 should return calculated human years"
+        ),
+        pytest.param(
+            100, 100, [21, 17],
+            id="dog and cat ages after 23 should return calculated human years"
+        )
+    ]
+)
+def test_convert_dog_and_cat_ages_in_human_age_correctly(cat_age,dog_age,expected_human_age):
+    assert get_human_age(cat_age, dog_age) == expected_human_age
