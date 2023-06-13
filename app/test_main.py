@@ -5,6 +5,26 @@ from app.main import get_human_age
 
 class TestGetHumanAge:
     @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_error",
+        [
+            pytest.param(
+                "1",
+                1,
+                TypeError,
+                id="should raise error when some age is not number"
+            )
+        ]
+    )
+    def test_raising_error_correctly(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_error: type[Exception]
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
+
+    @pytest.mark.parametrize(
         "cat_age,dog_age,expected_result",
         [
             pytest.param(
@@ -38,5 +58,5 @@ class TestGetHumanAge:
             cat_age: int,
             dog_age: int,
             expected_result: list
-    ) -> bool:
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
