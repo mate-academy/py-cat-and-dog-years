@@ -65,3 +65,18 @@ def test_should_return_different_results_if_values_more_than_27(
         result: list
 ) -> None:
     assert get_human_age(cat_years, dog_years) == result
+
+
+@pytest.mark.parametrize(
+    "cat_years, dog_years",
+    [
+        ("28", "28"),
+        ([100], [100]),
+        ({25}, {25}),
+        ((1, 2), (1, 2))
+    ]
+)
+def test_should_raise_error_if_values_not_int(cat_years: int,
+                                              dog_years: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_years, dog_years)
