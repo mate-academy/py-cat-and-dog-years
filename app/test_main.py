@@ -9,15 +9,15 @@ class TestCatAndDogYears:
         "cat_age, dog_age, exp_result",
         [
             pytest.param(-1, -1, [0, 0],
-                         id="Should return zero than input negative"),
+                         id="Should return zero when input is negative"),
             pytest.param(0, 0, [0, 0],
                          id="Should return zero values"),
             pytest.param(14, 14, [0, 0],
-                         id="Values less than cat/gog one year"),
+                         id="Values less when cat/gog one year"),
             pytest.param(23, 23, [1, 1],
-                         id="Values less than cat/gog two year"),
+                         id="Values less when cat/gog two year"),
             pytest.param(27, 27, [2, 2],
-                         id="Values less than cat/gog three year"),
+                         id="Values less when cat/gog three year"),
             pytest.param(28, 28, [3, 2],
                          id="Values cat has three year and dog four"),
             pytest.param(28, 28, [3, 2],
@@ -40,7 +40,7 @@ class TestCatAndDogYears:
             pytest.param("",
                          17,
                          TypeError,
-                         id="Should return error then type incorrect")
+                         id="Should return error when type is incorrect")
         ]
     )
     def test_raising_error(self,
