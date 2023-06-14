@@ -34,6 +34,30 @@ class TestGetHumanAge:
                 id="should return 0 human age when cat/dog 0...15"
             ),
             pytest.param(
+                15,
+                14,
+                [1, 0],
+                id="should return 1 human age for cat 0 for dog"
+            ),
+            pytest.param(
+                14,
+                15,
+                [0, 1],
+                id="should return 0 human age for cat 1 for dog"
+            ),
+            pytest.param(
+                -1,
+                -2,
+                [0, 0],
+                id="should work correctly with negative numbers"
+            ),
+            pytest.param(
+                1000,
+                2000,
+                [246, 397],
+                id="should work correctly with large numbers"
+            ),
+            pytest.param(
                 23,
                 23,
                 [1, 1],
