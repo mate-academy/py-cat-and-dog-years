@@ -44,3 +44,15 @@ class TestCatsDogsClass:
                                                  dog: int,
                                                  expected: list) -> None:
         assert get_human_age(cat, dog) == expected
+
+    @pytest.mark.parametrize("cat,dog", [
+        ("10", "10"),
+        ([10], [10]),
+        ({"10": 10}, {"10": 10}),
+        ((10, ), (10, ))
+    ])
+    def test_receive_errors_when_type_incorrect(self,
+                                                cat: int,
+                                                dog: int) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat, dog)
