@@ -23,8 +23,8 @@ def test_get_human_age(cat_age: Any,
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_error",
     [
-        pytest.param(5, "10", TypeError, id="Negative cat age"),
-        pytest.param("ten", 5, TypeError, id="Negative dog age")
+        pytest.param(5, "10", TypeError, id="Wrong type"),
+        pytest.param({10}, 5, TypeError, id="Wrong type")
     ]
 )
 def test_for_errors(cat_age: Any,
