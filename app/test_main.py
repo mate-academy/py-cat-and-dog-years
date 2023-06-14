@@ -8,6 +8,8 @@ class TestCatAndDogYears:
     @pytest.mark.parametrize(
         "cat_age, dog_age, exp_result",
         [
+            pytest.param(-1, -1, [0, 0],
+                         id="Should return zero than input negative"),
             pytest.param(0, 0, [0, 0],
                          id="Should return zero values"),
             pytest.param(14, 14, [0, 0],
