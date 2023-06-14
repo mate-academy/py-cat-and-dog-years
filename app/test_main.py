@@ -52,6 +52,18 @@ def test_raise_error_if_value_types_are_incorrect(
             35,
             [0, 4],
             id="age in other cases"
+        ),
+        pytest.param(
+            0,
+            0,
+            [0, 0],
+            id="should return zero when ages equals zero"
+        ),
+        pytest.param(
+            12351162626,
+            123124343573,
+            [3087790652, 24624868711],
+            id="should work correctly with large numbers"
         )
     ]
 )
