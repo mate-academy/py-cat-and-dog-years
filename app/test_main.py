@@ -10,8 +10,8 @@ from app.main import get_human_age
     [
         pytest.param(-1, -1, [0, 0], id="test when animals 'age' < 0"),
         pytest.param(0, 0, [0, 0], id="test when animals 'age' == 0"),
-        pytest.param(23, 23, [1, 1], id="test must return [1, 1], when pets age < 24"),
-        pytest.param(36, 36, [5, 4], id="test should return different human age")
+        pytest.param(23, 23, [1, 1], id="test must return [1, 1] when age < 24"),
+        pytest.param(36, 36, [5, 4], id="test should return different age")
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
