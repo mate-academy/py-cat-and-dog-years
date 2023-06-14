@@ -6,6 +6,7 @@ from app.main import get_human_age
 
 class TestCatsDogsClass:
     @pytest.mark.parametrize("cat,dog,expected", [
+        (-1, -1, [0, 0]),
         (0, 0, [0, 0]),
         (5, 5, [0, 0]),
         (14, 14, [0, 0]),
