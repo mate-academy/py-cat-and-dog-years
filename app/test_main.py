@@ -7,6 +7,7 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected_human_age",
         [
+            (-1, -1, [0, 0]),
             (0, 0, [0, 0]),
             (14, 14, [0, 0]),
             (15, 15, [1, 1]),
@@ -17,6 +18,7 @@ class TestGetHumanAge:
             (100, 100, [21, 17]),
         ],
         ids=[
+            "human age should be 0 if cat/dog age is negative",
             "human age should be 0 if cat/dog age is 0",
             "human age should be 0 if cat/dog age is 14",
             "human age should be 1 if cat/dog age is 15",
