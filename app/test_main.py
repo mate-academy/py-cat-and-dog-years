@@ -11,6 +11,13 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2])
+    ],
+    ids=[
+        "Human age should be [0, 0] if cat/dog years is [0, 0]",
+        "Human age should be [0, 0] if cat/dog years is [14, 14]",
+        "Human age should be [1, 1] if cat/dog years is [15, 15]",
+        "Human age should be [2, 2] if cat/dog years is [27, 27]",
+        "Human age should be [3, 2] if cat/dog years is [28, 28]"
     ]
 )
 def test_should_correctly_convert_years(cat_age: int,
