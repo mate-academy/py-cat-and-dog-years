@@ -6,27 +6,23 @@ import pytest
 
 @pytest.mark.parametrize("cat_age, dog_age, expected", [
     (0, 0, [0, 0]),
-    (15, 9, [1, 0]),
-    (25, 15, [2, 1]),
-    (32, 20, [3, 2]),
-    (36, 22, [3, 2]),
-    (40, 22, [4, 2]),
-    (36, 24, [3, 3]),
-    (45, 30, [5, 4]),
+    (14, 14, [0, 0]),
+    (15, 15, [1, 1]),
+    (23, 23, [1, 1]),
+    (24, 24, [2, 2]),
+    (27, 27, [2, 2]),
+    (28, 28, [3, 2]),
+    (100, 100, [21, 17]),
     (-5, 0, [0, 0]),
     (0, 0, [0, 0]),
-    (1000000, 999999, [111112, 111111])
+    (1000000, 999999, [249996, 199997])
 ])
-def test_get_human_age(cat_age, dog_age, expected):
+def test_get_human_age_happy_and_edge_cases(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-    # assert get_human_age(cat_age + 1, dog_age) != expected
-    # assert get_human_age(cat_age, dog_age + 1) != expected
-
-
-def test_get_human_age_fails_on_wrong_data():
-    # Test incorrect data type
-    with pytest.raises(TypeError):
-        get_human_age("cat", 5)
 
 
 @pytest.mark.parametrize("cat_age, dog_age", [
@@ -34,6 +30,6 @@ def test_get_human_age_fails_on_wrong_data():
     (0, [33]),
     (len, 0)
 ])
-def test_get_human_age_raises_error(cat_age, dog_age):
+def test_get_human_age_raises_error(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
