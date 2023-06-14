@@ -40,6 +40,10 @@ class TestCatAndDogYears:
             pytest.param("",
                          17,
                          TypeError,
+                         id="Should return error when type is incorrect"),
+            pytest.param(17,
+                         ["5"],
+                         TypeError,
                          id="Should return error when type is incorrect")
         ]
     )
