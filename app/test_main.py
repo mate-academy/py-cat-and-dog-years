@@ -36,3 +36,19 @@ class TestGetHumanAge:
         expected_human_age: list[int]
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_human_age
+
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            pytest.param(
+                "10", 10,
+            )
+        ]
+    )
+    def test_raise_correct_exception(
+            self,
+            cat_age: any,
+            dog_age: any,
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
