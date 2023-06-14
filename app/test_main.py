@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 
 from app.main import get_human_age
 
@@ -27,8 +28,8 @@ from app.main import get_human_age
     ]
 )
 def test_if_input_is_correct(
-        cat_age: int,
-        dog_age: int,
+        cat_age: Any,
+        dog_age: Any,
         result: TypeError
 ) -> None:
     with pytest.raises(result):
@@ -70,5 +71,5 @@ def test_if_input_is_correct(
         )
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, result: int) -> None:
+def test_get_human_age(cat_age: int, dog_age: int, result: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == result
