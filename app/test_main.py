@@ -14,8 +14,8 @@ from app.main import get_human_age
     ]
 )
 def test_get_human_age(
-        cat_years,
-        dog_years,
-        result
-):
+        cat_years: int,
+        dog_years: int,
+        result: int
+) -> None:
     assert get_human_age(cat_years, dog_years) == result
