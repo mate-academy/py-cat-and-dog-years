@@ -23,6 +23,10 @@ class TestGetHumanAge:
             pytest.param(
                 28, 29, [3, 3],
                 id="Should increase by 1 every 4 or 5 for cat and dog over 24",
+            ),
+            pytest.param(
+                -42, 1337, [0, 264],
+                id="Should correctly works with numbers out of normal range",
             )
         ]
     )
@@ -35,14 +39,17 @@ class TestGetHumanAge:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
-        "cat_age",
+        "wrong_type",
         [
-            (str()),
-            (list()),
-            (set()),
-            (tuple()),
+            str(),
+            list(),
+            set(),
+            tuple()
         ]
     )
-    def test_raising_error(self, cat_age: Any) -> None:
+    def test_raising_error(self, wrong_type: Any) -> None:
         with pytest.raises(TypeError):
-            get_human_age(cat_age, 0)
+            get_human_age(wrong_type, 0)
+
+        with pytest.raises(TypeError):
+            get_human_age(0, wrong_type)
