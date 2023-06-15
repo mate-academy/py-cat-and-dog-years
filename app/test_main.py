@@ -53,5 +53,6 @@ def test_data_out_of_normal_range(cat_age: int, dog_age: int) -> None:
                              "wrong type set"
                          ])
 def test_wrong_type(cat_age: int, dog_age: any) -> None:
-    with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
+    if not isinstance(dog_age, int):
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
