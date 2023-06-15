@@ -15,8 +15,8 @@ from app.main import get_human_age
                              "both age less than 15, expect 0 years",
                              "both age equal 15, expect 1 ears",
                              "both age equal 15 + 9, expect 2 years",
-                             "both age equal 15 + 9 + 4, expect 3 years cat, dog still 2",
-                             "both age equal 100, expect 21 years cat, 17 years dog"
+                             "both age equal 15 + 9 + 4, expect 3 cat, dog 2",
+                             "both age equal 100, expect 21 cat, 17 dog"
                          ])
 def test_usual_case(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
