@@ -14,7 +14,9 @@ class TestGetHumanAge:
             pytest.param(23, 23, [1, 1]),
             pytest.param(24, 24, [2, 2]),
             pytest.param(27, 28, [2, 2]),
-            pytest.param(28, 29, [3, 3])
+            pytest.param(28, 29, [3, 3]),
+            pytest.param(100, 100, [21, 17]),
+            pytest.param(1000, 1000, [246, 197]),
         ]
     )
     def test_get_correct_human_age_on_boundary_animal_age_values(
