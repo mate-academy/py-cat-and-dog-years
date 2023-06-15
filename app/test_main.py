@@ -11,13 +11,20 @@ from app.main import get_human_age
         (-1, -1, [0, 0]),
         (0, 0, [0, 0]),
         (23, 23, [1, 1]),
-        (36, 36, [5, 4])
+        (36, 36, [5, 4]),
+        (15, 15, [1, 1]),
+        (24, 24, [2, 2]),
+        (221, 304, [51, 58])
+
     ],
     ids=[
         "test when animals 'age' < 0",
         "test when animals 'age' == 0",
         "test must return [1, 1] when age<24",
-        "test should return different age"
+        "test should return different age",
+        "test 15 dog and cat years should return 1 human year",
+        "test 24 dog and cat years should return 2 human year",
+        "test with big numbers"
 
     ]
 )
