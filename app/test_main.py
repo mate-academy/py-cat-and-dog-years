@@ -10,7 +10,7 @@ from app.main import get_human_age
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (28, 28, [3, 2]),
-        (29, 29, [3, 3])
+        (29, 29, [3, 3]),
     ]
 )
 def test_get_human_age(
@@ -19,3 +19,9 @@ def test_get_human_age(
         result: int
 ) -> None:
     assert get_human_age(cat_years, dog_years) == result
+
+
+def test_get_human_age_with_incorrect_input():
+    with pytest.raises(TypeError):
+        get_human_age("bob", False)
+
