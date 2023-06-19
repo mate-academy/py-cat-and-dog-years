@@ -21,7 +21,6 @@ def test_get_human_age(
     assert get_human_age(cat_years, dog_years) == result
 
 
-def test_get_human_age_with_incorrect_input():
+def test_get_human_age_with_incorrect_input() -> None:
     with pytest.raises(TypeError):
         get_human_age("bob", False)
-
