@@ -39,12 +39,12 @@ def test_data_out_of_normal_range(cat_age: int, dog_age: int) -> None:
     assert get_human_age(cat_age, dog_age) == [0, 0]
 
 
-@pytest.mark.parametrize("cat_age, dog_age",
+@pytest.mark.parametrize("cat_age, dog_age, error",
                          [
-                             (1, "hh"),
-                             (1, []),
-                             (2, {}),
-                             (1, ())
+                             (1, "hh", TypeError),
+                             (1, [], TypeError),
+                             (2, {}, TypeError),
+                             (1, (), TypeError)
                          ],
                          ids=[
                              "wrong type string",
@@ -52,7 +52,7 @@ def test_data_out_of_normal_range(cat_age: int, dog_age: int) -> None:
                              "wrong type dict",
                              "wrong type set"
                          ])
-def test_wrong_type(cat_age: int, dog_age: any) -> None:
+def test_wrong_type(cat_age: int, dog_age: any, error: any) -> None:
     if not isinstance(dog_age, int):
-        with pytest.raises(TypeError):
+        with pytest.raises(error):
             get_human_age(cat_age, dog_age)
