@@ -22,12 +22,12 @@ def test_usual_case(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
 
 
-@pytest.mark.parametrize("cat_age, dog_age",
+@pytest.mark.parametrize("cat_age, dog_age, expected_result",
                          [
-                             (0, 0),
-                             (-1, -1),
-                             (0, 0.2),
-                             (0, True)
+                             (0, 0, [0, 0]),
+                             (-1, -1, [0, 0]),
+                             (0, 0.2, [0, 0]),
+                             (0, True, [0, 0])
                          ],
                          ids=[
                              "age equal zeros",
@@ -35,7 +35,9 @@ def test_usual_case(cat_age: int, dog_age: int, result: list) -> None:
                              "one of age is float",
                              "one of age is bool"
                          ])
-def test_data_out_of_normal_range(cat_age: int, dog_age: int) -> None:
+def test_data_out_of_normal_range(cat_age: int,
+                                  dog_age: int,
+                                  expected_result: list) -> None:
     assert get_human_age(cat_age, dog_age) == [0, 0]
 
 
