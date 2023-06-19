@@ -1,6 +1,7 @@
+import pytest
 from __future__ import annotations
 from app.main import get_human_age
-import pytest
+
 
 
 class TestCatDogYears:
