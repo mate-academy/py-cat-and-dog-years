@@ -7,6 +7,7 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_result",
     [
+        pytest.param(-5, -2, [0, 0], id="can't be a negative number"),
         pytest.param(0, 0, [0, 0], id="all zero's"),
         pytest.param(14, 14, [0, 0], id="cat and dog age < 14"),
         pytest.param(23, 24, [1, 2], id="cat and dog are < 24 y.o."),
