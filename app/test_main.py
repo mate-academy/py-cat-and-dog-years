@@ -69,6 +69,8 @@ def test_convert_dog_and_cat_ages_in_human_age(
         )
     ]
 )
-def test_get_human_age_with_wrong_data_type(cat_age: int, dog_age: int) -> None:
+def test_get_human_age_with_wrong_data_type(
+        cat_age: int, dog_age: int
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
