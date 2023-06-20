@@ -53,5 +53,22 @@ from app.main import get_human_age
 def test_convert_dog_and_cat_ages_in_human_age(
         cat_age: int, dog_age: int, expected_human_age: list[int]
 ) -> None:
-    print(cat_age)
     assert get_human_age(cat_age, dog_age) == expected_human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        pytest.param(
+            [10, 10], 100,
+            id="cat and dog age should be integer"
+        ),
+        pytest.param(
+            "100", 100,
+            id="dog and cat ages should be integer"
+        )
+    ]
+)
+def test_get_human_age_with_wrong_data_type(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
