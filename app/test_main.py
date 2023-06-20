@@ -16,3 +16,16 @@ from app.main import get_human_age
 )
 def test_get_expected_human_age(cat_age: int, dog_age: int, human_ages: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == human_ages
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        pytest.param({14}, {14}, id="type cat/dog should be 'int'"),
+        pytest.param([14], [14], id="type cat/dog should be 'int'"),
+        pytest.param("14", "14", id="type cat/dog should be 'int'"),
+    ]
+)
+def test_get_expected_type(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
