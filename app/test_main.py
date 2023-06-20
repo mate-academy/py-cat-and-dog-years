@@ -1,7 +1,7 @@
-import pytest
 from __future__ import annotations
-from app.main import get_human_age
 
+import pytest
+from app.main import get_human_age
 
 
 class TestCatDogYears:
@@ -44,8 +44,8 @@ class TestCatDogYears:
     )
     def test_raising_errors_correctly(
             self,
-            cat_age: str | list,
-            dog_age: str | list,
+            cat_age: int,
+            dog_age: int,
             expected_error: type[Exception]
     ) -> None:
         with pytest.raises(expected_error):
