@@ -61,10 +61,18 @@ def test_convert_dog_and_cat_ages_in_human_age(
     [
         pytest.param(
             [10, 10], 100,
-            id="cat and dog age should be integer"
+            id="cat age should be integer"
+        ),
+        pytest.param(
+            100, [10, 10],
+            id="dog age should be integer"
         ),
         pytest.param(
             "100", 100,
+            id="dog and cat ages should be integer"
+        ),
+        pytest.param(
+            100, "100",
             id="dog and cat ages should be integer"
         )
     ]
