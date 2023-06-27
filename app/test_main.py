@@ -15,6 +15,8 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (29, 29, [3, 3]),
+        (15, 28, [1, 2]),
+        (29, 14, [3, 0]),
         (150, 150, [33, 27])
     ]
 )
@@ -25,8 +27,8 @@ def test_ages(cat_age: int, dog_age: int, expect_result: list) -> None:
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        pytest.param("15", 15, TypeError, id="should be raise TypeError"),
-        pytest.param(14, "14", TypeError, id="should be raise TypeError")
+        ("15", 15, TypeError),
+        (14, "14", TypeError)
     ]
 )
 def test_check_valid_input_data(cat_age: int,
