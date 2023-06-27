@@ -31,19 +31,19 @@ def test_should_return_correct_ages(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, exception_type",
     [
-        ([], 12),
-        ("cat", 4),
-        (6, []),
-        (5, "dog")
+        ([], 12, TypeError),
+        ("cat", 4, TypeError),
+        (6, [], TypeError),
+        (5, "dog", TypeError)
     ]
 )
 def test_should_raise_type_error(
         cat_age: Any,
-        dog_age: Any
+        dog_age: Any,
+        exception_type: Exception
 ) -> None:
 
-    with pytest.raises(Exception) as error:
+    with pytest.raises(exception_type):
         get_human_age(cat_age, dog_age)
-    assert error.type == TypeError
