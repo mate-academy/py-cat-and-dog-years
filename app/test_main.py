@@ -1,5 +1,7 @@
+from typing import List
 import pytest
 from app.main import get_human_age
+
 
 class TestRightValue:
     @pytest.mark.parametrize(
@@ -15,7 +17,8 @@ class TestRightValue:
             ),
             pytest.param(
                 15, 15, [1, 1],
-                id="Both cat and dog ages are minimum (15 years) for the first human year"
+                id=("Both cat and dog ages are minimum (15 years) "
+                    "for the first human year")
             ),
             pytest.param(
                 23, 23, [1, 1],
@@ -31,5 +34,9 @@ class TestRightValue:
             )
         ]
     )
-    def test_check_value_result(self, cat_age, dog_age, expected_list):
+    def test_check_value_result(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_list: List[int]) -> None:
         assert get_human_age(cat_age, dog_age) == expected_list
