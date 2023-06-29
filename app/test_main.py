@@ -12,7 +12,9 @@ from app.main import get_human_age
     (28, 28, [3, 2]),
     (100, 100, [21, 17])
 ])
-def test_get_human_age(cat_age, dog_age, expected_cat_human_age) -> None:
+def test_get_human_age(cat_age: int,
+                       dog_age: int,
+                       expected_cat_human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_cat_human_age
 
 
@@ -22,8 +24,8 @@ def test_get_human_age(cat_age, dog_age, expected_cat_human_age) -> None:
     ([5], 22),
     (9, {"age": 7})
 ])
-def test_should_raise_error_if_cat_and_dog_age_is_not_correct_type(cat_age, dog_age) -> None:
+def test_should_raise_error_if_cat_and_dog_age_is_not_correct_type(
+        cat_age: int,
+        dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
-
-
