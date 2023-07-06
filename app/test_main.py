@@ -39,9 +39,15 @@ class TestRightValue:
             cat_age: int,
             dog_age: int,
             expected_list: List[int]) -> None:
-        if not isinstance(dog_age, int):
-            raise TypeError("dog_age must be an integer")
-        if not isinstance(cat_age, int):
-            raise TypeError("cat_age must be an integer")
 
         assert get_human_age(cat_age, dog_age) == expected_list
+
+    def test_check_value_type(self) -> None:
+        cat_age = 2
+        dog_age = 10
+
+        if not isinstance(get_human_age(cat_age, dog_age)[0], int):
+            raise TypeError("cat_age must be an integer")
+
+        if not isinstance(get_human_age(cat_age, dog_age)[1], int):
+            raise TypeError("dog_age must be an integer")
