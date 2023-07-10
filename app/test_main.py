@@ -1,5 +1,5 @@
-from app.main import get_human_age
 import pytest
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
@@ -14,50 +14,24 @@ import pytest
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
+        (-5, 10, [0, 0]),
+        (5, -10, [0, 0]),
+        (-5, -10, [0, 0]),
+        (1000, 200, [246, 37]),
+        (50, 1000, [8, 197]),
+        (999, 999, [245, 197])
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_get_human_age_raises_type_error() -> None:
+@pytest.mark.parametrize("age_in_human_years, age_in_dog_years", [
+    ("5", 10),
+    (5, "10"),
+    ("5", "10")
+])
+def test_get_human_age_raises_type_error(age_in_human_years, age_in_dog_years):
     with pytest.raises(TypeError):
-        get_human_age("5", 10)
+        get_human_age(age_in_human_years, age_in_dog_years)
 
-    with pytest.raises(TypeError):
-        get_human_age(5, "10")
-
-    with pytest.raises(TypeError):
-        get_human_age("5", "10")
-
-
-def test_get_human_age_raises_value_error() -> None:
-    try:
-        get_human_age(-5, 10)
-    except ValueError:
-        print("Caught ValueError for negative cat age")
-
-    try:
-        get_human_age(5, -10)
-    except ValueError:
-        print("Caught ValueError for negative dog age")
-
-    try:
-        get_human_age(-5, -10)
-    except ValueError:
-        print("Caught ValueError for both negative ages")
-
-    try:
-        get_human_age(1000, 200)
-    except ValueError:
-        print("Caught ValueError for number being too high")
-
-    try:
-        get_human_age(50, 1000)
-    except ValueError:
-        print("Caught ValueError for number being too high")
-
-    try:
-        get_human_age(999, 999)
-    except ValueError:
-        print("Caught ValueError for number being too high")
