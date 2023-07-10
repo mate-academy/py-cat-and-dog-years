@@ -1,4 +1,5 @@
 import pytest
+from typing import Type
 from app.main import get_human_age
 
 
@@ -16,9 +17,9 @@ from app.main import get_human_age
     ]
 )
 def test_should_return_correct_data(
-        cat_ages,
-        dog_ages,
-        result
+        cat_ages: int,
+        dog_ages: int,
+        result: list
 ) -> None:
     assert (
         get_human_age(cat_ages, dog_ages) == result
@@ -35,9 +36,9 @@ def test_should_return_correct_data(
     ]
 )
 def test_raising_errors(
-        cat_ages,
-        dog_ages,
-        expected_error
+        cat_ages: int,
+        dog_ages: int,
+        expected_error: Type[BaseException]
 ) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_ages, dog_ages)
