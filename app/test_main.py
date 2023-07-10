@@ -7,51 +7,22 @@ import pytest
     [
         pytest.param(
             0,
-            0,
+            - 1,
             [0, 0],
-            id="expected human age should equal zero if animal age equals 0"
+            id="expected human age should equal zeros if animal age <= 0"
         ),
         pytest.param(
             14,
-            14,
-            [0, 0],
-            id="expected human age should equal zero if animal age less 15"
-        ),
-        pytest.param(
-            15,
-            15,
-            [1, 1],
-            id="expected human age should equal one if animal age is 15"
-        ),
-        pytest.param(
             23,
-            23,
-            [1, 1],
-            id="expected human age should equal one if animal age less 24"
-        ),
-        pytest.param(
-            24,
-            24,
-            [2, 2],
-            id="expected human age should equal two if animal age 24"
-        ),
-        pytest.param(
-            27,
-            27,
-            [2, 2],
-            id="expected human age should equal two if animal age less 28"
-        ),
-        pytest.param(
-            28,
-            28,
-            [3, 2],
-            id="expected human age should equal two if animal age 28"
+            [0, 1],
+            id="expected human age should be zero if 0 < animal age < 15"
+               "and should be one if 14 < animal age < 24"
         ),
         pytest.param(
             100,
             100,
             [21, 17],
-            id="expected human age should equal two if animal age 100"
+            id="expected human age should be correct if animal age > 24"
         )
     ]
 )
@@ -59,3 +30,23 @@ def test_correct_expected_human_age(cat_age: int,
                                     dog_age: int,
                                     expected_human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
+
+
+@pytest.mark.parametrize(
+    ("cat_age", "dog_age", "expected_type_error"),
+    [
+        pytest.param(
+            "8",
+            8,
+            TypeError,
+            id="raise TypeError when type of animal age is not `int`"
+        )
+    ]
+)
+def test_correct_error(
+        cat_age: int,
+        dog_age: int,
+        expected_type_error: any
+) -> None:
+    with pytest.raises(expected_type_error):
+        get_human_age(cat_age, dog_age)
