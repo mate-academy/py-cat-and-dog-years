@@ -31,7 +31,9 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     (5, "10"),
     ("5", "10")
 ])
-def test_get_human_age_raises_type_error(age_in_human_years, age_in_dog_years):
+def test_get_human_age_raises_type_error(
+        age_in_human_years: int,
+        age_in_dog_years: int
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(age_in_human_years, age_in_dog_years)
-
