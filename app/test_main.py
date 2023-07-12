@@ -4,6 +4,9 @@ import pytest
 
 
 class TestGetHumanAge:
+    def test_should_return_type_of_result_is_list(self) -> None:
+        assert isinstance(get_human_age(0, 0), list)
+
     @pytest.mark.parametrize(
         "cat_age,dog_age,human_age",
         [
@@ -77,3 +80,33 @@ class TestGetHumanAge:
             human_age: list[int]
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+    @pytest.mark.parametrize(
+        "first_element,second_element,expected_error",
+        [
+            pytest.param(
+                "14",
+                0,
+                TypeError,
+                id="cat/dog age should be type of int"
+            ),
+            (
+                None,
+                [],
+                TypeError
+            ),
+            (
+                0,
+                {},
+                TypeError
+            )
+        ]
+    )
+    def test_should_return_error_when_invalid_types(
+            self,
+            first_element: any,
+            second_element: any,
+            expected_error: EOFError
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(first_element, second_element)
