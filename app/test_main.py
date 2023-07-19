@@ -21,5 +21,6 @@ def test_human_years_values(
         dog_years: int,
         human_years: list[int]
 ) -> None:
-    assert (get_human_age(cat_years, dog_years) == human_years),\
-        f"Sum of {cat_years} and {dog_years} should be equal to {human_years}"
+    assert ((get_human_age(cat_years, dog_years) == human_years),
+            f"Sum of {cat_years} and {dog_years} "
+            f"should be equal to {human_years}")
