@@ -65,7 +65,7 @@ def test_checking_edge_cases(
     cat_age: int,
     dog_age: int,
     human_years: list[int]
-):
+) -> None:
     assert get_human_age(cat_age, dog_age) == human_years
 
 
@@ -79,6 +79,6 @@ def test_data_type_check(
     cat_age: int,
     dog_age: int,
     expected_error: Exception
-):
+) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
