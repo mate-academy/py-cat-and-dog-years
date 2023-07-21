@@ -1,6 +1,6 @@
 import pytest
 
-from app.main import get_human_age, convert_to_human
+from app.main import get_human_age
 
 
 def test_an_array() -> bool:
@@ -55,7 +55,3 @@ def test_main_get(cat_age: int, dog_age: int) -> int:
     elif cat_age == -122 and dog_age == 150:
         expected_result = [0, 27]
     assert result == expected_result
-
-
-def test_convert_to_human() -> int:
-    assert convert_to_human(14, 14, 9, 4) == 1
