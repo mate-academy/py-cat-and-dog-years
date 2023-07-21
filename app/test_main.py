@@ -38,7 +38,7 @@ def test_main_get(cat_age: int, dog_age: int, expected: list) -> int:
     assert result == expected
 
 
-def function_that_raises_type_error(cat_age: int, dog_age: int):
+def function_that_raises_type_error(cat_age: int, dog_age: int) -> list:
     result = get_human_age(cat_age, dog_age)
     return result
 
@@ -47,6 +47,8 @@ def function_that_raises_type_error(cat_age: int, dog_age: int):
     "cat_age, dog_age, expected_error",
     [pytest.param("12", "4", TypeError, id="data type check")]
 )
-def test_data_type_check(cat_age: int, dog_age: int, expected_error: Exception) -> None:
+def test_data_type_check(
+        cat_age: int, dog_age: int, expected_error: Exception
+) -> None:
     with pytest.raises(expected_error):
         function_that_raises_type_error(cat_age, dog_age)
