@@ -22,15 +22,15 @@ def test_an_array() -> bool:
 
     ],
     ids=[
-        "test_main_get_human_age",
-        "test_main_get_human_age1",
-        "test_main_get_human_age2",
-        "test_main_get_human_age3",
-        "test_main_get_human_age4",
-        "test_main_get_human_age5",
-        "test_main_get_human_age6",
-        "test_main_get_human_age7",
-        "test_main_get_human_age8",
+        "human_age",
+        "human_age1",
+        "human_age2",
+        "human_age3",
+        "human_age4",
+        "human_age5",
+        "human_age6",
+        "human_age7",
+        "human_age8",
     ]
 )
 def test_main_get(cat_age: int, dog_age: int, expected: list) -> int:
