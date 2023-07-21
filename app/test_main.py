@@ -8,17 +8,18 @@ def test_an_array() -> bool:
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, expected",
     [
-        (28, 28),
-        (-22, 20),
-        (22, 20),
-        (22, 120),
-        (22, 150),
-        (12, 180),
-        (-6, 60),
-        (-55, -120),
-        (-122, 150),
+        (28, 28, [3, 2]),
+        (-22, 20, [0, 1]),
+        (22, 20, [1, 1]),
+        (22, 120, [1, 21]),
+        (22, 150, [1, 27]),
+        (12, 180, [0, 33]),
+        (-6, 60, [0, 9]),
+        (-55, -120, [0, 0]),
+        (-122, 150, [0, 27]),
+
     ],
     ids=[
         "test_main_get_human_age",
@@ -32,26 +33,6 @@ def test_an_array() -> bool:
         "test_main_get_human_age8",
     ]
 )
-def test_main_get(cat_age: int, dog_age: int) -> int:
+def test_main_get(cat_age: int, dog_age: int, expected: list) -> int:
     result = get_human_age(cat_age, dog_age)
-    if cat_age == 28 and dog_age == 28:
-        expected_result = [3, 2]
-    elif cat_age == -22 and dog_age == 20:
-        expected_result = [0, 1]
-    elif cat_age == 22 and dog_age == 20:
-        expected_result = [1, 1]
-    elif cat_age == 22 and dog_age == 120:
-        expected_result = [1, 21]
-    elif cat_age == 22 and dog_age == 150:
-        expected_result = [1, 27]
-    elif cat_age == 12 and dog_age == 180:
-        expected_result = [0, 33]
-    elif cat_age == 12 and dog_age == 180:
-        expected_result = [1, 33]
-    elif cat_age == -6 and dog_age == 60:
-        expected_result = [0, 9]
-    elif cat_age == -55 and dog_age == -120:
-        expected_result = [0, 0]
-    elif cat_age == -122 and dog_age == 150:
-        expected_result = [0, 27]
-    assert result == expected_result
+    assert result == expected
