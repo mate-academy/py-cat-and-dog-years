@@ -36,3 +36,17 @@ def test_an_array() -> bool:
 def test_main_get(cat_age: int, dog_age: int, expected: list) -> int:
     result = get_human_age(cat_age, dog_age)
     assert result == expected
+
+
+def function_that_raises_type_error(cat_age: int, dog_age: int):
+    result = get_human_age(cat_age, dog_age)
+    return result
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [pytest.param("12", "4", TypeError, id="data type check")]
+)
+def test_data_type_check(cat_age: int, dog_age: int, expected_error: Exception) -> None:
+    with pytest.raises(expected_error):
+        function_that_raises_type_error(cat_age, dog_age)
