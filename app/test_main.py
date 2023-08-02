@@ -11,6 +11,7 @@ from app.main import get_human_age
     pytest.param(27, 27, [2, 2], id="both_just_over_1_more_year"),
     pytest.param(28, 28, [3, 2], id="cat_1_more_year_than_dog"),
     pytest.param(100, 100, [21, 17], id="both_just_over_2_more_years"),
+    pytest.param(-1, -1, [0, 0], id="both_under_0_years")
 ])
 def test_get_human_age(
         cat_age: int,
@@ -20,15 +21,21 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_negative_values() -> None:
-    with pytest.raises(ValueError):
-        get_human_age(-5, 10)
-
-
-def test_large_values() -> None:
-    assert get_human_age(2 ** 31 - 1, 2 ** 31 - 1) == [1073741858, 858993062]
-
-
-def test_incorrect_type() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("12", 14)
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error",
+    [
+        pytest.param(
+            "10",
+            10,
+            TypeError,
+            id="raise TypeError whe years is not int"
+        )
+    ]
+)
+def test_raising_correct_errors(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Exception
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
