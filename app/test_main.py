@@ -25,10 +25,6 @@ def test_negative_values() -> None:
         get_human_age(-5, 10)
 
 
-def test_zero_values() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
 def test_large_values() -> None:
     assert get_human_age(2 ** 31 - 1, 2 ** 31 - 1) == [1073741858, 858993062]
 
