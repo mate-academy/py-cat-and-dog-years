@@ -26,11 +26,11 @@ from typing import Any
     ),
     pytest.param(
         -1, -1, [0, 0],
-        id="should return [0, 0] when years are negative"
+        id="should return zeros when years are negative"
     ),
     pytest.param(
         100, 100, [21, 17],
-        id="should return zeros when years are negative"
+        id="should return correct result when years are big"
     ),
     pytest.param(
         350, 400, [83, 77],
