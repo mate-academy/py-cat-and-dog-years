@@ -28,7 +28,7 @@ def test_get_human_age(
             "10",
             10,
             TypeError,
-            id="raise TypeError whe years is not int"
+            id="raise TypeError when years are not int"
         )
     ]
 )
