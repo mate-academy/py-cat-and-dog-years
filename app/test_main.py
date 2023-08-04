@@ -1,4 +1,4 @@
-
+import pytest
 
 from app.main import get_human_age
 
@@ -22,21 +22,21 @@ def test_get_human_age_negative_numbers() -> None:
 
 def test_get_human_age_invalid_data_types() -> None:
     # Test when one age is provided as a string
-    if isinstance("10", str) or isinstance(15, str):
-        assert get_human_age("10", 15) == [0, 0]
-    if isinstance(10, str) or isinstance("15", str):
-        assert get_human_age(10, "15") == [0, 0]
+    with pytest.raises(TypeError):
+        get_human_age("10", 15)
+    with pytest.raises(TypeError):
+        get_human_age(10, "15")
 
     # Test when both ages are provided as strings
-    if isinstance("10", str) and isinstance("15", str):
-        assert get_human_age("10", "15") == [0, 0]
+    with pytest.raises(TypeError):
+        get_human_age("10", "15")
 
-    # Test when one age is provided as a float
-    if isinstance(10.5, float) or isinstance(15, str):
-        assert get_human_age(10.5, 15) == [0, 0]
-    if isinstance(10, float) or isinstance(15.5, float):
-        assert get_human_age(10, 15.5) == [0, 0]
+    # Test when one age is None
+    with pytest.raises(TypeError):
+        get_human_age(None, 15)
+    with pytest.raises(TypeError):
+        get_human_age(10, None)
 
-    # Test when both ages are provided as floats
-    if isinstance(10.5, float) and isinstance(15.5, float):
-        assert get_human_age(10.5, 15.5) == [0, 0]
+    # Test when both ages are None
+    with pytest.raises(TypeError):
+        get_human_age(None, None)
