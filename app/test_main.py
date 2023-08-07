@@ -1,16 +1,28 @@
-import pytest
-from app.main import get_human_age
+import json
+from decimal import Decimal
 
 
-@pytest.mark.parametrize("cat_age, dog_age, expected", [
-    (0, 0, [0, 0]),
-    (14, 14, [0, 0]),
-    (15, 15, [1, 1]),
-    (23, 23, [1, 1]),
-    (24, 24, [2, 2]),
-    (27, 27, [2, 2]),
-    (28, 28, [3, 2]),
-    (100, 100, [21, 17])
-])
-def test_ages(cat_age: int, dog_age: int, expected: int) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
+def calculate_profit(file_name: str) -> None:
+    matecoin_account = 0
+    earned_money = 0
+    with open(file_name, "r") as file:
+        trades = json.load(file)
+
+    for trade in trades:
+        if trade["bought"] is not None:
+            earned_money += (Decimal(trade["bought"])
+                             * Decimal(trade["matecoin_price"]))
+            matecoin_account += Decimal(trade["bought"])
+
+        if trade["sold"] is not None:
+            earned_money -= (Decimal(trade["sold"])
+                             * Decimal(trade["matecoin_price"]))
+            matecoin_account -= Decimal(trade["sold"])
+
+    profit = {
+        "earned_money": str(earned_money * (-1)),
+        "matecoin_account": str(matecoin_account)
+    }
+
+    with open("profit.json", "w") as file:
+        json.dump(profit, file, indent=2)
