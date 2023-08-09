@@ -67,3 +67,26 @@ class TestCatDogHumanAge:
     ) -> None:
         result_from_program = get_human_age(cat_age, dog_age)
         assert result_from_program == expected_result
+
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected_error",
+        [
+            pytest.param(
+                -3,
+                -2,
+                ValueError,
+                id="should raise error when age is less than 0",
+            ),
+            pytest.param(
+                20,
+                "Arsen",
+                TypeError,
+                id="should raise error when type is not int",
+            ),
+        ],
+    )
+    def test_raising_errors_correctly(
+        self, cat_age: int, dog_age: int, expected_error: Exception
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
