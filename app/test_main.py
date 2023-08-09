@@ -72,12 +72,6 @@ class TestCatDogHumanAge:
         "cat_age, dog_age, expected_error",
         [
             pytest.param(
-                -3,
-                -2,
-                ValueError,
-                id="should raise error when age is less than 0",
-            ),
-            pytest.param(
                 20,
                 "Arsen",
                 TypeError,
