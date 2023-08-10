@@ -60,6 +60,12 @@ class TestCatDogHumanAge:
                 [4, 4],
                 id="both cat and dog ahead of fourth threshold",
             ),
+            pytest.param(
+                -100,
+                -100,
+                [0, 0],
+                id="function returns zeros if input is negative",
+            ),
         ],
     )
     def test_get_correct_data_array(
