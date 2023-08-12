@@ -15,4 +15,3 @@ def test_should_convert_into_1() -> None:
 
 def test_should_convert_into_2() -> None:
     assert get_human_age(24, 24) == [2, 2]
-
