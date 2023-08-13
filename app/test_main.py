@@ -1,3 +1,5 @@
+import pytest
+
 from app.main import get_human_age
 
 
@@ -15,3 +17,8 @@ def test_should_convert_into_1() -> None:
 
 def test_should_convert_into_2() -> None:
     assert get_human_age(24, 24) == [2, 2]
+
+
+def test_should_raise_value_error_if_argument_not_int() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("20", "15")
