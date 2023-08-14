@@ -11,11 +11,17 @@ from app.main import get_human_age
     (28, 28, [3, 2])
 ])
 def test_get_human_age(cat_age: int, dog_age: int,
-                       expected_result: list) -> None:
+                       expected_result: list[int]) -> None:
     result = get_human_age(cat_age, dog_age)
     assert expected_result == result
 
 
-def test_should_raise_value_error_if_argument_not_int() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("20", "15")
+@pytest.mark.parametrize("cat_age, dog_age, expected_exception", [
+    ("1", "2", TypeError),
+    ([1], [2], TypeError),
+    ({1}, {2}, TypeError)
+])
+def test_get_human_age_on_exceptions(cat_age: int, dog_age: int,
+                                     expected_exception: Exception) -> None:
+    with pytest.raises(expected_exception):
+        get_human_age(cat_age, dog_age)
