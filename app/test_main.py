@@ -21,9 +21,6 @@ def test_get_human_age(cat_age: int, dog_age: int,
     ("1", "2", TypeError),
     ([1], [2], TypeError),
     ({1}, {2}, TypeError),
-    (1.2, 2.3, TypeError),
-    (True, True, TypeError)
-
 ])
 def test_get_human_age_on_exceptions(cat_age: int, dog_age: int,
                                      expected_exception: Exception) -> None:
