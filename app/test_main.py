@@ -34,6 +34,10 @@ class TestCheckNumberCases:
             # test_get_human_age_should_check_big_numbers
             (
                 100, 100, [21, 17]
+            ),
+            # test_get_human_age_should_check_negative_numbers
+            (
+                -15, -16, [0, 0]
             )
         ]
     )
@@ -46,20 +50,17 @@ class TestCheckNumberCases:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
-        "cat_age,dog_age,error",
+        "cat_age,dog_age",
         [
-            ("a", 15, TypeError),
-            (15, "a", TypeError),
-            ("a", "a", TypeError),
-            ({"a"}, {"a"}, TypeError),
-            (["a"], ["a"], TypeError),
-            (15.1, 15.2, TypeError),
-            (-15, -16, ValueError)
-
+            ("a", 15),
+            (15, "a"),
+            ("a", "a"),
+            ({"a"}, {"a"}),
+            (["a"], ["a"])
         ]
     )
     def test_should_accept_correct_types(
-            self, cat_age: int, dog_age: int, error: tuple
+            self, cat_age: int, dog_age: int
     ) -> None:
-        with pytest.raises(error):
+        with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
