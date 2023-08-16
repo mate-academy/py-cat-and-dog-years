@@ -53,7 +53,7 @@ class TestCheckNumberCases:
             ("a", "a", TypeError),
             ({"a"}, {"a"}, TypeError),
             (["a"], ["a"], TypeError),
-            (15.1, 15.2, ValueError),
+            (15.1, 15.2, TypeError),
             (-15, -16, ValueError)
 
         ]
