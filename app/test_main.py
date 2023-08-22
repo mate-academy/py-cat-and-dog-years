@@ -15,13 +15,13 @@ import pytest
             23,
             23,
             [1, 1],
-            id="Cat/Dog age should convert to one human year"
+            id="Cat/Dog age should convert to 1 human year"
         ),
         pytest.param(
             24,
             24,
             [2, 2],
-            id="Cat/Dog age convert to second human year"
+            id="Cat/Dog age convert to 2 human years"
         ),
         pytest.param(
             28,
