@@ -10,12 +10,15 @@ class TestGetHumanAge:
             pytest.param(
                 14, 14, [0, 0], id="check cat_dog less than first year"
             ),
-            pytest.param(15, 15, [1, 1], id="check cat_dog first year"),
+            pytest.param(
+                15, 15, [1, 1], id="check cat_dog first year"),
             pytest.param(
                 23, 24, [1, 2], id="check cat first and dog second year"
             ),
-            pytest.param(28, 29, [3, 3], id="check cat_dog third year"),
-            pytest.param(50, 50, [8, 7], id="check cat_dog extra years"),
+            pytest.param(
+                28, 29, [3, 3], id="check cat_dog third year"),
+            pytest.param(
+                50, 50, [8, 7], id="check cat_dog extra years"),
         ],
     )
     def test_get_human_age(
