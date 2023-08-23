@@ -66,3 +66,37 @@ class TestCatAndDogYears:
             expected_result: int
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
+
+
+class TestTypes:
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_error",
+        [
+            pytest.param(
+                "15",
+                0,
+                TypeError,
+                id="you can only pass 'int' type for age"
+            ),
+            pytest.param(
+                14,
+                [14],
+                TypeError,
+                id="you can only pass 'int' type for age"
+            ),
+            pytest.param(
+                15,
+                {15},
+                TypeError,
+                id="you can only pass 'int' type for age"
+            )
+        ]
+    )
+    def test_cat_and_dog_correct_types(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_error: Exception
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
