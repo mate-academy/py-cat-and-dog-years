@@ -20,16 +20,28 @@ class TestGetHumanAge:
                 id="test cat and dog age equal to first year"
             ),
             pytest.param(
-                23,
-                23,
-                [1, 1],
+                24,
+                24,
+                [2, 2],
                 id="test cat and dog second year"
             ),
             pytest.param(
-                32,
-                32,
-                [4, 3],
-                id="test cat and dog extra years"
+                28,
+                28,
+                [3, 2],
+                id="test cat and dog third year"
+            ),
+            pytest.param(
+                -4,
+                -4,
+                [0, 0],
+                id="test cat and dog negative years"
+            ),
+            pytest.param(
+                100,
+                100,
+                [21, 17],
+                id="test cat and dog large number of years"
             )
         ]
     )
