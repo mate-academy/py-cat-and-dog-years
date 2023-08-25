@@ -14,7 +14,8 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
-        (28, 100, [3, 17])
+        (28, 100, [3, 17]),
+        (-1, -1, [0, 0])
     ]
 )
 def test_should_return_correct_output(
