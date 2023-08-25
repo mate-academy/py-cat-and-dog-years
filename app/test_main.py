@@ -20,6 +20,12 @@ class TestGetHumanAge:
                 id="test cat and dog age equal to first year"
             ),
             pytest.param(
+                23,
+                23,
+                [1, 1],
+                id="test cat and dog year equal to 23"
+            ),
+            pytest.param(
                 24,
                 24,
                 [2, 2],
