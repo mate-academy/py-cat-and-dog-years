@@ -6,32 +6,28 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "dog_age,cat_age,expected_result",
     [
-        pytest.param(
-            -1, 14,
-            [0, 0],
-            id="should return zero when age is less than 15"
+        (
+            14, 14,
+            [0, 0]
         ),
-        pytest.param(
-            15, 23,
-            [1, 1],
-            id="should return 1 when age in range 15 and 23"
+        (
+            23, 23,
+            [1, 1]
         ),
-        pytest.param(
+        (
             28, 28,
-            [3, 2],
-            id="should tell apart cat and dog age conversion rates (4 and 5)"
+            [3, 2]
         ),
-        pytest.param(
+        (
             100, 100,
-            [21, 17],
-            id="should work with big numbers"
+            [21, 17]
         )
         ]
 )
 def test_convert_age_correctly(
-        dog_age,
-        cat_age,
-        expected_result
+        dog_age: int,
+        cat_age: int,
+        expected_result: list[int]
 ):
     assert get_human_age(dog_age, cat_age) == expected_result
 
@@ -41,9 +37,13 @@ def test_convert_age_correctly(
     [
         pytest.param(
             "dog",
-            "cat",
-            TypeError,
-            id="should raise TypeError if an argument is not numeric"
+            ["cat"],
+            TypeError
+        ),
+        pytest.param(
+            {"dog"},
+            ("cat"),
+            TypeError
         )
     ]
 )
