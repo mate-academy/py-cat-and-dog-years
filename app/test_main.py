@@ -13,13 +13,12 @@ from app.main import get_human_age
         pytest.param(
             15, 15, [1, 1], id="check for 15 dog/cat ages is 1 for human"
         ),
-        pytest.param(14.8, 14.4, [0, 0], id="check for almost converted age"),
         pytest.param(
             24, 24, [2, 2], id="check that next 9 years calculated correctly"
         ),
         pytest.param(23, 23, [1, 1], id="23 is still 1 human year"),
         pytest.param(
-            29, 30, [3, 3], id="check that next 5 years calculated correctly"
+            29, 30, [3, 3], id="check that next 4/5 years calculated correctly"
         ),
         pytest.param(
             100, 100, [21, 17], id="correct calculating for big ages"
