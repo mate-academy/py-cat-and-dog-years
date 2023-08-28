@@ -37,3 +37,4 @@ def test_dog_age_are_converted_to_human_years(
 ) -> None:
     goals = get_human_age(5, dog_age)
     assert goals[1] == dog_convert_age
+
