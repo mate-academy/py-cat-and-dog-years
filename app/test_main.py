@@ -14,6 +14,9 @@ class TestGetHumanAge:
                 0, 0, [0, 0], id="should return zero"
             ),
             pytest.param(
+                2, 2, [0, 0], id="check cat/dog first year"
+            ),
+            pytest.param(
                 14, 14, [0, 0], id="check cat_dog less than first year"
             ),
             pytest.param(
@@ -23,7 +26,7 @@ class TestGetHumanAge:
                 23, 23, [1, 1], id="check cat/dog first year"
             ),
             pytest.param(
-                24, 24, [1, 1], id="check cat/dog second year"
+                24, 24, [2, 2], id="check cat/dog second year"
             ),
             pytest.param(
                 27, 28, [2, 2], id="check cat_dog second year"),
