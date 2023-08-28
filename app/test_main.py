@@ -7,32 +7,39 @@ from app.main import get_human_age
     "cat_age, dog_age, expected_result",
     [
         pytest.param(
-            14,
-            0,
+            1,
+            1,
             [0, 0],
-            id="should add zero to list if cat_age or dog_age less than first_year"
+            id=("should add zero to list if"
+                " cat_age or dog_age less than first_year")
         ),
         pytest.param(
-            20,
-            21,
+            23,
+            23,
             [1, 1],
-            id="should add 1 to list if we use only first_year rule"
+            id=("should add 1 to list if"
+                " we use only first_year rule")
         ),
         pytest.param(
-            25,
-            26,
+            24,
+            24,
             [2, 2],
-            id=("should add 2 to list if we use"
-                " first_year and second_year rule")
+            id=("should add 2 to list if"
+                " we use first_year and second_year rule")
         ),
+        pytest.param(
+            30,
+            30,
+            [3, 3],
+            id=("should add 3 to list if we use"
+                " first_year, second_year and each year rule")),
         pytest.param(
             100,
             100,
             [21, 17],
             id=("should return correct values if we use"
-                " first_year, second_year and each_year rules")
-        ),
-    ]
+                " first_year, second_year and each_year rules")),
+    ],
 )
 def test_check_correct_result(
         cat_age: int,
