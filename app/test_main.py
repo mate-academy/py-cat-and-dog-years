@@ -1,5 +1,7 @@
-import pytest
 from typing import Any
+
+import pytest
+
 from app.main import get_human_age
 
 
@@ -20,13 +22,18 @@ def test_correct_types(
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
-        pytest.param(-1, -1, [0, 0], id="negative"),
-        pytest.param(0, 0, [0, 0], id="zeroes"),
-        pytest.param(13, 13, [0, 0], id="test 0 human years: < 15"),
-        pytest.param(17, 17, [1, 1], id="test 1 human years: > 15"),
-        pytest.param(24, 24, [2, 2], id="test 2 human years: equal 15 + 9"),
-        pytest.param(28, 28, [3, 2], id="test start difference"),
-        pytest.param(60, 69, [11, 11], id="test 11 human years"),
+        pytest.param(-1, -1, [0, 0], id="test negative numbers"),
+        pytest.param(0, 0, [0, 0], id="test zeroes"),
+        pytest.param(13, 13, [0, 0], id="test cat 13 years and dog 13 years"),
+        pytest.param(17, 17, [1, 1], id="test cat 17 years and dog 17 years"),
+        pytest.param(24, 24, [2, 2], id="test cat 24 years and dog 24 years"),
+        pytest.param(28, 28, [3, 2], id="test cat 28 years and dog 28 years"),
+        pytest.param(
+            60, 69, [11, 11], id="test cat 60 years and dog 69 years"
+        ),
+        pytest.param(15, 15, [1, 1], id="test cat 15 years and dog 15 years"),
+        pytest.param(14, 14, [0, 0], id="test cat 14 years and dog 14 years"),
+        pytest.param(28, 28, [3, 2], id="test cat 28 years and dog 28 years"),
     ],
 )
 def test_convert_age(cat_age: int, dog_age: int, result: list) -> None:
