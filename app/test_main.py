@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -20,10 +22,28 @@ class TestAnimalToHumanAge:
                 id="try less than 15"
             ),
             pytest.param(
+                15,
+                15,
+                [1, 1],
+                id="try 15"
+            ),
+            pytest.param(
                 23,
                 23,
                 [1, 1],
                 id="try between 15 and 24"
+            ),
+            pytest.param(
+                24,
+                24,
+                [2, 2],
+                id="try 15"
+            ),
+            pytest.param(
+                28,
+                28,
+                [3, 2],
+                id="difference output for cat and dog"
             ),
             pytest.param(
                 -100,
@@ -56,7 +76,7 @@ class TestAnimalToHumanAge:
             self,
             dog_age: int,
             cat_age: int,
-            error: list[int]
+            error: Any
     ) -> None:
-        with pytest.raises(TypeError):
+        with pytest.raises(error):
             get_human_age(cat_age, dog_age)
