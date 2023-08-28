@@ -1,5 +1,5 @@
-from app.main import get_human_age
 import pytest
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected", [
@@ -8,6 +8,12 @@ import pytest
         14,
         [0, 0],
         id="Both animals under 15 years should give 0 human age"
+    ),
+    pytest.param(
+        15,
+        15,
+        [1, 1],
+        id="Both animals older 15 years should give 1 human age"
     ),
     pytest.param(
         23,
@@ -38,6 +44,12 @@ import pytest
         -1,
         [0, 0],
         id="negative age gives 0 human age"
+    ),
+    pytest.param(
+        0,
+        0,
+        [0, 0],
+        id="zeros gives zeros"
     ),
 ])
 def test_get_human_age(
