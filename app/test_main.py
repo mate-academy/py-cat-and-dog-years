@@ -74,8 +74,11 @@ def test_should_return_correct_values(
         ({"age": 12}, 12),
     ]
 )
-def test_correct_exception_if_incorrect_type(cat_age: Any, dog_age: Any) -> None:
+def test_typeerror_exception_if_incorrect_type(
+        cat_age: Any,
+        dog_age: Any
+) -> None:
     with pytest.raises(TypeError) as err:
         get_human_age(cat_age, dog_age)
 
-    assert err.type == TypeError, "function must raise TypeError if incorrect type"
+    assert err.type == TypeError
