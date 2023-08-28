@@ -19,10 +19,20 @@ from app.main import get_human_age
             14, 14, [0, 0], id="pet's age is less than 1 human's year"
         ),
         pytest.param(
+            15, 15, [1, 1], id="14 pet years equals 1 human year"
+        ),
+        pytest.param(
             23, 23, [1, 1], id="15 pet years equals 1 human year"
         ),
         pytest.param(
             24, 24, [2, 2], id="24 pet years equals 2 human years"
+        ),
+        pytest.param(
+            27, 27, [2, 2], id="27 pet years equals 2 human year"
+        ),
+        pytest.param(
+            28, 28, [3, 2], id="28 cat years equals 3 human year and "
+                               "28 dog years equals 2 human year"
         ),
         pytest.param(
             29, 29, [3, 3], id="29 pet years equals 3 human years"
