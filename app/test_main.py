@@ -11,16 +11,10 @@ class TestGetHumanAge:
             (0, 0, [0, 0]),
             (14, 14, [0, 0]),
             (23, 23, [1, 1]),
+            (38, 24, [5, 2]),
             (100, 100, [21, 17]),
             (-2, -5, [0, 0])
         ],
-        ids=[
-            "0 cat/dog years should convert into 0 human age.",
-            "14 cat/dog years should convert into 0 human age.",
-            "23 cat/dog years should convert into 1 human age.",
-            "100 cat/dog years should convert into 21/17 human age.",
-            "negative numbers should convert into 0 human age.",
-        ]
     )
     def test_human_age_calculated_correctly(
             self,
@@ -33,11 +27,15 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age,dog_age,expected_error",
         [
-            pytest.param(
+            (
                 "zero",
                 "zero",
                 TypeError,
-                id="should raise error when age not integer"
+            ),
+            (
+                {},
+                [],
+                TypeError,
             ),
         ]
     )
