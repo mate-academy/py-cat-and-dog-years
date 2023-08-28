@@ -9,7 +9,13 @@ from app.main import get_human_age
         pytest.param(0, 0, [0, 0], id="Zero age should return 0"),
         pytest.param(14, 14, [0, 0], id="Age before 15 should return 0"),
         pytest.param(
+            15, 15, [1, 1], id="Age between 15 and 23 should return 1"
+        ),
+        pytest.param(
             23, 23, [1, 1], id="Age between 15 and 23 should return 1"
+        ),
+        pytest.param(
+            27, 28, [2, 2], id="Dog and cat have different boundaries(27,28)"
         ),
         pytest.param(
             28,
