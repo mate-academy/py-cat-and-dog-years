@@ -46,3 +46,7 @@ class TestGetHumanAge:
         result = get_human_age(cat_age, dog_age)
 
         assert result == expected_result
+
+    def test_if_raises_error(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("10", 2)
