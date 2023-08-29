@@ -1,5 +1,3 @@
-from typing import Any
-
 import pytest
 
 from app.main import get_human_age
@@ -61,22 +59,6 @@ class TestAnimalToHumanAge:
     ) -> None:
         assert get_human_age(dog_age, cat_age) == result
 
-    @pytest.mark.parametrize(
-        "dog_age, cat_age, error",
-        [
-            pytest.param(
-                "idx",
-                None,
-                TypeError,
-                id="raise error when incorrect value"
-            )
-        ]
-    )
-    def test_error_in_get_human_age(
-            self,
-            dog_age: int,
-            cat_age: int,
-            error: Any
-    ) -> None:
-        with pytest.raises(error):
-            get_human_age(cat_age, dog_age)
+    def test_raise_error_when_incorrect_value(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("idx", None)
