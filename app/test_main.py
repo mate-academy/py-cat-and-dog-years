@@ -37,6 +37,22 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_get_human_age_with_invalid_param_type() -> None:
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected",
+    [
+        # test_when_cat_and_dog_years_are_zeros
+        ("14", "14", [0, 0]),
+        ([14], [14], [0, 0]),
+    ],
+    ids=[
+        "'14' cat/dog years.",
+        "[14] cat/dog years.",
+    ]
+)
+def test_get_human_age_with_invalid_param_type(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int]
+) -> None:
     with pytest.raises(TypeError):
         assert get_human_age("14", "14") == [0, 0]
