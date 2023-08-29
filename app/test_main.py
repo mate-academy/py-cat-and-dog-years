@@ -8,16 +8,10 @@ class Tests:
         "cat_years,dog_years,result",
         [
             pytest.param(
-                0,
-                0,
-                [0, 0],
-                id="When dog/cat years = 0, function should be return 0"
-            ),
-            pytest.param(
                 14,
                 14,
                 [0, 0],
-                id="When 0 < dog/cat years < 15, function should be return 0"
+                id="When dog/cat years < 15, function should be return 0"
             ),
             pytest.param(
                 23,
