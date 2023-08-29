@@ -1,3 +1,77 @@
+import pytest
+
 from app.main import get_human_age
 
-# write your code here
+
+class TestGetHumanAge:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected_result",
+        [
+            pytest.param(
+                26,
+                29,
+                [2, 3],
+                id="should get correct result"
+            ),
+            pytest.param(
+                0,
+                0,
+                [0, 0],
+                id="should get not empty list"
+            ),
+            pytest.param(
+                14,
+                14,
+                [0, 0],
+                id="should get result list with zero"
+            ),
+            pytest.param(
+                15,
+                15,
+                [1, 1],
+                id="should get if ages are similar"
+            ),
+            pytest.param(
+                23,
+                23,
+                [1, 1],
+                id="shouldn't round to ceil"
+            ),
+            pytest.param(
+                100,
+                100,
+                [21, 17],
+                id="should get big age"
+            )
+        ]
+    )
+    def test_get_human_age_correctly(
+            self,
+            cat_age,
+            dog_age,
+            expected_result
+    ):
+        assert get_human_age(cat_age, dog_age) == expected_result, (
+            f"Function 'get_human_age' should return {expected_result},"
+            f"when (cat_age, dog_age) equal to ({cat_age}, {dog_age})"
+        )
+
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected_error",
+        [
+            pytest.param(
+                26,
+                "29",
+                TypeError,
+                id="should raise error when dog age is string"
+            )
+        ]
+    )
+    def test_raise_error_correctly(
+            self,
+            cat_age,
+            dog_age,
+            expected_error
+    ):
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
