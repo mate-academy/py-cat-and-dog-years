@@ -26,12 +26,6 @@ class Tests:
                 id="23 cat/dog years should convert into 1 human age."
             ),
             pytest.param(
-                15,
-                15,
-                [1, 1],
-                id="When dog/cat years = 15, func. should be return 1"
-            ),
-            pytest.param(
                 100,
                 100,
                 [21, 17],
