@@ -44,6 +44,12 @@ from app.main import get_human_age
                 "the equivalence of the first two human years"
             ),
         ),
+        pytest.param(
+            100,
+            100,
+            [21, 17],
+            id="should correctly work with large values",
+        ),
     ],
 )
 def test_get_human_age(
