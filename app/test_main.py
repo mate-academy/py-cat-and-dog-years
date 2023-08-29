@@ -61,7 +61,7 @@ from app.main import get_human_age
         100,
         100,
         [21, 17],
-        id="Both animals 100 years should give 21 and 17 human age respectively"
+        id="Both animals 100 years should give 21 and 17 human age"
     ),
     pytest.param(
         -1,
