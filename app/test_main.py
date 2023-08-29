@@ -17,10 +17,16 @@ class TestGetHumanAge:
                 14, 14, [0, 0], id="check age under 1 for both cat and dog"
             ),
             pytest.param(
-                15, 23, [1, 1], id="check age equals 1 for both cat and dog"
+                15, 15, [1, 1], id="check age equals 1 for both cat and dog"
             ),
             pytest.param(
-                27, 24, [2, 2], id="check age equals 2 for both cat and dog"
+                23, 23, [1, 1], id="check age equals 1 for both cat and dog"
+            ),
+            pytest.param(
+                24, 24, [2, 2], id="check age equals 2 for both cat and dog"
+            ),
+            pytest.param(
+                27, 28, [2, 2], id="check age equals 2 for both cat and dog"
             ),
             pytest.param(
                 28, 29, [3, 3], id="check age equals 3 for both cat and dog"
