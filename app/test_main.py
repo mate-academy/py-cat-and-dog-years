@@ -37,6 +37,10 @@ from app.main import get_human_age
         pytest.param(
             100, 100, [21, 17],
             id="100 cat/dog years give 21/17 human years"
+        ),
+        pytest.param(
+            -10, -3, [0, 0],
+            id="negative cat/dog age give 0 human years"
         )
     ]
 )
