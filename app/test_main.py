@@ -20,7 +20,12 @@ class Tests:
             pytest.param(
                 28,
                 [3, 2],
-                id="First change should be at 28 y. for dog/cat"
+                id="First change should be at 28 years"
+            ),
+            pytest.param(
+                -10,
+                [0, 0],
+                id="When years are negative function should be return 0"
             ),
             pytest.param(
                 100,
