@@ -50,3 +50,8 @@ def test_get_human_age(
     cat_age: int, dog_age: int, expected_result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
+
+
+def test_incorrect_argument_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", "10")
