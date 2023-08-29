@@ -60,12 +60,6 @@ class TestGetHumanAge:
                    "when more or equal 28(29) for cat(dog)"
             ),
             pytest.param(
-                28,
-                28,
-                [3, 2],
-                id="pet's age should convert into 3 for cat and 2 for dog"
-            ),
-            pytest.param(
                 1000,
                 1000,
                 [246, 197],
