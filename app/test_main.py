@@ -15,8 +15,8 @@ class TestGetHumanAge:
                 id="should return 0 for negative input"
             ),
             pytest.param(
-                -0,
-                -0,
+                0,
+                0,
                 [0, 0],
                 id="should return 0 for 0's in input"
             ),
