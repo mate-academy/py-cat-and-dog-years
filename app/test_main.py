@@ -15,6 +15,9 @@ from app.main import get_human_age
             23, 23, [1, 1], id="Age between 15 and 23 should return 1"
         ),
         pytest.param(
+            24, 24, [2, 2], id="Age 24 should return 2"
+        ),
+        pytest.param(
             27, 28, [2, 2], id="Dog and cat have different boundaries(27,28)"
         ),
         pytest.param(
