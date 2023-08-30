@@ -37,3 +37,7 @@ class Tests:
     def test_function(self,
                       years: int, result: list) -> None:
         assert get_human_age(years, years) == result
+
+    def test_invalid_input_type(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("cat", "dog")
