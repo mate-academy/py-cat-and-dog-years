@@ -56,6 +56,11 @@ class TestGetHumanAge:
             ({15}, {23}, TypeError),
         ]
     )
-    def test_correct_error(self, cat_age: Any, dog_age: Any, expected_error: Exception):
+    def test_correct_error(
+            self,
+            cat_age: Any,
+            dog_age: Any,
+            expected_error: Exception
+    ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
