@@ -12,25 +12,49 @@ class TestGetHumanAge:
                 -44,
                 -3,
                 [0, 0],
-                id="should return 0 for both cat and dog ages under zero",
+                id="should return 0 for negative input"
             ),
             pytest.param(
-                14, 14, [0, 0], id="check age under 1 for both cat and dog"
+                -0,
+                -0,
+                [0, 0],
+                id="should return 0 for 0's in input"
             ),
             pytest.param(
-                15, 15, [1, 1], id="check age equals 1 for both cat and dog"
+                14,
+                14,
+                [0, 0],
+                id="check age under 1 for both cat and dog"
             ),
             pytest.param(
-                23, 23, [1, 1], id="check age equals 1 for both cat and dog"
+                15,
+                15,
+                [1, 1],
+                id="check age equals 1 for both cat and dog"
             ),
             pytest.param(
-                24, 24, [2, 2], id="check age equals 2 for both cat and dog"
+                23,
+                23,
+                [1, 1],
+                id="check age equals 1 for both cat and dog"
             ),
             pytest.param(
-                27, 28, [2, 2], id="check age equals 2 for both cat and dog"
+                24,
+                24,
+                [2, 2],
+                id="check age equals 2 for both cat and dog"
             ),
             pytest.param(
-                28, 29, [3, 3], id="check age equals 3 for both cat and dog"
+                27,
+                28,
+                [2, 2],
+                id="check age equals 2 for both cat and dog"
+            ),
+            pytest.param(
+                28,
+                29,
+                [3, 3],
+                id="check age equals 3 for both cat and dog"
             ),
             pytest.param(
                 314,
