@@ -1,3 +1,5 @@
+from typing import Type
+
 import pytest
 
 from app.main import get_human_age
@@ -23,8 +25,12 @@ from app.main import get_human_age
             id="should check animal age above 1 human year"
         ),
         pytest.param(
-            28, 28, [3, 2],
+            24, 24, [2, 2],
             id="should check animal age right in 2 human years"
+        ),
+        pytest.param(
+            28, 29, [3, 3],
+            id="should check animal age about 3 human years"
         ),
         pytest.param(
             32, 40, [4, 5],
@@ -48,18 +54,38 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_get_human_age_with_incorrect_type() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("cat", 17)
-
-    with pytest.raises(TypeError):
-        get_human_age(25, "dog")
-
-    with pytest.raises(TypeError):
-        get_human_age("cat", "dog")
-
-    with pytest.raises(TypeError):
-        get_human_age(4)
-
-    with pytest.raises(TypeError):
-        get_human_age(17, None)
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [
+        pytest.param(
+            "cat",
+            17,
+            TypeError,
+            id="Age of cat should be an integer"
+        ),
+        pytest.param(
+            25,
+            "dog",
+            TypeError,
+            id="Age of dog should be an integer"
+        ),
+        pytest.param(
+            "cat",
+            "dog",
+            TypeError,
+            id="Age of animals should be an integer"
+        ),
+        pytest.param(
+            "cat",
+            None,
+            TypeError,
+            id="Age of animal can't be None"
+        )
+    ]
+)
+def test_get_human_age_with_incorrect_type(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Type[TypeError]) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
