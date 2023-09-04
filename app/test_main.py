@@ -9,6 +9,11 @@ class TestGetHumanAge:
         "cat_age, dog_age, excepted_list",
         [
             pytest.param(
+                -1, -3,
+                [0, 0],
+                id="must return [0, 0] when both ages are negative"
+            ),
+            pytest.param(
                 randrange(0, 14),
                 randrange(0, 14),
                 [0, 0],
