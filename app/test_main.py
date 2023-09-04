@@ -10,7 +10,7 @@ class TestGetHumanAge:
         [
             pytest.param(
                 randrange(0, 14),
-                randrange(0,  14),
+                randrange(0, 14),
                 [0, 0],
                 id="must return [0, 0] when both ages are less than 15"
             ),
