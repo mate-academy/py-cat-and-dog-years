@@ -6,37 +6,73 @@ from app.main import get_human_age, convert_to_human
 class TestGetHumanAge:
 
     @pytest.mark.parametrize(
-        "cat_age,dog_age,expected_result",
+        "cat_age, dog_age, expected_result",
         [
+            pytest.param(
+                0,
+                0,
+                [0, 0],
+                id="should return [0, 0] when zeroes were given"
+            ),
+            pytest.param(
+                -1,
+                -1,
+                [0, 0],
+                id="should return [0, 0] when negative age were given"
+            ),
+            pytest.param(
+                4,
+                4,
+                [0, 0],
+                id="check first year of a cat's/dog's life"
+            ),
             pytest.param(
                 14,
                 14,
                 [0, 0],
-                id="the first year of a cat's/dog's life"
+                id="check first year of a cat's/dog's life"
+            ),
+            pytest.param(
+                15,
+                15,
+                [1, 1],
+                id="check second year of a cat's/dog's life"
             ),
             pytest.param(
                 23,
                 23,
                 [1, 1],
-                id="the second year of a cat's/dog's life"
+                id="check second year of a cat's/dog's life"
+            ),
+            pytest.param(
+                24,
+                24,
+                [2, 2],
+                id="check third year of a cat's/dog's life"
             ),
             pytest.param(
                 27,
                 27,
                 [2, 2],
-                id="the third year of a cat's/dog's life"
+                id="check third year of a cat's/dog's life"
             ),
             pytest.param(
                 28,
                 28,
                 [3, 2],
-                id="the cat's fourth and dog's second year of life"
+                id="check cat's fourth and dog's third year of life"
+            ),
+            pytest.param(
+                28,
+                29,
+                [3, 3],
+                id="check fourth year of a cat's/dog's life"
             ),
             pytest.param(
                 100,
                 100,
                 [21, 17],
-                id="the cat's 22-th and dog's 18-th year of life"
+                id="check cat's 22-th and dog's 18-th year of life"
             ),
         ]
     )
