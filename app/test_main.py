@@ -46,8 +46,8 @@ def test_convert_cat_dog_years_into_human_years(
     ]
 )
 def test_incorrect_type_of_data(
-        input_cat_ages: int,
-        input_dog_ages: int,
-        expected_error: Any) -> None:
+        input_cat_ages: Any,
+        input_dog_ages: Any,
+        expected_error: Exception) -> None:
     with pytest.raises(expected_error):
         get_human_age(input_cat_ages, input_dog_ages)
