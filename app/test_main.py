@@ -114,3 +114,22 @@ class TestConvertToHuman:
         )
 
         assert result == expected_result
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [
+        pytest.param(
+            "23", 12, TypeError, id="Age can't be string"
+        ),
+        pytest.param(
+            23, None, TypeError, id="Age can't be bool type"
+        )
+    ]
+)
+def test_with_incorrect_type(
+        cat_age: int,
+        dog_age: int,
+        expected_error: type[TypeError]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
