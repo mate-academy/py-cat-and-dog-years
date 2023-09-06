@@ -115,6 +115,7 @@ class TestConvertToHuman:
 
         assert result == expected_result
 
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_error",
     [
