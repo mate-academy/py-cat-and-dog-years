@@ -24,6 +24,18 @@ from app.main import get_human_age
             [21, 17],
             id="test should return [21, 17] when ages are 100"
         ),
+        pytest.param(
+            14,
+            14,
+            [0, 0],
+            id="test should return [0, 0] when ages are 14"
+        ),
+        pytest.param(
+            23,
+            23,
+            [1, 1],
+            id="test should return [1, 1] when ages are 23"
+        ),
     ],
 )
 def test_calculates_ages_correctly(cat_age: int,
