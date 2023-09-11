@@ -48,13 +48,13 @@ def test_get_human_age_valid_inputs(
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected", [
-    (-5, 10, ValueError),
-    (5, -10, ValueError),
-    (5.5, 10, ValueError),
+    ("-5", 10, ValueError),
+    ((5, 5), -10, ValueError),
+    ([5.5], 10, ValueError),
 ])
 def test_get_human_age_invalid_inputs(
-    cat_age: int,
-    dog_age: int,
+    cat_age: str or tuple or list,
+    dog_age: str or tuple or list,
     expected: Type[Exception]
 ) -> None:
     with pytest.raises(expected):
