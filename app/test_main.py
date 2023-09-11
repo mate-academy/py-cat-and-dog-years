@@ -1,13 +1,32 @@
 from app.main import get_human_age
 
 
-def test_should_return_zeros() -> None:
+def test_get_human_age_0():
     assert get_human_age(0, 0) == [0, 0]
 
 
-def test_default_return() -> None:
-    assert get_human_age(21, 15) == [1, 1]
+def test_get_human_age_15():
+    assert get_human_age(15, 15) == [1, 1]
 
 
-def test_age_28() -> None:
+def test_get_human_age_28():
     assert get_human_age(28, 28) == [3, 2]
+
+
+def test_get_human_age_100():
+    assert get_human_age(100, 100) == [21, 17]
+
+
+def test_no_one_or_all_values() -> None:
+    try:
+        assert get_human_age() == [0, 0]
+    except TypeError:
+        print("function take 2 parameters")
+
+
+def test_another_type() -> None:
+    try:
+        assert get_human_age('13', '10') == [0, 0]
+    except TypeError:
+        print('False type')
+
