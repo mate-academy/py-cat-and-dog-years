@@ -17,9 +17,11 @@ test_cases = [
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected_result", test_cases)
-def test_get_human_age(cat_age: int,
-                       dog_age: int,
-                       expected_result: list) -> None:
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected_result: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
