@@ -4,6 +4,7 @@ from app.main import get_human_age
 
 
 test_cases = [
+    (-1, -2, [0, 0]),
     (0, 0, [0, 0]),
     (14, 14, [0, 0]),
     (15, 15, [1, 1]),
@@ -22,15 +23,28 @@ def test_get_human_age(cat_age: int,
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
-def test_no_one_or_all_values() -> None:
-    try:
-        assert get_human_age() == [0, 0]
-    except TypeError:
-        print("function take 2 parameters")
-
-
-def test_another_type() -> None:
-    try:
-        assert get_human_age("13", "10") == [0, 0]
-    except TypeError:
-        print("False type")
+@pytest.mark.parametrize(
+    "cat_age, dog_age,"
+    "result",
+    [
+        pytest.param(
+            1,
+            None,
+            TypeError,
+            id="should return `TypeError` when parameter is empty"
+        ),
+        pytest.param(
+            "2",
+            2,
+            TypeError,
+            id="should return `TypeError` when parameter is not int"
+        )
+    ]
+)
+def test_no_one_or_all_values(
+        cat_age: int,
+        dog_age: int,
+        result: Exception
+) -> None:
+    with pytest.raises(result):
+        get_human_age(cat_age, dog_age)
