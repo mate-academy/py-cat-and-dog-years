@@ -18,4 +18,4 @@ from app.main import get_human_age
 def test_cat_dog_years_should_convert_into_human_age(
         animal_age_in: list,
         human_age_out: list) -> None:
-    assert get_human_age(animal_age_in[0], animal_age_in[1]) == human_age_out
+    assert get_human_age(*animal_age_in) == human_age_out
