@@ -11,7 +11,8 @@ from app.main import get_human_age
         ([23, 23], [1, 1]),
         ([27, 28], [2, 2]),
         ([15, 15], [1, 1]),
-        ([28, 29], [3, 3])
+        ([28, 29], [3, 3]),
+        ([-1, 101], [0, 17])
     ]
 )
 def test_cat_dog_years_should_convert_into_human_age(
