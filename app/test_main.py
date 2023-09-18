@@ -6,6 +6,7 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_years, dog_years, result",
     [
+        (-1, -5, [0, 0]),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -16,6 +17,7 @@ from app.main import get_human_age
         (100, 100, [21, 17])
     ],
     ids=[
+        "ages entered incorrectly (negative numbers)",
         "both years are 0",
         "both years are under 15",
         "both years are 15",
