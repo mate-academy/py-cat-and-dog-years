@@ -1,3 +1,5 @@
+import pytest
+
 from app.main import get_human_age
 
 
@@ -19,3 +21,16 @@ def test_when_value_equal_28() -> None:
 
 def test_when_value_equal_100() -> None:
     assert get_human_age(100, 100) == [21, 17]
+
+
+def test_negative_value() -> None:
+    assert get_human_age(-1, -1) == [0, 0]
+
+
+def test_realy_big_value() -> None:
+    assert get_human_age(1000, 1000) == [246, 197]
+
+
+def test_invalid_input_value() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("1000", "500")
