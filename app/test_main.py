@@ -11,6 +11,7 @@ def test_check_output_value_not_equal_previous_value() -> None:
     (0, 16, [0, 1]),
     (27, 28, [2, 2]),
     (28, 28, [3, 2]),
+    (100, 150, [21, 27])
 ])
 def test_check_data_minus_type_age_value(
         cat_age: int,
