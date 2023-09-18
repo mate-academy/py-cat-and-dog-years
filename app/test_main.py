@@ -69,3 +69,29 @@ class TestPetAgeToHuman:
             expected: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
+
+    @pytest.mark.parametrize(
+        "cat_age_1, dog_age_1, expected_1",
+        [
+            pytest.param(
+                None,
+                15,
+                TypeError,
+                id="should return 'TypeError' when pet age is 'None'"
+            ),
+            pytest.param(
+                15,
+                "m",
+                TypeError,
+                id="should return 'TypeError' when pet age isn't 'int'"
+            )
+        ]
+    )
+    def test_type_error_cases(
+            self,
+            cat_age_1,
+            dog_age_1,
+            expected_1
+    ) -> None:
+        with pytest.raises(expected_1):
+            get_human_age(cat_age_1, dog_age_1)
