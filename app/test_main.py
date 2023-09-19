@@ -3,19 +3,19 @@ from app.main import get_human_age, convert_to_human
 
 
 def test_convert_to_human_less_than_first_year() -> None:
-    assert convert_to_human(10, 15, 9, 4)
+    assert convert_to_human(10, 15, 9, 4) == 0
 
 
 def test_convert_to_human_between_first_and_second_year() -> None:
-    assert convert_to_human(20, 15, 9, 4)
+    assert convert_to_human(20, 15, 9, 4) == 1
 
 
 def test_convert_to_human_more_than_second_year() -> None:
-    assert convert_to_human(30, 15, 9, 4)
+    assert convert_to_human(30, 15, 9, 4) == 2
 
 
 def test_convert_to_human_more_than_second_year_with_remainder() -> None:
-    assert convert_to_human(32, 15, 9, 4)
+    assert convert_to_human(32, 15, 9, 4) == 2
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected", [
