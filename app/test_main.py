@@ -29,4 +29,3 @@ def test_get_human_age(
             get_human_age(cat_age, dog_age)
     else:
         assert get_human_age(cat_age, dog_age) == expected
-
