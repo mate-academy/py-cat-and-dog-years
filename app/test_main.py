@@ -1,5 +1,6 @@
 import pytest
 from app.main import get_human_age
+from typing import List, Union, Type
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected", [
@@ -18,7 +19,11 @@ from app.main import get_human_age
     (100, 100, [21, 17])
 
 ])
-def test_get_human_age(cat_age: int, dog_age: int, expected: int) -> None:
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected: Union[List[int], Type[TypeError]]
+) -> None:
     if expected == TypeError:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
