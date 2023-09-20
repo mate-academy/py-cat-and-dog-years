@@ -1,3 +1,5 @@
+from typing import Type
+
 import pytest
 
 from app.main import get_human_age
@@ -24,12 +26,29 @@ from app.main import get_human_age
                              "test checks that age is not greater than 15",
                              "test_check_negative_numbers_for_function"
                          ])
-def test_check_correctly_test_for_dog_and_cat(dog_age: int, cat_age: int,
-                                              expected_result: list[int]) -> None:
-
+def test_check_correctly_test_for_dog_and_cat(
+        dog_age: int,
+        cat_age: int,
+        expected_result: list[int]
+) -> None:
     assert get_human_age(dog_age, cat_age) == expected_result
 
 
-def test_check_correct_type_numbers_for_function() -> None:
-    with pytest.raises(TypeError):
-        get_human_age([1], [1])
+@pytest.mark.parametrize("dog_age, cat_age, expected_error", [
+    ([1], [1], TypeError),
+    ({1}, {1}, TypeError),
+    ((1), (1), TypeError),
+    (1, [1], TypeError)
+], ids=[
+    "test_check_type_error_list",
+    "test_check_type_error_set",
+    "test_check_type_error_tuples",
+    "test_check_for_all_correct_type"
+])
+def check_correct_type_numbers_for_functions(
+        dog_age: [dict, list, tuple, set],
+        cat_age: [dict, list, tuple, set],
+        expected_error: Type[TypeError]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(dog_age, cat_age)
