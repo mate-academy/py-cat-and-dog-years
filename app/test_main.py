@@ -46,8 +46,8 @@ def test_check_correctly_test_for_dog_and_cat(
     "test_check_for_all_correct_type"
 ])
 def check_correct_type_numbers_for_functions(
-        dog_age: [dict, list, tuple, set],
-        cat_age: [dict, list, tuple, set],
+        dog_age: [dict | list | tuple | set],
+        cat_age: [dict | list | tuple | set],
         expected_error: Type[TypeError]
 ) -> None:
     with pytest.raises(expected_error):
