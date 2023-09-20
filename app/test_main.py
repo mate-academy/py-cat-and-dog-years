@@ -25,7 +25,7 @@ from app.main import get_human_age
                              "test_check_negative_numbers_for_function"
                          ])
 def test_check_correctly_test_for_dog_and_cat(dog_age: int, cat_age: int,
-                                              expected_result: list) -> None:
+                                              expected_result: list[int]) -> None:
 
     assert get_human_age(dog_age, cat_age) == expected_result
 
