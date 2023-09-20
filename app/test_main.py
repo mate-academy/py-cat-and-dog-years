@@ -56,7 +56,21 @@ from app.main import get_human_age
             35,
             [13, 4],
             id="should return correct values",
-        )
+        ),
+        pytest.param(
+            -1,
+            5,
+            [0, 0],
+            id=("should add zero to list if"
+                " cat_age or dog_age less than first_year")
+        ),
+        pytest.param(
+            1,
+            -5,
+            [0, 0],
+            id=("should add zero to list if"
+                " cat_age or dog_age less than first_year")
+        ),
     ],
 )
 def test_check_correct_result(
