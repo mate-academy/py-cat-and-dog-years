@@ -18,8 +18,8 @@ from app.main import get_human_age
     ]
 )
 def test_worked_human_age(
-        animal_age: list,
-        human_age: list) -> None:
+        animal_age: list[int],
+        human_age: list[int]) -> None:
     assert get_human_age(*animal_age) == human_age
 
 
