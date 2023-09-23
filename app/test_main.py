@@ -26,6 +26,6 @@ def test_should_return_correct_result_if_values_is_big_value() -> None:
     assert get_human_age(100, 100) == [21, 17]
 
 
-def test_should_return_exception_if_values_is_not_list_of_two_integers() -> None:
+def test_should_return_exception_if_values_is_not_list_of_integers() -> None:
     with pytest.raises(TypeError):
         get_human_age("5", [2])
