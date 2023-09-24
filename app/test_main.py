@@ -14,7 +14,7 @@ def test_age_conversion(cat_age: int, dog_age: int, expected: int) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_wrong_types():
+def test_wrong_types() -> None:
     with pytest.raises(TypeError):
         get_human_age("cat_age", 14)
     with pytest.raises(TypeError):
