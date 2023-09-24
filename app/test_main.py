@@ -1,31 +1,53 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
-def test_should_return_correct_result_if_value_less_than_15() -> None:
-    assert get_human_age(14, 14) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_ages",
+    [
+        (14, 14, [0, 0]),
+        (23, 23, [1, 1]),
+        (15, 15, [1, 1]),
+        (24, 24, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17])
+    ],
+    ids=[
+        "if values less than 15",
+        "if values less than 24",
+        "if values equal 15",
+        "if values equal 24",
+        "if values have extra years",
+        "if values are large"
+    ]
+)
+def test_should_correct_convert_years(
+        cat_age: int,
+        dog_age: int,
+        expected_ages: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_ages
 
 
-def test_should_return_correct_result_if_values_less_than_24() -> None:
-    assert get_human_age(23, 23) == [1, 1]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error",
+    [
+        ("5", 15, TypeError),
+        (15, [15], TypeError),
+        ({2}, 15, TypeError),
 
-
-def test_should_return_correct_result_if_values_equal_15() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_correct_result_if_values_equal_24() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_should_return_correct_result_if_values_have_extra_years() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_return_correct_result_if_values_is_big_value() -> None:
-    assert get_human_age(100, 100) == [21, 17]
-
-
-def test_should_return_exception_if_values_is_not_list_of_integers() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("5", [2])
+    ],
+    ids=[
+        "should raise error if value is str",
+        "should raise error if value is list",
+        "should raise error if value is dict",
+    ]
+)
+def test_should_return_correct_exception(
+        cat_age: Any,
+        dog_age: Any,
+        expected_error: Any
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
