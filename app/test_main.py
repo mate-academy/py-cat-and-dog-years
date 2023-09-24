@@ -10,7 +10,7 @@ from app.main import get_human_age
     (27, 28, [2, 2]),
     (28, 29, [3, 3]),
 ])
-def test_age_conversion(cat_age, dog_age, expected):
+def test_age_conversion(cat_age: int, dog_age: int, expected: int) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -21,6 +21,6 @@ def test_age_conversion(cat_age, dog_age, expected):
     (23.5, 15),
     (23, 15.5),
 ])
-def test_invalid_data_types(cat_age, dog_age):
+def test_invalid_data_types(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
