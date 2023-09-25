@@ -11,15 +11,10 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (24, 24, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
-    ],
-    ids=[
-        "if values less than 15",
-        "if values less than 24",
-        "if values equal 15",
-        "if values equal 24",
-        "if values have extra years",
-        "if values are large"
+        (100, 100, [21, 17]),
+        (34, 21, [4, 1]),
+        (0, 0, [0, 0]),
+        (-5, -7, [0, 0])
     ]
 )
 def test_should_correct_convert_years(
@@ -37,11 +32,6 @@ def test_should_correct_convert_years(
         (15, [15], TypeError),
         ({2}, 15, TypeError),
 
-    ],
-    ids=[
-        "should raise error if value is str",
-        "should raise error if value is list",
-        "should raise error if value is dict",
     ]
 )
 def test_should_return_correct_exception(
