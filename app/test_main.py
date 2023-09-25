@@ -46,7 +46,7 @@ class Testall:
                 100,
                 100,
                 [21, 17]
-            )
+            ),
         ],
     )
     def test_convert_zero(
@@ -55,4 +55,8 @@ class Testall:
             dog_years: int,
             result: list
     ) -> None:
+
         assert get_human_age(cat_years, dog_years) == result
+
+    def test_type(self) -> None:
+        assert pytest.raises(TypeError)
