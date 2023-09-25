@@ -58,5 +58,5 @@ class Testall:
 
         assert get_human_age(cat_years, dog_years) == result
 
-    def test_type(self) -> None:
+    def test_type_data(self) -> None:
         assert pytest.raises(TypeError)
