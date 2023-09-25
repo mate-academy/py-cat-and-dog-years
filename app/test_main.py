@@ -1,25 +1,58 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_convert_zero() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+class Testall:
+    @pytest.mark.parametrize(
+        "cat_years,dog_years,result",
+        [
+            (
+                0,
+                0,
+                [0, 0]
+            ),
 
-
-def test_exta_add_first() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_second_add() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_second_add_fifteen() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_thirty_add() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_hundred() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+            (
+                14,
+                14,
+                [0, 0]
+            ),
+            (
+                15,
+                15,
+                [1, 1]
+            ),
+            (
+                23,
+                23,
+                [1, 1]
+            ),
+            (
+                24,
+                24,
+                [2, 2]
+            ),
+            (
+                27,
+                27,
+                [2, 2]
+            ),
+            (
+                28,
+                28,
+                [3, 2]
+            ),
+            (
+                100,
+                100,
+                [21, 17]
+            )
+        ],
+    )
+    def test_convert_zero(
+            self,
+            cat_years: int,
+            dog_years: int,
+            result: list
+    ) -> None:
+        assert get_human_age(cat_years, dog_years) == result
