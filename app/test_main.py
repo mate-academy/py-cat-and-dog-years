@@ -1,5 +1,5 @@
 import pytest
-from typing import Any
+from typing import Any, Type
 from app.main import get_human_age
 
 
@@ -37,7 +37,7 @@ def test_should_correct_convert_years(
 def test_should_return_correct_exception(
         cat_age: Any,
         dog_age: Any,
-        expected_error: Any
+        expected_error: Type[Exception]
 ) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
