@@ -10,8 +10,8 @@ import pytest
         (24, 24, [2, 2]),
         (28, 29, [3, 3]),
         (27, 28, [2, 2]),
-        (23, 23, [1, 1])
-
+        (23, 23, [1, 1]),
+        (-3, -2, [0, 0])
     ],
     ids=[
         "14 cat/dog years should convert into 0 human age.",
@@ -19,7 +19,8 @@ import pytest
         "24 cat/dog years should convert into 2 human age.",
         "28/29 cat/dog years should convert into 3 human age.",
         "27/28 cat/dog years should convert into 2 human age.",
-        "23 cat/dog years should convert into 1 human age."
+        "23 cat/dog years should convert into 1 human age.",
+        "negative cat/dog years should convert into 0 human age."
     ]
 )
 def test_returning_wright_data(
@@ -28,3 +29,8 @@ def test_returning_wright_data(
         expected: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+def test_raising_error_if_data_in_another_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("cat", "dog")
