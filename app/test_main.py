@@ -36,7 +36,7 @@ class TestGetHumanAge:
             (13, "value", TypeError)
         ]
     )
-    def test_get_human_age_with_correct_types_of_value(
+    def test_get_human_age_with_incorrect_types_of_value(
             self,
             cat_age: int,
             dog_age: int,
