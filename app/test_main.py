@@ -56,7 +56,7 @@ def test_get_human_age(
 def test_get_human_age_type_error(
         cat_age: int,
         dog_age: int,
-        expected_result: type
+        expected_result: type[Exception]
 ) -> None:
     with pytest.raises(expected_result):
         get_human_age(cat_age, dog_age)
