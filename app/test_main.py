@@ -58,5 +58,20 @@ class Testall:
 
         assert get_human_age(cat_years, dog_years) == result
 
-    def test_type_data(self) -> None:
-        assert pytest.raises(TypeError)
+    @pytest.mark.parametrize(
+        "cat_years,dog_years,result",
+        [
+            (
+                2,
+                "53",
+                [0, 0]
+            )
+        ])
+    def test_type_data(self,
+                       cat_years: int,
+                       dog_years: int,
+                       result: list) -> None:
+        try:
+            get_human_age(cat_years, dog_years)
+        except TypeError:
+            pytest.raises(TypeError)
