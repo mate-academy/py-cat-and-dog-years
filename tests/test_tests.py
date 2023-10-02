@@ -4,10 +4,7 @@ from app import main
 
 
 def convert_to_human(
-        animal_age: int,
-        first_year: int,
-        second_year: int,
-        each_year: int
+    animal_age: int, first_year: int, second_year: int, each_year: int
 ) -> int:
     if animal_age < first_year:
         return 0
@@ -33,10 +30,9 @@ def convert_to_human(
         "24 cat/dog years should convert into 2 human age.",
         "27/28 cat/dog years should convert into 2 human age.",
         "28/29 cat/dog years should convert into 3 human age.",
-    ]
+    ],
 )
 def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog):
-
     def mock_get_human_age(cat_age, dog_age):
         cat_to_human = convert_to_human(cat_age, first_year, second_year, each_year_cat)
         dog_to_human = convert_to_human(dog_age, first_year, second_year, each_year_dog)
