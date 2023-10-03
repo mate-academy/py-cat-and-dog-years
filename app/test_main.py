@@ -12,16 +12,13 @@ from app.main import get_human_age
     ((27, 27), [2, 2]),
     ((28, 28), [3, 2]),
     ((100, 100), [21, 17]),
+    ((-15, -15), [0, 0])
 ])
 def test_get_human_age(
         input_params: tuple[int, int],
         expected_output: list[int]
 ) -> None:
     assert get_human_age(*input_params) == expected_output
-
-
-def test_get_human_age_negative_values() -> None:
-    assert get_human_age(-15, -15) == [0, 0]
 
 
 def test_get_human_age_invalid_input() -> None:
