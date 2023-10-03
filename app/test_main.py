@@ -18,3 +18,12 @@ def test_get_human_age(
         expected_output: list[int]
 ) -> None:
     assert get_human_age(*input_params) == expected_output
+
+
+def test_get_human_age_negative_values() -> None:
+    assert get_human_age(-15, -15) == [0, 0]
+
+
+def test_get_human_age_invalid_input() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", "15")
