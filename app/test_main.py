@@ -48,7 +48,24 @@ from app.main import get_human_age
             [21, 17],
             id="Life expectancy test"
         ),
+        # pytest.param(
+        #     15,
+        #     None,
+        #     TypeError,
+        #     id="should return 'TypeError' when pet age isn't 'int'"
+        # ),
+        pytest.param(
+            -2,
+            -1,
+            [0, 0],
+            id="should return 0 when ages are negative"
+        ),
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+def test_if_data_is_wrong_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("cat", ["dog"])
