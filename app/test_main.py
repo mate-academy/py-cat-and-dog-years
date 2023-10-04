@@ -46,6 +46,6 @@ def test_function_outputs_correct_result(
         "dog age is string type"
     ]
 )
-def test_function_input_correct_type(cat_age, dog_age) -> None:
+def test_function_input_correct_type(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
