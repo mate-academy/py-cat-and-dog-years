@@ -48,12 +48,6 @@ from app.main import get_human_age
             [21, 17],
             id="Life expectancy test"
         ),
-        # pytest.param(
-        #     15,
-        #     None,
-        #     TypeError,
-        #     id="should return 'TypeError' when pet age isn't 'int'"
-        # ),
         pytest.param(
             -2,
             -1,
