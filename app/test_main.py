@@ -35,8 +35,17 @@ def test_function_outputs_correct_result(
     assert get_human_age(cat_age, dog_age) == result
 
 
-def test_function_input_correct_type() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("42", 42),
+        (42, "42")
+    ],
+    ids=[
+        "cat age is string type",
+        "dog age is string type"
+    ]
+)
+def test_function_input_correct_type(cat_age, dog_age) -> None:
     with pytest.raises(TypeError):
-        get_human_age("42", 42)
-    with pytest.raises(TypeError):
-        get_human_age(42, "42")
+        get_human_age(cat_age, dog_age)
