@@ -14,6 +14,8 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
+        (30, 29, [3, 3]),
+        (42, 1, [6, 0]),
         (100, 100, [21, 17])
     ],
     ids=[
@@ -25,6 +27,8 @@ from app.main import get_human_age
         "cat, dog age are exactly 2 human years",
         "cat is 1 pet year from 3 human years",
         "cat, dog age are same, but different human age",
+        "cat, dog age are different, but same human age",
+        "cat, dog are differs much, big gap in human age",
         "cat, dog age are same, very old, more difference in human age"
     ]
 )
@@ -40,11 +44,17 @@ def test_function_outputs_correct_result(
     "cat_age, dog_age, expected_error",
     [
         ("42", 42, TypeError),
-        (42, "42", TypeError)
+        (42, "42", TypeError),
+        ([9], 42, TypeError),
+        (42, {"doge": 42}, TypeError),
+        ({1, 2, 3}, 42, TypeError)
     ],
     ids=[
         "cat age is string type",
-        "dog age is string type"
+        "dog age is string type",
+        "cat age is a list",
+        "dog age is a dict",
+        "cat age is tuple"
     ]
 )
 def test_function_input_correct_type(
