@@ -16,7 +16,7 @@ class TestGetHumanAgeClass:
             (1000, 1000, [246, 197])
         ]
     )
-    def test_human_age_tester(
+    def test_values_get_human_age_tester(
             self,
             cat_age: int,
             dog_age: int,
@@ -35,6 +35,11 @@ class TestGetHumanAgeClass:
             (["k"], ["k"])
         ]
     )
-    def test_coorect_value(self, cat_age: int, dog_age: int) -> None:
+    def test_correct_types_value_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int
+    ) -> None:
+
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
