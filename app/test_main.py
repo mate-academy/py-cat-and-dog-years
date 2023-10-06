@@ -1,4 +1,5 @@
 import pytest
+from typing import Any, Type
 from app.main import get_human_age
 
 
@@ -36,16 +37,20 @@ def test_function_outputs_correct_result(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, expected_error",
     [
-        ("42", 42),
-        (42, "42")
+        ("42", 42, TypeError),
+        (42, "42", TypeError)
     ],
     ids=[
         "cat age is string type",
         "dog age is string type"
     ]
 )
-def test_function_input_correct_type(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(TypeError):
+def test_function_input_correct_type(
+        cat_age: Any,
+        dog_age: Any,
+        expected_error: Type[BaseException]
+) -> None:
+    with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
