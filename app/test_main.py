@@ -48,18 +48,17 @@ def test_get_human_age(
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
 
-@pytest.mark.parametrize(
-        "cat_age, dog_age, expected_result", [
-        pytest.param(
-            "23", 23, TypeError,
-            id="TypeError for cat age"
-        ),
-        pytest.param(
-            23, "23", TypeError,
-            id="TypeError for dog age"
-        ),
-    ]
-)
+
+@pytest.mark.parametrize("cat_age, dog_age, expected_result", [
+    pytest.param(
+        "23", 23, TypeError,
+        id="TypeError for cat age"
+    ),
+    pytest.param(
+        23, "23", TypeError,
+        id="TypeError for dog age"
+    ),
+])
 def test_get_human_age_type_error(
         cat_age: int,
         dog_age: int,
