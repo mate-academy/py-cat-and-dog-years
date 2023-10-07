@@ -1,22 +1,45 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_value_zero_input_for_funtion() -> None:
-    result = get_human_age(0, 0)
-    assert result == [0, 0]
-
-
-def test_for_big_values() -> None:
-    result = get_human_age(100, 100)
-    assert result[0] != result[1]
-    assert result == [21, 17]
-
-
-def test_second_value_is_less_then_first() -> None:
-    result = get_human_age(28, 28)
-    assert result[0] > result[1]
-
-
-def test_can_take_two_different_values() -> None:
-    result = get_human_age(15, 14)
-    assert result == [1, 0]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_human_age",
+    [
+        pytest.param(
+            -1, -1, [0, 0],
+            id="should return 0 if animal ages is negative integer"
+        ),
+        pytest.param(
+            0, 0, [0, 0],
+            id="should return 0 if animals ages is zeros"
+        ),
+        pytest.param(
+            14, 14, [0, 0],
+            id="a value less than 15 is equivalent to 0 human years"
+        ),
+        pytest.param(
+            23, 23, [1, 1],
+            id="a value less than 24 is equivalent to 1 human years"
+        ),
+        pytest.param(
+            27, 28, [2, 2],
+            id="a value less than 27 for cat "
+               "and 28 for dog is equivalent to 2 human years"
+        ),
+        pytest.param(
+            28, 29, [3, 3],
+            id="verification of the equivalent of 3 human years"
+        ),
+        pytest.param(
+            100, 100, [21, 17],
+            id="long life check"
+        ),
+    ]
+)
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected_human_age: list
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_human_age
