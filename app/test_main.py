@@ -35,6 +35,10 @@ from app.main import get_human_age
             100, 100, [21, 17],
             id="long life check"
         ),
+        pytest.param(
+            10000, 10000, [246, 197],
+            id="REALLY LARGE NUMBERS"
+        ),
     ]
 )
 def test_get_human_age(
@@ -43,3 +47,21 @@ def test_get_human_age(
         expected_human_age: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
+
+@pytest.mark.parametrize("cat_age, dog_age, expected_result", [
+    pytest.param(
+        "23", 23, TypeError,
+        id="TypeError for cat age"
+    ),
+    pytest.param(
+        23, "23", TypeError,
+        id="TypeError for dog age"
+    ),
+])
+def test_get_human_age_type_error(
+        cat_age: int,
+        dog_age: int,
+        expected_result: type[Exception]
+) -> None:
+    with pytest.raises(expected_result):
+        get_human_age(cat_age, dog_age)
