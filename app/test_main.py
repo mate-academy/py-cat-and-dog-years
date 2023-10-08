@@ -36,7 +36,7 @@ from app.main import get_human_age
             id="long life check"
         ),
         pytest.param(
-            10000, 10000, [246, 197],
+            10000, 10000, [2496, 1997],
             id="REALLY LARGE NUMBERS"
         ),
     ]
