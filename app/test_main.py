@@ -1,5 +1,5 @@
 import pytest
-from typing import Any, Type
+from typing import Any
 from app.main import get_human_age
 
 
@@ -20,7 +20,8 @@ class TestCatDogInHumanYearsClass:
             pytest.param(
                 (14, 14),
                 [0, 0],
-                id="should return 0 if initial years are less than or equal to 14"
+                id="should return 0 if initial years"
+                   " are less than or equal to 14"
             ),
             pytest.param(
                 (15, 15),
@@ -45,7 +46,8 @@ class TestCatDogInHumanYearsClass:
             pytest.param(
                 (28, 28),
                 [3, 2],
-                id="should return different expected years if initial years are equal 28"
+                id="should return different expected years"
+                   " if initial years are equal 28"
             ),
             pytest.param(
                 (100, 100),
