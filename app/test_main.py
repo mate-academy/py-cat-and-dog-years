@@ -31,7 +31,7 @@ from app.main import get_human_age
 def test_animals_to_human_age(
         cat_age: int,
         dog_age: int,
-        human_ages: list
+        human_ages: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_ages
 
