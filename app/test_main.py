@@ -51,12 +51,28 @@ def test_get_human_age(
 
 @pytest.mark.parametrize("cat_age, dog_age, expected_result", [
     pytest.param(
-        "23", 23, TypeError,
-        id="TypeError for cat age"
+        "string", 23, TypeError,
+        id="string for cat age"
     ),
     pytest.param(
-        23, "23", TypeError,
-        id="TypeError for dog age"
+        23, "string", TypeError,
+        id="string for dog age"
+    ),
+    pytest.param(
+        23, 2.5, TypeError,
+        id="float for dog age"
+    ),
+    pytest.param(
+        1.5, 23, TypeError,
+        id="float for cat age"
+    ),
+    pytest.param(
+        None, None, TypeError,
+        id="None for input"
+    ),
+    pytest.param(
+        [1, 2], [3, 2], TypeError,
+        id="array for input"
     ),
 ])
 def test_get_human_age_type_error(
