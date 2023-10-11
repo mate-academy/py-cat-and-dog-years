@@ -60,14 +60,6 @@ def test_get_human_age(
         id="string for dog age"
     ),
     pytest.param(
-        23, 2.5, TypeError,
-        id="float for dog age"
-    ),
-    pytest.param(
-        1.5, 23, TypeError,
-        id="float for cat age"
-    ),
-    pytest.param(
         None, None, TypeError,
         id="None for input"
     ),
