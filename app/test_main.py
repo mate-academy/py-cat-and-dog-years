@@ -1,6 +1,7 @@
 import pytest
 
 from app.main import get_human_age
+from typing import Any
 
 
 @pytest.mark.parametrize(
@@ -76,8 +77,8 @@ def test_get_human_age(
     ),
 ])
 def test_get_human_age_type_error(
-        cat_age: int,
-        dog_age: int,
+        cat_age: Any,
+        dog_age: Any,
         expected_result: type[Exception]
 ) -> None:
     with pytest.raises(expected_result):
