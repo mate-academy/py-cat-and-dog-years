@@ -8,7 +8,10 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_result",
     [
-        ("str", [], TypeError)
+        ("str", [], TypeError),
+        ({}, set(), TypeError),
+        ((), 7.5, TypeError),
+        (frozenset(), True, TypeError)
     ]
 )
 def test_check_for_receiving_incorrect_type_of_data(
