@@ -55,6 +55,12 @@ from app.main import get_human_age
             -1,
             [0, 0],
             id="cat_and_dog_age_less_than_0"
+        ),
+        pytest.param(
+            28,
+            15,
+            [3, 1],
+            id="cat_and_dog_with_diferent_ages"
         )
     ]
 )
