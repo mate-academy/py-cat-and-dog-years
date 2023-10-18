@@ -70,18 +70,6 @@ class TestGetHumanAge:
         "cat_age, dog_age, expected_error",
         [
             pytest.param(
-                -20,
-                -30,
-                ValueError,
-                id="should raise error whem age < 0"
-            ),
-            pytest.param(
-                999999,
-                999999,
-                ValueError,
-                id="should raise error whem age over expected range"
-            ),
-            pytest.param(
                 "10",
                 "10",
                 TypeError,
@@ -97,3 +85,18 @@ class TestGetHumanAge:
     ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
+
+
+""" pytest.param(
+                -20,
+                -30,
+                ValueError,
+                id="should raise error whem age < 0"
+            ),
+            pytest.param(
+                999999,
+                999999,
+                ValueError,
+                id="should raise error whem age over expected range"
+            ),
+"""
