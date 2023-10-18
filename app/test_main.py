@@ -52,3 +52,8 @@ def test_get_human_age(
         expected_human_age: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
+
+
+def test_if_function_receives_wrong_data_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", "10")
