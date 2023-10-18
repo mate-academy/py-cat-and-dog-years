@@ -1,4 +1,6 @@
+from __future__ import annotations
 import pytest
+
 from app.main import get_human_age
 
 
@@ -54,9 +56,14 @@ class TestGetHumanAge:
                 [21, 17],
                 id="dog_age_under_three_year"
             )
-        ]    
+        ]
     )
-    def test_calculates_age_correctly(self, cat_age: int, dog_age: int, expected_result: list):
+    def test_calculates_age_correctly(
+        self,
+        cat_age: int,
+        dog_age: int,
+        expected_result: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
@@ -82,6 +89,11 @@ class TestGetHumanAge:
             ),
         ]
     )
-    def test_expected_errors_raised(self, cat_age, dog_age, expected_error):
+    def test_expected_errors_raised(
+        self,
+        cat_age: int | str,
+        dog_age: int | str,
+        expected_error: type[ValueError | TypeError]
+    ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
