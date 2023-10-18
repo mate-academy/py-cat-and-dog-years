@@ -28,5 +28,13 @@ from app.main import get_human_age
 )
 def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     assert (
+        (isinstance(get_human_age(cat_age, dog_age)[0], int) and
+         isinstance(get_human_age(cat_age, dog_age)[1], int))
+    ), f"Should return integer values"
+    assert (
+        ((get_human_age(cat_age, dog_age)[0] >= 0) and
+         (get_human_age(cat_age, dog_age)[1] >= 0))
+    ), f"Should return positive integers"
+    assert (
         get_human_age(cat_age, dog_age) == result
     ), f"{cat_age} and {dog_age} as an input should give {result}"
