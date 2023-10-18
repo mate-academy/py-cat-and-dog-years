@@ -1,5 +1,4 @@
 import pytest
-from typing import Any
 
 from app.main import get_human_age
 
@@ -59,21 +58,6 @@ def test_convert_cats_and_dogs_years_to_human_years(
     assert get_human_age(cat_age, dog_age) == expect_human_age
 
 
-@pytest.mark.parametrize(
-    "cat_age,dog_age,expected_error",
-    [
-        pytest.param(
-            (1, 3),
-            "string",
-            TypeError,
-            id="should return error with not numeric parameters"
-        )
-    ]
-)
-def test_invalid_data_type(
-        cat_age: Any,
-        dog_age: Any,
-        expected_error: Exception
-) -> None:
-    with pytest.raises(expected_error):
-        get_human_age(cat_age, dog_age)
+def test_invalid_data_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age((1, 3), "string")
