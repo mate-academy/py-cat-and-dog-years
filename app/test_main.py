@@ -6,10 +6,18 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age,dog_age,human_age",
     [
-        pytest.param(14, 14, [0, 0], id="cat and dog is too yang"),
-        pytest.param(15, 15, [1, 1], id="cat and dog equal to one year toddler"),
-        pytest.param(27, 27, [2, 2], id="cat and dog equal to two year toddler"),
-        pytest.param(28, 28, [3, 2], id="cat is smarter than dog")
+        pytest.param(
+            14, 14, [0, 0], id="cat and dog is too yang"
+        ),
+        pytest.param(
+            15, 15, [1, 1], id="cat and dog equal to one year toddler"
+        ),
+        pytest.param(
+            27, 27, [2, 2], id="cat and dog equal to two year toddler"
+        ),
+        pytest.param(
+            28, 28, [3, 2], id="cat is smarter than dog"
+        )
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, human_age: int) -> None:
@@ -41,6 +49,6 @@ class ImpossibleValue(Exception):
         pytest.param(0, 0, id="everybody is zero"),
     ]
 )
-def test_impossible_value(cat_age, dog_age, human_age) -> None:
+def test_impossible_value(cat_age: int, dog_age: int) -> None:
     with pytest.raises(ImpossibleValue):
         get_human_age(cat_age, dog_age)
