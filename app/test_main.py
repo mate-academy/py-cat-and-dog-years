@@ -1,4 +1,5 @@
 from app.main import get_human_age
+from typing import Any
 import pytest
 
 
@@ -16,7 +17,11 @@ import pytest
         pytest.param("cat age", "dog age", None, id="Both ages are not int!"),
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected_age: list) -> None:
+def test_get_human_age(
+        cat_age: Any,
+        dog_age: Any,
+        expected_age: list | None
+) -> None:
     if expected_age is not None:
         assert get_human_age(cat_age, dog_age) == expected_age
     else:
