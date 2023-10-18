@@ -1,21 +1,31 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_control_age_should_be_0() -> None:
-    old = get_human_age(14, 14)
-    assert old == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_nums",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 29, [2, 3]),
+    ]
+)
+def test_human_age(cat_age: int,
+                   dog_age: int,
+                   expected_nums: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_nums
 
 
-def test_should_be_more_0() -> None:
-    old = get_human_age(15, 15)
-    assert old == [1, 1]
-
-
-def test_control_should_be_2() -> None:
-    old = get_human_age(24, 24)
-    assert old == [2, 2]
-
-
-def test_control_age() -> None:
-    old = get_human_age(28, 28)
-    assert old == [3, 2]
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("1", 2),
+        ([3], 9),
+        (1, {4: 1}),
+    ]
+)
+def test_type_human_age(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
