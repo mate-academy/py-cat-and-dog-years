@@ -12,49 +12,49 @@ class TestGetHumanAge:
                 0,
                 0,
                 [0, 0],
-                id="age_equal_zero"
+                id="should return [0, 0] when cat age = 0 and dog age = 0"
             ),
             pytest.param(
                 14,
                 14,
                 [0, 0],
-                id="age_under_one_year"
+                id="should return [0, 0] when cat age = 14 and dog age = 14"
             ),
             pytest.param(
                 15,
                 15,
                 [1, 1],
-                id="age_exactly_one_year"
+                id="should return [1, 1] when cat age = 15 and dog age = 15"
             ),
             pytest.param(
                 23,
                 23,
                 [1, 1],
-                id="age_under_two_years"
+                id="should return [1, 1] when cat age = 23 and dog age = 23"
             ),
             pytest.param(
                 24,
                 24,
                 [2, 2],
-                id="age_exactly_two_year"
+                id="should return [2, 2] when cat age = 24 and dog age = 24"
             ),
             pytest.param(
                 27,
                 27,
                 [2, 2],
-                id="cat_age_under_three_year"
+                id="should return [2, 2] when cat age = 27 and dog age = 27"
             ),
             pytest.param(
                 28,
                 28,
                 [3, 2],
-                id="dog_age_under_three_year"
+                id="should return [3, 2] when cat age = 28 and dog age = 28"
             ),
             pytest.param(
                 100,
                 100,
                 [21, 17],
-                id="dog_age_under_three_year"
+                id="should return [21, 17] when cat age = 100, dog age = 100"
             )
         ]
     )
@@ -73,7 +73,7 @@ class TestGetHumanAge:
                 "10",
                 "10",
                 TypeError,
-                id="should raise error whem parameters type != int"
+                id="should raise TypeError if age cat or age dog is not digit"
             ),
         ]
     )
