@@ -17,6 +17,15 @@ from app.main import get_human_age
         ),
         pytest.param(
             28, 28, [3, 2], id="cat is smarter than dog"
+        ),
+        pytest.param(
+            120, 200, [26, 37], id="your pets is too old!"
+        ),
+        pytest.param(
+            -3, 5, [0, 0], id="negative age is not possible"
+        ),
+        pytest.param(
+            0, 0, [0, 0], id="everybody is zero"
         )
     ]
 )
@@ -34,21 +43,4 @@ def test_get_human_age(cat_age: int, dog_age: int, human_age: int) -> None:
 )
 def test_error_in_func(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
-
-
-class ImpossibleValue(Exception):
-    pass
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age",
-    [
-        pytest.param(120, 200, id="your pets is too old!"),
-        pytest.param(-3, 5, id="negative age is not possible"),
-        pytest.param(0, 0, id="everybody is zero"),
-    ]
-)
-def test_impossible_value(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(ImpossibleValue):
         get_human_age(cat_age, dog_age)
