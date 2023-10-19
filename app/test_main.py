@@ -16,7 +16,10 @@ import pytest
             -30, -15, [0, 0], id="Ages are negative"
         ),
         pytest.param(
-            90000, 12000, [22496, 2397], id="resive data out of normal range, too large numbers"
+            90000,
+            12000,
+            [22496, 2397],
+            id="resive data out of normal range, too large numbers"
         )
     ]
 )
@@ -38,6 +41,9 @@ def test_convert_cat_and_dog_age_with_correct_values(
         )
     ]
 )
-def test_convert_cat_and_dog_age_with_incorrect_types(cat_age: int, dog_age: int) -> None:
+def test_convert_cat_and_dog_age_with_incorrect_types(
+        cat_age: int,
+        dog_age: int
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
