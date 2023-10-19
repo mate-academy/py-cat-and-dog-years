@@ -1,7 +1,7 @@
 from app.main import get_human_age
 
 
-def test_human_age_by_cat_and_dog_age():
+def test_human_age_by_cat_and_dog_age() -> None:
     dog_age, cat_age = 0, 0
     result = get_human_age(dog_age, cat_age)
     expected = [0, 0]
