@@ -1,51 +1,23 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_human_age_by_cat_and_dog_age() -> None:
-    dog_age, cat_age = 0, 0
-    result = get_human_age(dog_age, cat_age)
-    expected = [0, 0]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, result",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17])
+    ]
+)
+def test_human_age_by_cat_and_dog_age(cat_age: int,
+                                      dog_age: int,
+                                      result: list) -> None:
 
-    assert result == expected, f"should convert into {result} human age"
-
-    dog_age, cat_age = 14, 14
-    result = get_human_age(dog_age, cat_age)
-    expected = [0, 0]
-
-    assert result == expected, f"should convert into {result} human age"
-
-    dog_age, cat_age = 15, 15
-    result = get_human_age(dog_age, cat_age)
-    expected = [1, 1]
-
-    assert result == expected, f"should convert into {result} human age"
-
-    dog_age, cat_age = 23, 23
-    result = get_human_age(dog_age, cat_age)
-    expected = [1, 1]
-
-    assert result == expected, f"should convert into {result} human age"
-
-    dog_age, cat_age = 24, 24
-    result = get_human_age(dog_age, cat_age)
-    expected = [2, 2]
-
-    assert result == expected, f"should convert into {result} human age"
-
-    dog_age, cat_age = 27, 27
-    result = get_human_age(dog_age, cat_age)
-    expected = [2, 2]
-
-    assert result == expected, f"should convert into {result} human age"
-
-    dog_age, cat_age = 28, 28
-    result = get_human_age(dog_age, cat_age)
-    expected = [3, 2]
-
-    assert result == expected, f"should convert into {result} human age"
-
-    dog_age, cat_age = 100, 100
-    result = get_human_age(dog_age, cat_age)
-    expected = [21, 17]
-
-    assert result == expected, f"should convert into {result} human age"
+    assert (get_human_age(cat_age, dog_age) == result), \
+        f"should convert into {result} human age"
