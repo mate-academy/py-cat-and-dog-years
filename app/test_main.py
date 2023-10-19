@@ -25,18 +25,3 @@ def test_get_human_age(age_of_cat: int,
     assert (
             get_human_age(age_of_cat, age_of_dog) == expected
             ), f"Expected result = {expected}"
-
-
-# @pytest.mark.parametrize(
-#     "age_of_cat,age_of_dog",
-#     [
-#         ("1", 2),
-#         ([1], 2),
-#         ((1,), 2),
-#         ({1}, 2),
-#     ]
-# )
-# def test_check_incorrect_types(age_of_cat: int,
-#                                age_of_dog: int) -> None:
-#     with pytest.raises(TypeError):
-#         get_human_age(age_of_cat, age_of_dog)
