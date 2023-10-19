@@ -9,6 +9,12 @@ class TestGetHumanAge:
         "cat_age, dog_age, expected_result",
         [
             pytest.param(
+                -20,
+                -30,
+                [0, 0],
+                id="should return [0, 0] when cat age = -20 and dog age = -30"
+            ),
+            pytest.param(
                 0,
                 0,
                 [0, 0],
@@ -66,37 +72,6 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
-    @pytest.mark.parametrize(
-        "cat_age, dog_age, expected_error",
-        [
-            pytest.param(
-                "10",
-                "10",
-                TypeError,
-                id="should raise TypeError if age cat or age dog is not digit"
-            ),
-        ]
-    )
-    def test_expected_errors_raised(
-        self,
-        cat_age: int | str,
-        dog_age: int | str,
-        expected_error: type[ValueError | TypeError]
-    ) -> None:
-        with pytest.raises(expected_error):
-            get_human_age(cat_age, dog_age)
-
-
-""" pytest.param(
-                -20,
-                -30,
-                ValueError,
-                id="should raise error whem age < 0"
-            ),
-            pytest.param(
-                999999,
-                999999,
-                ValueError,
-                id="should raise error whem age over expected range"
-            ),
-"""
+    def test_should_raise_type_error_when_parameter_not_integer(self) -> None:
+        with pytest.raises(TypeError):
+            assert get_human_age("10", "10")
