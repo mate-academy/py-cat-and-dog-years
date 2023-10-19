@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
@@ -11,7 +12,7 @@ from app.main import get_human_age
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
+        (28, 29, [3, 3]),
         (100, 100, [21, 17])
     ],
     ids=[
@@ -21,9 +22,11 @@ from app.main import get_human_age
         "should return 1 cat years and 1 dog years",
         "24 cat and dog years should equal 2 human years",
         "should return 2 cat years and 2 dog years",
-        "should return 3 cat years and 2 dog years",
-        "should return 21 cat years and 17 dog years"
+        "should return 3 cat years and 3 dog years",
+        "should return 21 cat years and 17 dog years",
     ]
 )
-def test_if_first_15_cat_years_give_1_human(cat_age: int, dog_age: int, expected: list) -> None:
+def test_human_age(cat_age: int,
+                   dog_age: int,
+                   expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
