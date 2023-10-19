@@ -22,14 +22,14 @@ def test_human_age_by_cat_and_dog_age(cat_age: int,
         f"should convert into {result} human age"
 
 
-def test_type_of_cat_arg():
+def test_type_of_cat_arg() -> None:
     cat_age = "28"
     dog_age = 28
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
 
 
-def test_type_of_dog_arg():
+def test_type_of_dog_arg() -> None:
     cat_age = 28
     dog_age = "28"
     with pytest.raises(TypeError):
