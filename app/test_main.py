@@ -25,7 +25,7 @@ from app.main import get_human_age
         "should return 21 cat years and 17 dog years",
     ]
 )
-def test_if_first_15_cat_years_give_1_human(cat_age: int,
-                                            dog_age: int,
-                                            expected: list) -> None:
+def test_human_age(cat_age: int,
+                   dog_age: int,
+                   expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
