@@ -18,8 +18,8 @@ def test_human_age_by_cat_and_dog_age(cat_age: int,
                                       dog_age: int,
                                       result: list) -> None:
 
-    assert (get_human_age(cat_age, dog_age) == result), \
-        f"should convert into {result} human age"
+    assert (get_human_age(cat_age, dog_age) == result
+            ), f"should convert into {result} human age"
 
 
 def test_type_of_cat_arg() -> None:
