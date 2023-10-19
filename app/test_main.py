@@ -1,4 +1,4 @@
-from typing import Type
+from typing import Type, Any
 import pytest
 
 from app.main import get_human_age
@@ -15,8 +15,7 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (-100, -100, [0, 0]),
-        (100000, 100000, [24996, 19997]),
-
+        (100000, 100000, [24996, 19997])
     ]
 )
 def test_correct_human_age(
@@ -24,9 +23,7 @@ def test_correct_human_age(
         dog_age: int,
         human_age_of_cat_and_dog: int
 ) -> None:
-    assert (get_human_age(cat_age, dog_age) == human_age_of_cat_and_dog), \
-        (f"Human age of {cat_age} cats years and {dog_age} dogs years "
-         f"should be equal to {human_age_of_cat_and_dog}")
+    assert get_human_age(cat_age, dog_age) == human_age_of_cat_and_dog
 
 
 @pytest.mark.parametrize(
@@ -38,7 +35,9 @@ def test_correct_human_age(
     ]
 )
 def test_should_raise_error_if_wrong_data_type_provided(
-    cat_age: int, dog_age: int, result: Type[Exception]
+        cat_age: Any,
+        dog_age: Any,
+        result: Type[Exception]
 ) -> None:
     with pytest.raises(result):
         get_human_age(cat_age, dog_age)
