@@ -47,7 +47,7 @@ from app.main import get_human_age
             -10000,
             -10000,
             [0, 0],
-            id="should return zeroes if (cat_age and dog age) are large numbers and < 0 "
+            id="should return zeroes if values are large numbers and < 0 "
         ),
     ]
 )
