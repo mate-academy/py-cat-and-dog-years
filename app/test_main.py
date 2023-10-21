@@ -13,7 +13,8 @@ from app.main import get_human_age
         (26, 25, [2, 2]),
         (28, 29, [3, 3]),
         (30, 33, [3, 3]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        (-15, -15, [0, 0])
     ],
     ids=[
         "Exactly 1 human year",
@@ -24,9 +25,15 @@ from app.main import get_human_age
         "Exactly 3 human years",
         "Less than 4 human years",
         "Large animal age numbers",
+        "Negative integers",
     ]
 )
 def test_amimal_years(cat_years: int,
                       dog_years: int,
                       expected_results: list) -> None:
     assert get_human_age(cat_years, dog_years) == expected_results
+
+
+def test_amimal_years_type_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", "29")
