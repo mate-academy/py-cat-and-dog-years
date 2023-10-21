@@ -30,8 +30,8 @@ from app.main import get_human_age
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
-    assert get_human_age(cat_age, dog_age) == expected, \
-        f"Result should be equal to {expected}"
+    assert (get_human_age(cat_age, dog_age) == expected
+            ), f"Result should be equal to {expected}"
 
 
 @pytest.mark.parametrize(
