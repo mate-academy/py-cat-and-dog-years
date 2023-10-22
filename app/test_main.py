@@ -29,7 +29,11 @@ from app.main import get_human_age
         )
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, human_age: int) -> None:
+def test_get_human_age_common_case(
+    cat_age: int,
+    dog_age: int,
+    human_age: int
+) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
 
@@ -41,6 +45,9 @@ def test_get_human_age(cat_age: int, dog_age: int, human_age: int) -> None:
         pytest.param((14, 14), 1, id="cannot take a tuple")
     ]
 )
-def test_error_in_func(cat_age: int, dog_age: int) -> None:
+def test_type_errors_in_func(
+    cat_age: int,
+    dog_age: int
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
