@@ -1,5 +1,6 @@
 from app.main import get_human_age
 import pytest
+from typing import Any
 
 
 class TestGetHumanAge:
@@ -98,6 +99,10 @@ class TestGetHumanAge:
             ([1, ], [2, ])
         ]
     )
-    def test_should_raise_correct_error(self, cat_years, dog_years) -> None:
+    def test_should_raise_correct_error(
+            self,
+            cat_years: Any,
+            dog_years: Any
+    ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_years, dog_years)
