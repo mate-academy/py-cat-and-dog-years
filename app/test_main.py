@@ -39,6 +39,6 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == human_age
 
 
-def test_test_get_human_age_correct_data_types() -> None:
+def test_get_human_age_correct_data_types() -> None:
     with pytest.raises(TypeError):
         get_human_age("cat_age = 2", {"dog": 4})
