@@ -31,7 +31,7 @@ from app.main import get_human_age
         )
     ]
 )
-def test_convert_cat_and_dog_age_with_correct_values(
+def test_get_human_age(
         cat_age: int,
         dog_age: int,
         human_age: list
@@ -39,6 +39,6 @@ def test_convert_cat_and_dog_age_with_correct_values(
     assert get_human_age(cat_age, dog_age) == human_age
 
 
-def test_convert_cat_and_dog_age_with_incorrect_types() -> None:
+def test_test_get_human_age_correct_data_types() -> None:
     with pytest.raises(TypeError):
         get_human_age("cat_age = 2", {"dog": 4})
