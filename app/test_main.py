@@ -1,3 +1,5 @@
+from typing import Type
+
 import pytest
 
 from app.main import get_human_age
@@ -42,8 +44,32 @@ from app.main import get_human_age
             [21, 17],
             id=("for cats after 24, counts as 1 every 4 years "
                 "when for dogs every 5 years")
+        ),
+        pytest.param(
+            -1,
+            -1,
+            [0, 0],
+            id="if function gets negative numbers"
         )
     ]
 )
 def test_can_sum(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [
+        ("1", 1, TypeError),
+        (1, "1", TypeError),
+        ((), (), TypeError),
+        ((), {}, TypeError),
+        ([1], (), TypeError),
+    ]
+)
+def test_get_correct_types(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Type[Exception]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
