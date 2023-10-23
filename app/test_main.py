@@ -32,8 +32,11 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
         isinstance(output[0], int) and isinstance(output[1], int)
     ), "Should return integer values"
     assert (
-        output[0] >= 0 and output[1] >= 0
-    ), "Should return positive integers"
+        get_human_age(-1, -1) == [0, 0]
+    ), "Should work with negative input"
+    assert (
+        get_human_age(28.0, 28.0) == [3, 2],
+    ), "Should work with float types"
     assert (
         output == result
     ), f"{cat_age} and {dog_age} as an input should give {result}"
