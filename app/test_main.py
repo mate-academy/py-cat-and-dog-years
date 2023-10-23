@@ -34,9 +34,9 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     assert (
         get_human_age(-1, -1) == [0, 0]
     ), "Should work with negative input"
-    assert (
-        get_human_age(28.0, 28.0) == [3, 2],
-    ), "Should work with float types"
+
+    assert get_human_age(float(cat_age), float(dog_age)) == result
+
     assert (
         output == result
     ), f"{cat_age} and {dog_age} as an input should give {result}"
