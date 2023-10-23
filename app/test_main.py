@@ -1,8 +1,17 @@
+import pytest
+
 from app.main import get_human_age
 
 
 class TestGetHumanAge:
-    def test_if_pets_age_zero_or_less(self) -> None:
+    def test_should_raise_error(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("4", [1, 4])
+
+    def test_if_pets_age_less_than_zero(self) -> None:
+        assert get_human_age(-1, -2) == [0, 0]
+
+    def test_if_pets_age_zero(self) -> None:
         assert get_human_age(0, 0) == [0, 0]
 
     def test_if_pets_age_less_15(self) -> None:
