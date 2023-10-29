@@ -7,6 +7,12 @@ from typing import Any
     "cat_age,dog_age,result_list",
     [
         pytest.param(
+            -1,
+            -1,
+            [0, 0],
+            id="should accept value greater -1"
+        ),
+        pytest.param(
             0,
             0,
             [0, 0],
@@ -82,20 +88,3 @@ def test_raising_errors_correctly(
 ) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
-    "cat_age,dor_age",
-    [
-        pytest.param(
-            0,
-            0,
-            id="age should be greater them -1"
-        )
-    ]
-)
-def test_age_should_be_greater_them_negative_number(
-    cat_age: int,
-    dor_age: int
-) -> None:
-    assert cat_age > -1, dor_age > -1
