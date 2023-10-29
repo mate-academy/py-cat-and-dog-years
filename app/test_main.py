@@ -1,33 +1,63 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_should_return_zero_when_dog_and_cat_year_equal_0() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_should_return_zero_when_dog_and_cat_year_less_15() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_one_when_dog_and_cat_year_equal_15() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_one_when_dog_and_cat_year_less_24() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_two_when_dog_and_cat_year_equal_24() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_should_return_two_when_dog_and_cat_year_less_27() -> None:
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_should_return_2_and_3_when_dog_and_cat_year_equal_28() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_return_21_and_17_when_dog_and_cat_year_equal_100() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,result_list",
+    [
+        pytest.param(
+            0,
+            0,
+            [0, 0],
+            id="test should return zero when dog and cat year equal 0"
+        ),
+        pytest.param(
+            14,
+            14,
+            [0, 0],
+            id="test should return zero when dog and cat year less 15"
+        ),
+        pytest.param(
+            15,
+            15,
+            [1, 1],
+            id="test should return one when dog and cat year equal 15"
+        ),
+        pytest.param(
+            23,
+            23,
+            [1, 1],
+            id="test should return one when dog and cat year less 24"
+        ),
+        pytest.param(
+            24,
+            24,
+            [2, 2],
+            id="test should return two when dog and cat year equal 24"
+        ),
+        pytest.param(
+            27,
+            27,
+            [2, 2],
+            id="test should return two when dog and cat year less 27"
+        ),
+        pytest.param(
+            28,
+            28,
+            [3, 2],
+            id="test should return 2 and 3 when dog and cat year equal 28"
+        ),
+        pytest.param(
+            100,
+            100,
+            [21, 17],
+            id="test should return 21 and 17 when dog and cat year equal 100"
+        )
+    ]
+)
+def test_return_correctly_age(
+    cat_age: int,
+    dog_age: int,
+    result_list: int
+) -> None:
+    assert get_human_age(cat_age, dog_age) == result_list
