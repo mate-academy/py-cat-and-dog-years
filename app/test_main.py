@@ -21,6 +21,10 @@ from app.main import get_human_age
         "28/29 cat/dog years should convert into 3 human age.",
     ]
 )
-def test_should_convert_into_human_age(cat_age, dog_age, expected):
+def test_should_convert_into_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected: list
+) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected
