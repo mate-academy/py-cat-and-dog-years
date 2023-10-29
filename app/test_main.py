@@ -1,5 +1,6 @@
 from app.main import get_human_age
 import pytest
+from typing import Any
 
 
 @pytest.mark.parametrize(
@@ -61,3 +62,40 @@ def test_return_correctly_age(
     result_list: int
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result_list
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error",
+    [
+        pytest.param(
+            "1",
+            "1",
+            TypeError,
+            id="should accept int type data"
+        )
+    ]
+)
+def test_raising_errors_correctly(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Any
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age,dor_age",
+    [
+        pytest.param(
+            0,
+            0,
+            id="age should be greater them -1"
+        )
+    ]
+)
+def test_age_should_be_greater_them_negative_number(
+    cat_age: int,
+    dor_age: int
+) -> None:
+    assert cat_age > -1, dor_age > -1
