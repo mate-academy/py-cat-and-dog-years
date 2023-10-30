@@ -1,6 +1,6 @@
 import pytest
 
-from app.main import get_human_age, convert_to_human
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
