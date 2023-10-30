@@ -7,6 +7,8 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
 def convert_to_human(
         animal_age: int, first_year: int, second_year: int, each_year: int
 ) -> int:
+    if animal_age < 0:
+        raise ValueError("Age can't be negative")
     if animal_age < first_year:
         return 0
     if animal_age < first_year + second_year:

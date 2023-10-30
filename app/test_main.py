@@ -19,5 +19,13 @@ def test_should_convert_into_human_age(
         dog_age: int,
         expected: list
 ) -> None:
-    result = get_human_age(cat_age, dog_age)
-    assert result == expected
+    assert expected == get_human_age(cat_age, dog_age)
+
+
+def test_cat_and_dog_age_should_be_positive():
+    with pytest.raises(ValueError):
+        get_human_age(15, -20)
+    with pytest.raises(ValueError):
+        get_human_age(-15, 20)
+    with pytest.raises(ValueError):
+        get_human_age(-15, -20)
