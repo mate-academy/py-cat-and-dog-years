@@ -21,6 +21,18 @@ from app.main import get_human_age
         pytest.param(
             28, 29, [3, 3],
             id="add one more year when dog is  28, cat is 27"
+        ),
+        pytest.param(
+            120, 100, [26, 17],
+            id="should return 26, 17 when dog 100 cat 120"
+        ),
+        pytest.param(
+            1, 100, [0, 17],
+            id="should return 0, 17 when dog 100 cat 1"
+        ),
+        pytest.param(
+            -90, -70, [0, 0],
+            id="should return zeros when ages are negative"
         )
     ]
 )
@@ -29,27 +41,31 @@ def test_get_human_age(
         dog_age: int,
         expected: list
 ) -> None:
-    result = get_human_age(cat_age, dog_age)
-    assert result == expected
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_error",
     [
         pytest.param(
-            -1, -1,
-            ValueError,
-            id="should raise value error when animal ages less than 0"
-        ),
-        pytest.param(
             "string", "string",
-            ValueError,
+            TypeError,
             id="should raise value error when string is inputted"
         ),
         pytest.param(
-            1.1, 1.1,
-            ValueError,
-            id="should raise value error when float is inputted"
+            [0], [1, 7, "jj"],
+            TypeError,
+            id="should raise value error when list is inputted"
+        ),
+        pytest.param(
+            {"Radiohead": "OK Computer", "10": 10}, {"one", "two"},
+            TypeError,
+            id="should raise value error when dict or tuple is inputted"
+        ),
+        pytest.param(
+            {"one", "two"}, lambda a: a + 10,
+            TypeError,
+            id="should raise value error when set or function is inputted"
         )
     ]
 )
