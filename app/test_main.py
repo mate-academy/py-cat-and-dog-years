@@ -12,6 +12,11 @@ def test_result_values_should_be_integers() -> None:
         assert isinstance(value, int)
 
 
+def test_should_fail_if_values_of_wrong_type_are_passed() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("1", "1")
+
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, result",
     [
