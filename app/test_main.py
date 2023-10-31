@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -72,7 +74,7 @@ def test_get_human_age(
 def test_get_human_age_invalid_input(
         cat_age: int,
         dog_age: int,
-        expected_error: ValueError
+        expected_error: Any
 ) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
