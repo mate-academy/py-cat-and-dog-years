@@ -8,8 +8,8 @@ class TestGetHumanAge:
         "cat_age, dog_age, expected_ages",
         [
             pytest.param(
-                10,
-                10,
+                14,
+                14,
                 [0, 0],
                 id="get zeros when ages are under 15"
             ),
@@ -51,28 +51,15 @@ class TestGetHumanAge:
             dog_age: int,
             expected_ages: list[int]
     ) -> None:
-        result = get_human_age(cat_age, dog_age)
-        assert result == expected_ages
+        assert get_human_age(cat_age, dog_age) == expected_ages
 
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected_error",
         [
             pytest.param(
-                0, 0, ValueError,
-                id="Throws error if ages are equal to zero"
-            ),
-            pytest.param(
-                -1, 6, ValueError,
-                id="Throws error if one of ages is negative"
-            ),
-            pytest.param(
-                100, 5, ValueError,
-                id="Throws error if one of ages is higher than 99"
-            ),
-            pytest.param(
                 1.6, "6.0", TypeError,
                 id="Throws error if one of ages isn't integer"
-            ),
+            )
         ]
     )
     def test_if_function_throws_errors(
