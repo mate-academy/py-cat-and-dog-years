@@ -59,6 +59,14 @@ class TestGetHumanAge:
             pytest.param(
                 1.6, "6.0", TypeError,
                 id="Throws error if one of ages isn't integer"
+            ),
+            pytest.param(
+                0, 0, ValueError,
+                id="Throws error if ages are equal to zero or less"
+            ),
+            pytest.param(
+                100, 5, ValueError,
+                id="Throws error if one of ages is higher than 99"
             )
         ]
     )
