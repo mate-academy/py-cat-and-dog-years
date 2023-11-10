@@ -1,4 +1,6 @@
 import pytest
+from typing import Any
+
 
 from app.main import get_human_age
 
@@ -72,3 +74,37 @@ class TestAgeForAnimal:
             expected: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
+
+
+class TestIntegerInput:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            (5, 5),
+            (2, 7)
+        ]
+    )
+    def test_integer_inputs(
+            self,
+            cat_age: int,
+            dog_age: int,
+    ) -> None:
+        assert get_human_age(cat_age, dog_age) == [0, 0]
+
+
+class TestErrorCases:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            ("A", 5),
+            (10, [5, 6]),
+            (True, 3)
+        ]
+    )
+    def test_error_cases(
+            self,
+            cat_age: Any,
+            dog_age: Any,
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
