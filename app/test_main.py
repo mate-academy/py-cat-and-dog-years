@@ -24,3 +24,8 @@ def test_convert_animal_human_age(
         expected: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+def test_incorrect_input_type() -> None:
+    with pytest.raises(TypeError):
+        assert get_human_age("16", 15)
