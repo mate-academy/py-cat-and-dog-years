@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 
 from app.main import get_human_age
 
@@ -26,6 +27,17 @@ def test_convert_animal_human_age(
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_incorrect_input_type() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("16", 5),
+        (12, "Cat"),
+        (78, [9, 0])
+    ]
+)
+def test_incorrect_input_type(
+        cat_age: Any,
+        dog_age: Any
+) -> None:
     with pytest.raises(TypeError):
-        assert get_human_age("16", 15)
+        assert get_human_age(cat_age, dog_age)
