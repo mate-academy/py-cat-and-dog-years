@@ -25,6 +25,6 @@ def test_should_raise_typerror() -> None:
 def test_should_return_expected_results(
     dog_age: int,
     cat_age: int,
-    expected: list
+    expected: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
