@@ -63,48 +63,6 @@ def test_human_age_should_be_equal_to_0(
     )
 
 
-def test_human_age_should_be_equal_to_1(
-        cat_age: int,
-        dog_age: int,
-        expected_result: int
-) -> None:
-    current_result = get_human_age(cat_age=cat_age, dog_age=dog_age)
-    assert (
-        current_result == expected_result
-    ), (
-        print_fstring_with_all_related_info
-        (cat_age, dog_age, current_result, expected_result)
-    )
-
-
-def test_human_age_should_be_equal_to_2(
-        cat_age: int,
-        dog_age: int,
-        expected_result: int
-) -> None:
-    current_result = get_human_age(cat_age=cat_age, dog_age=dog_age)
-    assert (
-        current_result == expected_result
-    ), (
-        print_fstring_with_all_related_info
-        (cat_age, dog_age, current_result, expected_result)
-    )
-
-
-def test_human_age_should_be_more_than_2(
-        cat_age: int,
-        dog_age: int,
-        expected_result: int
-) -> None:
-    current_result = get_human_age(cat_age=cat_age, dog_age=dog_age)
-    assert (
-        current_result == expected_result
-    ), (
-        print_fstring_with_all_related_info
-        (cat_age, dog_age, current_result, expected_result)
-    )
-
-
 def test_human_age_should_change_with_integer_value() -> None:
     cat_age = 14
     dog_age = 14
@@ -120,48 +78,6 @@ def test_human_age_should_change_with_integer_value() -> None:
         f"For {cat_age - 1} and {dog_age - 1}, "
         f"expected result is not equal to "
         f"{previous_result}, but got {new_result}"
-    )
-
-
-def test_if_function_receives_negative_number(
-        cat_age: int,
-        dog_age: int,
-        expected_result: int
-) -> None:
-    current_result = get_human_age(cat_age=cat_age, dog_age=dog_age)
-    assert (
-        current_result == expected_result
-    ), (
-        print_fstring_with_all_related_info
-        (cat_age, dog_age, current_result, expected_result)
-    )
-
-
-def test_if_function_receives_zero(
-        cat_age: int,
-        dog_age: int,
-        expected_result: int
-) -> None:
-    current_result = get_human_age(cat_age=cat_age, dog_age=dog_age)
-    assert (
-        current_result == expected_result
-    ), (
-        print_fstring_with_all_related_info
-        (cat_age, dog_age, current_result, expected_result)
-    )
-
-
-def test_if_function_receives_really_large_numbers(
-        cat_age: int,
-        dog_age: int,
-        expected_result: int
-) -> None:
-    current_result = get_human_age(cat_age=cat_age, dog_age=dog_age)
-    assert (
-        current_result == expected_result
-    ), (
-        print_fstring_with_all_related_info
-        (cat_age, dog_age, current_result, expected_result)
     )
 
 
