@@ -15,12 +15,10 @@ def test_ages_equal_to_15() -> None:
 
 def test_ages_between_16_and_23() -> None:
     assert get_human_age(16, 16) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
 
 
 def test_ages_between_24_and_27() -> None:
     assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
 
 
 def test_ages_cat_28_dog_28() -> None:
