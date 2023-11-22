@@ -30,6 +30,6 @@ class TestGetHumanAge:
             converted_dog_age: int
     ) -> None:
         assert (
-                get_human_age(cat_age, dog_age)
-                == [converted_cat_age, converted_dog_age]
+            get_human_age(cat_age, dog_age)
+            == [converted_cat_age, converted_dog_age]
         )
