@@ -13,13 +13,14 @@ class TestGetHumanAge:
             (28, 29, 3, 3),
             (100, 100, 21, 17)
         ],
-        ids=["0 cat/dog years should convert into 0 human age.",
-             "14 cat/dog years should convert into 0 human age.",
-             "15 cat/dog years should convert into 1 human age.",
-             "24 cat/dog years should convert into 2 human age.",
-             "28/29 cat/dog years should convert into 3/3 human age.",
-             "100/100 cat/dog years should convert into 21/17 human age."
-             ]
+        ids=[
+            "0 cat/dog years should convert into 0 human age.",
+            "14 cat/dog years should convert into 0 human age.",
+            "15 cat/dog years should convert into 1 human age.",
+            "24 cat/dog years should convert into 2 human age.",
+            "28/29 cat/dog years should convert into 3/3 human age.",
+            "100/100 cat/dog years should convert into 21/17 human age."
+        ]
     )
     def test_get_human_age(
             self,
