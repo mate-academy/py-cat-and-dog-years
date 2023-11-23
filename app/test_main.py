@@ -9,7 +9,7 @@ class TestCatAndDogYear:
         [
             pytest.param(
                 0, 0, [0, 0],
-                id="should return list if cat and dog ages equal 0"
+                id="should return list [0, 0] if cat and dog ages equal 0"
             ),
             pytest.param(
                 14, 14, [0, 0],
