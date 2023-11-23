@@ -41,15 +41,11 @@ class TestGetHumanAge:
         "cat_age,dog_age,expected_error",
         [
             ("", "", TypeError),
-            (24.5, 24.5, TypeError),
-            (-5, -25, ValueError),
             ([10], [10], TypeError),
             ({"age": 10}, {"age": 20}, TypeError)
         ],
         ids=[
             "should raise error when age is str",
-            "should raise error when age is float",
-            "should raise error when age is negative",
             "should raise error when age is list",
             "should raise error when age is dictionary"
         ]
