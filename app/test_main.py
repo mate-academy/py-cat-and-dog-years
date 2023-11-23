@@ -33,8 +33,8 @@ class TestGetHumanAge:
             converted_dog_age: int
     ) -> None:
         assert (
-                get_human_age(cat_age, dog_age)
-                == [converted_cat_age, converted_dog_age]
+            get_human_age(cat_age, dog_age)
+            == [converted_cat_age, converted_dog_age]
         )
 
     @pytest.mark.parametrize(
@@ -44,7 +44,7 @@ class TestGetHumanAge:
             (24.5, 24.5, TypeError),
             (-5, -25, ValueError),
             ([10], [10], TypeError),
-            ({'age': 10}, {'age': 20}, TypeError)
+            ({"age": 10}, {"age": 20}, TypeError)
         ],
         ids=[
             "should raise error when age is str",
