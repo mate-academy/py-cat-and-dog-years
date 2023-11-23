@@ -1,4 +1,5 @@
 import pytest
+from typing import Any, Type
 from app.main import get_human_age
 
 
@@ -32,6 +33,32 @@ class TestGetHumanAge:
             converted_dog_age: int
     ) -> None:
         assert (
-            get_human_age(cat_age, dog_age)
-            == [converted_cat_age, converted_dog_age]
+                get_human_age(cat_age, dog_age)
+                == [converted_cat_age, converted_dog_age]
         )
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_error",
+        [
+            ("", "", TypeError),
+            (24.5, 24.5, TypeError),
+            (-5, -25, ValueError),
+            ([10], [10], TypeError),
+            ({'age': 10}, {'age': 20}, TypeError)
+        ],
+        ids=[
+            "should raise error when age is str",
+            "should raise error when age is float",
+            "should raise error when age is negative",
+            "should raise error when age is list",
+            "should raise error when age is dictionary"
+        ]
+    )
+    def test_raising_errors_correctly(
+            self,
+            cat_age: Any,
+            dog_age: Any,
+            expected_error: Type[Exception]
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
