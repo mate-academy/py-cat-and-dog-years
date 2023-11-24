@@ -61,4 +61,3 @@ class TestCatAndDogYear:
     def test_get_human_age_with_invalid_type(self) -> None:
         with pytest.raises(TypeError):
             get_human_age("14", 15)
-
