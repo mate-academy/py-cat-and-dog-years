@@ -48,10 +48,6 @@ class TestCatAndDogYear:
                 id="should return list with different numbers "
                    "[23, 21] if cat and dog have different age"
             ),
-            pytest.param(
-                "111", [123], TypeError,
-                id="should raise a TypeError if parameters type is not int"
-            ),
         ]
     )
     def test_get_human_age(
@@ -61,3 +57,8 @@ class TestCatAndDogYear:
             expected: list[int]
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
+
+    def test_get_human_age_with_invalid_type(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("14", 15)
+
