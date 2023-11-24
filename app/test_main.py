@@ -39,6 +39,18 @@ class TestCatAndDogYear:
                 100, 100, [21, 17],
                 id="should return list [21, 17] if cat and dog ages equal 100"
             ),
+            pytest.param(
+                -1, -1, [0, 0],
+                id="should return list [0, 0] if cat and dog ages less than 0"
+            ),
+            pytest.param(
+                111, 123, [23, 21],
+                id="should return list with different numbers [23, 21] if cat and dog have different age"
+            ),
+            pytest.param(
+                "111", [123], TypeError,
+                id="should raise a TypeError if parameters type is not int"
+            ),
         ]
     )
     def test_get_human_age(
