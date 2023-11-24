@@ -45,7 +45,8 @@ class TestCatAndDogYear:
             ),
             pytest.param(
                 111, 123, [23, 21],
-                id="should return list with different numbers [23, 21] if cat and dog have different age"
+                id="should return list with different numbers "
+                   "[23, 21] if cat and dog have different age"
             ),
             pytest.param(
                 "111", [123], TypeError,
