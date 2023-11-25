@@ -43,6 +43,12 @@ class TestGetHumanAge:
                 [21, 17],
                 id="larger ages"
             ),
+            pytest.param(
+                -10,
+                -10,
+                [0, 0],
+                id="negative numbers"
+            ),
 
         ]
     )
