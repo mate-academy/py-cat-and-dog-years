@@ -11,43 +11,43 @@ class TestGetHumanAge:
                 0,
                 0,
                 [0, 0],
-                id="initial conditions"
+                id="zero ages - both animals start at zero"
             ),
             pytest.param(
                 14,
                 14,
                 [0, 0],
-                id="ages before first threshold"
+                id="just before first age milestone - no aging progression"
             ),
             pytest.param(
                 15,
                 15,
                 [1, 1],
-                id="first threshold"
+                id="at first aging milestone - cats and dogs age by 1 year"
             ),
             pytest.param(
                 24,
                 24,
                 [2, 2],
-                id="second threshold"
+                id="at second aging milestone - cats and dogs age by 2 years"
             ),
             pytest.param(
                 28,
                 28,
                 [3, 2],
-                id="third threshold"
+                id="beyond second milestone - cat ages faster than dog"
             ),
             pytest.param(
                 100,
                 100,
                 [21, 17],
-                id="larger ages"
+                id="advanced ages - cats and dogs in later life stages"
             ),
             pytest.param(
                 -10,
                 -10,
                 [0, 0],
-                id="negative numbers"
+                id="negative ages input - invalid ages set to zero"
             ),
 
         ]
