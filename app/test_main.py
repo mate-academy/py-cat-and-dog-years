@@ -20,7 +20,7 @@ def test_output_integer_value_not_change_previous_value() -> None:
 def test_correct_calculation_of_human_age(
         cat_age: int,
         dog_age: int,
-        expected_result: list
+        expected_result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
 
