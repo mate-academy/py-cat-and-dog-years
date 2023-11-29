@@ -1,3 +1,7 @@
+from typing import Any
+
+import pytest
+
 from app.main import get_human_age
 
 
@@ -26,3 +30,31 @@ def test_should_add_1_human_years_every_4_years_for_a_dog_over_23() -> None:
     assert get_human_age(0, 28)[1] == 2
     assert get_human_age(0, 29)[1] == 3
     assert get_human_age(0, 100)[1] == 17
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,error",
+    [
+        (45, "28", TypeError),
+        ("45", 6, TypeError),
+        ({45}, 6, TypeError),
+        (45, {6}, TypeError),
+        (None, 6, TypeError),
+        (45, None, TypeError),
+    ],
+)
+def test_should_raise_error_if_arguments_is_not_string(
+        cat_age: Any,
+        dog_age: Any,
+        error: Any
+) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_age, dog_age)
+
+
+def test_should_raise_error_if_arguments_is_negative_numbers() -> None:
+    assert get_human_age(-45, -45) == [0, 0]
+
+
+def test_case_with_big_numbers() -> None:
+    assert get_human_age(100000, 500000) == [24996, 99997]
