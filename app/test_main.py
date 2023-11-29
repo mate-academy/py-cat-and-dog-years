@@ -45,9 +45,10 @@ class TestCalculateLimitValue:
     )
     def test_calculate_limit_value(
             self,
-            initial_cat_age,
-            initial_dog_age,
-            expected_result
+            initial_cat_age: int,
+            initial_dog_age: int,
+            expected_result: list
     ) -> None:
-        assert (get_human_age(initial_cat_age, initial_dog_age)) == expected_result
-
+        assert (
+            get_human_age(initial_cat_age, initial_dog_age)
+        ) == expected_result
