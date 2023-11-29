@@ -14,6 +14,9 @@ class TestGetHumanAge:
             ),
             pytest.param(
                 100, 100, [21, 17], id="test converting age > 24"
+            ),
+            pytest.param(
+                83, 83, [16, 13], id="test result rounding floor"
             )
         ]
     )
