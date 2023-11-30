@@ -21,6 +21,12 @@ class TestGetHumanAge:
             pytest.param(
                 0, 0, [0, 0], id="test age 0"
             ),
+            pytest.param(
+                -10, -42, [0, 0], id="test negative age"
+            ),
+            pytest.param(
+                122, 135, [26, 24], id="test unlikely initial data"
+            ),
         ]
     )
     def test_convert_age_to_human(
@@ -35,13 +41,9 @@ class TestGetHumanAge:
         "cat_age,dog_age,expected_error",
         [
             pytest.param(
-                -10, -42, ValueError,
-                id="raise an error with negative initial data"
-            ),
-            pytest.param(
-                120, 120, ValueError,
-                id="raise an error with unlikely initial data"
-            ),
+                "120", [120], TypeError,
+                id="raise an error with incorrect initial data type"
+            )
         ]
     )
     def test_raising_errors(
