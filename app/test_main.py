@@ -19,4 +19,7 @@ def test_get_human_age(
         dog_age: int,
         expected_result: list
 ) -> None:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("Arguments should be int type")
     assert get_human_age(cat_age, dog_age) == expected_result
+    assert isinstance(get_human_age(cat_age, dog_age), list)
