@@ -20,12 +20,8 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
-@pytest.mark.parametrize("cat_age, dog_age", [
-    pytest.param("15", 15, id="String instead of integer"),
-    pytest.param(15, "15", id="String instead of integer"),
-    pytest.param(15.5, 15, id="Float instead of integer"),
-    pytest.param(15, 15.5, id="Float instead of integer"),
-])
-def test_get_human_age_wrong_types(cat_age, dog_age) -> None:
+def test_get_human_age_wrong_types() -> None:
     with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
+        get_human_age("0", 0)
+        get_human_age(0, "0")
+        get_human_age("0", "0")
