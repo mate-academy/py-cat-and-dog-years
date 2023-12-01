@@ -1,4 +1,5 @@
 import pytest
+from typing import Type
 
 from app.main import get_human_age
 
@@ -20,8 +21,19 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_get_human_age_wrong_types() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("0", 0)
-        get_human_age(0, "0")
-        get_human_age("0", "0")
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [
+        pytest.param("15", 15, TypeError, id="String instead of integer"),
+        pytest.param(15, "15", TypeError, id="String instead of integer"),
+        pytest.param(15.5, 15, TypeError, id="Float instead of integer"),
+        pytest.param(15, 15.5, TypeError, id="Float instead of integer"),
+    ]
+)
+def test_get_human_age_wrong_types(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Type[BaseException]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
