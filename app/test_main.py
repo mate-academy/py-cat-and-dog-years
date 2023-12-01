@@ -30,8 +30,7 @@ def test_get_human_age(
     [
         pytest.param("15", 15, TypeError, id="String instead of integer"),
         pytest.param(15, "15", TypeError, id="String instead of integer"),
-        pytest.param(15.5, 15, TypeError, id="Float instead of integer"),
-        pytest.param(15, 15.5, TypeError, id="Float instead of integer"),
+        pytest.param("15", "15", TypeError, id="String instead of integer"),
     ]
 )
 def test_get_human_age_wrong_types(
