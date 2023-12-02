@@ -12,10 +12,14 @@ class TestGetHumanAge:
             (14, 14, [0, 0])
         ]
     )
-    def test_input_age_less_than_one_year_human(self, cat_age, dog_age, expected_result):
+    def test_input_age_less_than_one_year_human(self,
+                                                cat_age: int,
+                                                dog_age: int,
+                                                expected_result: list
+                                                ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
-    def test_input_age_equal_one_year_human(self):
+    def test_input_age_equal_one_year_human(self) -> None:
         assert get_human_age(15, 15) == [1, 1]
         assert get_human_age(23, 23) == [1, 1]
 
@@ -27,7 +31,11 @@ class TestGetHumanAge:
             (27, 28, [2, 2])
         ]
     )
-    def test_input_age_equal_two_years_human(self, cat_age, dog_age, expected_result):
+    def test_input_age_equal_two_years_human(self,
+                                             cat_age: int,
+                                             dog_age: int,
+                                             expected_result: int
+                                             ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
@@ -39,5 +47,9 @@ class TestGetHumanAge:
             (100, 100, [21, 17])
         ]
     )
-    def test_input_age_bigger_than_two_years_human(self, cat_age, dog_age, expected_result):
+    def test_input_age_bigger_than_two_years_human(self,
+                                                   cat_age: int,
+                                                   dog_age: int,
+                                                   expected_result: int
+                                                   ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
