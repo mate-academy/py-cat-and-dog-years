@@ -77,6 +77,6 @@ class TestGetHumanAge:
             (["dada"], {"dog": "12"})
         ]
     )
-    def test_incorrected_input_age(self, cat_age, dog_age):
+    def test_incorrected_input_age(self, cat_age: any, dog_age: any) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
