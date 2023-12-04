@@ -20,7 +20,7 @@ def test_results_get_human_age(
         doge_age: int,
         result: list) -> None:
     assert (
-            get_human_age(cat_age, doge_age) == result
+        get_human_age(cat_age, doge_age) == result
     ), (f"Function get_human_age should return {result}, "
         f"got {get_human_age(cat_age, doge_age)} instead")
 
