@@ -1,15 +1,9 @@
 import pytest
-
+from typing import Type
 from app.main import get_human_age
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected_result", [
-    (-1, 3, [0, 0]),                  # Test negative cat_age
-    (2, -5, [0, 0]),                  # Test negative dog_age
-    (-3, -2, [0, 0]),                 # Test negative cat_age and dog_age
-    ("string", 30, TypeError),        # Test incorrect type for cat_age
-    (10, "string", TypeError),        # Test incorrect type for dog_age
-    ("string", "string", TypeError),  # Test incorrect types for both
     (0, 0, [0, 0]),
     (14, 14, [0, 0]),
     (15, 15, [1, 1]),
@@ -20,17 +14,27 @@ from app.main import get_human_age
     (28, 29, [3, 3]),
     (100, 100, [21, 17])
 ])
-def test_get_human_age(
+def test_get_human_age_valid_arguments(
         cat_age: int,
         dog_age: int,
-        expected_result: list | TypeError
+        expected_result: Type[Exception]
 ) -> None:
-    if (
-            isinstance(expected_result, type)
-            and issubclass(expected_result, Exception)
-    ):
-        with pytest.raises(expected_result):
-            get_human_age(cat_age, dog_age)
-    else:
-        result = get_human_age(cat_age, dog_age)
-        assert result == expected_result
+    assert get_human_age(cat_age, dog_age) == expected_result
+
+
+@pytest.mark.parametrize("cat_age, dog_age, expected_result", [
+    (-1, 3, [0, 0]),
+    (2, -5, [0, 0]),
+    (-3, -2, [0, 0]),
+    ("string", 30, TypeError),
+    (10, "string", TypeError),
+    ("string", "string", TypeError),
+])
+def test_get_human_age_invalid_arguments(
+        cat_age: int,
+        dog_age: int,
+        expected_result: TypeError
+) -> None:
+    with pytest.raises(Exception) as e:
+        get_human_age(cat_age, dog_age)
+        assert e == expected_result
