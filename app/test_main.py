@@ -15,16 +15,40 @@ class TestGetHumanAge:
                 id="should be 0 when 'animal_age' < 15"
             ),
             pytest.param(
+                3,
+                8,
+                [0, 0],
+                id="should be 0 when 'animal_age' < 15"
+            ),
+            pytest.param(
                 15,
+                15,
+                [1, 1],
+                id="should be 1 when 15 <= 'animal_age' < 24"
+            ),
+            pytest.param(
+                23,
                 23,
                 [1, 1],
                 id="should be 1 when 15 <= 'animal_age' < 24"
             ),
             pytest.param(
                 24,
+                24,
+                [2, 2],
+                id="should be 2 when 24 <= 'animal_age' <= 29"
+            ),
+            pytest.param(
+                27,
                 27,
                 [2, 2],
                 id="should be 2 when 24 <= 'animal_age' <= 29"
+            ),
+            pytest.param(
+                28,
+                29,
+                [3, 3],
+                id="'animal_age' should be 3"
             ),
             pytest.param(
                 48,
