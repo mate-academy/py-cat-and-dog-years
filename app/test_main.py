@@ -4,7 +4,6 @@ from app.main import get_human_age
 from typing import Any
 
 
-
 class TestGetHumanAge:
     @pytest.mark.parametrize(
         "initial_cat_age, initial_dog_age, expected_result",
@@ -49,7 +48,10 @@ class TestGetHumanAge:
             initial_dog_age: int,
             expected_result: list[int]
     ) -> None:
-        assert get_human_age(initial_cat_age, initial_dog_age) == expected_result
+        assert get_human_age(
+            initial_cat_age,
+            initial_dog_age
+        ) == expected_result
 
     @pytest.mark.parametrize(
         "initial_cat_age,initial_dog_age,expected_error",
@@ -63,7 +65,8 @@ class TestGetHumanAge:
                 {}, 5,
                 TypeError,
                 id="should raise error when age is 'dict'"
-            ),pytest.param(
+            ),
+            pytest.param(
                 5, [],
                 TypeError,
                 id="should raise error when age is not 'list'"
