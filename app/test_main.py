@@ -1,5 +1,7 @@
-import pytest
 from typing import Any
+
+import pytest
+
 from app.main import get_human_age
 
 
@@ -38,6 +40,10 @@ class TestCalculateLimitAges:
             pytest.param(
                 150, 150, [33, 27],
                 id="When an animals 150 years"
+            ),
+            pytest.param(
+                -100, -100, [0, 0],
+                id="When an animals -100 years"
             )
         ]
     )
@@ -90,6 +96,3 @@ class TestsErrorThrowing:
     ) -> None:
         with pytest.raises(expected_error):
             get_human_age(initial_cat_age, initial_dog_age)
-
-    def test_get_error_if_negative_ages(self) -> None:
-        assert get_human_age(-100, -100) == [0, 0]
