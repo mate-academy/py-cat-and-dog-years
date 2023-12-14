@@ -29,7 +29,7 @@ class TestConvertAge:
             pytest.param(0, "1", TypeError),
             pytest.param("1", 0, TypeError),
             pytest.param([234, 32], 15, TypeError),
-            pytest.param(24, [1243, 34,], TypeError),
+            pytest.param(24, [1243, 34, ], TypeError),
             pytest.param((32, 2), 28, TypeError),
             pytest.param(100, (12, 3), TypeError),
             pytest.param(100, {12: 12}, TypeError),
