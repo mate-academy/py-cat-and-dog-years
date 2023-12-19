@@ -44,13 +44,17 @@ class TestMain:
         [
             pytest.param("2", 8, TypeError,
                          id="expected type value - integer not str"),
+            pytest.param(9, [1], TypeError,
+                         id="value should be integer"),
+            pytest.param("1", "1", TypeError,
+                         id="both values must be integer")
         ]
     )
     def test_get_human_age_with_incorrect_values(
             self,
             cat_age: int,
             dog_age: int,
-            expected_error: type
+            expected_error: ValueError
     ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
