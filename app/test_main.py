@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 
 from app.main import get_human_age
 
@@ -52,8 +53,8 @@ class TestMain:
     )
     def test_get_human_age_with_incorrect_values(
             self,
-            cat_age: int,
-            dog_age: int,
+            cat_age: Any,
+            dog_age: Any,
             expected_error: TypeError
     ) -> None:
         with pytest.raises(expected_error):
