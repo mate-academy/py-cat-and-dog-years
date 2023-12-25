@@ -14,6 +14,9 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
+        (-10, -10, [0, 0]),
+        (-10, -150, [0, 0]),
+        (10000, 10000, [2496, 1997]),
     ]
 )
 def test_first_15_years(cat_age: int, dog_age: int, result: list) -> None:
