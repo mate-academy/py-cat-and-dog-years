@@ -1,17 +1,38 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_should_return_zero_when_age_less_then_15() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_one_year_when_age_less_then_24() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_two_years_when_age_equal_27_and_28() -> None:
-    assert get_human_age(27, 28) == [2, 2]
-
-
-def test_should_return_three_years_when_age_equal_28_and_29() -> None:
-    assert get_human_age(28, 29) == [3, 3]
+class TestCatAndDogeAge:
+    @pytest.mark.parametrize(
+        "dog_age,cat_age,humane_age",
+        [
+            pytest.param(
+                14,
+                14,
+                [0, 0],
+                id="should return zero when age less then 15"
+            ),
+            pytest.param(
+                23,
+                23,
+                [1, 1],
+                id="should return one year when age less then 24"
+            ),
+            pytest.param(
+                27,
+                28,
+                [2, 2],
+                id="should return two years when age equal 27 and 28"
+            ),
+            pytest.param(
+                28,
+                29,
+                [3, 3],
+                id="should return tree years when age equal 28 and 29"
+            )
+        ]
+    )
+    def test_age(self, dog_age: int, cat_age: int, humane_age: list) -> None:
+        assert (
+            get_human_age(dog_age, cat_age) == humane_age
+        )
