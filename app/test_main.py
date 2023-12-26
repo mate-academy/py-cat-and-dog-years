@@ -45,7 +45,12 @@ class TestCatAndDogeAge:
 
         ]
     )
-    def test_age(self, dog_age: int, cat_age: int, humane_age: list) -> None:
+    def test_age(
+            self,
+            dog_age: int,
+            cat_age: int,
+            humane_age: list[int]
+    ) -> None:
         assert (
             get_human_age(dog_age, cat_age) == humane_age
         )
@@ -70,6 +75,10 @@ class TestCatAndDogeAge:
             )
         ]
     )
-    def test_age_exceptions(self, dog_age: int, cat_age: int) -> None:
+    def test_age_exceptions(
+            self,
+            dog_age: int,
+            cat_age: int
+    ) -> None:
         with pytest.raises(TypeError):
             get_human_age(dog_age, cat_age)
