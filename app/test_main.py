@@ -82,4 +82,3 @@ class TestCatAndDogeAge:
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(dog_age, cat_age)
-
