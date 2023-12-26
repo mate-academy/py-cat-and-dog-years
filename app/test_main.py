@@ -18,11 +18,27 @@ from app.main import get_human_age
         (-10, -10, [0, 0]),
         (-10, -150, [0, 0]),
         (10000, 10000, [2496, 1997]),
+    ],
+    ids=[
+        "0 cat/dog years should convert into 0 human age.",
+        "14 cat/dog years should convert into 0 human age.",
+        "15 cat/dog years should convert into 1 human age.",
+        "23 cat/dog years should convert into 1 human age.",
+        "24 cat/dog years should convert into 2 human age.",
+        "27 cat/dog years should convert into 2 human age.",
+        "28 cat/dog years should convert into 3/2 human age accordingly.",
+        "100 cat/dog years should convert into 21/17 human age accordingly.",
+        "100 cat/ 150 dog years should convert into "
+        "21/27 human age accordingly.",
+        "-10 cat/dog years should convert into 0 human age.",
+        "-10 cat/ -150 dog years should convert into 0 human age.",
+        "10000 cat/dog years should convert into "
+        "2496 / 1997 human age accordingly.",
     ]
 )
 def test_first_15_years(cat_age: int, dog_age: int, result: list) -> None:
     assert (
-            get_human_age(cat_age, dog_age) == result
+        get_human_age(cat_age, dog_age) == result
     ), "function should return appropriate value"
 
 
