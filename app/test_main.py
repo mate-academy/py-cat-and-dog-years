@@ -15,4 +15,3 @@ def test_should_return_right_value() -> None:
 
 def test_should_return_zero_years_for_zeros_years() -> None:
     assert get_human_age(0, 0) == [0, 0]
-
