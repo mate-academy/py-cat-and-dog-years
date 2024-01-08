@@ -30,7 +30,11 @@ from app.main import get_human_age
 
     ],
 )
-def test_get_human_age(cat_age: int, dog_age: int, human_ages: list) -> None:
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        human_ages: list[int]
+) -> None:
     assert (
         get_human_age(cat_age, dog_age) == human_ages
     ), f"Human's ages {human_ages} should be equal [{cat_age, dog_age}]"
