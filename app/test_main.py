@@ -117,4 +117,3 @@ def test_should_add_one_year_every_five_dog_years(
 def test_should_take_int_arguments(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
-
