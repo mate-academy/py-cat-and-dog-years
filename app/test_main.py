@@ -1,17 +1,26 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_should_return_zero_years_for_first_14_years() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_right_years_for_first_animal() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_right_value() -> None:
-    assert get_human_age(100, 100) == [21, 17]
-
-
-def test_should_return_zero_years_for_zeros_years() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, result",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (27, 27, [2, 2]),
+        (100, 100, [21, 17])
+    ],
+    ids=[
+        "zero values",
+        "round for first year",
+        "second year",
+        "extra year"
+    ]
+)
+def test_values_for_get_human_age_func(cat_age: int,
+                                       dog_age: int,
+                                       result: list) -> None:
+    assert (get_human_age(cat_age, dog_age) == result), \
+        (f"Human age for cat_age {cat_age} = {result[0]}, "
+         f"for dog age {dog_age} = {result[1]}")
