@@ -11,7 +11,11 @@ from app.main import get_human_age
         (14, 14, [0, 0])
     ]
 )
-def test_zero_human_years(cat_age, dog_age, human_age) -> None:
+def test_zero_human_years(
+        cat_age: int,
+        dog_age: int,
+        human_age: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
 
@@ -23,7 +27,11 @@ def test_zero_human_years(cat_age, dog_age, human_age) -> None:
         (23, 23, [1, 1])
     ]
 )
-def test_cat_and_dog_one_human_year_old(cat_age, dog_age, human_age) -> None:
+def test_cat_and_dog_one_human_year_old(
+        cat_age: int,
+        dog_age: int,
+        human_age: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
 
@@ -34,7 +42,11 @@ def test_cat_and_dog_one_human_year_old(cat_age, dog_age, human_age) -> None:
         (27, 27, [2, 2])
     ]
 )
-def test_cat_and_dog_two_human_years_old(cat_age, dog_age, human_age) -> None:
+def test_cat_and_dog_two_human_years_old(
+        cat_age: int,
+        dog_age: int,
+        human_age: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
 
@@ -46,7 +58,11 @@ def test_cat_and_dog_two_human_years_old(cat_age, dog_age, human_age) -> None:
         (100, 100, [21, 17])
     ]
 )
-def test_cats_get_older_faster(cat_age, dog_age, human_age) -> None:
+def test_cats_get_older_faster(
+        cat_age: int,
+        dog_age: int,
+        human_age: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == human_age, \
         ("Takes 4 cat/years and 5 dog/years for 1 human/year "
          "after they getting 2 years old.")
@@ -60,7 +76,11 @@ def test_cats_get_older_faster(cat_age, dog_age, human_age) -> None:
         (1000, 1060, [246, 209])
     ]
 )
-def test_out_of_normal_range_cat_and_dog_ages(cat_age, dog_age, human_age):
+def test_out_of_normal_range_cat_and_dog_ages(
+        cat_age: int,
+        dog_age: int,
+        human_age: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
 
@@ -73,6 +93,9 @@ def test_out_of_normal_range_cat_and_dog_ages(cat_age, dog_age, human_age):
         ("", 67)
     ]
 )
-def test_wrong_type_of_input_for_cat_and_dog_age(cat_age, dog_age) -> None:
+def test_wrong_type_of_input_for_cat_and_dog_age(
+        cat_age: int,
+        dog_age: int
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
