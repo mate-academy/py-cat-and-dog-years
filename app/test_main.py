@@ -19,3 +19,14 @@ def test_or_list_with_years_is_correct(
         human_age: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("28", "29"),
+        ([28], [28])
+    ])
+def test_or_data_are_numbers(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
