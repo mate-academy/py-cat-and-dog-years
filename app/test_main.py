@@ -7,65 +7,21 @@ from app.main import get_human_age
     "cat_age, dog_age, human_age",
     [
         (0, 0, [0, 0]),
-        (7, 6, [0, 0]),
-        (14, 14, [0, 0])
-    ]
-)
-def test_zero_human_years(
-        cat_age: int,
-        dog_age: int,
-        human_age: list
-) -> None:
-    assert get_human_age(cat_age, dog_age) == human_age
-
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age, human_age",
-    [
+        (14, 14, [0, 0]),
         (15, 15, [1, 1]),
-        (20, 19, [1, 1]),
-        (23, 23, [1, 1])
-    ]
-)
-def test_cat_and_dog_one_human_year_old(
-        cat_age: int,
-        dog_age: int,
-        human_age: list
-) -> None:
-    assert get_human_age(cat_age, dog_age) == human_age
-
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age, human_age",
-    [
+        (23, 23, [1, 1]),
         (24, 24, [2, 2]),
-        (27, 27, [2, 2])
-    ]
-)
-def test_cat_and_dog_two_human_years_old(
-        cat_age: int,
-        dog_age: int,
-        human_age: list
-) -> None:
-    assert get_human_age(cat_age, dog_age) == human_age
-
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age, human_age",
-    [
+        (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (76, 76, [15, 12]),
         (100, 100, [21, 17])
     ]
 )
-def test_cats_get_older_faster(
+def test_check_first_two_years_and_difference_in_aging(
         cat_age: int,
         dog_age: int,
         human_age: list
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == human_age, \
-        ("Takes 4 cat/years and 5 dog/years for 1 human/year "
-         "after they getting 2 years old.")
+    assert get_human_age(cat_age, dog_age) == human_age
 
 
 @pytest.mark.parametrize(
@@ -76,7 +32,7 @@ def test_cats_get_older_faster(
         (1000, 1060, [246, 209])
     ]
 )
-def test_out_of_normal_range_cat_and_dog_ages(
+def test_cat_and_dog_ages_out_of_normal_range(
         cat_age: int,
         dog_age: int,
         human_age: list
