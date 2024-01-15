@@ -5,6 +5,7 @@ import pytest
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_output",
     [
+        (-1, -1, [0, 0]),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -16,6 +17,7 @@ import pytest
     ],
 
     ids=[
+        "the age can not be negative",
         "cat and dog ages equals to 0",
         "cat and dog ages equals to 14",
         "cat and dog ages equals to 15",
@@ -32,3 +34,8 @@ def test_check_human_age_based_on_cat_and_dog_ages(
         expected_output: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_output
+
+
+def test_raises_an_error_in_case_of_incorrect_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("3", "3")
