@@ -19,7 +19,7 @@ import pytest
 def test_should_return_correct_list(
         cat_age: int,
         dog_age: int,
-        human_age_list: list
+        human_age_list: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age_list
 
