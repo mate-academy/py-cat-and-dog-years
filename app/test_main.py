@@ -3,30 +3,34 @@ import pytest
 from app.main import get_human_age
 
 
-def test_should_return_zero_when_negative_arguments() -> None:
-    assert get_human_age(-1, -2) == [0, 0]
-
-
 def test_arguments_should_be_int() -> None:
     with pytest.raises(TypeError):
         get_human_age("10", {10})
 
 
-def test_should_return_zero_if_age_is_less_than_15() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_one_if_age_is_15() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_one_if_age_is_23() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_2_if_age_is_27_and_28() -> None:
-    assert get_human_age(27, 28) == [2, 2]
-
-
-def test_every_4_years_for_cats_and_every_5_for_dogs() -> None:
-    assert get_human_age(28, 29) == [3, 3]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,human_age",
+    [
+        pytest.param(-1, -2, [0, 0]),
+        pytest.param(14, 14, [0, 0]),
+        pytest.param(15, 15, [1, 1]),
+        pytest.param(23, 23, [1, 1]),
+        pytest.param(27, 28, [2, 2]),
+        pytest.param(28, 29, [3, 3]),
+    ],
+    ids=[
+        "Zeros when ages are negative",
+        "Zeros if ages are less than 15",
+        "Ones if ages equal to 15",
+        "Ones if ages less than 24",
+        "Twos if ages are 27 and 28",
+        "Threes if ages are 28 and 29"
+    ]
+)
+def test_get_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
+    human_age_return = get_human_age(cat_age, dog_age)
+    assert (
+        get_human_age(cat_age, dog_age) == human_age
+    ), (f"{cat_age} cat years should be {human_age_return[0]} human years and "
+        f"{dog_age} dog years should be {human_age_return[1]} human years.\n"
+        f"Got {human_age[0]} and {human_age[1]} instead")
