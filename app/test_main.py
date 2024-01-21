@@ -17,7 +17,7 @@ class TestGetHumanAge:
             (100, 100, [21, 17]),
         ],
     )
-    def test_modify_class_correctly(
+    def test_human_age_correctly(
             self,
             cat_age: int,
             dog_age: int,
