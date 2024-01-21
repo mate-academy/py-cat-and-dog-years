@@ -1,6 +1,5 @@
+from typing import Any
 from app.main import get_human_age
-
-# write your code here
 import pytest
 
 
@@ -27,18 +26,20 @@ def test_can_get_human_age(cat_age: int, dog_age: int,
         f"should be equal to {result}")
 
 
-def test_can_get_human_age_invalid_type() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("1", 1)
-
-    with pytest.raises(TypeError):
-        get_human_age(3, "3")
-
-    with pytest.raises(TypeError):
-        get_human_age([3], 3)
-
-    with pytest.raises(TypeError):
-        get_human_age(3, {3})
-
-    with pytest.raises(TypeError):
-        get_human_age((3, 3))
+@pytest.mark.parametrize(
+    "cat_age,dog_age,result",
+    [
+        ("1", 1, TypeError),
+        (3, "3", TypeError),
+        ([3], 3, TypeError),
+        (3, {3}, TypeError),
+        ((3, 3), None, TypeError),
+        (None, None, TypeError),
+    ]
+)
+def test_can_get_human_age_invalid_type(
+        cat_age: Any,
+        dog_age: Any,
+        result: Any) -> None:
+    with pytest.raises(result):
+        get_human_age(cat_age, dog_age)
