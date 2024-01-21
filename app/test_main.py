@@ -25,3 +25,20 @@ def test_can_get_human_age(cat_age: int, dog_age: int,
         get_human_age(cat_age, dog_age) == result
     ), (f"Age: cat_to_human dog_to_human of {cat_age} and {dog_age} "
         f"should be equal to {result}")
+
+
+def test_can_get_human_age_invalid_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("1", 1)
+
+    with pytest.raises(TypeError):
+        get_human_age(3, "3")
+
+    with pytest.raises(TypeError):
+        get_human_age([3], 3)
+
+    with pytest.raises(TypeError):
+        get_human_age(3, {3})
+
+    with pytest.raises(TypeError):
+        get_human_age((3, 3))
