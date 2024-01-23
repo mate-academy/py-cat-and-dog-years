@@ -49,6 +49,36 @@ from app.main import get_human_age
     ]
 )
 def test_should_return_correct_result(
-    cat_age: int, dog_age: int, expected_result: int
+    cat_age: int, dog_age: int, expected_result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [
+        pytest.param(
+            "15", 30, TypeError,
+            id="should raise TypeError when age is str"
+        ),
+        pytest.param(
+            27, [12], TypeError,
+            id="should raise TypeError when age is list"
+        ),
+        pytest.param(
+            12, {"23": 23}, TypeError,
+            id="should raise TypeError when age is dict"
+        ),
+        pytest.param(
+            {34}, 3, TypeError,
+            id="should raise TypeError when age is set"
+        )
+    ]
+)
+def test_should_raise_correct_exception(
+    cat_age: int,
+    dog_age: int,
+    expected_error: type[Exception]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
