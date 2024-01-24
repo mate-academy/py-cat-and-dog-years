@@ -25,7 +25,5 @@ def test_converts_age_correctly(
 
 
 def test_raises_exception_correctly() -> None:
-    cat_age = "cat"
-    dog_age = "dog"
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
+    with pytest.raises(TypeError):
+        get_human_age("Jack", "Meow")
