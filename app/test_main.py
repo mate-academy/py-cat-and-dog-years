@@ -5,6 +5,8 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age,dog_age,human_age",
     [
+        pytest.param(-60, -30, [0, 0], id="negative values of animals age"),
+        pytest.param(0, 0, [0, 0], id="the age of the animals is 0"),
         pytest.param(14, 14, [0, 0], id="first 15 animals years"),
         pytest.param(23, 23, [1, 1], id="the next 9 animals years"),
         pytest.param(24, 24, [2, 2], id="animals age 24 years"),
