@@ -1,4 +1,10 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Age must be integer!")
+
+    if cat_age > 1000 or dog_age > 1000:
+        raise ValueError("The value must be less than 1000")
+
     cat_to_human = convert_to_human(cat_age, 15, 9, 4)
     dog_to_human = convert_to_human(dog_age, 15, 9, 5)
     return [cat_to_human, dog_to_human]
