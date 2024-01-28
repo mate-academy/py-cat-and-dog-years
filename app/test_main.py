@@ -31,6 +31,4 @@ def test_human_age_is_correct(
         dog_age: int,
         human_age: list
 ) -> None:
-    assert (
-            get_human_age(cat_age, dog_age) == human_age
-    )
+    assert get_human_age(cat_age, dog_age) == human_age
