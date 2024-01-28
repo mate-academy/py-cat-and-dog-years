@@ -1,22 +1,21 @@
+import pytest
 from app.main import get_human_age
 
 
-# write your code here
-def test_both_are_zeros_when_less_than_15() -> None:
-    assert get_human_age(14, 14) == [0, 0], \
-        "Should return zeros when age of both animals is less tha 15"
-
-
-def test_both_are_ones_when_from_15_to_23() -> None:
-    assert get_human_age(15, 23) == [1, 1], \
-        "Should return ones when age of both animals is from 15 to 23"
-
-
-def test_cat_is_3_dog_is_2_when_both_are_28() -> None:
-    assert get_human_age(28, 28) == [3, 2], \
-        "Cat is 3 and dog is 2 when both are 28"
-
-
-def test_cat_is_21_dog_is_17_when_both_are_100() -> None:
-    assert get_human_age(100, 100) == [21, 17], \
-        "Cat is 21 and dog is 17 when both are 100"
+@pytest.mark.parametrize(
+    "cat_age, dog_age, human_age",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17])
+    ]
+)
+def test_human_age_is_correct(cat_age, dog_age, human_age) -> None:
+    assert (
+            get_human_age(cat_age, dog_age) == human_age
+    ), "Human age should be calculated correctly!"
