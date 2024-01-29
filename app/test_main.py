@@ -17,7 +17,7 @@ import pytest
         "should return [1, 1] for cat and dog both 23 years"
     ]
 )
-def test_when(
+def test_of_converting_animals_years_to_people_years(
         cat_years_to_convert: int,
         dog_years_to_convert: int,
         expected_years: tuple
