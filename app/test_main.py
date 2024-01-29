@@ -4,28 +4,51 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, result",
+    "cat_age, dog_age, result, test_id",
     [
-        (14, 14, [0, 0]),
-        (23, 23, [1, 1]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
-        (-5, -10, [0, 0]),
-    ],
-    ids=[
-        "age ge 0 and le 14 should equal 0",
-        "age ge 15 and le 23 should equal 1",
-        "age ge 24 and le 27 should equal 2",
-        "age ge 28 should depend on the type of animal",
-        "age ge 28 should depend on the type of animal",
-        "negative age is impossible, should return 0"
+        (
+            14,
+            14,
+            [0, 0],
+            "age between 0 and 14 should equal 0"
+        ),
+        (
+            23,
+            23,
+            [1, 1],
+            "age between 15 and 23 should equal 1"
+        ),
+        (
+            27,
+            27,
+            [2, 2],
+            "age between 24 and 27 should equal 2"
+        ),
+        (
+            28,
+            28,
+            [3, 2],
+            "age older than 28 should depend on the type of animal"
+        ),
+        (
+            100,
+            100,
+            [21, 17],
+            "age older than 28 should depend on the type of animal"
+        ),
+        (
+            -5,
+            -10,
+            [0, 0],
+            "negative age is impossible, should return 0"
+        )
     ]
 )
 def test_convert_age(cat_age: int,
                      dog_age: int,
-                     result: list) -> None:
-    assert get_human_age(cat_age, dog_age) == result
+                     result: list,
+                     test_id: str) -> None:
+    assert get_human_age(cat_age, dog_age) == result, test_id
 
 
 @pytest.mark.parametrize(
