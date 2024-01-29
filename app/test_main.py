@@ -1,5 +1,6 @@
 import pytest
 from typing import Any
+
 from app.main import get_human_age
 
 
@@ -39,10 +40,10 @@ def test_get_human_age(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, exception",
     [
-        pytest.param(5, "5"),
-        pytest.param("5", 5)
+        pytest.param(5, "5", TypeError),
+        pytest.param("5", 5, TypeError)
     ],
     ids=[
         "cats/dogs age is negative number, must be positive",
@@ -51,7 +52,9 @@ def test_get_human_age(
 )
 def test_should_raise_error_if_age_is_not_int(
         cat_age: Any,
-        dog_age: Any
+        dog_age: Any,
+        exception: Any
+
 ) -> None:
-    with pytest.raises(TypeError):
+    with pytest.raises(exception):
         get_human_age(cat_age, dog_age)
