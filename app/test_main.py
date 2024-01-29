@@ -12,9 +12,15 @@ from app.main import get_human_age
         (24, 24, [2, 2], "Test for 24 cat/dog years should return [2, 2]"),
         (27, 27, [2, 2], "Test for 27 cat/dog years should return [2, 2]"),
         (28, 28, [3, 2], "Test for 28 cat/dog years should return [3, 2]"),
-        (100, 100, [21, 17], "Test for 100 cat/dog years should return [21, 17]"),
-        (-1, -1, [0, 0], "Test for negative cat/dog years should return [0, 0]"),
+        (100, 100, [21, 17], "Test for 100 years should return [21, 17]"),
+        (-1, -1, [0, 0], "Test for negative years should return [0, 0]")
+
     ]
 )
-def test_get_human_age(cat_years, dog_years, expected, test_id):
+def test_get_human_age(
+        cat_years: int,
+        dog_years: int,
+        expected: str,
+        test_id: str
+) -> None:
     assert get_human_age(cat_years, dog_years) == expected, test_id
