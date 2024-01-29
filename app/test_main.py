@@ -6,44 +6,34 @@ import pytest
     "cat_age,dog_age,result",
     [
         pytest.param(
-            0, 0, [0, 0],
-            id="should return [0, 0] if cat and dog age < 15"
-        ),
+            0, 0, [0, 0]),
         pytest.param(
-            -1, -1, [0, 0],
-            id="should return [0, 0] if cat and dog age < 15"
-        ),
+            -1, -1, [0, 0]),
         pytest.param(
-            14, 14, [0, 0],
-            id="should return [0, 0] if cat and dog age < 15"
-        ),
+            14, 14, [0, 0]),
         pytest.param(
-            15, 15, [1, 1],
-            id="should return [1, 1] if 15 <= cat and dog age <= 23"
-        ),
+            15, 15, [1, 1]),
         pytest.param(
-            23, 23, [1, 1],
-            id="should return [1, 1] if 15 <= cat and dog age <= 23"
-        ),
+            23, 23, [1, 1]),
         pytest.param(
-            24, 24, [2, 2],
-            id="should return [2, 2] if 24 <= cat age <= 28 "
-               "and 24 <= dog age <= 29"
-        ),
+            24, 24, [2, 2]),
         pytest.param(
-            27, 28, [2, 2],
-            id="should return [2, 2] if 24 <= cat age <= 28 "
-               "and 24 <= dog age <= 29"
-        ),
+            27, 28, [2, 2]),
         pytest.param(
-            28, 29, [3, 3],
-            id="should return [3, 3] if 24 <= cat age <= 28 "
-               "and 24 <= dog age <= 29"
-        ),
+            28, 29, [3, 3]),
         pytest.param(
-            100, 100, [21, 17],
-            id="should return [21, 17] if cat and dog age is 100"
-        )
+            100, 100, [21, 17])
+    ],
+    ids=[
+        "should return [0, 0] if cat and dog age < 15",
+        "should return [0, 0] if cat and dog age < 15",
+        "should return [0, 0] if cat and dog age < 15",
+        "should return [1, 1] if 15 <= cat and dog age <= 23",
+        "should return [1, 1] if 15 <= cat and dog age <= 23",
+        "should return [2, 2] if 24 <= cat age <= 28 and 24 <= dog age <= 29",
+        "should return [2, 2] if 24 <= cat age <= 28 and 24 <= dog age <= 29",
+        "should return [3, 3] if 24 <= cat age <= 28 and 24 <= dog age <= 29",
+        "should return [21, 17] if cat and dog age is 100"
     ]
 )
 def test_checking_limit_values(
