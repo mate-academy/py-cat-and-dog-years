@@ -8,6 +8,7 @@ class TestCountHumanAge:
     @pytest.mark.parametrize(
         "initial_cat_age, initial_dog_age, expected_years",
         [
+            (-1, -1, [0, 0]),
             (0, 0, [0, 0]),
             (14, 14, [0, 0]),
             (15, 15, [1, 1]),
@@ -18,6 +19,7 @@ class TestCountHumanAge:
             (100, 100, [21, 17]),
         ],
         ids=[
+            "Should return 0, 0 when years less than 0",
             "Should return 0, 0 when years 0",
             "Should return 0, 0 when years less than 15",
             "Should return 1, 1 when years equal 15",
@@ -39,3 +41,24 @@ class TestCountHumanAge:
                                           f"{initial_dog_age} dog years "
                                           f"should be "
                                           f"{expected_years} human years.")
+
+    @pytest.mark.parametrize(
+        "initial_cat_age, initial_dog_age, expected_error",
+        [
+            (10, "10", TypeError),
+            (15, [8], TypeError),
+
+        ],
+        ids=[
+            "Should return TypeError when age is string",
+            "Should return TypeError when age is array",
+        ]
+    )
+    def test_should_raise_expected_error(
+            self,
+            initial_cat_age: int,
+            initial_dog_age: int,
+            expected_error: type(Exception)
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(initial_cat_age, initial_dog_age)
