@@ -7,6 +7,7 @@ class TestHumanAge:
     @pytest.mark.parametrize(
         "cat_age, dog_age, human_age",
         [
+            (-1, -1, [0, 0]),
             (0, 0, [0, 0]),
             (14, 14, [0, 0]),
             (15, 15, [1, 1]),
@@ -17,6 +18,7 @@ class TestHumanAge:
             (100, 100, [21, 17]),
         ],
         ids=[
+            "Invalid data should return 0",
             "Zeros for both at age 0",
             "Zeros for both under 15",
             "Ones for both at age 15",
