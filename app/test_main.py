@@ -25,7 +25,7 @@ def test_convert_age(cat_age: int,
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_error",
     [
-        ("1", "new", TypeError),
+        (1, "new", TypeError),
     ]
 )
 def test_raising_errors_correctly(cat_age: int,
