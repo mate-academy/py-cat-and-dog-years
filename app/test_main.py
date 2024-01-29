@@ -1,6 +1,5 @@
-import pytest as pytest
+import pytest
 from app.main import get_human_age
-from typing import Any
 
 
 class TestGetHumanAge:
