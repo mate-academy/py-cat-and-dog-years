@@ -1,5 +1,5 @@
 from app.main import get_human_age
-from typing import List
+from typing import Any, List
 
 import pytest
 
@@ -7,14 +7,16 @@ import pytest
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_result",
     [
-        pytest.param(5, 10, [0, 0],
-                     id="Should return zero when age is too small"),
-        pytest.param(0, 0, [0, 0],
-                     id="Should return zero if age is zero"),
-        pytest.param(-1, -5, [0, 0],
-                     id="Should return zero if age is negative"),
-        pytest.param(14, 14, [0, 0],
-                     id="Should return zero when age is too small"),
+        (5, 10, [0, 0]),
+        (0, 0, [0, 0]),
+        (-1, -5, [0, 0]),
+        (14, 14, [0, 0])
+    ],
+    ids=[
+        "Should return zero when age is too small",
+        "Should return zero if age is zero",
+        "Should return zero if age is negative",
+        "Should return zero when age is too small"
     ]
 )
 def test_should_return_zero(
@@ -29,18 +31,23 @@ def test_should_return_zero(
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_result",
     [
-        pytest.param(15, 15, [1, 1],
-                     id="Should return value without extra years"),
-        pytest.param(23, 23, [1, 1],
-                     id="Should return value without extra years"),
-        pytest.param(150, 150, [33, 27],
-                     id="Should return value with extra years"),
-        pytest.param(int(13e29), int(7e14),
-                     [324999999999999985351879819260, 139999999999997],
-                     id="Should return correct result for large numbers")
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (150, 150, [33, 27]),
+        (
+            int(13e29),
+            int(7e14),
+            [324999999999999985351879819260, 139999999999997]
+        )
+    ],
+    ids=[
+        "Should return value without extra years",
+        "Should return value without extra years",
+        "Should return value with extra years",
+        "Should return correct result for large numbers"
     ]
 )
-def test_should_correct_result(
+def test_should_return_correct_result(
         cat_age: int,
         dog_age: int,
         expected_result: List[int]
@@ -49,7 +56,19 @@ def test_should_correct_result(
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
-def test_should_raise_correct_exception() -> None:
-
-    with pytest.raises(TypeError):
-        get_human_age("some_str", 1)
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        ([1, 2, 3], 45, pytest.raises(TypeError)),
+        ("String", "otherstring", pytest.raises(TypeError)),
+        (134, {"key": 34}, pytest.raises(TypeError)),
+    ],
+    ids=[
+        "Should raise TypeError if age is list",
+        "Should raise TypeError if age is string",
+        "Should raise TypeError if age is dict",
+    ]
+)
+def test_division(cat_age: Any, dog_age: Any, expected: Any) -> None:
+    with expected as error:
+        assert get_human_age(cat_age, dog_age) == error
