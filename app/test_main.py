@@ -44,7 +44,7 @@ def test_for_get_human_age_with_correct_input(
     ],
     ids=[
         "All values must be INT type"
-        ]
+    ]
 )
 def test_for_get_human_age_with_uncorrect_input(
         cat_years: Any,
