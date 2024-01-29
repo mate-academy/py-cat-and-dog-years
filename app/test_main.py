@@ -23,8 +23,7 @@ def test_checking_limit_values(
         expected: list,
         test_id: str
 ) -> None:
-    result = get_human_age(cat_age, dog_age)
-    assert result == expected, test_id
+    assert get_human_age(cat_age, dog_age) == expected, test_id
 
 
 @pytest.mark.parametrize(
