@@ -3,45 +3,28 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "cat_age,dog_age,result",
+    "cat_age, dog_age, expected, test_id",
     [
-        pytest.param(
-            0, 0, [0, 0]),
-        pytest.param(
-            -1, -1, [0, 0]),
-        pytest.param(
-            14, 14, [0, 0]),
-        pytest.param(
-            15, 15, [1, 1]),
-        pytest.param(
-            23, 23, [1, 1]),
-        pytest.param(
-            24, 24, [2, 2]),
-        pytest.param(
-            27, 28, [2, 2]),
-        pytest.param(
-            28, 29, [3, 3]),
-        pytest.param(
-            100, 100, [21, 17])
-    ],
-    ids=[
-        "should return [0, 0] if cat and dog age < 15",
-        "should return [0, 0] if cat and dog age < 15",
-        "should return [0, 0] if cat and dog age < 15",
-        "should return [1, 1] if 15 <= cat and dog age <= 23",
-        "should return [1, 1] if 15 <= cat and dog age <= 23",
-        "should return [2, 2] if 24 <= cat age <= 28 and 24 <= dog age <= 29",
-        "should return [2, 2] if 24 <= cat age <= 28 and 24 <= dog age <= 29",
-        "should return [3, 3] if 24 <= cat age <= 28 and 24 <= dog age <= 29",
-        "should return [21, 17] if cat and dog age is 100"
+        (0, 0, [0, 0], "0 cat/dog should convert into [0, 0]"),
+        (-1, -1, [0, 0], "-1 cat/dog should convert into [0, 0]"),
+        (14, 14, [0, 0], "14 cat/dog should convert into [0, 0]"),
+        (15, 15, [1, 1], "15 cat/dog should convert into [1, 1]"),
+        (23, 23, [1, 1], "23 cat/dog should convert into [1, 1]"),
+        (24, 24, [2, 2], "24 cat/dog should convert into [2, 2]"),
+        (28, 28, [2, 3], "28 cat/dog should convert into [2, 3]"),
+        (27, 28, [2, 2], "cat-27/dog-28 should convert into [2, 2]"),
+        (28, 29, [3, 3], "cat-28/dog-29 should convert into [3, 3]"),
+        (100, 100, [21, 17], "100 cat/dog should convert into [21, 17]")
     ]
 )
 def test_checking_limit_values(
         cat_age: int,
         dog_age: int,
-        result: list
+        expected: list,
+        test_id: str
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == result
+    result = get_human_age(cat_age, dog_age)
+    assert result == expected, test_id
 
 
 @pytest.mark.parametrize(
