@@ -11,7 +11,7 @@ import pytest
         (15, 15, [1, 1], "15 cat/dog should convert into [1, 1]"),
         (23, 23, [1, 1], "23 cat/dog should convert into [1, 1]"),
         (24, 24, [2, 2], "24 cat/dog should convert into [2, 2]"),
-        (28, 28, [2, 3], "28 cat/dog should convert into [2, 3]"),
+        (28, 28, [3, 2], "28 cat/dog should convert into [3, 2]"),
         (27, 28, [2, 2], "cat-27/dog-28 should convert into [2, 2]"),
         (28, 29, [3, 3], "cat-28/dog-29 should convert into [3, 3]"),
         (100, 100, [21, 17], "100 cat/dog should convert into [21, 17]")
