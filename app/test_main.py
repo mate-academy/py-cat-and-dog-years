@@ -32,3 +32,22 @@ def test_human_age_is_correct(
         human_age: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("string", 1),
+        (2, (1, 3))
+    ],
+    ids=[
+        "TypeError - incorrect input type",
+        "TypeError - incorrect input type"
+    ]
+)
+def test_should_raises_the_correct_exception(
+        cat_age: int,
+        dog_age: int,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
