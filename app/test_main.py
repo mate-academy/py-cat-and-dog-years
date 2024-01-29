@@ -32,3 +32,20 @@ class TestHumanAge:
                            dog_age: int,
                            human_age: int) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            ([], 12),
+            (21, "PYTHONez"),
+        ],
+        ids=[
+            "TypeError for age list",
+            "TypeError for age string",
+        ]
+    )
+    def test_for_invalid_data(self,
+                              cat_age: int,
+                              dog_age: int) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
