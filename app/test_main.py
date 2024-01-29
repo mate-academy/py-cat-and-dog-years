@@ -40,10 +40,10 @@ class TestGetHumanAge:
         assert get_human_age(cat_age, dog_age) == expected_human_age
 
     @pytest.mark.parametrize(
-        "cat_age,dog_age,expected_error",
+        "cat_age,dog_age",
         [
-            ("12", 14, TypeError),
-            (12, "14", TypeError),
+            ("12", 14),
+            (12, "14"),
         ],
         ids=[
             "should raise error if cat_age/dog_age is number",
@@ -54,7 +54,6 @@ class TestGetHumanAge:
             self,
             cat_age: int,
             dog_age: int,
-            expected_error: Any
     ) -> None:
-        with pytest.raises(expected_error):
+        with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
