@@ -1,3 +1,4 @@
+from typing import Type
 import pytest
 
 from app.main import get_human_age
@@ -51,10 +52,10 @@ def test_get_human_age(
         "Cat age and Dog age should be Integers, not Strings",
     ],
 )
-def test_get_human_age_invalid_input(
+def test_get_human_age_invalid_input_type(
     cat_age: int,
     dog_age: int,
-    expected_error: Exception,
+    expected_error: Type[Exception],
 ) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
