@@ -51,8 +51,5 @@ def test_should_correct_result(
 
 def test_should_raise_correct_exception() -> None:
 
-    with pytest.raises(
-            TypeError,
-            match="Expected a TypeError when age is incorrect type"
-    ):
+    with pytest.raises(TypeError):
         get_human_age("some_str", 1)
