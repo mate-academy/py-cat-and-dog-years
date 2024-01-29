@@ -39,4 +39,3 @@ def test_human_age_is_correct(
 def test_incorrect_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("one", "two")
-
