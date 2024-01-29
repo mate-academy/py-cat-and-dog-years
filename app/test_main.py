@@ -34,3 +34,9 @@ def test_human_age_is_correct(
         human_age: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+def test_incorrect_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("one", "two")
+
