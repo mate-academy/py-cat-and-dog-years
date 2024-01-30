@@ -31,6 +31,6 @@ def test_every_5_after_24_dog_years_is_equal_plus1_human_year() -> None:
             ), "Result should be equal [3, 3]"
 
 
-def test_verify_to_correct_age_converter_in_long_period():
+def test_verify_to_correct_age_converter_in_long_period() -> None:
     assert (get_human_age(100, 100) == [21, 17]
             ), "Result should be equal [21, 17]"
