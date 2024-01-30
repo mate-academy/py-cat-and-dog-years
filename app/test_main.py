@@ -1,7 +1,7 @@
-from app.main import get_human_age
-from typing import Any, List
-
 import pytest
+from typing import List
+
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
@@ -69,6 +69,6 @@ def test_should_return_correct_result(
         "Should raise TypeError if age is dict",
     ]
 )
-def test_division(cat_age: Any, dog_age: Any, expected: Any) -> None:
-    with expected as error:
-        assert get_human_age(cat_age, dog_age) == error
+def test_division(cat_age: int, dog_age: int, expected: List[int]) -> None:
+    with expected:
+        get_human_age(cat_age, dog_age)
