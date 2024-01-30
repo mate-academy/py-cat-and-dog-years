@@ -12,7 +12,9 @@ from app.main import get_human_age
     pytest.param(28, 28, [3, 2], id="Cat 28, Dog 28"),
     pytest.param(100, 100, [21, 17], id="Cat 100, Dog 100")
 ])
-def test_get_human_age(cat_age, dog_age, expected_result):
+def test_get_human_age(cat_age: int,
+                       dog_age: int,
+                       expected_result: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
@@ -20,6 +22,8 @@ def test_get_human_age(cat_age, dog_age, expected_result):
     pytest.param("10", 5, TypeError, id="String cat age"),
     pytest.param("cat", "dog", TypeError, id="String cat and dog Ages"),
 ])
-def test_get_human_exceptions(cat_age, dog_age, expected_error):
+def test_get_human_exceptions(cat_age: int,
+                              dog_age: int,
+                              expected_error: Exception) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
