@@ -30,3 +30,22 @@ def test_human_age_is_correct(
         human_age: int
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,error_type",
+    [
+        ("15", "15", TypeError),
+        (None, None, TypeError),
+    ], ids=[
+        "Should raise TypeError, if cat and dog age are strings",
+        "Should raise TypeError, if cat and dog age 'None'"
+    ]
+)
+def test_correct_errors_when_values_are_not_correct_type(
+        cat_age: int,
+        dog_age: int,
+        error_type: TypeError
+) -> None:
+    with (pytest.raises(TypeError)):
+        get_human_age(cat_age, dog_age)
