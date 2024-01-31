@@ -33,3 +33,8 @@ def test_get_human_age(
 ) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected_result
+
+
+def test_get_human_age_if_incorrect_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("twenty", 5)
