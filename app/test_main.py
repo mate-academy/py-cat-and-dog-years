@@ -14,10 +14,7 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
-        ("15", 15, TypeError),
-        (15, "15", TypeError),
-        ("15", "15", TypeError),
+        (100, 100, [21, 17])
     ],
     ids=[
         "If Cat and dog age is negative - should return [0, 0]",
@@ -29,14 +26,25 @@ from app.main import get_human_age
         "Cat and dog age is 27 - should return [2, 2]",
         "Cat and dog age is 28 - should return [3, 2]",
         "Cat and dog age is 100 - should return [21, 17]",
+    ]
+)
+def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        ("15", "15"),
+    ],
+    ids=[
         "Cat age is a string - should raise TypeError",
         "Dog age is a string - should raise TypeError",
         "Both cat and dog ages are strings - should raise TypeError",
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
-    if expected is TypeError:
-        with pytest.raises(TypeError):
-            get_human_age(cat_age, dog_age)
-    else:
-        assert get_human_age(cat_age, dog_age) == expected
+def test_get_human_age_type_error(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
