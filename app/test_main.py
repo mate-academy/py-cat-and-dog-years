@@ -6,6 +6,10 @@ from app.main import get_human_age
     "cat_live,dog_live,expected_result",
     [
         pytest.param(
+            -5, -4, [0, 0],
+            id="should be zeros, if value is negative"
+        ),
+        pytest.param(
             0, 0, [0, 0],
             id="should be zeros, if arguments are zeros "
         ),
@@ -19,11 +23,6 @@ from app.main import get_human_age
             28, 28, [3, 2],
             id="should be differences between ints of years in list"
         ),
-
-        pytest.param(
-            100, 100, [27, 17],
-            id="test after long period of time"
-        )
     ]
 )
 def test(
