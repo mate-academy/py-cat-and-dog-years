@@ -5,24 +5,16 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_live,dog_live,expected_result",
     [
-        pytest.param(
-            -5, -4, [0, 0],
-            id="should be zeros, if value is negative"
-        ),
-        pytest.param(
-            0, 0, [0, 0],
-            id="should be zeros, if arguments are zeros "
-        ),
-
-        pytest.param(
-            14, 14, [0, 0],
-            id="should be zeros, if arguments less than 15"
-        ),
-
-        pytest.param(
-            28, 28, [3, 2],
-            id="should be differences between ints of years in list"
-        ),
+        (-5, -4, [0, 0]),
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (28, 28, [3, 2]),
+    ],
+    ids=[
+        "should be zeros, if value is negative",
+        "should be zeros, if arguments are zeros",
+        "should be zeros, if arguments less than 15",
+        "should be differences between ints of years in list",
     ]
 )
 def test(
@@ -31,3 +23,23 @@ def test(
         expected_result: list
 ) -> None:
     assert get_human_age(cat_live, dog_live) == expected_result
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error",
+    [
+        ("0", 0, TypeError),
+        (0, "0", TypeError),
+    ],
+    ids=[
+        "should raise exception when cat age is not number",
+        "should raise exception when dog age is not number"
+    ]
+)
+def test_raise_exception_correctly(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Exception
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
