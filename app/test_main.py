@@ -15,3 +15,17 @@ def test_to_check_correct_conversion(cat_age: int, dog_age: int,
                                      expected: list) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected
+
+
+@pytest.mark.parametrize("cat_age, dog_age, expected_error", [
+    ("0", 0, TypeError),
+    (0, "0", TypeError)],
+    ids=[
+        "Cat age should be an integer",
+        "Dog age should be an integer"
+]
+)
+def test_to_check_correct_input_data(cat_age: int, dog_age: int,
+                                     expected_error: Exception) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
