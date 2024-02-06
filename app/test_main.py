@@ -1,17 +1,33 @@
 import pytest
+
 from app.main import get_human_age
 
 
-@pytest.mark.parametrize("cat_age, dog_age, expected_result", [
-    pytest.param(0, 0, [0, 0], id="Zero Ages"),
-    pytest.param(14, 14, [0, 0], id="Equal Ages"),
-    pytest.param(15, 15, [1, 1], id="Cat 15, Dog 15"),
-    pytest.param(23, 23, [1, 1], id="Cat 23, Dog 23"),
-    pytest.param(24, 24, [2, 2], id="Cat 24, Dog 24"),
-    pytest.param(27, 27, [2, 2], id="Cat 27, Dog 27"),
-    pytest.param(28, 28, [3, 2], id="Cat 28, Dog 28"),
-    pytest.param(100, 100, [21, 17], id="Cat 100, Dog 100")
-])
+@pytest.mark.parametrize(
+        "cat_age, dog_age, expected_result",
+        [
+            (-1, -1, [0, 0]),
+            (0, 0, [0, 0]),
+            (14, 14, [0, 0]),
+            (15, 15, [1, 1]),
+            (23, 23, [1, 1]),
+            (24, 24, [2, 2]),
+            (27, 27, [2, 2]),
+            (28, 28, [3, 2]),
+            (100, 100, [21, 17]),
+        ],
+        ids=[
+            "Function should return 0 for negative numbers",
+            "Function should return 0 with both 0 parameters",
+            "Function should return 0 with both parameters less than 15",
+            "Function should return 1 with both parameters equal to 15",
+            "Function should return 1 with both parameters less than 24",
+            "Function should return 2 with both parameters equal to 24",
+            "Function should return 2 with both parameters less than 28",
+            "Function should return 3 and 2 with both parameters equal to 28",
+            "Function should return 21 and 17 with both parameters equal to 100"
+        ]
+)
 def test_get_human_age(cat_age: int,
                        dog_age: int,
                        expected_result: list) -> None:
