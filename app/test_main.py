@@ -21,4 +21,4 @@ def test_get_human_age(
         dog_age: int,
         human_age: list
 ) -> None:
-    assert set(get_human_age(cat_age, dog_age)) == human_age
+    assert get_human_age(cat_age, dog_age) == human_age
