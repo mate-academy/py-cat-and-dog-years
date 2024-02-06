@@ -40,12 +40,13 @@ class TestGetHumanAge:
             (2, "2", TypeError),
             ("2", "2", TypeError),
         ],
-        ids= [
+        ids=[
             "cat age must be an integer",
             "dog age must be an integer",
             "cat and dog age must be integer"
         ]
     )
-    def test_get_human_age_error(self, cat_age, dog_age, expected_error) -> None:
-        with pytest.raises(expected_error):
+    def test_get_human_age_error(self, cat_age: Any, dog_age: Any,
+                                 expected_error: TypeError) -> None:
+        with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
