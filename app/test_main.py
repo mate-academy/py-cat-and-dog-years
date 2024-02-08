@@ -48,5 +48,5 @@ class TestGetHumanAge:
             expected_error: TypeError
     ) -> None:
 
-        with pytest.raises(TypeError):
+        with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
