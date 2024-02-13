@@ -37,6 +37,7 @@ def test_raises_error_if_age_negative(
     with pytest.raises(ValueError):
         get_human_age(cat_years, dog_years)
 
+
 @pytest.mark.parametrize(
     "cat_years,dog_years",
     [
