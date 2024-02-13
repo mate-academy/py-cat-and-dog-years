@@ -49,7 +49,12 @@ class TestCatDogAgeConvertToHumanAge:
             ),
         ]
     )
-    def test_get_human_age(self, cat_age: int, dog_age: int, expected_ages: list):
+    def test_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_ages: list
+    ) -> None:
         cat_age = cat_age
         dog_age = dog_age
         assert get_human_age(cat_age, dog_age) == expected_ages
