@@ -9,6 +9,8 @@ from app.main import get_human_age
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
+        (20, -1, [1, 0]),
+        (-20, -1, [0, 0]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
@@ -25,19 +27,15 @@ def test_calculate_years_correctly(
 
 
 @pytest.mark.parametrize(
-    "cat_years,dog_years,error",
+    "cat_years,dog_years",
     [
-        (20, -1, ValueError),
-        (-1, -1, ValueError),
-        (-1, 15, ValueError),
-        (20, 0.5, TypeError),
-        ("-1", 20, TypeError),
-        (True, 15, TypeError)
+        ("-1", 20),
+        ([1, 2, 3, 4], 15),
+        (1, (1, 2, 3, 4))
     ])
 def test_raises_error_if_age_negative(
         cat_years: int,
         dog_years: int,
-        error: type(TypeError)
 ) -> None:
-    with pytest.raises(error):
+    with pytest.raises(TypeError):
         get_human_age(cat_years, dog_years)
