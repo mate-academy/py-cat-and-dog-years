@@ -6,9 +6,12 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
-        (1, -1, [0, 0]),
-        (-1, 15, [0, 1]),
-        (10, -99, [0, 0])
+        pytest.param(1, -1, [0, 0],
+                     id="Checking negative dog age: -1"),
+        pytest.param(-1, 15, [0, 1],
+                     id="Checking negative cat age: -1"),
+        pytest.param(-10, -10, [0, 0],
+                     id="Checking negative cat and dog ages: -10")
     ]
 )
 def test_when_cat_or_dog_age_is_negative(cat_age: int,
@@ -20,26 +23,25 @@ def test_when_cat_or_dog_age_is_negative(cat_age: int,
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
-        (100, 100, [21, 17]),
-        (200, 200, [46, 37]),
-        (333, 222, [79, 41])
+        pytest.param(0, 0, [0, 0],
+                     id="Checking ages: 0."),
+        pytest.param(15, 15, [1, 1],
+                     id="Checking ages: 15."),
+        pytest.param(24, 24, [2, 2],
+                     id="Checking ages: 24."),
+        pytest.param(28, 28, [3, 2],
+                     id="Checking ages: 28."),
+        pytest.param(34, 34, [4, 4],
+                     id="Checking ages: 34."),
+        pytest.param(50, 50, [8, 7],
+                     id="Checking ages: 50."),
+        pytest.param(100, 100, [21, 17],
+                     id="Checking ages: 100."),
+        pytest.param(10_000, 10_000, [2496, 1997],
+                     id="Checking ages: 10,000.")
     ]
 )
-def test_for_large_years_for_cat_and_dog(cat_age: int,
-                                         dog_age: int,
-                                         expected: list) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age,expected",
-    [
-        (1, 1, [0, 0]),
-        (26, 15, [2, 1]),
-        (56, 52, [10, 7])
-    ]
-)
-def test_for_small_years_for_cat_and_dog(cat_age: int,
-                                         dog_age: int,
-                                         expected: list) -> None:
+def test_get_human_age_from_range_of_ages(cat_age: int,
+                                          dog_age: int,
+                                          expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
