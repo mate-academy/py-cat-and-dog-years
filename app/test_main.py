@@ -1,21 +1,31 @@
+
+import pytest
 from app.main import get_human_age
 
 
-def test_age_conversion_for_newborns() -> None:
-    assert get_human_age(0, 0) == [0, 0], "Newborns = 0 human age"
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (0, 0, [0, 0]),
+    (14, 14, [0, 0]),
+    (15, 15, [1, 1]),
+    (23, 23, [1, 1]),
+    (24, 24, [2, 2]),
+    (27, 27, [2, 2]),
+    (28, 28, [3, 2]),
+    (100, 100, [21, 17]),
+    (-1, -1, [0, 0]),
+])
+def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected, (
+        f"Failed for cat_age={cat_age}, dog_age={dog_age}"
+    )
 
 
-def test_age_at_first_milestone() -> None:
-    assert get_human_age(15, 15) == [1, 1], "Age 15 = 1 human age"
-
-
-def test_age_between_milestones() -> None:
-    assert get_human_age(23, 23) == [1, 1], "Age 23 = 1 human age"
-
-
-def test_age_at_third_milestone_for_cats() -> None:
-    assert get_human_age(28, 0) == [3, 0], "Cats age 28 = 3 human age"
-
-
-def test_age_for_older_pets() -> None:
-    assert get_human_age(100, 100) == [21, 17], "Older pets conversion"
+@pytest.mark.parametrize("cat_age, dog_age", [
+    ("15", 15),
+    (15, "15"),
+    (None, 15),
+    (15, None),
+])
+def test_get_human_age_type_error(cat_age: any, dog_age: any) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
