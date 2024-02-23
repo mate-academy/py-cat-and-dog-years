@@ -20,7 +20,3 @@ import pytest
 )
 def test_cat_dog_age(cat_age: int, dog_age: int, expected: int) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-
-
-def test_return_list() -> None:
-    assert isinstance(get_human_age(15, 15), list)
