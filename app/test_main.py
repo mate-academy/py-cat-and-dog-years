@@ -1,4 +1,4 @@
-from typing import Type
+# from typing import Type
 import pytest
 from app.main import get_human_age
 
