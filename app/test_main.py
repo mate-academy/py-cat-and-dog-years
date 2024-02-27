@@ -67,12 +67,12 @@ def test_get_human_age(
         (0, (3, 4)),
     ],
     ids=[
-        "string as cat age should rase TypeError",
-        "string as dog age should rase TypeError",
-        "list as cat age should rase TypeError",
-        "dict as dog age should rase TypeError",
-        "tuple as cat age should rase TypeError",
-        "tuple as dog age should rase TypeError",
+        "string as cat age should raise TypeError",
+        "string as dog age should raise TypeError",
+        "list as cat age should raise TypeError",
+        "dict as dog age should raise TypeError",
+        "tuple as cat age should raise TypeError",
+        "tuple as dog age should raise TypeError",
     ]
 )
 def test_get_human_age_invalid_data_types(
