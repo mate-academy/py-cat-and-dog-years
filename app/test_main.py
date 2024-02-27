@@ -1,4 +1,5 @@
 import pytest
+
 from app.main import get_human_age
 
 
@@ -32,7 +33,19 @@ from app.main import get_human_age
         pytest.param(
             28, 28, [3, 2],
             id="28 cat/dog years should convert into 3/2 human age."
-        )
+        ),
+        pytest.param(
+            100, 100, [21, 17],
+            id="100 cat/dog years should convert into 21/17 human age."
+        ),
+        pytest.param(
+            110, 85, [23, 14],
+            id="110 cat / 85 dog years should convert into 23/14 human age."
+        ),
+        pytest.param(
+            -10, -8, [0, 0],
+            id="negative value of cat/dog age should convert to 0 human age"
+        ),
     ]
 )
 def test_get_human_age(
@@ -41,3 +54,30 @@ def test_get_human_age(
         human_age_list: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age_list
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("asd", 0),
+        (0, "asd"),
+        ([], 0),
+        (0, {}),
+        ((1, 2), 0),
+        (0, (3, 4)),
+    ],
+    ids=[
+        "string as cat age should rase TypeError",
+        "string as dog age should rase TypeError",
+        "list as cat age should rase TypeError",
+        "dict as dog age should rase TypeError",
+        "tuple as cat age should rase TypeError",
+        "tuple as dog age should rase TypeError",
+    ]
+)
+def test_get_human_age_invalid_data_types(
+        cat_age: int,
+        dog_age: int,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
