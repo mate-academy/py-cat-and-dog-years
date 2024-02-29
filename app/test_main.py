@@ -4,9 +4,7 @@ from app.main import get_human_age
 
 class TestGetHumanAge:
     @pytest.mark.parametrize(
-        "initial_cat_age",
-        "initial_dog_age",
-        "expected_result",
+        "initial_cat_age,initial_dog_age,expected_result",
         [
             (0, 0, [0, 0]),
             (14, 14, [0, 0]),
@@ -28,9 +26,7 @@ class TestGetHumanAge:
                 == expected_result)
 
     @pytest.mark.parametrize(
-        "initial_cat_age",
-        "initial_dog_age",
-        "expected_error",
+        "initial_cat_age,initial_dog_age,expected_error",
         [
             ("text", 16, TypeError),
             (20, "text", TypeError),
