@@ -46,6 +46,7 @@ class TestGetHumanAge:
             (0, None),
             ("fifty", "hundred"),
             ([100], [150]),
+            ({100}, {100}),
         ],
         ids=[
             "when providing cat age as a string",
@@ -54,6 +55,7 @@ class TestGetHumanAge:
             "when providing dog age as a Type",
             "when providing cat age and dog age as a strings",
             "when providing cat age and dog age as lists",
+            "when providing cat age and dog age as dict"
         ]
     )
     def test_get_human_age_incorrect_type_provided(
