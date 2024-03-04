@@ -16,14 +16,14 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
     ids=[
-       "Test of current age, first 15 cat years give 1 human year",
-       "Test of current age, first 15 cat years give 1 human year",
-       "Test of current age, the next 9 cat years give 1 more human year",
-       "Test of current age, the next 9 cat years give 1 more human year",
-       "Test of current age, the next 9 cat years give 1 more human year",
-       "Test of current age, every 4 next cat years give 1 extra human year",
-       "Test of current age, every 4 next cat years give 1 extra human year",
-       "Test of current age, every 4 next cat years give 1 extra human year"
+        "Test of current age, first 15 cat years give 1 human year",
+        "Test of current age, first 15 cat years give 1 human year",
+        "Test of current age, the next 9 cat years give 1 more human year",
+        "Test of current age, the next 9 cat years give 1 more human year",
+        "Test of current age, the next 9 cat years give 1 more human year",
+        "Test of current age, every 4 next cat years give 1 extra human year",
+        "Test of current age, every 4 next cat years give 1 extra human year",
+        "Test of current age, every 4 next cat years give 1 extra human year"
 
     ]
 )
