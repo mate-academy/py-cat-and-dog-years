@@ -1,5 +1,7 @@
 from typing import Any
+
 import pytest
+
 from app.main import get_human_age
 
 
@@ -27,6 +29,10 @@ from app.main import get_human_age
         pytest.param(
             27, 28, [2, 2],
             id="should return correct age for 3-rd or greater pet age"
+        ),
+        pytest.param(
+            100, 100, [21, 17],
+            id="Test big number"
         )
     ]
 )
