@@ -1,64 +1,53 @@
+from typing import Any
 import pytest
-
 from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, human_age_list",
+    "cat_age, dog_age, expected_result",
     [
         pytest.param(
-            0,
-            0,
-            [0, 0],
-            id="0 cat/dog years should convert into 0 human age"
+            -1, -1, [0, 0],
+            id="should return 0 for negative pet age"
         ),
         pytest.param(
-            14,
-            14,
-            [0, 0],
-            id="14 cat/dog years should convert into 0 human age"
+            14, 14, [0, 0],
+            id="should return 0 for both pets ages "
+               "if cat and dogs age less than 15"
         ),
         pytest.param(
-            15,
-            15,
-            [1, 1],
-            id="15 cat/dog years should convert into 1 human age"
+            23, 23, [1, 1],
+            id="should return 1 for both pets ages "
+               "if cat and dogs age less than 23"
         ),
         pytest.param(
-            23,
-            23,
-            [1, 1],
-            id="23 cat/dog years should convert into 1 human age."
+            32, 29, [4, 3],
+            id="should return correct age for 3-rd or greater pet age"
         ),
         pytest.param(
-            24,
-            24,
-            [2, 2],
-            id="24 cat/dog years should convert into 2 human age"
-        ),
-        pytest.param(
-            27,
-            27,
-            [2, 2],
-            id="27 cat/dog years should convert into 2 human age"
-        ),
-        pytest.param(
-            28,
-            28,
-            [3, 3],
-            id="28 cat/dog years should convert cat is older than dog"
-        ),
-        pytest.param(
-            100,
-            100,
-            [21, 17],
-            id="big numbers"
+            27, 28, [2, 2],
+            id="should return correct age for 3-rd or greater pet age"
         )
     ]
 )
-def test_age_correctly(
+def test_should_correctly_convert_cat_dogs_years_to_human(
         cat_age: int,
         dog_age: int,
-        human_age_list: list
+        expected_result: list[int, int]
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == human_age_list
+    result = get_human_age(cat_age, dog_age)
+
+    assert result == expected_result
+
+
+@pytest.mark.parametrize(
+    "age",
+    [
+        "1",
+        [1],
+        {"age": 1}
+    ]
+)
+def test_raises_correct_exception_for_wrong_arguments_types(age: Any) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(age, age)
