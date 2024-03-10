@@ -15,6 +15,9 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
+        (-1, 10, [0, 0]),
+        (10, -1, [0, 0]),
+        (-1, -1, [0, 0]),
     ],
     ids=[
         "Test of current age, first 15 cat years give 1 human year",
@@ -24,7 +27,10 @@ from app.main import get_human_age
         "Test of current age, the next 9 cat years give 1 more human year",
         "Test of current age, every 4 next cat years give 1 extra human year",
         "Test of current age, every 4 next cat years give 1 extra human year",
-        "Test of current age, every 4 next cat years give 1 extra human year"
+        "Test of current age, every 4 next cat years give 1 extra human year",
+        "negative cat age",
+        "negative dog age",
+        "negative both ages",
     ]
 )
 def test_human_age(cat_age: int, dog_age: int, result: list) -> None:
@@ -36,16 +42,10 @@ def test_human_age(cat_age: int, dog_age: int, result: list) -> None:
     [
         ("15", 15, TypeError),
         (15, "15", TypeError),
-        (-1, 10, ValueError),
-        (10, -1, ValueError),
-        (-1, -1, ValueError),
     ],
     ids=[
         "cat_age should be int!",
         "dog_age should be int!",
-        "Negative cat_age not allowed!",
-        "Negative dog_age not allowed!",
-        "Negative ages for both not allowed!"
     ]
 )
 def test_get_human_age_errors(
