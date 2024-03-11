@@ -24,5 +24,9 @@ def test_output_should_be_two_elements() -> None:
         (200, 300, [46, 57])
     ]
 )
-def test_correct_results(cat_age, dog_age, expected_output) -> None:
+def test_correct_results(
+        cat_age: int,
+        dog_age: int,
+        expected_output: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected_output
