@@ -1,5 +1,7 @@
 import pytest
 
+from typing import Any
+
 from app.main import get_human_age
 
 
@@ -15,6 +17,7 @@ def test_output_should_be_two_elements() -> None:
     "cat_age,dog_age,expected_output",
     [
         (0, 0, [0, 0]),
+        (-3, -2, [0, 0]),
         (15, 15, [1, 1]),
         (25, 25, [2, 2]),
         (35, 35, [4, 4]),
@@ -30,3 +33,17 @@ def test_correct_results(
         expected_output: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_output
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("five", 5),
+        ([30], 22),
+        (40, {"32": 32}),
+        (None, None),
+    ]
+)
+def test_age_should_be_an_integer(cat_age: Any, dog_age: Any) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
