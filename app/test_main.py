@@ -3,7 +3,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "a, b, result",
+    "cat_years, dog_years, result",
     [
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
@@ -15,5 +15,5 @@ from app.main import get_human_age
         (100, 100, [21, 17])
     ]
 )
-def test_get_human_age(a: int, b: int, result: list) -> None:
-    assert (get_human_age(a, b) == result)
+def test_get_human_age(cat_years: int, dog_years: int, result: list) -> None:
+    assert (get_human_age(cat_years, dog_years) == result)
