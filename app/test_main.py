@@ -1,4 +1,5 @@
 import pytest
+from typing import Type
 from app.main import get_human_age
 
 
@@ -69,3 +70,42 @@ class TestGetHumanAge():
             convert_to_human: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == convert_to_human
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age",
+        [
+            pytest.param(
+                "string_input",
+                1,
+                id="Input some string instead of integer"
+            ),
+            pytest.param(
+                [1],
+                1,
+                id="Input some list instead of integer"
+            ),
+            pytest.param(
+                (1,),
+                1,
+                id="Input some set instead of integer"
+            ),
+            pytest.param(
+                {"string_input": 1},
+                1,
+                id="Input some dict instead of integer"
+            ),
+            pytest.param(
+                None,
+                None,
+                id="Input some None instead of integer"
+            ),
+        ]
+    )
+    def test_argument_type(
+            self,
+            cat_age: object,
+            dog_age: object,
+            expected_error: Type[Exception] = TypeError
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
