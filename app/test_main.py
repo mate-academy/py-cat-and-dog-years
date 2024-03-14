@@ -18,7 +18,7 @@ from app.main import get_human_age
 ])
 def test_get_human_age(cat_age: int,
                        dog_age: int,
-                       expected_result: list) -> None:
+                       expected_result: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
@@ -32,4 +32,4 @@ def test_get_human_age_raises_type_error(
         age_in_dog_years: int
 ) -> None:
     with pytest.raises(TypeError):
-        get_human_age("5", "10")
+        get_human_age(age_in_human_years, age_in_dog_years)
