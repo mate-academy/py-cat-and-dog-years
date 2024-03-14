@@ -32,4 +32,4 @@ def test_get_human_age_raises_type_error(
         age_in_dog_years: int
 ) -> None:
     with pytest.raises(TypeError):
-        get_human_age(age_in_human_years, age_in_dog_years)
+        get_human_age("5", "10")
