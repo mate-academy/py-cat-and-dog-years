@@ -31,6 +31,19 @@ class TestDogAndCat:
                 29,
                 [3, 3],
                 id="Animal years should into 3 human age",
+            ),
+            pytest.param(
+                120,
+                129,
+                [26, 23],
+                id="Animal years (big value) should into 26(23) human age",
+            )
+            ,
+            pytest.param(
+                -10,
+                -6,
+                [0, 0],
+                id="Animal years (all negative value) should into 0 human age",
             )
         ]
     )
@@ -38,8 +51,7 @@ class TestDogAndCat:
             self,
             cat_age: int,
             dog_age: int,
-            correct_answer: list
-            ) -> None:
+            correct_answer: list) -> None:
         assert get_human_age(cat_age, dog_age) == correct_answer
 
     @pytest.mark.parametrize(
@@ -63,7 +75,6 @@ class TestDogAndCat:
             self,
             cat_age: int,
             dog_age: int,
-            type_errors: traceback
-            ) -> None:
+            type_errors: traceback) -> None:
         with pytest.raises(type_errors):
             get_human_age(cat_age, dog_age)
