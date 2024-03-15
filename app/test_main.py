@@ -61,5 +61,5 @@ class TestDogAndCat:
                                           cat_age: int,
                                           dog_age: int,
                                           type_errors: traceback) -> None:
-         with pytest.raises(type_errors):
-             get_human_age(cat_age, dog_age)
+        with pytest.raises(type_errors):
+            get_human_age(cat_age, dog_age)
