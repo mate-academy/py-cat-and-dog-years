@@ -1,3 +1,4 @@
+import traceback
 import pytest
 
 from app.main import get_human_age
@@ -38,3 +39,26 @@ class TestDogAndCat:
                                    dog_age: int,
                                    correct_answer: list) -> None:
         assert get_human_age(cat_age, dog_age) == correct_answer
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,type_errors",
+        [
+            pytest.param(
+                "cat",
+                "dog",
+                TypeError,
+                id="String type error"
+            ),
+            pytest.param(
+                None,
+                None,
+                TypeError,
+                id="None type error"
+            )
+        ]
+    )
+    def test_incorrect_type_get_human_age(self,
+                                          cat_age: int,
+                                          dog_age: int,
+                                          type_errors: traceback) -> None:
+        assert get_human_age(cat_age, dog_age) == type_errors
