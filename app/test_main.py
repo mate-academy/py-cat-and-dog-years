@@ -34,10 +34,12 @@ class TestDogAndCat:
             )
         ]
     )
-    def test_correct_get_human_age(self,
-                                   cat_age: int,
-                                   dog_age: int,
-                                   correct_answer: list) -> None:
+    def test_correct_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            correct_answer: list
+            ) -> None:
         assert get_human_age(cat_age, dog_age) == correct_answer
 
     @pytest.mark.parametrize(
@@ -57,9 +59,11 @@ class TestDogAndCat:
             )
         ]
     )
-    def test_incorrect_type_get_human_age(self,
-                                          cat_age: int,
-                                          dog_age: int,
-                                          type_errors: traceback) -> None:
+    def test_incorrect_type_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            type_errors: traceback
+            ) -> None:
         with pytest.raises(type_errors):
             get_human_age(cat_age, dog_age)
