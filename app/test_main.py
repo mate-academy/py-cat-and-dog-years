@@ -1,19 +1,45 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_should_return_0_for_first_14_animal_years() -> None:
+@ pytest.mark.parametrize(
+    "threshold_min_value_cat_age,"
+    "threshold_min_value_dog_age,"
+    "threshold_max_value_cat_age,"
+    "threshold_max_value_dog_age,"
+    "human_age",
+    [
+        pytest.param(
+            14, 14, 0, 0,
+            [0, 0],
+            id="test should return 0 for first 14 animal years"
+        ),
+        pytest.param(
+            15, 15, 23, 23,
+            [1, 1],
+            id="test should return 1 for first 15-23 animal years"
+        ),
+        pytest.param(
+            24, 24, 27, 28,
+            [2, 2],
+            id="test should return 2 for first 24-27 cat and 24-28 dog years"
+        )
+    ]
+)
+def test_should_return_0_for_first_14_animal_years(
+        threshold_min_value_cat_age: int,
+        threshold_min_value_dog_age: int,
+        threshold_max_value_cat_age: int,
+        threshold_max_value_dog_age: int,
+        human_age: list,
+) -> None:
+
     assert (
-        get_human_age(14, 14) == [0, 0]
-    ), "Should return 0 for first 14 animal years"
-
-
-def test_should_return_1_for_first_15_23_animal_years() -> None:
-    assert (
-        get_human_age(15, 15) == get_human_age(23, 23)
-    ), "Should return 1 for first 14-23 animal years"
-
-
-def test_should_return_2_for_first_24_27_cat_and_24_28_dog_years() -> None:
-    assert (
-        get_human_age(24, 24) == get_human_age(27, 28)
-    ), "Should return 1 for first 14-23 animal years"
+        get_human_age(
+            threshold_min_value_cat_age,
+            threshold_min_value_dog_age
+        ) == get_human_age(
+            threshold_max_value_cat_age,
+            threshold_max_value_dog_age
+        ) == human_age
+    )
