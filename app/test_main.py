@@ -2,27 +2,50 @@ from app.main import get_human_age
 import pytest
 
 
-def test_should_correctly_type() -> None:
-    with pytest.raises(TypeError):
-        get_human_age(5.5, "10")
+class TestGetHumanAge:
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,result",
+        [
+            pytest.param(
+                14,
+                14,
+                [0, 0],
+                id="should convert correctly first year"
+            ),
+            pytest.param(
+                23,
+                23,
+                [1, 1],
+                id="should convert correctly second year"
+            ),
+            pytest.param(
+                28,
+                29,
+                [3, 3],
+                id="should convert correctly each year"
+            ),
+            pytest.param(
+                0,
+                0,
+                [0, 0],
+                id="get human age with zero ages"
+            )
+        ]
+    )
+    def test_get_human_age(self, cat_age, dog_age, result):
+        assert get_human_age(cat_age, dog_age) == result
 
-
-def test_should_convert_correctly_first_year() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_convert_correctly_second_year() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_convert_correctly_each_year() -> None:
-    assert get_human_age(28, 29) == [3, 3]
-
-
-def test_get_human_age_with_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_should_return_list() -> None:
-    result = get_human_age(10, 10)
-    assert isinstance(result, list)
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_error",
+        [
+            pytest.param(
+                "10",
+                "100",
+                TypeError,
+                id="str type"
+            )
+        ]
+    )
+    def test_raising_error_correctly(self, cat_age, dog_age, expected_error):
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
