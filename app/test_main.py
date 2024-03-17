@@ -26,7 +26,7 @@ from app.main import get_human_age
         )
     ]
 )
-def test_should_return_0_for_first_14_animal_years(
+def test(
         threshold_min_value_cat_age: int,
         threshold_min_value_dog_age: int,
         threshold_max_value_cat_age: int,
