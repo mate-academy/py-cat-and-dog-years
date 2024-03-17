@@ -32,7 +32,12 @@ class TestGetHumanAge:
             )
         ]
     )
-    def test_get_human_age(self, cat_age, dog_age, result):
+    def test_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            result: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
     @pytest.mark.parametrize(
@@ -46,6 +51,11 @@ class TestGetHumanAge:
             )
         ]
     )
-    def test_raising_error_correctly(self, cat_age, dog_age, expected_error):
+    def test_raising_error_correctly(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_error: Exception
+    ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
