@@ -41,4 +41,3 @@ def test_str_types(
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
-
