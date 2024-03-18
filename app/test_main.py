@@ -9,19 +9,17 @@ from app.main import get_human_age
     (23, 23, [1, 1]),
     (24, 24, [2, 2]),
     (27, 27, [2, 2]),
-    (28, 28, [3, 2]),
+    (40, 40, [6, 5]),
     (100, 100, [21, 17]),
     (-1, 15, [0, 1]),
     (15, -1, [1, 0]),
 ])
 def test_human_age_conversion(
-    cat_years: int, dog_years: int, expected_result: list
+        cat_years: int, dog_years: int, expected_result: list
 ) -> None:
     assert get_human_age(cat_years, dog_years) == expected_result
 
 
-def test_incorrect_age() -> None:
-    with pytest.raises(ValueError):
-        get_human_age(-1, 10)
-    with pytest.raises(ValueError):
-        get_human_age(10, -1)
+def test_incorrect_type_of_data_raises_exception() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", 10)
