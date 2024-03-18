@@ -25,10 +25,22 @@ class TestGetHumanAge:
                 id="should convert correctly each year"
             ),
             pytest.param(
+                1000000000,
+                1000000000,
+                [249999996, 199999997],
+                id="realy large numbers"
+            ),
+            pytest.param(
                 0,
                 0,
                 [0, 0],
                 id="get human age with zero ages"
+            ),
+            pytest.param(
+                -10,
+                -10,
+                [0, 0],
+                id="negative number"
             )
         ]
     )
