@@ -40,4 +40,4 @@ def test_convert_to_human(
 
 def test_should_raise_error_correctly() -> None:
     with pytest.raises(TypeError):
-     get_human_age("12", [20])
+        get_human_age("12", [20])
