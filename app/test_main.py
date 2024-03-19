@@ -36,3 +36,8 @@ def test_convert_to_human(
 ) -> None:
     result = convert_to_human(age, first_year, second_year, each_year)
     assert result == expected
+
+
+def test_should_raise_error_correctly() -> None:
+    with pytest.raises(TypeError):
+     get_human_age("12", [20])
