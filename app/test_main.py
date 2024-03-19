@@ -20,6 +20,11 @@ def test_human_age_conversion(
     assert get_human_age(cat_years, dog_years) == expected_result
 
 
+def test_incorrect_type_of_data_raises_exception() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", 10)
+
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_error",
     [
