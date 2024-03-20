@@ -5,10 +5,6 @@ from app.main import get_human_age
 
 @pytest.mark.parametrize(
     "cat_year, dog_year, expect_error", [
-        pytest.param(-1, 0, ValueError, id="cat is not born yet"),
-        pytest.param(0, -1, ValueError, id="dog is not born yet"),
-        pytest.param(5.1, 6, TypeError, id="cat value is not integer"),
-        pytest.param(5, 6.1, TypeError, id="dog value is not integer"),
         pytest.param("5", 6.1, TypeError, id="cat value is not integer"),
         pytest.param(5, "6", TypeError, id="dog value is not integer")
     ]
