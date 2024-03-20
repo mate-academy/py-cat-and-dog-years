@@ -33,9 +33,10 @@ def test_cheking_values(cat_year: int,
                         dog_year: int,
                         result: list) -> None:
     func_result = get_human_age(cat_year, dog_year)
-    pytest.assume(func_result[0] == result[0],
-                  f"Somothing wrong with cat calculate: "
-                  f"waited {result[0]}, get {func_result[0]}")
-    pytest.assume(func_result[1] == result[1],
-                  f"Somothing wrong with dog calculate: "
-                  f"waited {result[1]}, get {func_result[1]}")
+    assert (func_result[0] == result[0]),\
+        (f"Somothing wrong with cat calculate: "
+         f"waited {result[0]}, get {func_result[0]}")
+
+    assert (func_result[1] == result[1]), \
+        (f"Somothing wrong with dog calculate: "
+         f"waited {result[1]}, get {func_result[1]}")
