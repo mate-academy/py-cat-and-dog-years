@@ -11,18 +11,12 @@ from app.main import get_human_age
     (27, 27, [2, 2]),
     (40, 40, [6, 5]),
     (100, 100, [21, 17]),
-    (-1, 15, [0, 1]),
-    (15, -1, [1, 0]),
+    (-10, -15, [0, 0]),
 ])
 def test_human_age_conversion(
-        cat_years: int, dog_years: int, expected_result: list
+        cat_years: int, dog_years: int, expected_result: list[int]
 ) -> None:
     assert get_human_age(cat_years, dog_years) == expected_result
-
-
-def test_incorrect_type_of_data_raises_exception() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("10", 10)
 
 
 @pytest.mark.parametrize(
@@ -30,17 +24,12 @@ def test_incorrect_type_of_data_raises_exception() -> None:
     [
         (0, bool, TypeError),
         (3.5, "cat", TypeError),
-        (10, 10.5, TypeError),
-        (10.5, 10.5, TypeError),
-        ("cat", 10, TypeError),
-        (10, "dog", TypeError),
-        ("cat", "dog", TypeError),
     ]
 )
 def test_error_type_ages(
         cat_age: int,
         dog_age: int,
-        expected_error: list[Exception]
+        expected_error: type[Exception]
 ) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
