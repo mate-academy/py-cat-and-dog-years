@@ -1,6 +1,6 @@
 import pytest
-from typing import List, Tuple
-from app.main import get_human_age, convert_to_human
+from typing import List, Tuple, Union, Type
+from .main import get_human_age, convert_to_human
 from pytest import FixtureRequest
 
 AgeCaseType = Tuple[int, int, List[int]]
@@ -47,23 +47,16 @@ def test_convert_to_human(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, error",
+    "cat_age, dog_age, expected_error",
     [
-        (0, 0, False),
-        (15, 15, False),
-        (100, 100, False),
-        (200, 200, False),
-    ],
+        (0, bool, TypeError),
+        (3.5, "cat", TypeError),
+    ]
 )
-def test_get_human_age_without_errors(
-    cat_age: int, dog_age: int, error: bool
+def test_get_human_age_with_invalid_types(
+    cat_age: Union[int, float],
+    dog_age: Union[bool, str],
+    expected_error: Type[Exception]
 ) -> None:
-    try:
-        result = get_human_age(cat_age, dog_age)
-        assert isinstance(result, list) and len(result) == 2
-        assert not error
-    except Exception as e:
-        if error:
-            assert isinstance(e, ValueError)
-        else:
-            raise AssertionError(f"Unexpected error: {e}") from e
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
