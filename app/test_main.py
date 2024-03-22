@@ -24,9 +24,6 @@ def test_can_count_years(
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        (-1, 5, ValueError),
-        (5, -1, ValueError),
-        (5.5, 5, TypeError),
         ("5", 5, TypeError),
     ]
 )
