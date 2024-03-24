@@ -44,7 +44,11 @@ class TestGetAgeValidData:
             )
         ]
     )
-    def test_get_ages_with_valid_data(self, cat_age, dog_age, expected_ages):
+    def test_get_ages_with_valid_data(self,
+                                      cat_age: int,
+                                      dog_age: int,
+                                      expected_ages: tuple
+                                      ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_ages
 
 
@@ -67,8 +71,9 @@ class TestGetAgeInvalidData:
         ]
     )
     def test_get_ages_with_invalid_data(self,
-                                        cat_age,
-                                        dog_age,
-                                        expected_error):
+                                        cat_age: int,
+                                        dog_age: int,
+                                        expected_error: type
+                                        ) -> None:
         with pytest.raises(expected_error):
             assert get_human_age(cat_age, dog_age)
