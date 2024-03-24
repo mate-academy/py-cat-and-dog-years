@@ -1,28 +1,74 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_should_return_zeros_list_for_zero_years() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+class TestGetAgeValidData:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected_ages",
+        [
+            pytest.param(
+                0, 0, [0, 0],
+                id="should return [0, 0]"
+            ),
+            pytest.param(
+                14, 14, [0, 0],
+                id="should return [0, 0]"
+            ),
+            pytest.param(
+                15, 15, [1, 1],
+                id="should return [1, 1]"
+            ),
+            pytest.param(
+                23, 23, [1, 1],
+                id="should return [1, 1]"
+            ),
+            pytest.param(
+                24, 24, [2, 2],
+                id="should return [2, 2]"
+            ),
+            pytest.param(
+                27, 27, [2, 2],
+                id="should return [2, 2]"
+            ),
+            pytest.param(
+                28, 28, [3, 2],
+                id="should return [3, 2]"
+            ),
+            pytest.param(
+                64, 56, [12, 8],
+                id="should return [12, 8]"
+            ),
+            pytest.param(
+                100, 100, [21, 17],
+                id="should return [21, 17]"
+            )
+        ]
+    )
+    def test_get_ages_with_valid_data(self, cat_age, dog_age, expected_ages):
+        assert get_human_age(cat_age, dog_age) == expected_ages
 
 
-def test_should_return_zeros_list_for_last_begin_years() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_ones_list_for_first_middle_years() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_ones_list_for_last_middle_years() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_twos_list_for_first_end_years() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_should_return_valid_list_for_next_end_years() -> None:
-    assert get_human_age(27, 27) == [2, 2]
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(64, 56) == [12, 8]
-    assert get_human_age(100, 100) == [21, 17]
+class TestGetAgeInvalidData:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected_error",
+        [
+            pytest.param(
+                -1, -7, ValueError,
+                id="should raise ValueError exception"
+            ),
+            pytest.param(
+                451, 501, ValueError,
+                id="should raise ValueError exception"
+            ),
+            pytest.param(
+                "451", "501", TypeError,
+                id="should raise TypeError exception"
+            )
+        ]
+    )
+    def test_get_ages_with_invalid_data(self,
+                                        cat_age,
+                                        dog_age,
+                                        expected_error):
+        with pytest.raises(expected_error):
+            assert get_human_age(cat_age, dog_age)
