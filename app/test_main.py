@@ -47,7 +47,7 @@ class TestGetAgeValidData:
     def test_get_ages_with_valid_data(self,
                                       cat_age: int,
                                       dog_age: int,
-                                      expected_ages: tuple
+                                      expected_ages: list
                                       ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_ages
 
