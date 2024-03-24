@@ -12,6 +12,9 @@ class TestGetHumanAge:
             pytest.param(23, 23, [1, 1],
                          id="23/23 cat/dog years should "
                          "convert into 1 human age."),
+            pytest.param(27, 28, [2, 2],
+                         id="27/28 cat/dog years should "
+                            "convert into 2 human age."),
             pytest.param(28, 29, [3, 3],
                          id="28/29 cat/dog years should "
                          "convert into 3 human age."),
