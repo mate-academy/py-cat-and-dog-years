@@ -1,20 +1,25 @@
-from app.main import get_human_age
 import pytest
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat,dog,result",
+    "cat, dog, expected_result",
     [
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (24, 24, [2, 2]),
-        (28, 28, [3, 2])
+        (28, 28, [3, 2]),
+        (25, 30, [2, 3]),
+        (30, 25, [3, 2]),
+        (30, 30, [3, 2]),
+        (-15, -15, [-1, -1]),
+        (1000, 2000, [246, 397]),
     ]
 )
-def test_different_data(cat: int, dog: int, result: list) -> None:
-    assert get_human_age(cat, dog) == result
+def test_get_human_age(cat: int, dog: int, expected_result: list) -> None:
+    assert get_human_age(cat, dog) == expected_result
 
 
-def test_raise_error(cat: int, dog: int, result: list) -> None:
+def test_non_integer_input() -> None:
     with pytest.raises(TypeError):
-        get_human_age(cat, dog)
+        get_human_age("c", "d")
