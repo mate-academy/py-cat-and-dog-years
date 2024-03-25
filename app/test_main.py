@@ -24,6 +24,9 @@ class TestConvertHumanAge:
             pytest.param(29, 28, [3, 3],
                          id="28/29 cat/dog years should "
                          "convert into 3 human age."),
+            pytest.param(-1, -1, [0, 0],
+                         id="-1 cat/dog years should "
+                            "convert into 0 human age."),
         ]
     )
     def test_convert_human_age(self,
