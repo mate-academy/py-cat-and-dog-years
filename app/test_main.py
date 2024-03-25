@@ -22,7 +22,7 @@ from app.main import get_human_age
         "100/100 cat/dog years should convert into 21/17 human age.",
         "27/28 cat/dog years should convert into 2 human age.",
         "28/29 cat/dog years should convert into 3 human age.",
-        "14.9 cat/dog years should be converted into 1 human age (not rounded)",
+        "14.9 cat/dog years should be converted into 1 human age",
         "15 cat/dog years should convert into 1 human age."
     ]
 )
@@ -30,7 +30,8 @@ def test_cat_dog_age_check_valid_data(
         cat_input: int | float,
         dog_input: int | float,
         cat_output: int,
-        dog_output: int) -> None:
+        dog_output: int
+) -> None:
     assert get_human_age(cat_input, dog_input) == [cat_output, dog_output]
 
 
@@ -52,7 +53,7 @@ def test_cat_dog_age_check_valid_data(
 def test_cat_dog_age_errors(
         cat_input: any,
         dog_input: any,
-        expected_error: Exception) -> None:
-
+        expected_error: Exception
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_input, dog_input)
