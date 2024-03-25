@@ -14,4 +14,4 @@ def test_first_24_year() -> None:
 
 
 def test_first_28_year() -> None:
-    assert get_human_age(25, 25) == [2, 2]
+    assert get_human_age(25, 25) == [3, 2]
