@@ -36,3 +36,11 @@ class TestConvertHumanAge:
                                ) -> None:
 
         assert get_human_age(dog_age, cat_age) == expected
+
+    def test_invalid_input_type(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("string", 10)
+        with pytest.raises(TypeError):
+            get_human_age(10, "string")
+        with pytest.raises(TypeError):
+            get_human_age("string", "string")
