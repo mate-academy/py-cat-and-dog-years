@@ -30,8 +30,7 @@ def test_cat_dog_age_check_valid_data(
         cat_input: int | float,
         dog_input: int | float,
         cat_output: int,
-        dog_output: int
-) -> None:
+        dog_output: int) -> None:
     assert get_human_age(cat_input, dog_input) == [cat_output, dog_output]
 
 
@@ -53,7 +52,7 @@ def test_cat_dog_age_check_valid_data(
 def test_cat_dog_age_errors(
         cat_input: any,
         dog_input: any,
-        expected_error: Exception
-) -> None:
+        expected_error: Exception) -> None:
+
     with pytest.raises(TypeError):
         get_human_age(cat_input, dog_input)
