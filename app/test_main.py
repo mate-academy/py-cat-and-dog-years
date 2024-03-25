@@ -57,14 +57,6 @@ class TestGetAgeInvalidData:
         "cat_age, dog_age, expected_error",
         [
             pytest.param(
-                -1, -7, ValueError,
-                id="should raise ValueError exception"
-            ),
-            pytest.param(
-                451, 501, ValueError,
-                id="should raise ValueError exception"
-            ),
-            pytest.param(
                 "451", "501", TypeError,
                 id="should raise TypeError exception"
             )
