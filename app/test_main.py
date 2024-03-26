@@ -1,5 +1,7 @@
 import pytest
+from typing import Type
 from app.main import get_human_age
+
 
 class TestGetHumanAge:
     @pytest.mark.parametrize(
@@ -23,7 +25,8 @@ class TestGetHumanAge:
             ),
             pytest.param(
                 28, 28, [3, 2],
-                id="should return 1 extra every 4 years for cat and 5 years for dog"
+                id="should return 1 extra every 4 years "
+                   "for cat and 5 years for dog"
             ),
             pytest.param(
                 100, 100, [21, 17],
@@ -31,7 +34,12 @@ class TestGetHumanAge:
             )
         ]
     )
-    def test_should_return_right_calculations(self, cat_age: int, dog_age: int, expected_ages: list[int]) -> None:
+    def test_should_return_right_calculations(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_ages: list[int]
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_ages
 
     @pytest.mark.parametrize(
@@ -40,6 +48,11 @@ class TestGetHumanAge:
             ("5", [15], TypeError)
         ]
     )
-    def test_should_raise_error_when_using_incorrect_type_data(self, cat_age, dog_age, expected_error):
+    def test_should_raise_error_when_using_incorrect_type_data(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_error: Type[Exception]
+    ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
