@@ -37,10 +37,13 @@ class TestConvertHumanAge:
 
         assert get_human_age(dog_age, cat_age) == expected
 
-    def test_invalid_input_type(self) -> None:
+
+class TestInvalidInputType:
+    @pytest.mark.parametrize("cat_age, dog_age", [
+        ("string", 10),
+        (10, "string"),
+        ("string", "string")
+    ])
+    def test_invalid_input_type(self, cat_age, dog_age) -> None:
         with pytest.raises(TypeError):
-            get_human_age("string", 10)
-        with pytest.raises(TypeError):
-            get_human_age(10, "string")
-        with pytest.raises(TypeError):
-            get_human_age("string", "string")
+            get_human_age(cat_age, dog_age)
