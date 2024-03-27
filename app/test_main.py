@@ -3,7 +3,6 @@ import pytest
 from app.main import get_human_age
 
 
-
 class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age,dog_age,human_age",
@@ -26,7 +25,7 @@ class TestGetHumanAge:
         human_age: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
-        
-    def test_check_error_raising_with_wrong_imput(self):
+
+    def test_check_error_raising_with_wrong_imput(self) -> None:
         with pytest.raises(TypeError):
             get_human_age("", "")
