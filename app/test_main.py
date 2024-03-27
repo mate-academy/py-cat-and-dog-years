@@ -16,14 +16,17 @@ from app.main import get_human_age
         pytest.param(23, 23, [1, 1],
                      id="first 15 cat and dog years give 1 human year"),
         pytest.param(24, 24, [2, 2],
-                     id="the next 9 cat and dog years give 1 more human year;"),
+                     id="next 9 cat and dog years give 1 more human year;"),
         pytest.param(28, 29, [3, 3],
-                     id="every 4 next cat and 5 dog years give 1 extra human year"),
+                     id="every 4 cat and 5 dog years give 1 extra human year"),
         pytest.param(10000, 10000, [2496, 1997],
                      id="should work with really large numbers"),
     ]
 )
-def test_can_get_proper_human_age(cat_age: int, dog_age: int, human_age: list) -> None:
+def test_can_get_proper_human_age(cat_age: int,
+                                  dog_age: int,
+                                  human_age: list
+                                  ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
 
