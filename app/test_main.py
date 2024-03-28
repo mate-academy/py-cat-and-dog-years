@@ -19,8 +19,12 @@ class TestMain:
             pytest.param(-1, -2, [0, 0], id="age for negative values")
         ]
     )
-
-    def test_get_human_age(self, cat_age: int, dog_age: int, human_age: int) -> None:
+    def test_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            human_age: int
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
 
     @pytest.mark.parametrize(
@@ -30,7 +34,11 @@ class TestMain:
             pytest.param(4, "str", TypeError, id="str instead int for dog")
         ]
     )
-
-    def test_error(self, cat_age: int, dog_age: int, error_: Exception) -> None:
+    def test_error(
+            self,
+            cat_age: int,
+            dog_age: int,
+            error_: Exception
+    ) -> None:
         with pytest.raises(error_):
             get_human_age(cat_age, dog_age)
