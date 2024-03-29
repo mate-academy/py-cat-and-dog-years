@@ -17,6 +17,7 @@ class TestCatAndDogYears:
             pytest.param(100, 100, [21, 17]),
             pytest.param(-1, -1, [0, 0]),
             pytest.param(-100, - 100, [0, 0]),
+            pytest.param("abs", "asb", [0, 0], id="Should be int, not str"),
         ]
     )
     def test_param(self, cat_age: int, dog_age: int, human_age: int) -> None:
