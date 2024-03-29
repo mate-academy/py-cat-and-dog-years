@@ -22,3 +22,17 @@ class TestCatAndDogYears:
     )
     def test_param(self, cat_age: int, dog_age: int, human_age: int) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "pet_age",
+    [
+        (11,),
+        ("abs"),
+        ({11}),
+        ([11])
+    ]
+)
+def test_should_raise_exception(pet_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(pet_age, pet_age)
