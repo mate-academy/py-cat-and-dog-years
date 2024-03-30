@@ -26,17 +26,23 @@ def test_cheking_exeptions(cat_year: int,
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+    ], ids=[
+        "0 cat/dog years should convert into 0 human age.",
+        "14 cat/dog years should convert into 0 human age.",
+        "15 cat/dog years should convert into 1 human age.",
+        "23 cat/dog years should convert into 1 human age.",
+        "24 cat/dog years should convert into 2 human age.",
+        "27 cat/dog years should convert into 2 human age.",
+        "28 year of cat = 3 human year, 28 dog years = 2 human age.",
+        "100 year of cat = 21 human year, 100 dog years = 17 human age."
     ]
 )
 def test_cheking_values(cat_year: int,
                         dog_year: int,
                         result: list) -> None:
     func_result = get_human_age(cat_year, dog_year)
-    assert (func_result[0] == result[0]),\
-        (f"Somothing wrong with cat calculate: "
-         f"waited {result[0]}, get {func_result[0]}")
-
-    assert (func_result[1] == result[1]), \
-        (f"Somothing wrong with dog calculate: "
-         f"waited {result[1]}, get {func_result[1]}")
+    print("func_result")
+    assert (func_result
+            == result), (f"Somthing wrong with calculate: "
+                         f"waited {result}, get {func_result}")
