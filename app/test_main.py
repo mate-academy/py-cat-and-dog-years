@@ -17,7 +17,7 @@ class TestConvertToHuman:
             self,
             cat_age: int,
             dog_age: int,
-            expected: int) -> None:
+            expected: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
     @pytest.mark.parametrize(
@@ -33,7 +33,7 @@ class TestConvertToHuman:
             self,
             cat_age: int,
             dog_age: int,
-            expected: int) -> None:
+            expected: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
     @pytest.mark.parametrize(
