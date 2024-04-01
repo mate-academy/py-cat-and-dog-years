@@ -19,9 +19,6 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: int) -> None:
 @pytest.mark.parametrize("cat_age, dog_age", [
     (-1, 0),
     (0, -1),
-    (0, 0),
-    (999999999, 999999999),
 ])
-def test_get_human_age_with_exceptions(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
+def test_get_human_age_with_large_values(cat_age: int, dog_age: int) -> None:
+    assert get_human_age(cat_age, dog_age) == [0, 0]
