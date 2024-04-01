@@ -9,9 +9,9 @@ from app.main import get_human_age
         pytest.param(5, "6", TypeError, id="dog value is not integer")
     ]
 )
-def test_cheking_exeptions(cat_year: int,
-                           dog_year: int,
-                           expect_error: Exception) -> None:
+def test_checking_exeptions(cat_year: int,
+                            dog_year: int,
+                            expect_error: TypeError) -> None:
 
     with pytest.raises(expect_error):
         get_human_age(cat_year, dog_year)
@@ -38,11 +38,13 @@ def test_cheking_exeptions(cat_year: int,
         "100 year of cat = 21 human year, 100 dog years = 17 human age."
     ]
 )
-def test_cheking_values(cat_year: int,
-                        dog_year: int,
-                        result: list) -> None:
+def test_checking_values(cat_year: int,
+                         dog_year: int,
+                         result: list) -> None:
     func_result = get_human_age(cat_year, dog_year)
-    print("func_result")
     assert (func_result
-            == result), (f"Somthing wrong with calculate: "
-                         f"waited {result}, get {func_result}")
+            == result), (f"We thought for cat years {cat_year} "
+                         f"would be {result[0]} human years "
+                         f"and for dog {dog_year} "
+                         f"would be - {result[1]}, "
+                         f"but got {func_result}")
