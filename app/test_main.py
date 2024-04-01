@@ -22,3 +22,8 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: int) -> None:
 ])
 def test_get_human_age_with_large_values(cat_age: int, dog_age: int) -> None:
     assert get_human_age(cat_age, dog_age) == [0, 0]
+
+
+def test_get_human_age_with_invalid_input() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("cat", "dog")
