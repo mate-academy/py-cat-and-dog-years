@@ -1,24 +1,30 @@
-from app.main import get_human_age
+from app.main import get_human_age, convert_to_human
+import pytest
 
 
-def test_get_human_age_0() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (0, 0, [0, 0]),
+    (14, 14, [0, 0]),
+    (15, 15, [1, 1]),
+    (23, 23, [1, 1]),
+    (24, 24, [2, 2]),
+    (27, 27, [2, 2]),
+    (28, 28, [3, 2]),
+    (100, 100, [21, 17]),
+])
+def test_get_human_age(cat_age, dog_age, expected):
+    assert get_human_age(cat_age, dog_age) == expected
 
-
-def test_get_human_age_less_than_15() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_get_human_age_15_to_23() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_get_human_age_24_to_27() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_get_human_age_more_than_27() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize("animal_age, first_year, second_year, each_year, expected", [
+    (0, 15, 9, 4, 0),
+    (14, 15, 9, 4, 0),
+    (15, 15, 9, 4, 1),
+    (20, 15, 9, 4, 1),
+    (23, 15, 9, 4, 1),
+    (24, 15, 9, 4, 2),
+    (27, 15, 9, 4, 2),
+    (28, 15, 9, 4, 3),
+    (100, 15, 9, 4, 21),
+])
+def test_convert_to_human(animal_age, first_year, second_year, each_year, expected):
+    assert convert_to_human(animal_age, first_year, second_year, each_year) == expected
