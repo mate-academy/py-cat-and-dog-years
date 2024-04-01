@@ -44,7 +44,7 @@ class TestConvertToHuman:
             ([1], [1]),
             ({"1": 1}, {"2": None}),
             ({1}, {0}),
-            (None, None)
+            (None, None),
         ]
     )
     def test_should_raise_error_if_age_not_int(
