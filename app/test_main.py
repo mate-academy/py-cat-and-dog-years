@@ -25,4 +25,7 @@ from app.main import get_human_age
         "100 cat/dog years should convert into 21 human age."]
 )
 def test_human_age(cat_age: int, dog_age: int, result: int) -> list:
-    assert get_human_age(cat_age, dog_age) == result
+    assert get_human_age(
+        cat_age,
+        dog_age
+    ) == result
