@@ -1,20 +1,22 @@
-from app.main import get_human_age
 import pytest
+from app.main import get_human_age
 
 
-class YearCatAndDog:
-    @pytest.mark.parametrize(
-        "cat_age, dog_age, human_age",
-        [
-            pytest.param(0, 0, [0, 0]),
-            pytest.param(14, 14, [0, 0]),
-            pytest.param(15, 15, [1, 1]),
-            pytest.param(23, 23, [1, 1]),
-            pytest.param(24, 24, [2, 2]),
-            pytest.param(27, 27, [2, 2]),
-            pytest.param(28, 28, [3, 2]),
-            pytest.param(100, 100, [21, 17]),
-        ]
-    )
-    def test_prime(self, cat_age: int, dog_age: int, human_age: int) -> None:
-        assert get_human_age(cat_age, dog_age) == human_age
+@pytest.mark.parametrize(
+    "cat, dog, expected_result",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (24, 24, [2, 2]),
+        (28, 28, [3, 2]),
+        (-15, -15, [0, 0]),
+        (1000, 2000, [246, 397]),
+    ]
+)
+def test_get_human_age(cat: int, dog: int, expected_result: list) -> None:
+    assert get_human_age(cat, dog) == expected_result
+
+
+def test_non_integer_input() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("c", "d")
