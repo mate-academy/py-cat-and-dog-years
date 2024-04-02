@@ -1,5 +1,7 @@
-import pytest
 from typing import Type, Any
+
+import pytest
+
 from app.main import get_human_age
 
 
@@ -44,10 +46,11 @@ class TestCatAndDogYears:
                          id="`set` should raise `TypeError`")
         ]
     )
-    def test_test_get_human_age_errors(self,
-                                       cat_age: Any,
-                                       dog_age: Any,
-                                       expected_error: Type[BaseException]
-                                       ) -> None:
+    def test_test_get_human_age_errors(
+            self,
+            cat_age: Any,
+            dog_age: Any,
+            expected_error: Type[BaseException]
+    ) -> None:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
