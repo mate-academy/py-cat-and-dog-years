@@ -1,8 +1,9 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
-class AgeConvertor:
+class TestAgeConvertor:
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected",
         [
@@ -13,11 +14,11 @@ class AgeConvertor:
             (27, 27, [2, 2]),
             (28, 27, [3, 2]),
             (100, 100, [21, 17]),
-            (4123321456, 1231231231, [4123321456, 1231231231]),
+            (4123321456, 1231231231, [1030830360, 246246243]),
         ],
         ids=[
             "Animals with negative years should be equal to 0",
-            "If animals years are equal to 0 they should be equal to 0 in human age",
+            "If animals years are equal to 0 they should be equal to 0",
             "Animals with years under 15 should be equal to 0",
             "Animals with years  in range (15, 23) should be equal to 1",
             "After 24 every 4 years for cat and 5 for dog give 1 extra year",
@@ -46,7 +47,7 @@ class AgeConvertor:
     )
     def test_should_raise_error_if_age_not_int(
             self,
-            wrong_input_value
+            wrong_input_value: Any
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(wrong_input_value, wrong_input_value)
