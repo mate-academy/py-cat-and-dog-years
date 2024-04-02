@@ -10,13 +10,17 @@ from app.main import get_human_age
         pytest.param(0, 0, [0, 0],
                      id="zero ages should result in 0 human years"),
         pytest.param(14, 14, [0, 0],
-                     id="ages just below the threshold should result in 0 human years"),
+                     id="ages just below the threshold should "
+                        "result in 0 human years"),
         pytest.param(15, 15, [1, 1],
-                     id="ages at the first threshold should result in 1 human year"),
+                     id="ages at the first threshold should "
+                        "result in 1 human year"),
         pytest.param(23, 23, [1, 1],
-                     id="ages in the second year span should still result in 1 human year"),
+                     id="ages in the second year span should "
+                        "still result in 1 human year"),
         pytest.param(27, 27, [2, 2],
-                     id="ages at the second threshold should result in 2 human years"),
+                     id="ages at the second threshold should "
+                        "result in 2 human years"),
         pytest.param(100, 100, [21, 17],
                      id="higher ages should calculate correctly"),
     ]
