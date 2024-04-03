@@ -27,6 +27,9 @@ def test_checking_exeptions(cat_year: int,
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
+        (-5, 100, [0, 17]),
+        (100, -20, [21, 0]),
+        (-3, -70, [0, 0]),
     ], ids=[
         "0 cat/dog years should convert into 0 human age.",
         "14 cat/dog years should convert into 0 human age.",
@@ -35,7 +38,10 @@ def test_checking_exeptions(cat_year: int,
         "24 cat/dog years should convert into 2 human age.",
         "27 cat/dog years should convert into 2 human age.",
         "28 year of cat = 3 human year, 28 dog years = 2 human age.",
-        "100 year of cat = 21 human year, 100 dog years = 17 human age."
+        "100 year of cat = 21 human year, 100 dog years = 17 human age.",
+        "negative value for cat return 0",
+        "negative value for dog return 0",
+        "negative value for both return [0,0]",
     ]
 )
 def test_checking_values(cat_year: int,
