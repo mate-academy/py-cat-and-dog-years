@@ -23,6 +23,8 @@ from app.main import get_human_age
                      100,
                      [21, 17],
                      id="Human ages for  100-year-old cats and dogs"),
+        pytest.param(-10, -30, [0, 0], id="Negative ages turn to zero"),
+        pytest.param(500, 500, [121, 97], id="Unreal old cats and dogs")
 
     ]
 )
