@@ -29,3 +29,11 @@ def test_human_age(cat_age: int, dog_age: int, result: int) -> list:
         cat_age,
         dog_age
     ) == result
+
+
+def test_type_of_value(
+        cat_age: int,
+        dog_age: int
+) -> None:
+    assert isinstance(cat_age, int)
+    assert isinstance(dog_age, int)
