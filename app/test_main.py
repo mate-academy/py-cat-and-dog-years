@@ -19,10 +19,12 @@ from app.main import get_human_age
         (-100, -100, [0, 0]),
     ]
 )
-def test_get_human_age(cat_age, dog_age, expected_human_age):
+def test_get_human_age(cat_age: int,
+                       dog_age: int,
+                       expected_human_age: int) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
 
 
-def test_get_human_age_invalid_input():
+def test_get_human_age_invalid_input() -> None:
     with pytest.raises(TypeError):
         get_human_age("cat", "dog")
