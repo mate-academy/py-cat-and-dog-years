@@ -1,30 +1,33 @@
 import pytest
-from app.main import get_human_age, convert_to_human
-
-
-@pytest.mark.parametrize(
-    "animal_age, first_year, second_year, each_year, expected_human_years",
-    [
-        (10, 15, 9, 4, 0),  # Cat age less than 1 human year
-        (20, 15, 9, 4, 1),  # Cat age between 1 and 2 human years
-        (30, 15, 9, 4, 3),  # Cat age more than 2 human years
-        (5, 15, 9, 5, 0),  # Dog age less than 1 human year
-        (16, 15, 9, 5, 1),  # Dog age between 1 and 2 human years
-    ]
-)
-def test_convert_to_human(animal_age, first_year, second_year, each_year, expected_human_years):
-    assert convert_to_human(animal_age, first_year, second_year, each_year) == expected_human_years
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_human_ages",
     [
-        (10, 5, [0, 0]),  # Cat and dog ages less than 1 human year
-        (20, 16, [1, 1]),  # Cat and dog ages between 1 and 2 human years
-        (30, 25, [3, 2]),  # Cat and dog ages more than 2 human years
-        (5, 15, [0, 1]),  # Cat age less than 1 human year, dog age between 1 and 2 human years
-        (16, 10, [1, 0]),  # Cat age between 1 and 2 human years, dog age less than 1 human year
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+    ],
+    ids=[
+        "0  must be equal to [0, 0] human age",
+        "14  must be equal to [0, 0] human age",
+        "15  must be equal to [1, 1] human age",
+        "23  must be equal to [1, 1] human age",
+        "24  must be equal to [2, 2] human age",
+        "27  must be equal to [2, 2] human age",
+        "28  must be equal to [3, 2] human age",
+        "100  must be equal to [21, 17] human age",
     ]
 )
-def test_get_human_age(cat_age, dog_age, expected_human_ages):
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected_human_ages: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_ages
