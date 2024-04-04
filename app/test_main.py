@@ -10,6 +10,7 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
         (23, 22, [1, 1]),
+        (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (1000, 1000, [246, 197]),
         (-1, -1, [0, 0]),
@@ -19,6 +20,7 @@ from app.main import get_human_age
          "Both ages are greater than the second_year",
          "Dog input greater, ages are equal",
          "Cat input greater, ages are equal",
+         "Ages are equal",
          "Different ages between dogs and cats"
          "Dog age greater than cat age",
          "Large numbers", "Negative ages"]
