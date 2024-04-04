@@ -38,6 +38,6 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
          "None inputs",
          "Unsupported types"]
 )
-def test_get_human_age_type_error(cat_age, dog_age) -> None:
+def test_get_human_age_type_error(cat_age: any, dog_age: any) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
