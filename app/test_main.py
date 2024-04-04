@@ -45,7 +45,6 @@ def test_get_human_age(
         "None should raise TypeError",
         "str should raise TypeError",
         "set should raise TypeError",
-
     ]
 )
 def test_test_get_human_age_errors(
