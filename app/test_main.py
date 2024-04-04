@@ -1,4 +1,5 @@
 import pytest
+from typing import List
 from app.main import get_human_age
 
 
@@ -17,7 +18,12 @@ class TestGetHumanAge:
             (100, 100, [21, 17]),
         ]
     )
-    def test_basic_cases(self, cat_age, dog_age, expected):
+    def test_basic_cases(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected: List[int]
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -36,6 +42,6 @@ class TestEdgeCases:
             (10, [10]),  # List dog age
         ]
     )
-    def test_edge_cases(self, cat_age, dog_age):
+    def test_edge_cases(self, cat_age: int, dog_age: int) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
