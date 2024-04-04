@@ -29,18 +29,18 @@ def test_type_of_returned_data() -> None:
         ([-200, -200], [0, 0])
     ],
     ids=[
-        "Cats and dogs aged 14 should return [0, 0]",
-        "Cats and dogs aged 15 should return [1, 1]",
-        "Cats and dogs aged 23 should return [1, 1]",
-        "Cats and dogs aged 24 should return [2, 2]",
-        "A cat aged 27 and a dog aged 28 should return [2, 2]",
-        "A cat aged 28 and a dog aged 29 should return [3, 3]",
-        "Cats and dogs aged 200 should return [46, 37]",
-        "A cat aged 340 and a dog aged 210 should return [81, 39]",
-        "Cats and dogs aged 0 should return [0, 0]",
-        "A cat aged 100 and a dog aged 0 should return [21, 0]",
-        "A cat aged 0 and a dog aged 100 should return [0, 17]",
-        "Cats and dogs aged -200 should return [0, 0]"
+        "Cat's and dog's age 14 should return [0, 0]",
+        "Cat's and dog's age 15 should return [1, 1]",
+        "Cat's and dog's age 23 should return [1, 1]",
+        "Cat's and dog's age 24 should return [2, 2]",
+        "A cat age 27 and a dog age 28 should return [2, 2]",
+        "A cat age 28 and a dog age 29 should return [3, 3]",
+        "Cat's and dog's age 200 should return [46, 37]",
+        "A cat age 340 and a dog age 210 should return [81, 39]",
+        "Cat's and dog's age 0 should return [0, 0]",
+        "A cat age 100 and a dog age 0 should return [21, 0]",
+        "A cat age 0 and a dog age 100 should return [0, 17]",
+        "Cat's and dog's age -200 should return [0, 0]"
     ]
 
 )
