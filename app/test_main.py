@@ -17,9 +17,10 @@ from app.main import get_human_age
 def test_get_human_age_with_param_deco(cat_age: int,
                                        dog_age: int,
                                        expected_result: list) -> None:
-    if isinstance(expected_result, list):
-        result = get_human_age(cat_age, dog_age)
-        assert result == expected_result
+    assert get_human_age(cat_age, dog_age) == expected_result, (
+        f"Function 'get_human_age' should return {expected_result}"
+        f"when value is Cat: {cat_age}, Dog: {dog_age}"
+    )
 
 
 @pytest.mark.parametrize("cat_age, dog_age, expected_errors", [
