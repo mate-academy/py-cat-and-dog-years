@@ -10,11 +10,13 @@ from app.main import get_human_age
     (23, 23, [1, 1]),
     (24, 24, [2, 2]),
     (27, 27, [2, 2]),
-    (28, 28, [3, 2])])
-def test_get_human_age_with_param_deco(
-        cat_age: int,
-        dog_age: int,
-        expected_result: list) -> None:
+    (28, 28, [3, 2]),
+    (-1, -1, [0, 0]),
+    (100, 100, [7, 6])
+])
+def test_get_human_age_with_param_deco(cat_age: int,
+                                       dog_age: int,
+                                       expected_result: list) -> None:
     if isinstance(expected_result, list):
         result = get_human_age(cat_age, dog_age)
         assert result == expected_result
