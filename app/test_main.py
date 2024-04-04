@@ -6,8 +6,9 @@ from app.main import get_human_age
 def test_type_of_returned_data() -> None:
     ages = get_human_age(15, 15)
     assert isinstance(ages, list), "The returned value is not a list"
-    assert isinstance(ages[0], int), "The first element of the returned list is not an integer"
-    assert isinstance(ages[1], int), "The second element of the returned list is not an integer"
+    assert all(
+        isinstance(age, int) for age in ages
+    ), "All elements of list is must be an integer"
     assert len(ages) == 2, "The length of the returned list is not 2"
 
 
