@@ -12,7 +12,7 @@ from app.main import get_human_age
     (27, 27, [2, 2]),
     (28, 28, [3, 2]),
     (-1, -1, [0, 0]),
-    (100, 100, [7, 6])
+    (100, 100, [21, 17])
 ])
 def test_get_human_age_with_param_deco(cat_age: int,
                                        dog_age: int,
