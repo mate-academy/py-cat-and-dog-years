@@ -2,11 +2,11 @@ from app.main import get_human_age
 import pytest
 
 
-def test_for_the_type_of_the_final_object() -> None:
+def test_type_of_the_final_object() -> None:
     assert isinstance(get_human_age(14, 14), list)
 
 
-def test_for_the_length_of_the_final_list() -> None:
+def test_length_of_the_final_list() -> None:
     assert len(get_human_age(14, 14)) == 2
 
 
@@ -40,7 +40,7 @@ def test_should_raise_error(cat_age: int, dog_age: int) -> None:
 
     ],
 )
-def test_for_correct_counting_of_years(
+def test_correct_counting_of_years(
     cat_age: int, dog_age: int, result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
