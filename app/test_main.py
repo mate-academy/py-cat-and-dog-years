@@ -11,6 +11,20 @@ def test_for_the_length_of_the_final_list() -> None:
 
 
 @pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("11", "11"),
+        (11, "11"),
+        ("11", 11),
+
+    ],
+)
+def test_should_raise_error(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
     "cat_age, dog_age, result",
     [
         (0, 0, [0, 0]),
@@ -21,6 +35,9 @@ def test_for_the_length_of_the_final_list() -> None:
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
+        (-2, 23, [0, 1]),
+        (23, -2, [1, 0]),
+
     ],
 )
 def test_for_correct_counting_of_years(
