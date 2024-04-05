@@ -23,7 +23,8 @@ from app.main import get_human_age
          "Ages are equal",
          "Different ages between dogs and cats"
          "Dog age greater than cat age",
-         "Large numbers", "Negative ages"]
+         "Large numbers",
+         "Negative ages"]
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
@@ -36,10 +37,13 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
         (None, None),
         ({}, []),
     ],
-    ids=["String inputs",
-         "None inputs",
-         "Unsupported types"]
+    ids=["TypeError raised when inputs is string",
+         "TypeError raised when inputs is None",
+         "TypeError raised when used unsupported types"]
 )
-def test_get_human_age_type_error(cat_age: any, dog_age: any) -> None:
+def test_get_human_age_type_error(
+        cat_age: str | None | dict,
+        dog_age: str | None | list
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
