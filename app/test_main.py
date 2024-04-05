@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
@@ -20,10 +21,10 @@ class TestHumanAgeConversion:
     ], ids=[
         "Both zero age",
         "Both small age",
-        "Both middle age",
-        "Both middle age",
-        "Both middle age",
-        "Both middle age",
+        "Both pets are 15 years old (1 human year)",
+        "Both pets are 23 years old (1 human year)",
+        "Both pets are 24 years old (2 human years)",
+        "Both pets are 27 years old (2 human years)",
         "Both large age",
         "Both max age",
         "Negative cat age",
@@ -47,11 +48,18 @@ class TestHumanAgeConversion:
         (5, 10.5),
         (None, 10),
         (5, None)
+    ], ids=[
+        "Invalid cat age type (string), valid dog age",
+        "Valid cat age, invalid dog age type (string)",
+        "Invalid cat age type (float), valid dog age",
+        "Valid cat age, invalid dog age type (float)",
+        "Invalid cat age type (None), valid dog age",
+        "Valid cat age, invalid dog age type (None)"
     ])
     def test_non_integer_age_invalid_type(
             self,
-            invalid_cat_age: int,
-            invalid_dog_age: int
+            invalid_cat_age: Any,
+            invalid_dog_age: Any
     ) -> None:
         with pytest.raises(TypeError):
             if (
