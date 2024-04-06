@@ -75,3 +75,12 @@ def test_animal_with_two_human_year(cat_age: int, dog_age: int) -> None:
         2,
         2,
     ], "Result list must contain only twos"
+
+
+@pytest.mark.parametrize("cat_age,dog_age", [(-24, -24), (-2, -3),
+                                             (-5, -10), (-7, -8)])
+def test_animal_with_negative_age(cat_age: int, dog_age: int) -> None:
+    assert get_human_age(cat_age=cat_age, dog_age=dog_age) == [
+        0,
+        0,
+    ], "Result list must contain only zeros"
