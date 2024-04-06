@@ -66,3 +66,12 @@ def test_wrong_input(cat_age: int, dog_age: int) -> None:
         return
     else:
         raise Exception("Function must raise TypeError")
+
+
+@pytest.mark.parametrize("cat_age,dog_age", [(24, 24), (27, 27),
+                                             (26, 27), (25, 27)])
+def test_animal_with_two_human_year(cat_age: int, dog_age: int) -> None:
+    assert get_human_age(cat_age=cat_age, dog_age=dog_age) == [
+        2,
+        2,
+    ], "Result list must contain only twos"
