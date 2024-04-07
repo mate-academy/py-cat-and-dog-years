@@ -1,5 +1,6 @@
-import pytest
 from typing import Any
+
+import pytest
 
 from app.main import get_human_age
 
@@ -36,15 +37,21 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        ("1", 1, TypeError),
-        ([1], 1, TypeError),
-        (1j, 1, TypeError),
-        ({1}, 1, TypeError),
+        ("1", "1", TypeError),
+        ([1], [1], TypeError),
+        (1j, 1j, TypeError),
+        ({1}, {1}, TypeError),
+    ],
+    ids=[
+        "'TypeError' should be raised when function receives a string",
+        "'TypeError' should be raised when function receives a list",
+        "'TypeError' should be raised when function receives a complex",
+        "'TypeError' should be raised when function receives a set",
     ]
 )
-def test_shoulod_raise_correct_error(
+def test_should_raise_correct_error(
     cat_age: Any,
-    dog_age: int,
+    dog_age: Any,
     expected_error: Exception
 ) -> None:
     with pytest.raises(expected_error):
