@@ -24,21 +24,20 @@ class TestHumanAgeConversion:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
-        "cat_age, dog_age, expected_error",
+        "cat_age, dog_age",
         [
-            pytest.param(None, None, TypeError,
+            pytest.param(None, None,
                          id="`None` should raise `TypeError`"),
-            pytest.param("10", "10", TypeError,
+            pytest.param("10", "10",
                          id="`str` should raise `TypeError`"),
-            pytest.param({1, 2}, {1, 2}, TypeError,
+            pytest.param({1, 2}, {1, 2},
                          id="`set` should raise `TypeError`")
         ]
     )
     def test_test_get_human_age_errors(
             self,
-            cat_age: any,
-            dog_age: any,
-            expected_error: any
+            cat_age: int,
+            dog_age: int
     ) -> None:
-        with pytest.raises(expected_error):
+        with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
