@@ -25,22 +25,20 @@ from app.main import get_human_age
 def test_get_human_age_with_param_deco(cat_age: int,
                                        dog_age: int,
                                        expected_result: list) -> None:
-    assert get_human_age(cat_age, dog_age) == expected_result, (
-        f"Function 'get_human_age' should return {expected_result}"
-        f"when value is Cat: {cat_age}, Dog: {dog_age}"
-    )
+    assert get_human_age(cat_age, dog_age) == expected_result
 
 
-@pytest.mark.parametrize("cat_age, dog_age, expected_errors", [
-    ([], [], TypeError),
-    ((), (), TypeError),
-    ("", "", TypeError),
-    ({}, {}, TypeError)], ids=["TypeError raised when input is two lists",
-                               "TypeError raised when input is two tuples",
-                               "TypeError raised when input is two strings",
-                               "TypeError raised when input is two dicts"])
+@pytest.mark.parametrize("cat_age, dog_age", [
+    ([], []),
+    ((), ()),
+    ("", ""),
+    ({}, {})],
+    ids=["TypeError raised when input is two lists",
+         "TypeError raised when input is two tuples",
+         "TypeError raised when input is two strings",
+         "TypeError raised when input is two dicts"])
 def test_get_human_age_with_param_error(cat_age: int,
                                         dog_age: int,
-                                        expected_errors: list) -> None:
+                                        ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
