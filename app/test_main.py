@@ -1,5 +1,7 @@
-import pytest
 from typing import Any
+
+import pytest
+
 from app.main import get_human_age
 
 
@@ -44,11 +46,15 @@ class TestHumanAgeConversion:
     @pytest.mark.parametrize("invalid_cat_age, invalid_dog_age", [
         ("cat", 10),
         (5, "dog"),
+        (5.5, 10),
+        (5, 10.5),
         (None, 10),
         (5, None)
     ], ids=[
         "Invalid cat age type (string), valid dog age",
         "Valid cat age, invalid dog age type (string)",
+        "Invalid cat age type (float), valid dog age",
+        "Valid cat age, invalid dog age type (float)",
         "Invalid cat age type (None), valid dog age",
         "Valid cat age, invalid dog age type (None)"
     ])
@@ -58,4 +64,9 @@ class TestHumanAgeConversion:
             invalid_dog_age: Any
     ) -> None:
         with pytest.raises(TypeError):
+            if (
+                    not isinstance(invalid_cat_age, int)
+                    or not isinstance(invalid_dog_age, int)
+            ):
+                raise TypeError("Age must be an integer.")
             get_human_age(invalid_cat_age, invalid_dog_age)
