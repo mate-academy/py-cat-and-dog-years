@@ -15,8 +15,11 @@ class TestGetHumanAge:
 
             pytest.param(0, 0, [0, 0], id="zeroes of years"),
             pytest.param(-5, -5, [0, 0], id="negative value of years"),
-            pytest.param(10000000000000, 10000000000000, [2499999999996, 1999999999997],
-                         id="very large value of years"),
+            pytest.param(
+                10000000000000,
+                10000000000000,
+                [2499999999996, 1999999999997],
+                id="very large value of years"),
         ]
     )
     def test_correct_cat_and_dog_years_convert(
@@ -38,8 +41,8 @@ class TestGetHumanAge:
     )
     def test_incorrect_data_type_of_years(
             self,
-            cat_age,
-            dog_age
+            cat_age: int,
+            dog_age: int
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
