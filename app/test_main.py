@@ -1,4 +1,4 @@
-from typing import Any, Type
+from typing import Any
 
 import pytest
 
@@ -43,11 +43,11 @@ def test_get_human_age(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, expected_error",
+    "cat_age, dog_age",
     [
-        (None, None, TypeError),
-        ("10", "10", TypeError),
-        ({1, 2}, {1, 2}, TypeError),
+        (None, None),
+        ("10", "10"),
+        ({1, 2}, {1, 2}),
     ],
     ids=[
         "None should raise TypeError",
@@ -57,8 +57,7 @@ def test_get_human_age(
 )
 def test_invalid_input_raises_type_error(
         cat_age: Any,
-        dog_age: Any,
-        expected_error: Type[TypeError]
+        dog_age: Any
 ) -> None:
-    with pytest.raises(expected_error):
+    with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
