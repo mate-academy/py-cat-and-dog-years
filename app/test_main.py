@@ -17,5 +17,7 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_converter_age_from_human_to_animal(cat_ages, dog_ages, human_ages):
+def test_converter_age_from_human_to_animal(cat_ages: int,
+                                            dog_ages: int,
+                                            human_ages: int) -> None:
     assert get_human_age(cat_ages, dog_ages) == human_ages
