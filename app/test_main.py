@@ -1,21 +1,20 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_cat_or_dog_years_less_then_15() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_cat_and_dog_first_15_years() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_cat_and_dog_next_9_years() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_every_4_cat_years() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_every_5_dog_years() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_result",
+    [
+        pytest.param(0, 0, [0, 0], id="cat or dog years less then 15"),
+        pytest.param(15, 15, [1, 1], id="cat and dog first 15 years"),
+        pytest.param(24, 24, [2, 2], id="cat and dog next 9 years"),
+        pytest.param(28, 28, [3, 2], id="next every 4 cat years"),
+        pytest.param(100, 100, [21, 17], id="next every 5 dog years"),
+    ]
+)
+def test_correct_cat_and_dog_years_convert(
+        cat_age: int,
+        dog_age: int,
+        expected_result: list
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_result
