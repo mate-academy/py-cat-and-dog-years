@@ -55,7 +55,7 @@ def test_get_human_age(
         "set should raise TypeError",
     ]
 )
-def test_test_get_human_age_errors(
+def test_invalid_input_raises_type_error(
         cat_age: Any,
         dog_age: Any,
         expected_error: Type[TypeError]
