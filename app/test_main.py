@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
@@ -36,8 +37,8 @@ class TestHumanAgeConversion:
     )
     def test_test_get_human_age_errors(
             self,
-            cat_age: int,
-            dog_age: int
+            cat_age: Any,
+            dog_age: Any
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
