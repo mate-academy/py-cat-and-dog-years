@@ -14,6 +14,9 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
+        (-5, -5, [0, 0]),
+        (-10, -10, [0, 0]),
+        (-15, -15, [0, 0]),
     ],
     ids=[
         "0  must be equal to [0, 0] human age",
@@ -24,6 +27,9 @@ from app.main import get_human_age
         "27  must be equal to [2, 2] human age",
         "28  must be equal to [3, 2] human age",
         "100  must be equal to [21, 17] human age",
+        "Negative years for animals should result in age 0",
+        "Negative years for animals should result in age 0",
+        "Negative years for animals should result in age 0",
     ]
 )
 def test_get_human_age(
