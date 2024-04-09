@@ -39,11 +39,11 @@ def test_convert_animal_age_to_human(
     "cat_age, dog_age",
     [
         pytest.param("-1", "-1",
-                     id="Ages have to be integers"),
+                     id="Ages have to be numbers"),
         pytest.param("0", 0,
-                     id="Cats age have to be an integer"),
+                     id="Cats age have to be an number"),
         pytest.param(0, "0",
-                     id="Dogs age have to be an integer"),
+                     id="Dogs age have to be an number"),
     ]
 )
 def test_types_of_input_data(cat_age: int, dog_age: int) -> None:
