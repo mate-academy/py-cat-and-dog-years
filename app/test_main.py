@@ -68,6 +68,21 @@ def test_correct_data(ages: list, expected: list) -> None:
     assert get_human_age(*ages) == expected
 
 
-def test_get_human_age_with_invalid_input() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("cat", "dog")
+@pytest.mark.parametrize(
+    "ages, expected_exception",
+    [
+        (["cat", "dog"], TypeError),
+        ([["cat", "dog"]], TypeError),
+        ([{"cat", "dog"}], TypeError),
+    ],
+    ids=(
+        "invalid_input_str",
+        "invalid_input_list",
+        "invalid_input_set"
+    )
+)
+def test_get_human_age_with_invalid_input(
+        ages: list, expected_exception: Exception
+) -> None:
+    with pytest.raises(expected_exception):
+        get_human_age(*ages)
