@@ -1,15 +1,35 @@
+from typing import Iterable
+
 import pytest
 
 from app.main import get_human_age
 
 
-def test_type_of_returned_data() -> None:
-    ages = get_human_age(15, 15)
-    assert isinstance(ages, list), "The returned value is not a list"
+@pytest.mark.parametrize(
+    "age,expected_instance,expected_inner_instance,expected_length",
+    [
+        ([15, 15], list, int, 2)
+    ],
+    ids=(
+        "Check correct instances of output",
+    )
+)
+def test_type_of_returned_data(
+        age: list,
+        expected_instance: type[Iterable],
+        expected_inner_instance: type,
+        expected_length: int
+) -> None:
+    ages = get_human_age(*age)
+    assert (
+        isinstance(ages, expected_instance)
+    ), "The returned value is not a list"
     assert all(
-        isinstance(age, int) for age in ages
+        isinstance(age, expected_inner_instance) for age in ages
     ), "All elements of list is must be an integer"
-    assert len(ages) == 2, "The length of the returned list is not 2"
+    assert (
+        len(ages) == expected_length
+    ), "The length of the returned list is not 2"
 
 
 @pytest.mark.parametrize(
