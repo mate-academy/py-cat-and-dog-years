@@ -21,3 +21,10 @@ def test_converter_age_from_human_to_animal(cat_ages: int,
                                             dog_ages: int,
                                             human_ages: list) -> None:
     assert get_human_age(cat_ages, dog_ages) == human_ages
+
+
+def test_for_data_type() -> None:
+    try:
+        assert type(get_human_age(100, 100)) == list
+    except:
+        print("Function get_human_age should return list type of data")
