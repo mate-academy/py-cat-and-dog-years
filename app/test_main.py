@@ -54,6 +54,24 @@ class TestGetAge:
                 100,
                 [21, 17],
                 id="must return the correct age for every next years"
+            ),
+            pytest.param(
+                123456789,
+                123456789,
+                [30864193, 24691355],
+                id="must return the correct age with large numbers"
+            ),
+            pytest.param(
+                -10,
+                -10,
+                [0, 0],
+                id="must return zero when negative value of years"
+            ),
+            pytest.param(
+                100.0,
+                100.0,
+                [21.0, 17.0],
+                id="must return correct float values"
             )
         ]
     )
@@ -63,9 +81,26 @@ class TestGetAge:
                                    expected_age_values: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected_age_values
 
-    def test_invalid_input(self) -> None:
-        with pytest.raises(TypeError):
-            get_human_age("16", 16)
-
-        with pytest.raises(TypeError):
-            get_human_age(25, "25")
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_error",
+        [
+            pytest.param(
+                "16",
+                16,
+                TypeError,
+                id="must return 'TypeError' if not int"
+            ),
+            pytest.param(
+                25,
+                "25",
+                TypeError,
+                id="must return 'TypeError' if not int"
+            )
+        ]
+    )
+    def test_invalid_input(self,
+                           cat_age: int,
+                           dog_age: int,
+                           expected_error: Exception) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
