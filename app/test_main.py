@@ -5,6 +5,8 @@ import pytest
 @pytest.mark.parametrize(
     "cat_age,dog_age,human_age_to_animal",
     [
+        pytest.param(-1, -1, [0, 0],
+                     id="age can not be negative"),
         pytest.param(0, 0, [0, 0],
                      id="zero ages for pets the same for human"),
         pytest.param(14, 14, [0, 0],
@@ -28,6 +30,15 @@ def test_function_returns_good_result(cat_age: int, dog_age: int, human_age_to_a
     assert get_human_age(cat_age, dog_age) == human_age_to_animal
 
 
-def test_age_pets_if_not_integer() -> None:
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ({1}, {1}),
+        ([1], [2]),
+        ((1,), (2,)),
+        ({"cat": 2}, {"dog": 2}),
+    ]
+)
+def test_age_pets_if_not_integer(cat_age, dog_age) -> None:
     with pytest.raises(TypeError):
-        get_human_age("1", "1")
+        get_human_age(cat_age, dog_age)
