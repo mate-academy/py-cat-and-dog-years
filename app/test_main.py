@@ -14,7 +14,6 @@ from typing import Any
         pytest.param(27, 27, [2, 2], id="27/27, must be [2, 2]"),
         pytest.param(28, 28, [3, 2], id="28/28, must be [3, 2]"),
         pytest.param(-1, -100, [0, 0], id="negative number"),
-        # pytest.param(1500, 2000, [0, 0], id="unbelievable number")
     ]
 )
 def test_get_human_age(
@@ -44,17 +43,3 @@ def test_get_human_age_for_true_type_of_value(
 ) -> None:
     with pytest.raises(Exception):
         raise get_human_age(cat_age, dog_age)
-
-# def test_get_human_age_in_true_values() -> None:
-#     with pytest.raises(ValueError):
-#         get_human_age(-8, -1)
-#
-#
-# def test_get_human_age_in_wrong_values() -> None:
-#     with pytest.raises(TypeError):
-#         get_human_age(8.5, 2.4)
-#
-#
-# def test_get_human_age_in_unbelievable_values() -> None:
-#     with pytest.raises(TypeError):
-#         get_human_age(1500, 2000)
