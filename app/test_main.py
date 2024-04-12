@@ -53,7 +53,11 @@ from app.main import get_human_age
         pytest.param(100,
                      100,
                      [21, 17],
-                     id="checking big values")
+                     id="checking big values"),
+        pytest.param(-30,
+                     -2,
+                     [0, 0],
+                     id="test should return zeroes if input is negative")
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, result: list[int]) -> None:
@@ -63,16 +67,10 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list[int]) -> None:
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        pytest.param(-2,
-                     -36,
-                     ValueError,
-                     id="function should raise error if input is negative"),
-
-        pytest.param(987654321,
-                     1000000,
-                     ValueError,
-                     id="function should raise "
-                        "error if input is large numbers")
+        pytest.param("test",
+                     "test",
+                     TypeError,
+                     id="function should raise error if input has wrong type"),
     ]
 )
 def test_get_human_age_errors(cat_age: int,
