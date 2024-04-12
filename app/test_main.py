@@ -27,6 +27,10 @@ import pytest
         "39/51 cat/dog years should convert into 5/7 human age.",
     ]
 )
-def test_check_get_human_age(cat_age, dog_age, expected_age_cat, expected_age_dog):
+def test_check_get_human_age(cat_age: int,
+                             dog_age: int,
+                             expected_age_cat: int,
+                             expected_age_dog: int) -> None:
 
-    assert get_human_age(cat_age, dog_age) == [expected_age_cat, expected_age_dog]
+    assert (get_human_age(cat_age, dog_age)
+            == [expected_age_cat, expected_age_dog])
