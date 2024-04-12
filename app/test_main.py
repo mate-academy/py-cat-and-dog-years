@@ -25,7 +25,8 @@ from app.main import get_human_age
         "-1/-1 cat/dog years should return 0 human age."
     ]
 )
-def test_return_correct_output(cat_age, dog_age, result) -> None:
+def test_return_correct_output(cat_age: int, dog_age: int,
+                               result: list[int, int]) -> None:
     assert get_human_age(cat_age, dog_age) == result
 
 
@@ -36,7 +37,7 @@ def test_return_correct_output(cat_age, dog_age, result) -> None:
         ({}, {}, TypeError)
     ]
 )
-def test_raising_errors_correctly(cat_age, dog_age, expected_error) -> None:
+def test_raising_errors_correctly(cat_age: int, dog_age: int,
+                                  expected_error: TypeError) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
-
