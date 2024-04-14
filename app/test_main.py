@@ -1,3 +1,58 @@
+import pytest
+
 from app.main import get_human_age
 
-# write your code here
+
+class TestGetHumanAge:
+    @pytest.mark.parametrize(
+        "in_cat_age,in_dog_age,expected_result",
+        [
+            # pytest.param(
+            #     0,
+            #     0,
+            #     [0, 0],
+            #     id="test zero years"
+            # ),
+            # pytest.param(
+            #     14,
+            #     14,
+            #     [0, 0],
+            #     id="test age rounds below 1st year"
+            # ),
+            pytest.param(
+                15,
+                15,
+                [1, 1],
+                id="test age 1st year"
+            ),
+            pytest.param(
+                23,
+                23,
+                [1, 1],
+                id="test age rounds below 2nd year"
+            ),
+            pytest.param(
+                24,
+                24,
+                [2, 2],
+                id="test age 2nd year"
+            ),
+            # pytest.param(
+            #     27,
+            #     28,
+            #     [2, 2],
+            #     id="test age rounds below 3rd year"
+            # ),
+            pytest.param(
+                36,
+                39,
+                [5, 5],
+                id="test 2 plus years"
+            )
+        ]
+    )
+    def test_function(self,
+                      in_cat_age: int,
+                      in_dog_age: int,
+                      expected_result: list):
+        assert get_human_age(in_cat_age, in_dog_age) == expected_result
