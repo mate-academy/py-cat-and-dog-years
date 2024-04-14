@@ -54,5 +54,5 @@ class TestGetHumanAge:
     def test_function(self,
                       in_cat_age: int,
                       in_dog_age: int,
-                      expected_result: list):
+                      expected_result: list) -> None:
         assert get_human_age(in_cat_age, in_dog_age) == expected_result
