@@ -7,18 +7,6 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "in_cat_age,in_dog_age,expected_result",
         [
-            # pytest.param(
-            #     0,
-            #     0,
-            #     [0, 0],
-            #     id="test zero years"
-            # ),
-            # pytest.param(
-            #     14,
-            #     14,
-            #     [0, 0],
-            #     id="test age rounds below 1st year"
-            # ),
             pytest.param(
                 15,
                 15,
@@ -37,12 +25,6 @@ class TestGetHumanAge:
                 [2, 2],
                 id="test age 2nd year"
             ),
-            # pytest.param(
-            #     27,
-            #     28,
-            #     [2, 2],
-            #     id="test age rounds below 3rd year"
-            # ),
             pytest.param(
                 36,
                 39,
