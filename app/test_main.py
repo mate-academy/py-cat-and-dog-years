@@ -40,5 +40,9 @@ class TestGetHumanAge:
             )
         ]
     )
-    def test_get_human_age(self, cat_age: int, dog_age: int, human_age: list) -> None:
+    def test_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            human_age: list) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
