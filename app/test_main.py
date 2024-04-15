@@ -7,6 +7,10 @@ class TestGetHumanAge:
         "cat_age,dog_age,human_age",
         [
             pytest.param(
+                -1, -1, [0, 0],
+                id="test negative param age"
+            ),
+            pytest.param(
                 0, 0, [0, 0],
                 id="test all zero param age"
             ),
@@ -46,3 +50,21 @@ class TestGetHumanAge:
             dog_age: int,
             human_age: list) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age",
+        [
+            ("one", 2),
+            (1, "two"),
+            (None, 2),
+            (1, None),
+            ({"cat": 1}, {"dog": 2}),
+            ([1], [2])
+        ]
+    )
+    def test_get_human_age_invalid_type_inputs(
+            self,
+            cat_age: int,
+            dog_age: int) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
