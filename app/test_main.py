@@ -50,10 +50,16 @@ class TestGetHumanAge:
                 id="Checkin minimum limit value for 3 human years for cats"
             ),
             pytest.param(
-                100,
-                100,
-                [21, 17],
-                id="Checking limits value"
+                100000000,
+                100000000,
+                [24999996, 19999997],
+                id="Checking big value"
+            ),
+            pytest.param(
+                -20,
+                -23123,
+                [0, 0],
+                id="Checking negative numbers"
             ),
         ]
     )
@@ -62,3 +68,18 @@ class TestGetHumanAge:
                               dog_age: int,
                               expected_results: int) -> None:
         assert get_human_age(cat_age, dog_age) == expected_results
+
+
+class TestGetHumanAgeDataType:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            ("0", 0),
+            ("0", "0"),
+            (None, 15),
+            (None, None),
+        ],
+    )
+    def test_with_wrong_types(self, cat_age: int, dog_age: int) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
