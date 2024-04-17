@@ -13,7 +13,7 @@ def test_if_list_is_received() -> None:
     [
         (0.9, 1.8, [0, 0]),
         (23.3, 14.9, [1, 0]),
-        (24.5, 30.5, [2, 3]),
+        (24.5, 30.5, [2, 3])
     ]
 )
 def test_if_decimal_years_discard_remainder(
@@ -21,9 +21,6 @@ def test_if_decimal_years_discard_remainder(
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age_list, \
         "decimal part in year value should be discarded"
-    # assert (isinstance(get_human_age(cat_age, dog_age)[0], int)
-    #         and isinstance(get_human_age(cat_age, dog_age)[1], int)), \
-    #     "list of animals age should be int-type"
 
 
 @pytest.mark.parametrize(
