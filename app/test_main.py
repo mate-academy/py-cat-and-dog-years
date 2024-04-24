@@ -1,26 +1,32 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_should_return_list_with_two_elements() -> None:
-    assert len(get_human_age(14, 18)) == 2
+@pytest.mark.parametrize(
+    "cat_age,dog_age,result",
+    [
+        (0, 0, [0, 0]),
+        (15, 15, [1, 1]),
+        (26, 28, [2, 2]),
+        (28, 29, [3, 3]),
+        (-3, -7, [0, 0])
+    ],
+    ids=[
+        "If cat age = 0, and dog age = 0 should return list with two zeros",
+        "You should return list with two ones",
+        "You should return list with two twos",
+        "You should return list with two threes",
+        "If function receives negative numbers, return list with two zeros",
+
+    ]
+)
+def test_get_human_age(cat_age: int, dog_age: int, result: list[int]) -> None:
+    assert get_human_age(cat_age, dog_age) == result
 
 
-def test_result_in_list_is_integer() -> None:
-    result = get_human_age(17, 17)
-    assert isinstance(result[0], int) and isinstance(result[1], int) is True
-
-
-def test_should_return_list_with_two_zeros() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_should_return_list_with_two_ones_when_age_between_15_and_24() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_list_with_two_twos() -> None:
-    assert get_human_age(26, 28) == [2, 2]
-
-
-def test_should_return_list_with_two_threes() -> None:
-    assert get_human_age(28, 29) == [3, 3]
+def test_cannot_add_int_and_str() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(2, "3"), (
+            "Should return TypeError if function receives not int "
+        )
