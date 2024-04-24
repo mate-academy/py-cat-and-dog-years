@@ -6,30 +6,17 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat,dog,expected",
     [
-        (23, 23, [1, 1]),
-        (14, 14, [0, 0]),
-        (15.5, 15.1, [1, 1])
+        pytest.param(23, 23, [1, 1], id="one years"),
+        pytest.param(14, 14, [0, 0], id="zero years"),
+        pytest.param(15.5, 15.1, [1, 1], id="floating input"),
+        pytest.param(-5, -100, [0, 0], id="negative value"),
+        pytest.param(0, 0, [0, 0], id="zeros input"),
+        pytest.param(100, 100, [21, 17], id="big values input")
+
     ]
 )
 def test_of_correct_counting(cat: int, dog: int, expected: list) -> None:
     assert get_human_age(cat, dog) == expected
-
-
-@pytest.mark.parametrize(
-    "cat,dog,expected",
-    [
-        pytest.param(1000, 150, ValueError, id="extremely large value"),
-        pytest.param(-5, 12, ValueError, id="zero value"),
-        pytest.param(0, -100, ValueError, id="negative value")
-    ]
-)
-def test_should_raise_error_when_data_out_of_normal_range(
-        cat: int,
-        dog: int,
-        expected: str
-) -> None:
-    with pytest.raises(expected):
-        get_human_age(cat, dog)
 
 
 @pytest.mark.parametrize(
@@ -44,7 +31,7 @@ def test_should_raise_error_when_data_out_of_normal_range(
 def test_should_raise_error_when_input_data_not_a_number(
         cat: int,
         dog: int,
-        expected: str
+        expected: Exception
 ) -> None:
     with pytest.raises(expected):
         get_human_age(cat, dog)
