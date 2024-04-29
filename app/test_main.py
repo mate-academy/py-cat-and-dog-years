@@ -1,5 +1,6 @@
-import pytest
 from typing import Any
+
+import pytest
 
 from app.main import get_human_age
 
@@ -34,7 +35,6 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
         (2, [2]),
         ({1: 2}, 3),
         (2, (1, 4)),
-
     ]
 )
 def test_rising_error_correctly(cat_age: Any, dog_age: Any) -> None:
