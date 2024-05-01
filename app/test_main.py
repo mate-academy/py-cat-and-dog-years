@@ -1,33 +1,33 @@
 from app.main import get_human_age
 
 
-def test_get_human_age_zeros():
+def test_get_human_age_zeros() -> None:
     assert get_human_age(0, 0) == [0, 0]
 
 
-def test_get_human_age_below_first_threshold():
+def test_get_human_age_below_first_threshold() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
 
-def test_get_human_age_first_threshold():
+def test_get_human_age_first_threshold() -> None:
     assert get_human_age(15, 15) == [1, 1]
 
 
-def test_get_human_age_below_second_threshold():
+def test_get_human_age_below_second_threshold() -> None:
     assert get_human_age(23, 23) == [1, 1]
 
 
-def test_get_human_age_second_threshold():
+def test_get_human_age_second_threshold() -> None:
     assert get_human_age(24, 24) == [2, 2]
 
 
-def test_get_human_age_above_second_threshold():
+def test_get_human_age_above_second_threshold() -> None:
     assert get_human_age(27, 27) == [2, 2]
 
 
-def test_get_human_age_extra_years_cat():
+def test_get_human_age_extra_years_cat() -> None:
     assert get_human_age(28, 28) == [3, 2]
 
 
-def test_get_human_age_boundary():
+def test_get_human_age_boundary() -> None:
     assert get_human_age(100, 100) == [21, 17]
