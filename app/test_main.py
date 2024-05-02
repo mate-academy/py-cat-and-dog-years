@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -28,11 +30,15 @@ from app.main import get_human_age
         ),
         pytest.param(
             100, 100, [21, 17],
-            id="should convert every next 4 cat years into 1, and same for 5 dog years"
+            id="every next 4 cat years into 1, and same for 5 dog years"
         )
     ]
 )
-def test_converting_to_human_years(cat_age, dog_age, expected_list):
+def test_converting_to_human_years(
+        cat_age: int,
+        dog_age: int,
+        expected_list: int
+) -> None:
     converted_years = get_human_age(cat_age, dog_age)
     assert converted_years == expected_list
 
@@ -50,6 +56,6 @@ def test_converting_to_human_years(cat_age, dog_age, expected_list):
         )
     ]
 )
-def test_raising_error_correctly(cat_age, dog_age):
+def test_raising_error_correctly(cat_age: Any, dog_age: Any) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
