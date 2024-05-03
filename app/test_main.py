@@ -4,7 +4,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "dog_age,cat_age,expected_human_years",
+    "cat_age,dog_age,expected_human_years",
     [
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -23,8 +23,34 @@ from app.main import get_human_age
     ]
 )
 def test_should_convert_dog_age_into_human_age(
-        dog_age: int,
         cat_age: int,
+        dog_age: int,
         expected_human_years: list[int]
 ) -> None:
-    assert get_human_age(dog_age, cat_age) == expected_human_years
+    assert get_human_age(cat_age, dog_age) == expected_human_years
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,error",
+    [
+        ("10", "12", TypeError),
+        (13.1, 12.333, TypeError),
+        (0, 0, ValueError),
+        (-2, -1, ValueError),
+        (150, 200, ValueError)
+    ],
+    ids=[
+        "Should raise error when string given",
+        "Should raise error when float given",
+        "Should raise error when zero given",
+        "Should raise error when negative given",
+        "Should raise error when a large number given",
+    ]
+)
+def test_should_raise_value_error(
+        cat_age: str | float,
+        dog_age: str | float,
+        error: type[Exception]
+) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_age, dog_age)
