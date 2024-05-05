@@ -1,33 +1,52 @@
 import pytest
-from typing import Any
 from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, human_age",
+    "cat_age,dog_age,expected_human_years",
     [
-        pytest.param(0, 0, [0, 0], id="should return 0 years"),
-        pytest.param(14, 14, [0, 0], id="should return 0 years for both"),
-        pytest.param(15, 15, [1, 1], id="should return 1 years for both"),
-        pytest.param(23, 23, [1, 1], id="should return 1 years for both"),
-        pytest.param(24, 24, [2, 2], id="should return 2 years for both"),
-        pytest.param(27, 27, [2, 2], id="should return 2 years for both"),
-        pytest.param(28, 28, [3, 2], id="should return 3 years for cat and 2 years for dog"),
-        pytest.param(100, 100, [21, 17], id="should return 21 years for cat and 17 years for dog")
+        (-1, -3, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 28, [2, 2]),
+        (28, 29, [3, 3]),
+        (100, 100, [21, 17]),
+    ],
+    ids=[
+        "Should convert negative into 0",
+        "Should convert 14 cat/dog age into 0 human years",
+        "Should convert 15 cat/dog age into 1 human years",
+        "Should convert 23 cat/dog age into 1 human years",
+        "Should convert 23 cat/dog age into 2 human years",
+        "Should convert 27/28 cat/dog age into 2 human years",
+        "Should convert 28/29 cat/dog age into 3 human years",
+        "Should convert 100/100 cat/dog age into 21/17 human years",
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, human_age: list[int]) -> None:
-    assert get_human_age(cat_age, dog_age) == human_age
+def test_should_convert_dog_age_into_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected_human_years: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_human_years
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age,dog_age",
     [
-        pytest.param("15", 15, id="Should be an integer type"),
-        pytest.param([15], 15.0, id="Should be an integer type"),
-        pytest.param((15, 15), 15.0, id="Should be an integer type")
+        ("invalid", "12"),
+        (13.1, "invalid"),
+    ],
+    ids=[
+        "Should raise error when invalid cat age given",
+        "Should raise error when invalid dog age given",
     ]
 )
-def test_get_human_age_for_type_errors(cat_age: Any, dog_age: Any) -> None:
+def test_should_raise_type_error(
+        cat_age: str | float,
+        dog_age: str | float
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
