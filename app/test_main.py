@@ -114,8 +114,8 @@ class TestEdge:
         ]
     )
     def test_raising_error(self,
-                           init_cat,
-                           init_dog,
-                           expect_error) -> None:
+                           init_cat: int,
+                           init_dog: int,
+                           expect_error: Exception) -> None:
         with pytest.raises(expect_error):
             get_human_age(init_cat, init_dog)
