@@ -13,7 +13,7 @@ class TestEdge:
                          0,
                          0,
                          id="Return 0 test"
-             ),
+                         ),
 
             # Test 2
             pytest.param(100,
@@ -21,7 +21,7 @@ class TestEdge:
                          21,
                          17,
                          id="Return big data test"
-            ),
+                         ),
 
             # Test 3
             pytest.param(
@@ -82,16 +82,40 @@ class TestEdge:
 
             ),
 
-
-
         ]
     )
     def test_data(self,
-                  init_data_cat,
-                  init_data_dog,
-                  expected_cat,
-                  expected_dog) -> None:
-        assert get_human_age(init_data_cat, init_data_dog) == [expected_cat, expected_dog]
+                  init_data_cat: int,
+                  init_data_dog: int,
+                  expected_cat: int,
+                  expected_dog: int) -> None:
+        assert get_human_age(
+            init_data_cat,
+            init_data_dog) == [expected_cat, expected_dog]
 
+    @pytest.mark.parametrize(
+        "init_cat, init_dog, expect_error",
+        [
+            pytest.param(
+                [],
+                "",
+                ValueError,
+                id="Value test 1 "
 
+            ),
+            pytest.param(
+                "",
+                [],
+                ValueError,
+                id="Value test 2"
 
+            ),
+
+        ]
+    )
+    def test_raising_error(self,
+                           init_cat,
+                           init_dog,
+                           expect_error) -> None:
+        with pytest.raises(expect_error):
+            get_human_age(init_cat, init_dog)
