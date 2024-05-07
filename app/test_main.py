@@ -99,14 +99,14 @@ class TestEdge:
             pytest.param(
                 [],
                 "",
-                ValueError,
+                TypeError,
                 id="Value test 1 "
 
             ),
             pytest.param(
                 "",
                 [],
-                ValueError,
+                TypeError,
                 id="Value test 2"
 
             ),
