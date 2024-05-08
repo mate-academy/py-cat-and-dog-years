@@ -4,14 +4,17 @@ import pytest
 
 @pytest.mark.parametrize(
     "cat_age,dog_age,converted_age_list", [
-        (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
-        (23, 23, [1, 1]),
-        (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
+        pytest.param(0, 0, [0, 0], id="zeros"),
+        pytest.param(14, 14, [0, 0], id="boundary less then one"),
+        pytest.param(15, 15, [1, 1], id="boundary more then one"),
+        pytest.param(23, 23, [1, 1], id="boundary less than two"),
+        pytest.param(24, 24, [2, 2], id="boundary more than two"),
+        pytest.param(27, 27, [2, 2], id="boundary less than three for cat"),
+        pytest.param(28, 28, [3, 2], id="boundary more than three for cat "
+                                        "and less than three for dog"),
+        pytest.param(100, 100, [21, 17], id="one hundred for each"),
+        pytest.param(24.5, 30.5, [2, 3], id="float values"),
+        pytest.param(-1, -228, [0, 0], id="negative values")
     ]
 )
 def test_get_human_age_boundary_values(
