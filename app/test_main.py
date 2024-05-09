@@ -15,7 +15,7 @@ import pytest
         pytest.param(100, 100, [21, 17], id="one hundred for each"),
         pytest.param(24.5, 30.5, [2, 3], id="float values"),
         pytest.param(-1, -228, [0, 0], id="negative values"),
-        pytest.param(300, 300, [71, 57], id="one hundred for each"),
+        pytest.param(300, 300, [71, 57], id="out of normal range data"),
     ]
 )
 def test_get_human_age_boundary_values(
