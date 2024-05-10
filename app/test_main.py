@@ -38,8 +38,8 @@ class TestConvertFunction:
                 id="test_should_convert_cats_27_and_dogs_28_years_to_3_human"
             ),
             pytest.param(
-                27,
                 28,
+                29,
                 [3, 3],
                 id="test_should_convert_cats_28_and_dogs_29_years_to_3_human"
             ),
