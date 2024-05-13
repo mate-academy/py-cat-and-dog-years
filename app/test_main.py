@@ -1,4 +1,5 @@
 from app.main import get_human_age
+from typing import Any
 import pytest
 
 
@@ -24,3 +25,25 @@ def test_get_human_age_boundary_values(
         converted_age_list: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == converted_age_list
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        pytest.param(
+            20, "invalid",
+            id="error if dog age is str"
+        ),
+        pytest.param(
+            "invalid", 20,
+            id="error if cat age is str"
+        ),
+        pytest.param(
+            None, 20,
+            id="error if cat age is None"
+        ),
+    ]
+)
+def test_raising_error_correctly(cat_age: Any, dog_age: Any) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
