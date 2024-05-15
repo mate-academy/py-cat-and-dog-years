@@ -12,5 +12,5 @@ import pytest
     ((28, 28), [3, 2]),
     ((50, 50), [8, 7]),
 ])
-def test(ages, result) -> None:
+def test(ages: tuple, result: list) -> None:
     assert get_human_age(*ages) == result
