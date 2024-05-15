@@ -1,4 +1,5 @@
 from app.main import get_human_age
+from typing import Type
 import pytest
 
 
@@ -15,6 +16,10 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: int) -> None:
     ("5", 5, TypeError),  # Testing cat_age as string
     (5, "5", TypeError),  # Testing dog_age as string
 ])
-def test_error_key_value(cat_age: int, dog_age: int, expected_error) -> None:
+def test_error_key_value(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Type[Exception]
+) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
