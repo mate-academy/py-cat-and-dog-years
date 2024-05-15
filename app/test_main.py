@@ -13,11 +13,11 @@ import pytest
     (1000000, 5, None),  # Testing very large cat_age
     (5, 1000000, None),  # Testing very large dog_age
     (5, 5.5, None),  # Testing dog_age as float
-    ('5', 5, None),  # Testing cat_age as string
-    (5, '5', None),  # Testing dog_age as string
+    ("5", 5, None),  # Testing cat_age as string
+    (5, "5", None),  # Testing dog_age as string
     (5, 5, None),  # Testing each_year as 0
 ])
-def test_get_human_age(cat_age, dog_age, expected):
+def test_get_human_age(cat_age: int, dog_age: int, expected: int) -> None:
     if expected is None:
         with pytest.raises((TypeError, ValueError)):
             get_human_age(cat_age, dog_age)
