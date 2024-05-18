@@ -25,3 +25,17 @@ class TestHumanAge:
             human_age: int
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+
+class TestIncorrectDataType:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            pytest.param("0", 0),
+            pytest.param("0", "0"),
+            pytest.param(None, 10)
+        ]
+    )
+    def test_get_incorrect_data_type(self, cat_age: int, dog_age: int) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
