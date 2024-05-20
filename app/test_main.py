@@ -38,6 +38,11 @@ class TestGetHumanAge:
                    "if dog age is 24+"
             ),
             pytest.param(
+                100, 100, [21, 17],
+                id="add 1 human year per 4 cat years and 5 dog years "
+                   "if animal age is 24+"
+            ),
+            pytest.param(
                 -1, -1, [0, 0],
                 id="should return 0 if animal age is a negative integer"
             )
@@ -50,3 +55,22 @@ class TestGetHumanAge:
             expected_human_ages: list[int]
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_human_ages
+
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            pytest.param(
+                {"age": 3}, {"age": 12},
+                id="should raise error "
+                   "if data type doesn't support arithmetic "
+                   "or comparison operators"
+            )
+        ]
+    )
+    def test_raise_error(
+            self,
+            cat_age: dict | set | str | list | tuple,
+            dog_age: dict | set | str | list | tuple,
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
