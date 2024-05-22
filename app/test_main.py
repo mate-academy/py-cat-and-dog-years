@@ -15,7 +15,7 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
         (-1, -1, [0, 0]),
         (None, None, pytest.raises(TypeError)),
-        ('cat', 'dog', pytest.raises(TypeError)),
+        ("cat", "dog", pytest.raises(TypeError)),
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
