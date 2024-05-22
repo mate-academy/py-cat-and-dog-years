@@ -39,7 +39,9 @@ def test_exception_rising(
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (28, 29, [3, 3]),
-        (45, 57, [7, 8])
+        (45, 57, [7, 8]),
+        (-88, -61, [0, 0]),
+        (1_000_000, 50_000_000, [249_996, 9_999_997])
     ]
 )
 def test_output_results(cat_age: int, dog_age: int, expected: list) -> None:
