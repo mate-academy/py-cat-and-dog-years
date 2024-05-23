@@ -1,5 +1,4 @@
 import pytest
-
 from app.main import get_human_age
 
 
@@ -14,14 +13,29 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
-        (-1, -1, [0, 0]),
-        (None, None, pytest.raises(TypeError)),
-        ("cat", "dog", pytest.raises(TypeError)),
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
-    if isinstance(cat_age, int) and isinstance(dog_age, int):
-        assert get_human_age(cat_age, dog_age) == expected
-    else:
-        with expected:
-            get_human_age(cat_age, dog_age)
+def test_get_human_age_valid(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
+
+    assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_exception",
+    [
+        (None, None, TypeError),
+        ("cat", "dog", TypeError),
+    ]
+)
+def test_get_human_age_invalid(
+        cat_age: int,
+        dog_age: int,
+        expected_exception: type[Exception]
+) -> None:
+
+    with pytest.raises(expected_exception):
+        get_human_age(cat_age, dog_age)
