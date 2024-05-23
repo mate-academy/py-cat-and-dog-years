@@ -29,6 +29,9 @@ def test_get_human_age_valid(
     [
         (None, None, TypeError),
         ("cat", "dog", TypeError),
+        ([1], [2], TypeError),  # List values
+        ((1,), (2,), TypeError),  # Tuple values
+        ({"age": 1}, {"age": 2}, TypeError),  # Dictionary values
     ]
 )
 def test_get_human_age_invalid(
@@ -36,6 +39,5 @@ def test_get_human_age_invalid(
         dog_age: int,
         expected_exception: type[Exception]
 ) -> None:
-
     with pytest.raises(expected_exception):
         get_human_age(cat_age, dog_age)
