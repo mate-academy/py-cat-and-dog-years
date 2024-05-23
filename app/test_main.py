@@ -47,6 +47,12 @@ from app.main import get_human_age
             -10,
             [0, 0],
             id="Should return zeros for animal years < 0"
+        ),
+        pytest.param(
+            15.5,
+            15.9999,
+            [1, 1],
+            id="Should return proper result for floating animal years"
         )
     ]
 )
@@ -60,6 +66,6 @@ def test_should_return_result_correctly(
     ), f"{cat_age} cat years, {dog_age} dog years should be equal to {result}"
 
 
-def test_should_raise_error() -> None:
+def test_should_raise_error_when_input_is_not_int() -> None:
     with pytest.raises(TypeError):
         get_human_age("10", [1])
