@@ -30,9 +30,9 @@ def test_get_human_age_valid(
     [
         (None, None, TypeError),
         ("cat", "dog", TypeError),
-        ([1], [2], TypeError),  # List values
-        ((1,), (2,), TypeError),  # Tuple values
-        ({"age": 1}, {"age": 2}, TypeError),  # Dictionary values
+        ([1], [2], TypeError),
+        ((1,), (2,), TypeError),
+        ({"age": 1}, {"age": 2}, TypeError),
     ]
 )
 def test_get_human_age_invalid(
