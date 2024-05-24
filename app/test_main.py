@@ -20,3 +20,17 @@ def test_get_human_age(cat_to_human: int,
                        dog_to_human: int,
                        expected: list) -> None:
     assert get_human_age(cat_to_human, dog_to_human) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_exception",
+    [
+        ("0", "14", TypeError),
+        (None, None, TypeError),
+        ([1, 1], [2, 3], TypeError),
+    ]
+)
+def test_get_human_age(cat_age: int, dog_age: int,
+                       expected_exception: type[Exception]) -> None:
+    with pytest.raises(expected_exception):
+        get_human_age(cat_age, dog_age)
