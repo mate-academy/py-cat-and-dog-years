@@ -17,9 +17,10 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_get_human_age(cat_to_human: int,
-                       dog_to_human: int,
-                       expected: list) -> None:
+def test_get_human_age_return_result_correctly(
+        cat_to_human: int,
+        dog_to_human: int,
+        expected: list) -> None:
     assert get_human_age(cat_to_human, dog_to_human) == expected
 
 
@@ -31,8 +32,9 @@ def test_get_human_age(cat_to_human: int,
         ([1, 1], [2, 3], TypeError),
     ]
 )
-def test_get_human_age(cat_age: int,
-                       dog_age: int,
-                       expected_exception: type[Exception]) -> None:
+def test_get_human_age_for_type(
+        cat_age: int,
+        dog_age: int,
+        expected_exception: type[Exception]) -> None:
     with pytest.raises(expected_exception):
         get_human_age(cat_age, dog_age)
