@@ -33,7 +33,7 @@ from app.main import get_human_age
         pytest.param(
             -1,
             -2,
-            [0, ],
+            [0, 0],
             id="return 0 for negative value of age"),
     ]
 )
