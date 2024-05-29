@@ -1,3 +1,5 @@
+from typing import Type
+
 import pytest
 
 from app.main import get_human_age
@@ -48,6 +50,10 @@ class TestCheckAgeCatAndDogClass:
                 28,
                 [3, 2],
                 id="cat_age and dog_age is more 23"
+            ),
+            pytest.param(
+                -1, -1, [0, 0],
+                id="should return zero if cat/dog age is negative"
             )
         ]
     )
@@ -59,3 +65,25 @@ class TestCheckAgeCatAndDogClass:
 
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_age
+
+
+class TestExpectedError:
+    @pytest.mark.parametrize(
+        "dog_age, cat_age, expected_error",
+        [
+            pytest.param(
+                "5",
+                0,
+                TypeError,
+                id="should raise error if values ages is not int"
+            )
+        ]
+    )
+    def test_raising_correctly(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_error: Type[Exception]
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
