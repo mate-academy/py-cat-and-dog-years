@@ -35,6 +35,12 @@ from app.main import get_human_age
             100,
             [21, 17],
             id="100 cat years should not be equal 100 dog years"),
+        pytest.param(
+            -1,
+            -1,
+            [0, 0],
+            id="Should return 0 if negative age"),
+
     ]
 )
 def test_convert_to_human_age(
@@ -42,3 +48,12 @@ def test_convert_to_human_age(
         dog_age: int,
         human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+def test_convert_to_human_age_with_wrong_type() -> None:
+    try:
+        get_human_age("20", "20")
+    except TypeError:
+        assert True
+    else:
+        raise TypeError("age should be integer")
