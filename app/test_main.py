@@ -9,7 +9,7 @@ from app.main import get_human_age
             5, 6, [0, 0],
             id="return zero if age < 15 years"),
         pytest.param(
-            23, 17,[1, 1],
+            23, 17, [1, 1],
             id="add 1 for 15 years"),
         pytest.param(
             26, 27, [2, 2],
