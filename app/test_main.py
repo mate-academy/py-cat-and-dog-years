@@ -49,6 +49,35 @@ def test_convert_human_age(
     assert get_human_age(cat_age, dog_age) == human_age
 
 
-def test_convert_human_age_with_wrong_type_age() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        pytest.param(
+            "20",
+            "40",
+            id="should raise error if value type is string"
+        ),
+        pytest.param(
+            {20},
+            {40},
+            id="should raise error if value type is dict"
+        ),
+        pytest.param(
+            [20],
+            [40],
+            id="should raise error if value type is list"
+        ),
+        pytest.param(
+            (20, 10),
+            (40, 50),
+            id="should raise error if value type is tuple"
+        ),
+
+    ]
+)
+def test_convert_human_age_with_wrong_type_age(
+    cat_age: int,
+    dog_age: int
+) -> None:
     with pytest.raises(TypeError):
-        get_human_age("20", "one")
+        get_human_age(cat_age, dog_age)
