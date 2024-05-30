@@ -35,6 +35,11 @@ from app.main import get_human_age
             -2,
             [0, 0],
             id="return 0 for negative value of age"),
+        pytest.param(
+            100,
+            100,
+            [21, 17],
+            id="return different values if cat_age = dog_age"),
     ]
 )
 def test_convert_human_age(
