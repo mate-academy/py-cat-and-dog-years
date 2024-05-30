@@ -28,12 +28,5 @@ def test_modify(cat_age: int, dog_age: int, result: list) -> None:
     ]
 )
 def test_incorrect_value(cat_age: int, dog_age: int, result: callable) -> None:
-    try:
-        expected = get_human_age(cat_age, dog_age)
-        assert expected == result
-    except Exception as e:
-        assert isinstance(e, result)
-
-
-if __name__ == "__main__":
-    pytest.main()
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
