@@ -51,9 +51,5 @@ def test_convert_to_human_age(
 
 
 def test_convert_to_human_age_with_wrong_type() -> None:
-    try:
+    with pytest.raises(TypeError):
         get_human_age("20", "20")
-    except TypeError:
-        assert True
-    else:
-        raise TypeError("age should be integer")
