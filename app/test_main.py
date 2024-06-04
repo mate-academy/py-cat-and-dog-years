@@ -7,23 +7,23 @@ class TestConvertHumanAge:
         "cat_age, dog_age, expected",
         [
             pytest.param(14, 14, [0, 0],
-                         id="14 cat/dog years should convert into 0 human age."),
+                         id="14_cat_dog"),
             pytest.param(15, 15, [1, 1],
-                         id="15 cat/dog years should convert into 1 human age."),
+                         id="15_cat_dog"),
             pytest.param(23, 23, [1, 1],
-                         id="23 cat/dog years should convert into 1 human age."),
+                         id="23_cat_dog"),
             pytest.param(24, 24, [2, 2],
-                         id="24 cat/dog years should convert into 2 human age."),
+                         id="24_cat_dog"),
             pytest.param(27, 28, [2, 2],
-                         id="27/28 cat/dog years should convert into 3 human age."),
+                         id="27_28_cat_dog"),
             pytest.param(29, 28, [3, 2],
-                         id="28/29 cat/dog years should convert into 3 human age."),
+                         id="28_29_cat_dog"),
             pytest.param(-1, -1, [0, 0],
-                         id="-1 cat/dog years should convert into 0 human age."),
+                         id="negative_years"),
             pytest.param(1000, 1000, [246, 197],
-                         id="1000 cat/dog years should convert into 246 and 197 human age."),
+                         id="1000_years"),
             pytest.param(1500, 2000, [371, 397],
-                         id="1500/2000 cat/dog years should convert into 371 and 397 human age.")
+                         id="1500_2000_years")
         ]
     )
     def test_convert_human_age(self,
@@ -33,7 +33,9 @@ class TestConvertHumanAge:
                                ) -> None:
         result = get_human_age(cat_age, dog_age)
         assert result == expected, (
-            f"For {cat_age} cat years and {dog_age} dog years, expected {expected} but got {result}"
+            f"For {cat_age} cat years and "
+            f"{dog_age} dog years, expected {expected} "
+            f"but got {result}"
         )
 
 
