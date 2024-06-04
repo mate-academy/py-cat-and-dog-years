@@ -26,3 +26,13 @@ def test_get_human_age() -> None:
     assert (
         get_human_age(100, 100) == [21, 17]
     ), "get_human_age(100, 100) should return [21, 17]"
+
+    try:
+        get_human_age(-1, -2)
+    except ValueError:
+        print("ValueError: get_human_age(-1, -2) should be with correct value")
+
+    try:
+        get_human_age("1", "3")
+    except TypeError:
+        print("TypeError: get_human_age('1', '3') should be int")
