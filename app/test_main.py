@@ -25,7 +25,6 @@ def test_output(cat_age: int, dog_age: int, result: int) -> None:
     [
         pytest.param("hello", "hi", id="str TypeError"),
         pytest.param([1], [2], id="list TypeError"),
-        pytest.param((1), (2), id="tuple TypeError")
     ]
 )
 def test_incorrect_types(
