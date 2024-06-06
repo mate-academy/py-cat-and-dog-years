@@ -25,7 +25,7 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list[int]) -> None:
     [
         ("1", "0"),
         (True, False),
-        ([1, 1], [2, 2]),
+        ([0, 1], [2, 2]),
         (None, None),
     ]
 )
