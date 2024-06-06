@@ -64,6 +64,10 @@ def test_human_ages(
         )
     ]
 )
-def test_ages_types_exceptions(cat_age: int, dog_age: int, error: type(TypeError)) -> None:
+def test_ages_types_exceptions(
+        cat_age: int,
+        dog_age: int,
+        error: type(TypeError)
+) -> None:
     with pytest.raises(error):
         get_human_age(cat_age, dog_age)
