@@ -15,7 +15,8 @@ def test_firsts_cats_and_dogs_years_in_human_age(
         human_age_for_cat: int,
         human_age_for_dog: int
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == [human_age_for_cat, human_age_for_dog]
+    assert (get_human_age(cat_age, dog_age) ==
+            [human_age_for_cat, human_age_for_dog])
 
 
 @pytest.mark.parametrize(
@@ -30,7 +31,8 @@ def test_different_in_dogs_and_cats_age_but_same_human_age(
         human_age_for_cat: int,
         human_age_for_dog: int
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == [human_age_for_cat, human_age_for_dog]
+    assert (get_human_age(cat_age, dog_age)
+            == [human_age_for_cat, human_age_for_dog])
 
 
 @pytest.mark.parametrize(
@@ -45,7 +47,8 @@ def test_same_in_dogs_and_cats_age_but_different_in_human_age(
         human_age_for_cat: int,
         human_age_for_dog: int
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == [human_age_for_cat, human_age_for_dog]
+    assert (get_human_age(cat_age, dog_age)
+            == [human_age_for_cat, human_age_for_dog])
 
 
 def test_cat_age_equals_zero() -> None:
@@ -75,4 +78,5 @@ def test_zero_human_age(
         human_age_for_cat: int,
         human_age_for_dog: int
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == [human_age_for_cat, human_age_for_dog]
+    assert (get_human_age(cat_age, dog_age)
+            == [human_age_for_cat, human_age_for_dog])
