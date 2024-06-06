@@ -26,7 +26,7 @@ from app.main import get_human_age
         "human age equal two plus animal age divided by 4 for cat and by 5 for dog"
     ]
 )
-def test_non_negative_inputs_get_human_age(cat_age, dog_age, cat_and_dog_age_in_human) -> None:
+def test_non_negative_inputs_get_human_age(cat_age: int, dog_age: int, cat_and_dog_age_in_human: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == cat_and_dog_age_in_human
 
 
