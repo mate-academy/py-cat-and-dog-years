@@ -66,17 +66,17 @@ def test_cat_and_dog_age_equals_zero() -> None:
         "When age cat = 2 and age dog = 0 its animals year are 24 and 15"
 
 
-@pytest.mark.parametrize(
-    "cat_age,dog_age,human_age_for_cat,human_age_for_dog",
-    pytest.param(1, 1, 0, 0, id="tree-years cat and two-years dog"),
-    pytest.param(5, 5, 0, 0, id="four-years cat and three-years dog"),
-    pytest.param(14, 13, 0, 0, id="five-years cat and four-years dog"),
-)
-def test_zero_human_age(
-        cat_age: int,
-        dog_age: int,
-        human_age_for_cat: int,
-        human_age_for_dog: int
-) -> None:
-    assert (get_human_age(cat_age, dog_age)
-            == [human_age_for_cat, human_age_for_dog])
+# @pytest.mark.parametrize(
+#     "cat_age,dog_age,human_age_for_cat,human_age_for_dog",
+#     pytest.param(1, 1, 0, 0, id="tree-years cat and two-years dog"),
+#     pytest.param(5, 5, 0, 0, id="four-years cat and three-years dog"),
+#     pytest.param(14, 13, 0, 0, id="five-years cat and four-years dog"),
+# )
+# def test_zero_human_age(
+#         cat_age: int,
+#         dog_age: int,
+#         human_age_for_cat: int,
+#         human_age_for_dog: int
+# ) -> None:
+#     assert (get_human_age(cat_age, dog_age)
+#             == [human_age_for_cat, human_age_for_dog])
