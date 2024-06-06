@@ -35,11 +35,11 @@ from app.main import get_human_age
         ),
         pytest.param(
             28, 28, [3, 2],
-            id="human age should be 3 and 2 for dog and cat"
+            id="28 human age should be 3 and 2 for dog and cat"
         ),
         pytest.param(
             100, 100, [21, 17],
-            id="human 100 years should be 21 and 17 years for dog and cat"
+            id="100 human years should be 21 and 17 years for dog and cat"
         )
     ]
 )
