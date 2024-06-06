@@ -53,7 +53,7 @@ from app.main import get_human_age
 
 def test_cat_age_equals_zero() -> None:
     assert get_human_age(cat_age=0, dog_age=1) == [0, 0], \
-        "When age cat = 0 and age dog = 1 its animals year are 0 and 15"
+        "When age  cat = 0 and age dog = 1 its animals year are 0 and 15"
 
 
 def test_dog_age_equals_zero() -> None:
