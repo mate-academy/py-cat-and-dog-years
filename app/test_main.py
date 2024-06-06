@@ -1,7 +1,7 @@
 from app.main import get_human_age
 
 
-def test_get_human_age():
+def test_get_human_age() -> None:
     test_data = [
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
