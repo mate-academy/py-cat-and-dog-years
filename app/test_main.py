@@ -21,7 +21,7 @@ def test_firsts_cats_and_dogs_years_in_human_age(
 @pytest.mark.parametrize(
     "cat_age,dog_age,human_age_for_cat,human_age_for_dog",
     pytest.param(28, 29, 3, 3, id="tree-years cat and dog"),
-    pytest.param(32, 34, 4, 4, id="four-years cat and dog"),
+    pytest.param(32, 34, 4, 4, id="four-years  cat and dog"),
     pytest.param(36, 39, 5, 5, id="five-years cat and dog"),
 )
 def test_different_in_dogs_and_cats_age_but_same_human_age(
