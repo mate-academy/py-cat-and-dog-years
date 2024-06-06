@@ -19,3 +19,15 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     assert (
         get_human_age(cat_age, dog_age) == result
     ), f"If cat_age: {cat_age} and dog_age: {dog_age} result mast be {result}"
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("1", "0"),
+        ([0, 1], [2, 2])
+    ]
+)
+def test_incorrect_type_of_value(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
