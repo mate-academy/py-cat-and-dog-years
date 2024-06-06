@@ -20,6 +20,12 @@ def test_when_age_is_too_low_for_dog() -> None:
     assert get_human_age(28, 4) == [3, 0]
 
 
+def test_when_age_close_to_two() -> None:
+    assert get_human_age(23, 23) == [1, 1]
+    assert get_human_age(23, 14) == [1, 0]
+    assert get_human_age(14, 23) == [0, 1]
+
+
 def test_for_big_numbers() -> None:
     assert get_human_age(100, 100) == [21, 17]
     assert get_human_age(150, 150) == [33, 27]
