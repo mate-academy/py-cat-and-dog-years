@@ -23,6 +23,14 @@ def test_get_human_age(
     ), f"get_human_age({input1}, {input2}) should return {expected_result}"
 
 
-def test_get_human_age_exceptions() -> None:
+@pytest.mark.parametrize(
+    "input1, input2",
+    [
+        ("1", "2"),
+        (None, None),
+        ([1], [2]),
+    ]
+)
+def test_get_human_age_exceptions(input1: any, input2: any) -> None:
     with pytest.raises(TypeError):
-        get_human_age("1", "2")
+        get_human_age(input1, input2)
