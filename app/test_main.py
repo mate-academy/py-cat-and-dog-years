@@ -15,8 +15,8 @@ def test_firsts_cats_and_dogs_years_in_human_age(
         human_age_for_cat: int,
         human_age_for_dog: int
 ) -> None:
-    assert (get_human_age(cat_age, dog_age) ==
-            [human_age_for_cat, human_age_for_dog])
+    assert (get_human_age(cat_age, dog_age)
+            == [human_age_for_cat, human_age_for_dog])
 
 
 @pytest.mark.parametrize(
