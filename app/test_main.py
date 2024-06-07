@@ -43,7 +43,7 @@ def test_incorrect_data(
         (-15, -15, [0, 0]),
     ]
 )
-def test_incorrect_data(
+def test_negative_data(
         cat_age_negative: int,
         dog_age_negative: int,
         result: list) -> None:
