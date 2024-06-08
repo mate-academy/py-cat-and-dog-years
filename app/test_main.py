@@ -26,10 +26,25 @@ from app.main import get_human_age
         "human age equal two plus animal age divided by 4 for cat and by 5 for dog"
     ]
 )
-def test_non_negative_inputs_get_human_age(cat_age: int, dog_age: int, cat_and_dog_age_in_human: list[int]) -> None:
+def test_non_negative_inputs_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        cat_and_dog_age_in_human: list[int],
+) -> None:
     assert get_human_age(cat_age, dog_age) == cat_and_dog_age_in_human
 
 
-def test_negative_inputs_get_human_age() -> None:
-    expected_value = [0, 0]
-    assert get_human_age(-3, -9) == expected_value
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("3", 7),
+        ((3,), 7),
+        (None, 7)
+    ]
+)
+def test_type_err_exceptions(
+        cat_age: int,
+        dog_age: int,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
