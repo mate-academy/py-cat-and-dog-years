@@ -16,7 +16,8 @@ from app.main import get_human_age
         (100, 100, [21, 17], [23, 12])
     ]
 )
-def test_expected_ages(cat_age: int, dog_age: int,
-                       expected: list[int, int], not_expected: list[int, int]) -> None:
+def test_expected_ages(cat_age: int, dog_age: int, expected: list[int, int],
+                       not_expected: list[int, int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-    assert get_human_age(cat_age, dog_age) != not_expected, "Error, please check your code"
+    assert get_human_age(cat_age, dog_age) != not_expected, ("Error, please "
+                                                             "check your code")
