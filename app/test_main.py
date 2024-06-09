@@ -6,8 +6,6 @@ from app.main import get_human_age
     "cat_age, dog_age, result_age",
     [
         (-5, -5, [0, 0]),
-        (None, 5, TypeError),
-        ("1", 5, TypeError),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -19,18 +17,11 @@ from app.main import get_human_age
 
     ]
 )
-def test_get_human_age(cat_age: int,
-                       dog_age: int,
-                       result_age: list[int]
-                       ) -> None:
-    if cat_age is None or dog_age is None:
-        with pytest.raises(TypeError):
-            get_human_age(cat_age, dog_age)
-    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
-        with pytest.raises(TypeError):
-            get_human_age(cat_age, dog_age)
-    else:
-        assert get_human_age(cat_age, dog_age) == result_age
+def test_get_human_age_positive(cat_age: int,
+                                dog_age: int,
+                                result_age: list[int]
+                                ) -> None:
+    assert get_human_age(cat_age, dog_age) == result_age
 
 
 @pytest.mark.parametrize(
