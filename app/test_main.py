@@ -1,3 +1,5 @@
+from typing import Type
+
 import pytest
 
 from app.main import get_human_age
@@ -25,12 +27,14 @@ def test_cat_or_dog_yars(cat_age: int, dog_age: int, result: list) -> None:
         ({1: 2}, [], TypeError),
     ]
 )
-def test_cat_integer(cat_age, dog_age, typeerror) -> None:
+def test_cat_integer(
+        cat_age: int,
+        dog_age: int,
+        typeerror: Type[Exception]
+) -> None:
     with pytest.raises(typeerror):
         get_human_age(cat_age, dog_age)
 
 
 def test_length_return_get_human_age() -> None:
     assert len(get_human_age(0, 0)) == 2
-
-
