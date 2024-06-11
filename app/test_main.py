@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -13,7 +15,8 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        (20, -5, [1, 0])
     ],
     ids=[
         "0 and 0 of cat and dog ages should be 0, 0 in human age",
@@ -24,6 +27,7 @@ from app.main import get_human_age
         "27 and 27 of cat and dog ages should be 2, 2 in human age",
         "28 and 28 of cat and dog ages should be 3, 2 in human age",
         "100 and 100 of cat and dog ages should be 21, 17 in human age",
+        "negative age should be always 0 in human age",
     ]
 )
 def test_result_in_human_age_from_cat_and_dog_age(
@@ -32,3 +36,21 @@ def test_result_in_human_age_from_cat_and_dog_age(
         result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error",
+    [
+        ("1", [2], TypeError),
+    ],
+    ids=[
+        "if some age is not int it should occur to type error",
+    ]
+)
+def test_result_in_human_age_from_cat_and_dog_age_for_errors(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Any
+):
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
