@@ -1,4 +1,5 @@
 import pytest
+from typing import Type
 
 from app.main import get_human_age
 
@@ -28,6 +29,9 @@ def test_can_sum(cat_age: int, dog_age: int, result: list[int]) -> None:
         ((10, 4), 1, TypeError),
     ]
 )
-def test_incorrect_type_of_data(cat_age, dog_age, error) -> None:
+def test_incorrect_type_of_data(
+        cat_age: int,
+        dog_age: int,
+        error: Type[Exception]) -> None:
     with pytest.raises(error):
         get_human_age(cat_age, dog_age)
