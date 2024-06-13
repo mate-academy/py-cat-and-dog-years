@@ -20,6 +20,14 @@ def test_can_sum(cat_age: int, dog_age: int, result: list[int]) -> None:
     assert (get_human_age(cat_age, dog_age) == result)
 
 
-def test_incorrect_type_of_data() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("0", 0)
+@pytest.mark.parametrize(
+    "cat_age, dog_age, error",
+    [
+        ("0", 0, TypeError),
+        (3, [2], TypeError),
+        ((10, 4), 1, TypeError),
+    ]
+)
+def test_incorrect_type_of_data(cat_age, dog_age, error) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_age, dog_age)
