@@ -17,6 +17,7 @@ from app.main import get_human_age
         (100, 100, 21, 17),
     ],
     ids=[
+
         "negative value of cat/dog years should return 0 human age.",
         "0 cat/dog years should convert into 0 human age.",
         "14 cat/dog years should convert into 0 human age.",
@@ -35,3 +36,19 @@ def test_ages(
         dog_result: int
 ) -> None:
     assert get_human_age(cat_age, dog_age) == [cat_result, dog_result]
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("", ""),
+        (None, None)
+    ],
+    ids=[
+        "Not integer value should raise TypeError",
+        "None value should raise TypeError"
+    ]
+)
+def test_errors(cat_age: any, dog_age: any) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
