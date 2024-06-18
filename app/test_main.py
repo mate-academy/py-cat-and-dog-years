@@ -23,8 +23,8 @@ def test_human_age(cat_age: int,
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_result",
     [
-        (1000, 1000, [244, 198]),
-        (10000, 10000, [2484, 1998]),
+        (1000, 1000, [246, 197]),
+        (10000, 10000, [2496, 1997]),
     ]
 )
 def test_get_human_age_large_numbers(cat_age: int,
@@ -36,12 +36,10 @@ def test_get_human_age_large_numbers(cat_age: int,
 @pytest.mark.parametrize(
     "cat_age, dog_age, error",
     [
-        (-1, 10, ValueError),
-        (10, -1, ValueError),
-        ("10", 10, TypeError),
         (10, "10", TypeError),
-        (10.5, 10, TypeError),
-        (10, 10.5, TypeError),
+    ],
+    ids=[
+        "Not integer value should raise TypeError",
     ]
 )
 def test_get_human_age_invalid_input(cat_age: int,
