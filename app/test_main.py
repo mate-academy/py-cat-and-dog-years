@@ -11,15 +11,17 @@ from typing import Type
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (0, 0, [0, 0]),
-        (100, 100, [21, 17]),
+        (100000, 100000, [24996, 19997]),
+        (-1, -5, [0, 0])
     ],
     ids=[
         "14 cat/dog years should convert into 0 human age.",
         "15 cat/dog years should convert into 1 human age.",
         "23 cat/dog years should convert into 1 human age.",
         "24 cat/dog years should convert into 2 human age.",
-        "0/0 cat/dog years should convert into 0 human age.",
-        "100/100 cat/dog years should convert into 21 / 17 human age.",
+        "0 cat/dog years should convert into 0 human age.",
+        "100000 cat/dog years should convert into 24996 / 19997 human age.",
+        "cat/dog years cannot be negative"
     ]
 )
 def test_cat_and_dog_into_human_age(
@@ -38,7 +40,7 @@ def test_cat_and_dog_into_human_age(
     ids=[
         "cat/dog years cannot be string",
         "cat/dog years cannot be list",
-        "cat/dog years cannot be dict",
+        "cat/dog years cannot be dict"
     ]
 )
 def test_invalid_input_error(
