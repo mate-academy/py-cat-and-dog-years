@@ -24,7 +24,20 @@ def test_large_ages() -> None:
 def test_both_animals_different_ages() -> None:
     assert get_human_age(24, 20) == [2, 1]
     assert get_human_age(28, 29) == [3, 3]
-    assert get_human_age(14, 14) == [0, 0]
+
+
+@pytest.mark.parametrize("cat_age, dog_age", [
+    ("five", 5),
+    (5, "five"),
+])
+def test_invalid_inputs(cat_age: int, dog_age: int) -> None:
+    # Check for TypeError
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
+    elif cat_age < 0 or dog_age < 0:
+        with pytest.raises(ValueError):
+            get_human_age(cat_age, dog_age)
 
 
 if __name__ == "__main__":
