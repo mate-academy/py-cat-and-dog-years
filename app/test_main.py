@@ -1,5 +1,5 @@
 import pytest
-from  app.main import get_human_age
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
@@ -11,8 +11,8 @@ from  app.main import get_human_age
         (100, 100, [21, 17]),
         (1000, 1000, [246, 197]),
         (-1, -1, [0, 0]),
-         ([10,10],10, pytest.raises(TypeError)),
-        ([{10:10}],10, pytest.raises(TypeError)),
+        ([10, 10], 10, pytest.raises(TypeError)),
+        ([{10: 10}], 10, pytest.raises(TypeError)),
         ("10", 10, pytest.raises(TypeError))]
 )
 def test_get_human_age(
