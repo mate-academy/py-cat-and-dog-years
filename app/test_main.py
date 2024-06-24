@@ -1,17 +1,27 @@
-from app.main import get_human_age
+import pytest
+from  app.main import get_human_age
 
 
-def test_if_age_both_zero() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_convert_years_first() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_convert_years_second() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_conver_more_then_two_years() -> None:
-    assert get_human_age(28, 29) == [3, 3]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected", [
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (24, 24, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+        (1000, 1000, [246, 197]),
+        (-1, -1, [0, 0]),
+         ([10,10],10, pytest.raises(TypeError)),
+        ([{10:10}],10, pytest.raises(TypeError)),
+        ("10", 10, pytest.raises(TypeError))]
+)
+def test_get_human_age(
+    cat_age: int,
+    dog_age: int,
+    expected: get_human_age
+) -> None:
+    if isinstance(expected, list):
+        assert get_human_age(cat_age, dog_age) == expected
+    else:
+        with expected:
+            get_human_age(cat_age, dog_age)
