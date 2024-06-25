@@ -37,11 +37,20 @@ def test_can_convert(cat_years: int, dog_years: int, result: list) -> None:
     "years should be equal {result}"
 
 
-def test_cannot_convert_str_and_str() -> None:
+@pytest.mark.parametrize(
+    "cat_years, dog_years",
+    [
+        ("cat", "dog"),
+        ([10], [10])
+    ],
+    ids=[
+        "Strings cat and dog years",
+        "Lists cat and dog years"
+    ]
+)
+def test_cannot_convert_strings_and_lists(
+    cat_years: str | list,
+    dog_years: str | list
+) -> None:
     with pytest.raises(TypeError):
-        get_human_age("dog", "cat")
-
-
-def test_cannot_convert_list_and_list() -> None:
-    with pytest.raises(TypeError):
-        get_human_age([10], [10])
+        get_human_age(cat_years, dog_years)
