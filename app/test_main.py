@@ -2,8 +2,7 @@ import pytest
 from app.main import get_human_age
 
 
-class TestGetHumanAge:
-    @pytest.mark.parametrize(
+@pytest.mark.parametrize(
         "cat_age, dog_age, human_age",
         [
             (
@@ -32,7 +31,7 @@ class TestGetHumanAge:
             ),
         ]
     )
-    def convert_animal_age_to_human_age_correctly(
-            self, cat_age: int, dog_age: int, human_age: list[int]
-    ) -> None:
-        assert get_human_age(cat_age, dog_age) == human_age
+def test_convert_animal_age_to_human_age_correctly(
+        cat_age: int, dog_age: int, human_age: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == human_age
