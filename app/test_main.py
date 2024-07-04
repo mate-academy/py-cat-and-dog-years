@@ -22,3 +22,20 @@ def test_convert_animal_age_to_human(
         human_age: list[int],
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        (0, "w"),
+        (14, [12]),
+        ({1}, 15),
+        (10, None)
+    ],
+)
+def test_get_human_age_correct_input(
+        cat_age: int,
+        dog_age: int
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
