@@ -1,5 +1,5 @@
 from app.main import get_human_age
-from pytest import mark, param
+from pytest import mark, param, raises
 
 
 @mark.parametrize(
@@ -26,3 +26,8 @@ from pytest import mark, param
 def test_get_human_age(cat_age: int, dog_age: int,
                        expected_result: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
+
+
+def test_raise_error_if_type_is_not_correct() -> None:
+    with raises(TypeError):
+        get_human_age("3", True)
