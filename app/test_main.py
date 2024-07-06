@@ -14,15 +14,12 @@ from app.main import get_human_age
         (28, 28, [3, 2]),
         (32, 32, [4, 3]),
         (33, 33, [4, 3]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        (1000, 1000, [246, 197])
     ],
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> bool:
     assert get_human_age(cat_age, dog_age) == expected
-
-
-def test_large_numbers() -> bool:
-    assert get_human_age(1000, 1000) == [246, 197]
 
 
 @pytest.mark.parametrize(
