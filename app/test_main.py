@@ -27,10 +27,9 @@ class TestGetHumanAge:
                            dog_age: int,
                            human_age: list) -> None:
         assert (
-                get_human_age(cat_age, dog_age) == human_age
-        ), f"Cat years: {cat_age} " \
-           f"and Dog years: {dog_age} " \
-           f"should be equal to human years: {human_age}"
+            get_human_age(cat_age, dog_age) == human_age
+        ), (f"Cat years: {cat_age} and Dog years: {dog_age} should be "
+            f"equal to human years: {human_age}")
 
     @pytest.mark.parametrize(
         "cat_age,dog_age",
