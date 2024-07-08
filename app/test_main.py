@@ -79,7 +79,7 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
 def test_get_human_age_invalid_inputs(
         cat_age: int,
         dog_age: int,
-        expected: list
+        expected: list[int]
 ) -> None:
     assert (get_human_age(cat_age, dog_age) == expected), ValueError
 
