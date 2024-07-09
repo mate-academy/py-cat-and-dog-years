@@ -29,6 +29,15 @@ class TestRegularValues:
             ),
             (
                 100, 100, [21, 17]
+            ),
+            (
+                100500, 100500, [25121, 20097]
+            ),
+            (
+                -5, 4, [0, 0]
+            ),
+            (
+                12445678, 12345677, [3111415, 2469132]
             )
         ]
     )
@@ -48,18 +57,12 @@ class TestIfRaisesErrors:
             ("0", 0, TypeError),
             (4, (1, 2), TypeError),
             (2, {2}, TypeError),
-            (-1, 2, ValueError),
-            (100, 100, ValueError),
-
-
         ],
         ids=[
             "Should raise TypeError with dict",
             "Should raise TypeError with string",
             "Should raise TypeError with tuple",
             "Should raise TypeError with set",
-            "Should raise ValueError with negative numbers",
-            "Should raise ValueError with unrealistic numbers"
         ]
     )
     def test_if_raises_errors(
