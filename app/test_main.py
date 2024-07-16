@@ -17,7 +17,11 @@ from app.main import get_human_age
         (100000, 100000, [24996, 19997])
     ]
 )
-def test_should_convert_animal_age_into_human_age_correctly(cat_age, dog_age, expected_result) -> None:
+def test_should_convert_animal_age_into_human_age_correctly(
+        cat_age: int,
+        dog_age: int,
+        expected_result: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
 
 
@@ -31,6 +35,6 @@ def test_should_convert_animal_age_into_human_age_correctly(cat_age, dog_age, ex
         (1, None)
     ]
 )
-def test_for_incorrect_type_of_data_values(cat_age, dog_age) -> None:
+def test_for_incorrect_type_of_data_values(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
