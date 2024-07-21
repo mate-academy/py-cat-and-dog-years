@@ -18,7 +18,10 @@ class TestHumanAge:
             (-1, -1, [0, 0]),
         ]
     )
-    def test_correct_human_age(self, cat_age: int, dog_age: int, expected_result: int) -> None:
+    def test_correct_human_age(self,
+                               cat_age: int,
+                               dog_age: int,
+                               expected_result: int) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
@@ -28,6 +31,8 @@ class TestHumanAge:
             ([], []),
         ]
     )
-    def test_raises_error_when_wrong_data(self, cat_age: Any, dog_age: Any) -> None:
+    def test_raises_error_when_wrong_data(self,
+                                          cat_age: Any,
+                                          dog_age: Any) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
