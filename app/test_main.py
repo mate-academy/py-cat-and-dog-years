@@ -25,6 +25,6 @@ def test_get_correct_human_age(cat: int, dog: int, result: list[int]) -> None:
     [("28", "28"),
      ("eight", "seven")]
 )
-def test_get_human_age_invalid_input(cat, dog):
+def test_get_human_age_invalid_input(cat: str, dog: str) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat, dog)
