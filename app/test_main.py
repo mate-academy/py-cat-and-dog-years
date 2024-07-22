@@ -9,6 +9,9 @@ from app.main import get_human_age
         pytest.param(
             0, [0, 0], id="should return zeros if input values are zeros"
         ),
+        pytest.param(
+            -10, [0, 0], id="should return zeros if input values are negative"
+        ),
         pytest.param(14, [0, 0], id="should round result down"),
         pytest.param(15, [1, 1], id="should return correct result for 1 year"),
         pytest.param(23, [1, 1], id="should round result down to 1 year"),
