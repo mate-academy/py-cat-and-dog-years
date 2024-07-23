@@ -5,6 +5,7 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age, dog_age, result_list, expected_error",
     [
+
         (-10, -5, [0, 0], None),
         (0, 0, [0, 0], None),
         (14, 14, [0, 0], None),
@@ -14,7 +15,8 @@ from app.main import get_human_age
         (28, 28, [3, 2], None),
         (50, 60, [8, 9], None),
         (100, 100, [21, 17], None),
-        pytest.param("10", 10, None, pytest.raises(TypeError))
+        (1000000, 1000000, [249996, 199997], None),
+        ("10", 10, None, pytest.raises(TypeError))
     ]
 )
 def test_can_convert_to_human_age(
