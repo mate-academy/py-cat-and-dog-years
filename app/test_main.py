@@ -21,7 +21,7 @@ def test_can_convert_to_human_age(
         cat_age: int,
         dog_age: int,
         result_list: list,
-        expected_error
+        expected_error: None | Exception
 ) -> None:
     if expected_error:
         with expected_error:
