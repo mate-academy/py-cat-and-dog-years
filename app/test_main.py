@@ -11,6 +11,10 @@ from app.main import get_human_age
             id="negative values"
         ),
         pytest.param(
+            0, 0, [0, 0],
+            id="negative values"
+        ),
+        pytest.param(
             14, 14, [0, 0],
             id="less one year"
         ),
