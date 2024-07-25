@@ -38,7 +38,10 @@ from app.main import get_human_age
             31, 33, [3, 3],
             id="rounded to tree years"
         ),
-
+        pytest.param(
+            100, 100, [21, 17],
+            id="large numbers"
+        ),
     ]
 )
 def test_get_human_age(
@@ -46,3 +49,27 @@ def test_get_human_age(
 
 ) -> None:
     assert get_human_age(cat_age, dog_age) == ages
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        pytest.param(
+            "cat", "dog",
+            id="invalid type of params"
+        ),
+        pytest.param(
+            None, 3,
+            id="invalid type of params2"
+        ),
+        pytest.param(
+            [4], 5,
+            id="invalid type of params3"
+        )
+    ]
+)
+def test_should_raise_type_error_when_argument_is_not_integer(
+    cat_age: int, dog_age: int
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
