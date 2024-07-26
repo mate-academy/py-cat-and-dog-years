@@ -61,24 +61,27 @@ import pytest
 def test_correct_human_year_result(cat_age: int,
                                    dog_age: int,
                                    result: list[int]) -> None:
-    assert get_human_age(cat_age, dog_age) == result
+    assert (
+        get_human_age(cat_age, dog_age) == result
+    ), "Incorrect years convert"
+
+
+def test_work_with_large_numbers() -> None:
+    assert (
+        get_human_age(546464633636,
+                      645445345243) == [136616158405, 129089069045]
+    ), "This func should work with large numbers"
+
+
+def test_work_with_negative_numbers() -> None:
+    assert (
+        get_human_age(-5, -5) == [0, 0]
+    ), "This func should return 0 when numbers are negative"
 
 
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        pytest.param(
-            -1,
-            -5,
-            KeyError,
-            id="test_should_raise_error_when_incorrect_value_given"
-        ),
-        pytest.param(
-            1001,
-            1001,
-            ValueError,
-            id="test_should_raise_error_for_large_numbers"
-        ),
         pytest.param(
             "two",
             3,
@@ -91,6 +94,18 @@ def test_correct_human_year_result(cat_age: int,
             TypeError,
             id="test_should_raise_error_for_incorrect_type_dog_age"
         ),
+        pytest.param(
+            [1],
+            {"name": 1},
+            TypeError,
+            id="test_should_raise_error_when_type_list_or_dict"
+        ),
+        pytest.param(
+            (),
+            (),
+            TypeError,
+            id="test_should_raise_error_when_no_argument_given"
+        )
     ]
 )
 def test_correct_error_raises(cat_age: int,
