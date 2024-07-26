@@ -16,7 +16,7 @@ class TestGetHumanAge:
             (27, 28, [2, 2]),
             (28, 29, [3, 3]),
             (100, 100, [21, 17])
-        ], id=[
+        ], ids=[
             "negative variables",
             "zero variables",
             "14 cat/dog years are converting into 0 human age.",
@@ -32,6 +32,6 @@ class TestGetHumanAge:
                         result: list[int, int]) -> None:
         assert get_human_age(age_cat, age_dog) == result
 
-    def test_out_of_normal_age(self) -> None:
+    def test_not_normal_age(self) -> None:
         with pytest.raises(TypeError):
             assert get_human_age("a", "b")
