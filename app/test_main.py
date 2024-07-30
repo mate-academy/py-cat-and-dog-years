@@ -1,13 +1,19 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_the_animal_is_one_year_old() -> None:
-    assert get_human_age(23, 15) == [1, 1]
-
-
-def test_the_animal_is_two_year_old() -> None:
-    assert get_human_age(24, 27) == [2, 2]
-
-
-def test_each_subsequent_year() -> None:
-    assert get_human_age(28, 29) == [3, 3]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,cat_human,dog_human",
+    [
+        pytest.param(14, 14, 0, 0, id="the animal is zero year old"),
+        pytest.param(23, 15, 1, 1, id="the animal is one year old"),
+        pytest.param(24, 27, 2, 2, id="the animal is two year old"),
+        pytest.param(28, 29, 3, 3, id="test_each_subsequent_year")
+    ]
+)
+def test_the_animal_old(cat_age: int,
+                        dog_age: int,
+                        cat_human: int,
+                        dog_human: int
+                        ) -> None:
+    assert get_human_age(cat_age, dog_age) == [cat_human, dog_human]
