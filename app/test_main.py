@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -30,3 +32,21 @@ def test_get_human_age_from_range_ages(
         expected_human_age: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        pytest.param("five", "ten",
+                     id="Ages should be integer, not string type"),
+        pytest.param([0], [25],
+                     id="Ages should be integer, not list type"),
+        pytest.param(0, "0",
+                     id="Both ages should be integer"),
+    ]
+)
+def test_get_human_age_with_incorrect_data_types(
+        cat_age: Any, dog_age: Any
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
