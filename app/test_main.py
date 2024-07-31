@@ -38,7 +38,7 @@ def test_get_human_age_invalid_types(cat_age: int, dog_age: int) -> None:
     (10, -15),
     (-10, -15)
 ])
-def test_get_human_age_negative_values(cat_age, dog_age) -> None:
+def test_get_human_age_negative_values(cat_age: int, dog_age: int) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
@@ -47,10 +47,8 @@ def test_get_human_age_negative_values(cat_age, dog_age) -> None:
     (10 ** 6, 10 ** 6),
     (10 ** 12, 10 ** 12)
 ])
-def test_get_human_age_large_values(cat_age, dog_age) -> None:
+def test_get_human_age_large_values(cat_age: int, dog_age: int) -> None:
     result = get_human_age(cat_age, dog_age)
     assert isinstance(result, list)
     assert len(result) == 2
     assert all(isinstance(x, int) for x in result)
-
-
