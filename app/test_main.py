@@ -23,9 +23,9 @@ from app.main import get_human_age
         "should convert 23 cat/dog years to 1 human years",
         "should convert 24 cat/dog years to 2 human years",
         "should convert 27 cat/dog years to 2 human years",
-        "should convert 28 cat/dog years to 3 and 2 human years respectively",
-        "should convert 100 cat/dog years to 21 and 17 human years respectively",
-        "should convert 40 cat and 50 dog years to 5 and 7 human years respectively"
+        "should convert 28 cat/dog years to 3/2 human years",
+        "should convert 100 cat/dog years to 21/17 human years",
+        "should convert 40 cat/50 dog years to 5/7 human years"
     ]
 )
 def test_ages(cat_age: int, dog_age: int, human_age: list[int]) -> None:
@@ -58,6 +58,6 @@ def test_negative_ages() -> None:
         "set is invalid type"
     ]
 )
-def test_invalid_type(cat_age, dog_age) -> None:
+def test_invalid_type(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)

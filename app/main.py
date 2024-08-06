@@ -18,10 +18,10 @@ def convert_to_human(
 def validate(cat_age: int, dog_age: int) -> None:
     if cat_age < 0 or dog_age < 0:
         raise ValueError("Value must be >= 0")
-    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+    if (
+        not isinstance(cat_age, int)
+        or not isinstance(dog_age, int)
+        or isinstance(cat_age, bool)
+        or isinstance(dog_age, bool)
+    ):
         raise TypeError("Invalid type")
-    if isinstance(cat_age, bool) or isinstance(dog_age, bool):
-        raise TypeError("Invalid type")
-
-
-print(get_human_age(40, 50))
