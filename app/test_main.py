@@ -13,7 +13,11 @@ from app.main import get_human_age
         (100, 100, [21, 17])
     ]
 )
-def test__cat_dog_years_should_convert_into__human_age_correctly(cat_years: int, dog_years: int, result):
+def test__cat_dog_years_should_convert_into__human_age_correctly(
+    cat_years: int,
+    dog_years: int,
+    result: list
+) -> None:
     assert get_human_age(cat_years, dog_years) == result
 
 
@@ -25,6 +29,9 @@ def test__cat_dog_years_should_convert_into__human_age_correctly(cat_years: int,
         (None, -15000),
     ]
 )
-def test_should_raise_error_when_incorrect_parameters(cat_years, dog_years):
+def test_should_raise_error_when_incorrect_parameters(
+    cat_years: int | None,
+    dog_years: int | None
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_years, dog_years)
