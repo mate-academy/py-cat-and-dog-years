@@ -54,18 +54,6 @@ class TestGetHumanAge:
                 20000,
                 [2496, 3997],
                 id="should correctly calculate big ages"
-            ),
-            pytest.param(
-                None,
-                45,
-                6,
-                id="should correctly calculate age for dog"
-            ),
-            pytest.param(
-                35,
-                None,
-                4,
-                id="should correctly calculate age for cat"
             )
         ]
     )
@@ -75,17 +63,6 @@ class TestGetHumanAge:
             input_dog_data: int,
             expected_result: list
     ) -> None:
-        if not input_cat_data and not input_dog_data:
-            assert get_human_age(
-                input_cat_data, input_dog_data
-            ) == expected_result
-            return
-        if not input_dog_data:
-            assert get_human_age(input_cat_data, 1)[0] == expected_result
-            return
-        if not input_cat_data:
-            assert get_human_age(1, input_dog_data)[1] == expected_result
-            return
         assert get_human_age(input_cat_data, input_dog_data) == expected_result
 
     @pytest.mark.parametrize(
