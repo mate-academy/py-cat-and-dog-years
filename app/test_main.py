@@ -76,8 +76,9 @@ class TestGetHumanAge:
             expected_result: list
     ) -> None:
         if not input_cat_data and not input_dog_data:
-            result = get_human_age(input_cat_data, input_dog_data)
-            assert result == expected_result
+            assert get_human_age(
+                input_cat_data, input_dog_data
+            ) == expected_result
             return
         if not input_dog_data:
             assert get_human_age(input_cat_data, 1)[0] == expected_result
