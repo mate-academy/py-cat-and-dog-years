@@ -85,8 +85,7 @@ class TestGetHumanAge:
         if not input_cat_data:
             assert get_human_age(1, input_dog_data)[1] == expected_result
             return
-        result = get_human_age(input_cat_data, input_dog_data)
-        assert result == expected_result
+        assert get_human_age(input_cat_data, input_dog_data) == expected_result
 
     @pytest.mark.parametrize(
         "input_cat_data, input_dog_data, expected_error",
