@@ -1,36 +1,41 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_zeroes_years() -> None:
-    cat_age = 0
-    dog_age = 0
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_list",
+    [
+        pytest.param(
+            0, 0, [0, 0],
+            id="zero years"
+        ),
 
-    assert get_human_age(cat_age, dog_age) == [0, 0]
+        pytest.param(
+            -1, -2, [0, 0],
+            id="negative years"
+        ),
 
+        pytest.param(
+            14, 45, [0, 6],
+            id="normal years"
+        ),
 
-def test_negative_years() -> None:
-    cat_age = -1
-    dog_age = -2
+        pytest.param(
+            56, 23, [10, 1],
+            id="normal years 2"
+        ),
 
-    assert get_human_age(cat_age, dog_age) == [0, 0]
-
-
-def test_normal_years() -> None:
-    cat_age = 14
-    dog_age = 45
-
-    assert get_human_age(cat_age, dog_age) == [0, 6]
-
-
-def test_normal_years2() -> None:
-    cat_age = 56
-    dog_age = 23
-
-    assert get_human_age(cat_age, dog_age) == [10, 1]
-
-
-def test_big_and_not_rounded_years() -> None:
-    cat_age = 11893
-    dog_age = 8919
-
-    assert get_human_age(cat_age, dog_age) == [2969, 1781]
+        pytest.param(
+            11893, 8919, [2969, 1781],
+            id="big and not rounded years"
+        ),
+    ]
+)
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected_list: list[int]
+) -> None:
+    human = get_human_age(cat_age, dog_age)
+    assert human == expected_list
