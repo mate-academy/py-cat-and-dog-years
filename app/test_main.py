@@ -59,14 +59,6 @@ def test_with_incorrect_types(cat_age: Any, dog_age: Any) -> None:
         get_human_age(cat_age, dog_age)
 
 
-@pytest.mark.parametrize(
-    "cat_age",
-    [
-        15,
-        ()
-    ],
-    ids=["1 argument", "0 arguments"]
-)
-def test_with_not_enough_arguments(cat_age: int) -> None:
+def test_with_not_enough_arguments() -> None:
     with pytest.raises(TypeError):
-        get_human_age(cat_age)
+        get_human_age()
