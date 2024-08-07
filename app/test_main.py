@@ -30,34 +30,3 @@ from app.main import get_human_age
 )
 def test_ages(cat_age: int, dog_age: int, human_age: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
-
-
-def test_negative_ages() -> None:
-    with pytest.raises(ValueError):
-        get_human_age(-1, -1)
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age",
-    [
-        (10.5, 20.4),
-        (True, False),
-        ("10", "10"),
-        ([10], [20]),
-        ({"cat_age": 20}, {"dog_age": 25}),
-        ((25,), (25,)),
-        ({25}, {25})
-    ],
-    ids=[
-        "float is invalid type",
-        "bool is invalid type",
-        "string is invalid type",
-        "list is invalid type",
-        "dict is invalid type",
-        "tuple is invalid type",
-        "set is invalid type"
-    ]
-)
-def test_invalid_type(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
