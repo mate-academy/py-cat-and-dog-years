@@ -40,13 +40,15 @@ from app.main import get_human_age
             28,
             28,
             [3, 2],
-            id="should return three for cat and four for dog when inputs are twenty-eight"
+            id="should return three for cat and \
+                four for dog when inputs are twenty-eight"
         ),
         pytest.param(
             100,
             100,
             [21, 17],
-            id="should return 21 for cat and 17 for dog when inputs are one hundred"
+            id="should return 21 for cat and \
+                17 for dog when inputs are one hundred"
         ),
     ]
 )
