@@ -1,36 +1,36 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_first_phase() -> None:
-    cat_age = 14
-    dog_age = 14
-    res = get_human_age(cat_age, dog_age)
-    assert res == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_age_list",
+    [
+        pytest.param(
+            14, 14, [0, 0],
+            id="test first phase"
+        ),
+        pytest.param(
+            -2, -7, [0, 0],
+            id="test negative age"
+        ),
+        pytest.param(
+            23, 23, [1, 1],
+            id="test rounding age"
+        ),
+        pytest.param(
+            24, 24, [2, 2],
+            id="test second phase"
+        ),
+        pytest.param(
+            28, 28, [3, 2],
+            id="test third phase"
+        ),
+        pytest.param(
+            100, 100, [21, 17],
+            id="test old age"
+        ),
 
-
-def test_rounding_age() -> None:
-    cat_age = 23
-    dog_age = 23
-    res = get_human_age(cat_age, dog_age)
-    assert res == [1, 1]
-
-
-def test_second_phase() -> None:
-    cat_age = 24
-    dog_age = 24
-    res = get_human_age(cat_age, dog_age)
-    assert res == [2, 2]
-
-
-def test_third_phase() -> None:
-    cat_age = 28
-    dog_age = 28
-    res = get_human_age(cat_age, dog_age)
-    assert res == [3, 2]
-
-
-def test_old_age() -> None:
-    cat_age = 100
-    dog_age = 100
-    res = get_human_age(cat_age, dog_age)
-    assert res == [21, 17]
+    ]
+)
+def test_get_human_age(cat_age, dog_age, expected_age_list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_age_list
