@@ -37,11 +37,12 @@ class TestGetAge:
     ) -> None:
         assert get_human_age(dog_age, cat_age) == excepted_age
 
+
 @pytest.mark.parametrize(
     "dog_age, cat_age",
     [
         ("", ""),
-        ([],[]),
+        ([], []),
     ],
     ids=[
         "if input is string",
