@@ -5,7 +5,7 @@ from app.main import get_human_age
 
 class TestGetAge:
     @pytest.mark.parametrize(
-        "dog_age, cat_age, excepted_age",
+        "dog_age, cat_age, excepted_age, description",
         [
             (0, 0, [0, 0], "Both ages are zero"),
             (
