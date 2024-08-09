@@ -45,11 +45,14 @@ def test_get_human_age_from_range_ages(
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        pytest.param("five", "ten",
+        pytest.param("five",
+                     "ten",
                      id="Ages should be integer, not string type"),
-        pytest.param([0], [25],
+        pytest.param([0],
+                     [25],
                      id="Ages should be integer, not list type"),
-        pytest.param(0, "0",
+        pytest.param(0,
+                     "0",
                      id="Both ages should be integer"),
     ]
 )
