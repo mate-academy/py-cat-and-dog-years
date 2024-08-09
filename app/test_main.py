@@ -20,6 +20,7 @@ class TestCatDogAge:
             (-1, 3, [0, 0]),
             (3, -1, [0, 0]),
             (-1, -1, [0, 0]),
+            (4, True, [0, 0]),
         ],
         ids=[
             "both ages are zero must be 0/0",
@@ -34,6 +35,7 @@ class TestCatDogAge:
             "cat age is negative value",
             "dog age is negative value",
             "both ages is negative value",
+            "One of ages is bool value",
         ]
     )
     def test_correct(
@@ -45,19 +47,24 @@ class TestCatDogAge:
         assert get_human_age(cat_age, dog_age) == expected_years
 
     @pytest.mark.parametrize(
-        "cat_age,dog_age,expected_error",
+        "cat_age,dog_age",
         [
-            (3, None, TypeError),
+            (3, None),
+            (3, "4"),
+            (3, []),
+            (3, {}),
         ],
         ids=[
             "One of ages is None value",
+            "One of ages is string value",
+            "One of ages is empty list value",
+            "One of ages is empty dict value",
         ]
     )
     def test_incorrect(
             self,
             cat_age: int,
-            dog_age: int,
-            expected_error: BaseException
+            dog_age: int
     ) -> None:
-        with pytest.raises(expected_error):
+        with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
