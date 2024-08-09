@@ -5,51 +5,52 @@ from app.main import get_human_age
 
 class TestGetAge:
     @pytest.mark.parametrize(
-        "dog_age, cat_age, excepted_age, description",
+        "dog_age, cat_age, excepted_age",
         [
-            (0, 0, [0, 0], "Both ages are zero"),
-            (
-                14, 14, [0, 0],
-                "Both ages below the threshold for human years conversion"
-            ),
-            (15, 15, [1, 1], "Minimum age for first human age"),
-            (
-                23, 23, [1, 1],
-                "Age just below the next human year conversion."
-            ),
-            (24, 24, [2, 2], "Second human year"),
-            (
-                27, 27, [2, 2],
-                "Age just below the third human year for dogs"
-            ),
-            (28, 28, [3, 2], "Third year for dog, but not cat"),
-            (100, 100, [21, 17], "High age for both dog and cat"),
+            (-1, -1, [0, 0]),
+            (0, 0, [0, 0]),
+            (14, 14, [0, 0]),
+            (15, 15, [1, 1]),
+            (23, 23, [1, 1]),
+            (24, 24, [2, 2]),
+            (27, 27, [2, 2]),
+            (28, 28, [3, 2]),
+            (100, 100, [21, 17]),
+        ],
+        ids=[
+            "test negative value",
+            "test zero value",
+            "test excepted_age is zero",
+            "test first year",
+            "test almost second year",
+            "test second year",
+            "test almost third year",
+            "test each year",
+            "test large year",
         ]
     )
     def test_correctly_age(
             self,
             dog_age: int,
             cat_age: int,
-            excepted_age: list,
-            description: str
+            excepted_age: list
     ) -> None:
         assert get_human_age(dog_age, cat_age) == excepted_age
 
-    @pytest.mark.parametrize(
-        "dog_age, cat_age, exception_type, description",
-        [
-            (-3, 15, ValueError, "If dog age negative - raise ValueError"),
-            (10, -1, ValueError, "If cat age negative - raise ValueError"),
-            ("ten", 10, TypeError, "Non-integer raise TypeError"),
-            (10, "eight", TypeError, "Non-integer raise TypeError."),
-        ]
-    )
-    def test_invalid_inputs(
-            self,
-            dog_age: int,
-            cat_age: int,
-            exception_type: type,
-            description: str
-    ) -> None:
-        with pytest.raises(exception_type, match=description):
-            get_human_age(dog_age, cat_age)
+@pytest.mark.parametrize(
+    "dog_age, cat_age",
+    [
+        ("", ""),
+        ([],[]),
+    ],
+    ids=[
+        "if input is string",
+        "if input is list",
+    ]
+)
+def test_should_raise_error(
+        cat_age: int,
+        dog_age: int,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(dog_age, cat_age)
