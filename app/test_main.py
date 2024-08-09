@@ -17,16 +17,17 @@ from app.main import get_human_age
                                         "dog's age equals (15 + 9 + 5)"),
         pytest.param(29, 30, [3, 3], id="cat is older then (15 + 9 + 4), "
                                         "dog is older then (15 + 9 + 5)"),
-        pytest.param(100, 100, [21, 17], id="both ages are very high = 100")
+        pytest.param(100, 100, [21, 17], id="both ages are very high = 100"),
+        pytest.param(-1, -1, [0, 0], id="both ages are less then 0")
     ]
 )
 def test_get_human_age_works_correctly(
         cat_age: int,
         dog_age: int,
         result: int) -> None:
-    assert (get_human_age(cat_age, dog_age) == result), \
-        (f"Result converting cat's age {cat_age} and "
-         f"dog's age {dog_age} should be equal to {result}")
+    assert (get_human_age(cat_age, dog_age) == result
+            ), (f"Result converting cat's age {cat_age}"
+                f" and dog's age {dog_age} should be equal to {result}")
 
 
 @pytest.mark.parametrize(
