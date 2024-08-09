@@ -38,3 +38,8 @@ def test_get_human_age(
         expected_age_list: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_age_list
+
+
+def test_raising_correct_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("five", ["two"])
