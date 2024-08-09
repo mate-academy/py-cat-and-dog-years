@@ -9,18 +9,18 @@ class TestGetAge:
         [
             (0, 0, [0, 0], "Both ages are zero"),
             (
-                    14, 14, [0, 0],
-                    "Both ages below the threshold for human years conversion"
+                14, 14, [0, 0],
+                "Both ages below the threshold for human years conversion"
             ),
             (15, 15, [1, 1], "Minimum age for first human age"),
             (
-                    23, 23, [1, 1],
-                    "Age just below the next human year conversion."
+                23, 23, [1, 1],
+                "Age just below the next human year conversion."
             ),
             (24, 24, [2, 2], "Second human year"),
             (
-                    27, 27, [2, 2],
-                    "Age just below the third human year for dogs"
+                27, 27, [2, 2],
+                "Age just below the third human year for dogs"
             ),
             (28, 28, [3, 2], "Third year for dog, but not cat"),
             (100, 100, [21, 17], "High age for both dog and cat"),
