@@ -58,3 +58,12 @@ def test_correct_human_year_result(
     result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result, "Incorrect years convert"
+
+
+def test_raise_incorrect_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", "10")
+
+
+def test_return_zeros_when_negative() -> None:
+    assert get_human_age(-10, -10) == [0, 0]
