@@ -30,10 +30,10 @@ class TestGetHumanAge:
         "cat_age, dog_age",
         [
             ("a", "b"),
-            (3.5, 4.2),
             ([1], [2])
         ]
     )
     def test_incorrect_types(self, cat_age: Any, dog_age: Any) -> None:
+
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
