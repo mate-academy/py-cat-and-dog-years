@@ -24,7 +24,8 @@ from app.main import get_human_age
 def test_get_human_age_works_correctly(
         cat_age: int,
         dog_age: int,
-        result: int) -> None:
+        result: list
+) -> None:
     assert (get_human_age(cat_age, dog_age) == result
             ), (f"Result converting cat's age {cat_age}"
                 f" and dog's age {dog_age} should be equal to {result}")
