@@ -11,6 +11,7 @@ from app.main import get_human_age
         (-2, 3, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (100, 100, [21, 17])
     ],
@@ -20,6 +21,7 @@ from app.main import get_human_age
         "one value is negative",
         "one animals year less than human year",
         "first human year",
+        "23 not enough for two years",
         "two human years",
         "with big numbers"
     ]
