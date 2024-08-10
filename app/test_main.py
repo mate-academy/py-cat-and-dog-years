@@ -50,6 +50,12 @@ from app.main import get_human_age
             id="should return 21 for cat and \
                 17 for dog when inputs are one hundred"
         ),
+        pytest.param(
+            -10,
+            -10,
+            [0, 0],
+            id="should return zeros when inputs less the then zero"
+        ),
     ]
 )
 def test_correct_human_year_result(
@@ -63,7 +69,3 @@ def test_correct_human_year_result(
 def test_raise_incorrect_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("10", "10")
-
-
-def test_return_zeros_when_negative() -> None:
-    assert get_human_age(-10, -10) == [0, 0]
