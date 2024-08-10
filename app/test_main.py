@@ -6,6 +6,8 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_human_age",
     [
+        (-1, -1, [0, 0]),
+        (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
@@ -14,6 +16,8 @@ from app.main import get_human_age
         (28, 29, [3, 3]),
     ],
     ids=[
+        "-1 cat/dog years should be equal to 0 human years.",
+        "0 cat/dog years should be equal to 0 human years.",
         "14 cat/dog years should be equal to 0 human years.",
         "15 cat/dog years should be equal to 1 human year.",
         "23 cat/dog years should be equal to 1 human year.",
