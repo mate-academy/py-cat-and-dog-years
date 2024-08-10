@@ -7,14 +7,27 @@ from app.main import get_human_age
     "cat_age, dog_age, expected",
     [
         (0, 0, [0, 0]),
+        (-2, -3, [0, 0]),
+        (-2, 3, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
         (100, 100, [21, 17]),
         (101, 101, [21, 17]),
+    ],
+    ids=[
+        "both values are zero",
+        "both values are negative",
+        "one value is negative",
+        "one animals year less than human year"
+        "first human year",
+        "one animals year less than two human years",
+        "two human years",
+        "with big numbers",
+        "more than one hundred"
     ]
+
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
@@ -26,6 +39,11 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
         ("two", -1),
         ("ten", "five"),
         (None, None),
+    ],
+    ids=[
+        "string and negative number",
+        "two strings",
+        "two None type"
     ]
 )
 def test_get_human_age_invalid_input(cat_age: int, dog_age: int) -> None:
