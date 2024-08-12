@@ -25,8 +25,8 @@ from app.main import get_human_age
     ]
 )
 def test_should_correct_convert_animals_ages_to_humans(
-    cat_years: int,
-    dog_years: int,
+    cat_years: int | float,
+    dog_years: int | float,
     expected_result: list[int]
 ) -> None:
     assert (
