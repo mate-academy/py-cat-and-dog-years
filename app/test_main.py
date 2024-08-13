@@ -1,5 +1,7 @@
 import pytest
 
+from typing import Union
+
 from app.main import get_human_age
 
 
@@ -50,8 +52,8 @@ class TestHumanAge:
     )
     def test_get_human_age_raises_exception(
             self,
-            cat_age: int | float,
-            dog_age: int | float
+            cat_age: Union[int, float, list, str],
+            dog_age: Union[int, float, list, str]
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
