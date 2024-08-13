@@ -18,15 +18,15 @@ class TestHumanAge:
             (100, 100, [21, 17]),
         ],
         ids=[
-            "Numbers should be positive",
-            "All zero",
-            "Age < 15",
-            "First human age",
-            "First human age",
-            "Second human age",
-            "Second human age",
-            "Third human age",
-            "Very old age",
+            "Cat and dog years should be positive numbers",
+            "Zeros for both at age 0",
+            "Zeros for both under 15",
+            "Ones for both at age 15",
+            "Ones for both at age under 24",
+            "Twos for both at age 24",
+            "Twos for both at age under 28",
+            "Three for cat and two for dog at age 28",
+            "21 for cat and 17 for dog at age 100",
         ]
     )
     def test_get_human_age(
@@ -45,13 +45,13 @@ class TestHumanAge:
         ],
         ids=[
             "TypeError for age list and string",
-            "TypeError for age dict",
+            "TypeError raised when input is a dict",
         ]
     )
-    def test_incorrect_data(
+    def test_get_human_age_raises_exception(
             self,
-            cat_age: int,
-            dog_age: int
+            cat_age: int | float,
+            dog_age: int | float
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
