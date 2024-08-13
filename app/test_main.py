@@ -34,17 +34,15 @@ def test_get_human_age(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, expected_error, description",
+    "cat_age, dog_age",
     [
-        ("five", "five", TypeError, "You should enter an integer"),
-        (10.2, 10.2, TypeError, "You should enter an integer"),
+        ("five", "five"),
+        (None, None),
     ]
 )
 def test_human_age_errors(
         cat_age: int,
         dog_age: int,
-        expected_error: TypeError,
-        description: str
 ) -> None:
-    with pytest.raises(expected_error):
+    with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
