@@ -40,9 +40,9 @@ def test_get_human_age(
         (None, None),
     ]
 )
-def test_human_age_errors(
-        cat_age: int,
-        dog_age: int,
+def test_human_age_for_invalid_input(
+        cat_age: str | None,
+        dog_age: str | None,
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
