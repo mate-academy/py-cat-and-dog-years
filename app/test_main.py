@@ -26,7 +26,12 @@ class TestHumanAge:
             "100 cat years and god years must equal21, 17 years in human age"
         ]
     )
-    def test_for_values(self, cat_age: int, dog_age: int, expected: int) -> None:
+    def test_for_values(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected: int
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
     def test_for_type_errors(self) -> None:
