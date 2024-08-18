@@ -24,6 +24,12 @@ class TestCatDogAge:
             "32/34 cat/dog years should convert into 4 human age.",
             "cat/dog don't live for so long",
             "Negative cat/dog years should convert into 0 human age."
-        ])
-    def test_get_human_age(self, cat_age, dog_age, expected):
+    ]
+    )
+    def test_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
