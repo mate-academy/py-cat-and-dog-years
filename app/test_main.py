@@ -30,7 +30,7 @@ class TestAge:
     def test_get_human_age(self,
                            cat_age: int,
                            dog_age: int,
-                           expected: int) -> None:
+                           expected: list[int]) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
     def test_type_errors(self) -> None:
