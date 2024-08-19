@@ -1,43 +1,55 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0], \
-        "For zero ages, [0, 0] should be returned"
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (-2, -3, [0, 0]),
+        (-2, 3, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (100, 100, [21, 17])
+    ],
+    ids=[
+        "0 cat and dog age must equal 0 in human age",
+        "negative dog and cat age must equal 0 in human age",
+        "negative cat age and 14 dog years must equal 0 in human age",
+        "14 cat and dog years must equal 0 in human age",
+        "15 cat and dog years must equal 1 in human age",
+        "23 cat and dog years must equal 1 in human age",
+        "24 cat and dog years must equal 2 in human age",
+        "100 cat and dog years must equal 21 and 17 in human age"
+    ]
+)
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_age_below_first_threshold() -> None:
-    assert get_human_age(14, 14) == [0, 0], \
-        "If the age is less than 15 years, [0, 0] should be returned"
-
-
-def test_age_equal_to_first_threshold() -> None:
-    assert get_human_age(15, 15) == [1, 1], \
-        "At 15 years of age, [1, 1] should be returned"
-
-
-def test_age_between_first_and_second_threshold() -> None:
-    assert get_human_age(23, 23) == [1, 1], \
-        "At ages between 15 and 24 years, [1, 1] should be returned"
-    assert get_human_age(24, 24) == [2, 2], \
-        "At 24 years of age, [2, 2] should be returned"
-
-
-def test_age_equal_to_second_threshold() -> None:
-    assert get_human_age(24, 24) == [2, 2], \
-        "At 24 years of age, [2, 2] should be returned"
-
-
-def test_age_above_second_threshold_but_below_next_cycle() -> None:
-    assert get_human_age(27, 27) == [2, 2], \
-        "At 27 years of age, [2, 2] should be returned"
-
-
-def test_age_just_into_next_cycle() -> None:
-    assert get_human_age(28, 28) == [3, 2], \
-        "At 28 years of age, [3, 2] should be returned"
-
-
-def test_large_ages() -> None:
-    assert get_human_age(100, 100) == [21, 17], \
-        "At 100 years of age, [21, 17] should be returned"
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("two", -1),
+        ("ten", "five"),
+        (None, None),
+    ],
+    ids=[
+        "TypeError raised when input is a string",
+        "TypeError raised when input is a string",
+        "TypeError raised when input is None"
+    ],
+)
+def test_get_human_age_invalid_input(
+        cat_age: int | str | None,
+        dog_age: int | str | None
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
