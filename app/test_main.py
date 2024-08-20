@@ -2,11 +2,12 @@ import pytest
 from app.main import get_human_age
 
 
-class TestGet:
+class TestGetHumanAge:
 
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected",
         [
+            (0, 0, [0, 0]),
             (-1, -1, [0, 0]),
             (14, 14, [0, 0]),
             (15, 15, [1, 1]),
@@ -17,6 +18,7 @@ class TestGet:
             (90, 90, [18, 15]),
         ],
         ids=[
+            "Zero age"
             "cat/dog age can not be negative",
             "14 cat/dog years should convert into 0 human age.",
             "15 cat/dog years should convert into 1 human age.",
