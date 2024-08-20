@@ -18,7 +18,7 @@ class TestGetHumanAge:
             (90, 90, [18, 15]),
         ],
         ids=[
-            "Zero age"
+            "Zero age",
             "cat/dog age can not be negative",
             "14 cat/dog years should convert into 0 human age.",
             "15 cat/dog years should convert into 1 human age.",
