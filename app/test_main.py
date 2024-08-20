@@ -1,4 +1,7 @@
+from typing import Any
+
 import pytest
+
 from app.main import get_human_age
 
 
@@ -37,6 +40,22 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
-    def test_get_human_age_typeerror(self) -> None:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            ("cat_age", "dog_age"),
+            ({5}, {15}),
+            ([5], [15]),
+            ((5,), (15,)),
+        ],
+        ids=[
+            "cat/dog age must be int not str",
+            "cat/dog age must be int not dict",
+            "cat/dog age must be int not list",
+            "cat/dog age must be int not tuple",
+        ]
+
+    )
+    def test_get_human_age_typeerror(self, cat_age: Any, dog_age: Any) -> None:
         with pytest.raises(TypeError):
-            assert get_human_age("cat_age", "dog_age")
+            get_human_age(cat_age, dog_age)
