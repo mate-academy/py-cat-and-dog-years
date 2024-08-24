@@ -66,6 +66,6 @@ def test_large_ages() -> None:
 
 def test_invalid_types() -> None:
     with pytest.raises(TypeError):
-        get_human_age("10", 10)
+        get_human_age("11", 10)
     with pytest.raises(TypeError):
         get_human_age(10, "26")
