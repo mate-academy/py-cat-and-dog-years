@@ -6,7 +6,7 @@ from app.main import get_human_age
     "cat_years, dog_years, expected_result",
     [
         (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
+        (15.1, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
@@ -18,13 +18,19 @@ def test_ages(cat_years: int, dog_years: int, expected_result: list) -> None:
 
 
 @pytest.mark.parametrize(
-    "cat_years, dog_years",
+    "cat_years, dog_years,expected_error",
     [
-        ("14", 14),
-        (15, "15"),
-        ("15", "15")
+        ("14", 14, TypeError),
+        (15, "15", TypeError),
+        (-1, 12, ValueError),
+        (10, -13, ValueError),
+        (12, 0, ValueError),
+        (0, 15, ValueError),
+        (1000, 15, ValueError),
+        (2, 250, ValueError),
     ],
 )
-def test_errors(cat_years: int, dog_years: int) -> None:
-    with pytest.raises(TypeError):
+def test_errors(cat_years: int, dog_years: int,
+                expected_error: Exception) -> None:
+    with pytest.raises(expected_error):
         get_human_age(cat_years, dog_years)
