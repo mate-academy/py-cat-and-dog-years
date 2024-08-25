@@ -6,6 +6,11 @@ from app.main import get_human_age
     "cat_age,dog_age,human_age_list",
     [
         pytest.param(
+            0,
+            0,
+            [0, 0],
+            id="0 cat/dog years should convert into 0 human age."),
+        pytest.param(
             14,
             14,
             [0, 0],
@@ -51,17 +56,12 @@ def test_get_human_age(
 
 
 def test_negative_ages() -> None:
-    with pytest.raises(ValueError):
-        get_human_age(14, -14)
-    with pytest.raises(ValueError):
-        get_human_age(-2, 24)
+    assert get_human_age(-2, 4) == [0, 0]
+    assert get_human_age(15, -12) == [1, 0]
 
 
 def test_large_ages() -> None:
-    with pytest.raises(ValueError):
-        get_human_age(25898, 9)
-    with pytest.raises(ValueError):
-        get_human_age(25, 989674)
+    assert get_human_age(1000, 1000) == [246, 197]
 
 
 def test_invalid_types() -> None:
