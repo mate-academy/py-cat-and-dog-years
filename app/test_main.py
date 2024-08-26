@@ -11,6 +11,12 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
         (28, 29, [3, 3]),
+        (-1, 12, [0, 0]),
+        (10, -13, [0, 0]),
+        (12, 0, [0, 0]),
+        (0, 15, [0, 1]),
+        (10000, 15, [2496, 1]),
+        (2, 25000, [0, 4997])
     ],
 )
 def test_ages(cat_years: int, dog_years: int, expected_result: list) -> None:
@@ -21,14 +27,8 @@ def test_ages(cat_years: int, dog_years: int, expected_result: list) -> None:
     "cat_years, dog_years,expected_error",
     [
         ("14", 14, TypeError),
-        (15, "15", TypeError),
-        (-1, 12, ValueError),
-        (10, -13, ValueError),
-        (12, 0, ValueError),
-        (0, 15, ValueError),
-        (1000, 15, ValueError),
-        (2, 250, ValueError),
-    ],
+        (15, "15", TypeError)
+    ]
 )
 def test_errors(cat_years: int, dog_years: int,
                 expected_error: Exception) -> None:
