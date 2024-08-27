@@ -1,4 +1,6 @@
+from typing import Any
 import pytest
+
 from app.main import get_human_age
 
 
@@ -44,7 +46,17 @@ from app.main import get_human_age
             100,
             100,
             [21, 17],
-            id="cat/dog years should convert considering each_year"),
+            id="cat/dog years should convert considering each_year."),
+        pytest.param(
+            -2,
+            4,
+            [0, 0],
+            id="negative cat years should convert into 0 human age."),
+        pytest.param(
+            15,
+            -12,
+            [1, 0],
+            id="negative dog years should convert into 0 human age."),
     ]
 )
 def test_get_human_age(
@@ -55,17 +67,22 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == human_age_list
 
 
-def test_negative_ages() -> None:
-    assert get_human_age(-2, 4) == [0, 0]
-    assert get_human_age(15, -12) == [1, 0]
-
-
 def test_large_ages() -> None:
     assert get_human_age(1000, 1000) == [246, 197]
 
 
-def test_invalid_types() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("11", 10)
-    with pytest.raises(TypeError):
-        get_human_age(10, "26")
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error",
+    [
+        pytest.param("11", 10, TypeError),
+        pytest.param(10, "26", TypeError),
+        pytest.param("10", "26", TypeError),
+    ]
+)
+def test_invalid_types(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Any,
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
