@@ -6,7 +6,7 @@ def test_should_return_list():
     assert isinstance(years, list)
 
 
-def test_two_pats_of_list_should_be_integer():
+def test_two_numbers_of_list_should_be_integer():
     years = get_human_age(10, 8)
     cat_years = years[0]
     dog_years = years[1]
