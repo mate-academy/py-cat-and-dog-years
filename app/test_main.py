@@ -42,5 +42,5 @@ def test_28_cat_and_29_dog_years_should_return_3_human_years():
     assert get_human_age(24, 24) == [2, 2]
 
 
-def test_should_return_expected_years():
+def test_should_return_expected_human_years():
     assert get_human_age(100, 100) == [21, 17]
