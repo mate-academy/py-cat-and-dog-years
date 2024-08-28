@@ -51,3 +51,8 @@ class TestGetHumanAge:
             human_age: list[int, int]
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
+
+
+def test_raises_error_correctly() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("2", "3")
