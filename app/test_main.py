@@ -2,15 +2,52 @@ from app.main import get_human_age
 import pytest
 
 
-def test_the_output_has_to_be_equal_to_expected() -> None:
-    assert get_human_age(0, 0) == [0, 0], "Fix your code"
-    assert get_human_age(14, 14) == [0, 0]
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "arguments,expected",
+    [
+        (
+            (0, 0),
+            [0, 0]
+        ),
+        (
+            (14, 14),
+            [0, 0]
+        ),
+        (
+            (15, 15),
+            [1, 1]
+        ),
+        (
+            (23, 23),
+            [1, 1]
+        ),
+        (
+            (24, 24),
+            [2, 2]
+        ),
+        (
+            (27, 27),
+            [2, 2]
+        ),
+        (
+            (28, 28),
+            [3, 2]
+        ),
+        (
+            (100, 100),
+            [21, 17]
+        )
+
+    ]
+)
+def test_the_output_has_to_be_equal_to_expected(
+        arguments: tuple,
+        expected: list[int]
+) -> None:
+
+    assert (get_human_age(arguments[0],
+                          arguments[1])
+            == expected)
 
 
 def test_the_output_has_to_be_integer() -> None:
