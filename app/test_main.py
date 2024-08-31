@@ -57,6 +57,11 @@ from app.main import get_human_age
             -12,
             [1, 0],
             id="negative dog years should convert into 0 human age."),
+        pytest.param(
+            1000,
+            1000,
+            [246, 197],
+            id="test large ages"),
     ]
 )
 def test_get_human_age(
@@ -67,16 +72,18 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == human_age_list
 
 
-def test_large_ages() -> None:
-    assert get_human_age(1000, 1000) == [246, 197]
-
-
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        pytest.param("11", 10, TypeError),
-        pytest.param(10, "26", TypeError),
-        pytest.param("10", "26", TypeError),
+        pytest.param("11", 10, TypeError, id="str type error"),
+        pytest.param(10, "26", TypeError, id="str type error"),
+        pytest.param("10", "26", TypeError, id="str type error"),
+        pytest.param([12], "26", TypeError, id="list type error"),
+        pytest.param("10", ["23"], TypeError, id="list type error"),
+        pytest.param((10,), "26", TypeError, id="set type error"),
+        pytest.param("10", ("26",), TypeError, id="set type error"),
+        pytest.param({10: 12}, "26", TypeError, id="dict type error"),
+        pytest.param(10, {"34": 89}, TypeError, id="dict type error"),
     ]
 )
 def test_invalid_types(
