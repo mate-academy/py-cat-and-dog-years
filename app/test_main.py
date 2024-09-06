@@ -23,8 +23,8 @@ def test_raising_error_correctly(
 @pytest.mark.parametrize(
     "cats_int, dogs_int, result",
     [
-        (20, -20, [0, 0]),
-        (15, -15, [0, 0]),
+        (13, -13, [0, 0]),
+        (12, -12, [0, 0]),
         (-10, 0, [0, 0]),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
