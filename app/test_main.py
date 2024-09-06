@@ -3,9 +3,21 @@ import pytest
 from app.main import get_human_age
 
 
-def test_raising_error_correctly() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("1", "2")
+@pytest.mark.parametrize(
+    "cats_input, dogs_input, exception",
+    [
+        ("sdad", 23, TypeError),
+        (22, "sad", TypeError),
+        ("ten", "nine", TypeError)
+    ]
+)
+def test_raising_error_correctly(
+        cats_input: int,
+        dogs_input: int,
+        exception: ValueError | TypeError
+) -> None:
+    with pytest.raises(exception):
+        get_human_age(cats_input, dogs_input)
 
 
 @pytest.mark.parametrize(
@@ -24,7 +36,7 @@ def test_raising_error_correctly() -> None:
 def test_cat_and_dogs_human_years(
         cats_int: int,
         dogs_int: int,
-        result: int
+        result: list
 ) -> None:
     assert (
         get_human_age(cats_int, dogs_int) == result
