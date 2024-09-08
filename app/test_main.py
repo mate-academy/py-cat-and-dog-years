@@ -27,10 +27,9 @@ from app.main import get_human_age
         "should convert large value of cat/dog age to human years as expected",
     ]
 )
-
-
 def test_age_convertion(cat_age: int, dog_age: int, result: int) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
 
 def test_should_raise_error_when_animal_age_is_not_number() -> None:
     with pytest.raises(TypeError):
