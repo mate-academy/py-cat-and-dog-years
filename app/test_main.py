@@ -1,29 +1,37 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_result_list_should_contain_two_values() -> None:
-    assert len(get_human_age(18, 14)) == 2
+@pytest.mark.parametrize(
+    "cat_age,dog_age,result",
+    [
+        (-1, -1, [0, 0]),
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 28, [2, 2]),
+        (28, 29, [3, 3]),
+        (100, 100, [21, 17]),
+    ],
+    ids=[
+        "should convert negative years into zero",
+        "should convert zero years into zero",
+        "should convert 14 cat/dog years into zero",
+        "should convert 15 cat/dog years into 1 human age",
+        "should convert 23 cat/dog years into 1 human age",
+        "should convert 24 cat/dog years into 2 human age",
+        "should convert 27/28 cat/dog years into 2 human age",
+        "should convert 28/29 cat/dog years into 3 human age",
+        "should convert large value of cat/dog age to human years as expected",
+    ]
+)
 
 
-def test_should_return_zeroes_when_age_is_zero() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+def test_age_convertion(cat_age: int, dog_age: int, result: int) -> None:
+    assert get_human_age(cat_age, dog_age) == result
 
-
-def test_should_return_zero_when_age_less_then_15() -> None:
-    assert get_human_age(12, 14) == [0, 0]
-
-
-def test_should_return_one_when_age_equals_15() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_two_when_age_equals_24() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_should_return_three_and_two_when_age_equals_28() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_return_three_when_age_equals_29() -> None:
-    assert get_human_age(29, 29) == [3, 3]
+def test_should_raise_error_when_animal_age_is_not_number() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("hi", [23, 17])
