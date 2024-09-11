@@ -1,5 +1,7 @@
-from app.main import get_human_age
 import pytest
+from typing import Any
+
+from app.main import get_human_age
 
 
 class TestGetHumanAge:
@@ -39,3 +41,21 @@ class TestGetHumanAge:
         expected_human_age: list[int],
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_human_age
+
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_error",
+        [
+            pytest.param(
+                "23", 23, TypeError,
+                id="when we put incorect type for parameters"
+            )
+        ]
+    )
+    def test_get_human_age_with_errors(
+        self,
+        cat_age: Any,
+        dog_age: Any,
+        expected_error: Exception
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
