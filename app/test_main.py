@@ -28,3 +28,25 @@ def test_get_human_age(
         result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,error",
+    [
+        (-1, 15, ValueError),
+        ("1", 15, TypeError),
+        (False, False, TypeError),
+    ],
+    ids=[
+        "Should not accept negative values",
+        "Should not accept type string",
+        "Should not accept type bool",
+    ]
+)
+def test_get_human_age_errors(
+        cat_age: int,
+        dog_age: int,
+        error: object
+) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_age, dog_age)
