@@ -27,7 +27,9 @@ import pytest
         "100/100 cat/dog ages should be converted to [21, 17] humans",
     ]
 )
-def test_convert_age(cat_age: int, dog_age: int, converted_ages: [int]) -> None:
+def test_convert_age(
+        cat_age: int, dog_age: int, converted_ages: [int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == converted_ages
 
 
