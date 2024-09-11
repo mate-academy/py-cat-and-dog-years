@@ -5,3 +5,6 @@ def test_should_return_0_human_years_for_14_cat_dog_years():
 
 def test_should_return_1_human_years_for_15_cat_dog_years():
     assert get_human_age(15, 15) == [1, 1]
+
+def test_should_return_1_human_years_for_23_cat_dog_years():
+    assert get_human_age(23, 23) == [1, 1]
