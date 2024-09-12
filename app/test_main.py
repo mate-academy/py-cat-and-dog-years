@@ -54,4 +54,4 @@ from app.main import get_human_age
 def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     if not isinstance(cat_age, int) or not isinstance(dog_age, int):
         raise TypeError("Age should be an integer.")
-    get_human_age(cat_age, dog_age)
+    assert get_human_age(cat_age, dog_age) == result
