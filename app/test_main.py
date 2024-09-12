@@ -32,6 +32,10 @@ class TestGetHumanAge:
                 100, 100, [21, 17],
                 id="return 21 human years for cat and 17 for dogs 100 years",
             ),
+            pytest.param(
+                -1, -10, [0, 0],
+                id="return 0 human year for negative values",
+            )
         ]
     )
     def test_get_human_age_correctly(
