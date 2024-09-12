@@ -38,12 +38,11 @@ from app.main import get_human_age
         )
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, result: list) -> any:
-    def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
-        assert isinstance(cat_age, int) and isinstance(dog_age, int),\
-            "Age should be an integer."
-        assert cat_age >= 0 and dog_age >= 0,\
-            "Age should be a positive number or 0."
-        assert (
-            get_human_age(cat_age, dog_age) == result
-        )
+def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
+    assert isinstance(cat_age, int) and isinstance(dog_age, int),\
+        "Age should be an integer."
+    assert cat_age >= 0 and dog_age >= 0,\
+        "Age should be a positive number or 0."
+    assert (
+        get_human_age(cat_age, dog_age) == result
+    )
