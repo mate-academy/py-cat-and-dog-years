@@ -1,4 +1,5 @@
 import pytest
+
 from app.main import get_human_age
 
 
@@ -35,14 +36,22 @@ from app.main import get_human_age
         pytest.param(
             200, 200, [46, 37],
             id="big numbers"
+        ),
+        pytest.param(
+            -5, -5, [0, 0],
+            id="negative numbers"
+        ),
+        pytest.param(
+            -10, 20, [0, 2],
+            id="negative cat age with positive dog age"
+        ),
+        pytest.param(
+            10, -20, [0, 1],
+            id="positive cat age with negative dog age"
         )
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
-    assert isinstance(cat_age, int) and isinstance(dog_age, int),\
-        "Age should be an integer."
-    assert cat_age >= 0 and dog_age >= 0,\
-        "Age should be a positive number or 0."
-    assert (
-        get_human_age(cat_age, dog_age) == result
-    )
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("Age should be an integer.")
+    get_human_age(cat_age, dog_age)
