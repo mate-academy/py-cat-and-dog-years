@@ -42,11 +42,11 @@ from app.main import get_human_age
             id="negative numbers"
         ),
         pytest.param(
-            -10, 20, [0, 2],
+            -10, 20, [0, 1],
             id="negative cat age with positive dog age"
         ),
         pytest.param(
-            10, -20, [0, 1],
+            10, -20, [0, 0],
             id="positive cat age with negative dog age"
         )
     ]
