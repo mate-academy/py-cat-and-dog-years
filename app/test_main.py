@@ -41,7 +41,8 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list[int]) \
 def test_get_human_age_out_of_range(cat_age: int, dog_age: int) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == [0, 0], (
-        f"Expected [0, 0] for out-of-range cat_age {cat_age} and dog_age {dog_age}, "
+        f"Expected [0, 0] for out-of-range cat_age {cat_age}"
+        f" and dog_age {dog_age}, "
         f"but got {result}."
     )
 
@@ -57,6 +58,6 @@ def test_get_human_age_out_of_range(cat_age: int, dog_age: int) -> None:
         (15, 15.5)
     ]
 )
-def test_get_human_age_invalid_types(cat_age, dog_age) -> None:
+def test_get_human_age_invalid_types(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
