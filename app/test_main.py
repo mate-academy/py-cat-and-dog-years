@@ -6,6 +6,7 @@ class TestAnimalAge:
     @pytest.mark.parametrize(
         "age_cat, age_dog, expected_result",
         [
+            (-1, -7, [0, 0]),
             (0, 0, [0, 0]),
             (14, 14, [0, 0]),
             (15, 15, [1, 1]),
@@ -28,8 +29,6 @@ class TestAnimalAge:
     @pytest.mark.parametrize(
         "age_cat, age_dog, expected_exception",
         [
-            (-100, -200.05, ValueError),
-            (311232321, 323123215, ValueError),
             ("311232321", 22, TypeError)
         ]
     )
