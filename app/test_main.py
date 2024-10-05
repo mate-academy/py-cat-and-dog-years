@@ -26,19 +26,20 @@ def test_get_human_age(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, expected_error",
     [
-        (-5, 10),
-        (10, -5),
-        ("15", 20),
-        (15, "20"),
-        (1e10, 15),
-        (15, 1e10),
+        (-5, 10, ValueError),
+        (10, -5, ValueError),
+        ("15", 20, TypeError),
+        (15, "20", TypeError),
+        (1e10, 15, ValueError),
+        (15, 1e10, ValueError),
     ]
 )
-def test_get_human_age_exceptions(cat_age: int, dog_age: int) -> None:
-    try:
-        result = get_human_age(cat_age, dog_age)
-        assert isinstance(result, list) and len(result) == 2
-    except (ValueError, TypeError):
-        pass
+def test_get_human_age_exceptions(
+        cat_age: int,
+        dog_age: int,
+        expected_error: type[BaseException]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
