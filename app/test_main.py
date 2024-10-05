@@ -7,25 +7,32 @@ from app.main import get_human_age
     "cat_age,dog_age,expected",
     [
         pytest.param(
-            0, 0, [0, 0], id="should not return values when out normal range"
+            0, 0, [0, 0],
+            id="should not return values when out normal range"
         ),
         pytest.param(
-            -1, -10, [0, 0], id="should not return values when out normal range"
+            -1, -10, [0, 0],
+            id="should not return values when out normal range"
         ),
         pytest.param(
-            14, 14, [0, 0], id="should return the correct value at the range boundaries"
+            14, 14, [0, 0],
+            id="should return the correct value at the range boundaries"
         ),
         pytest.param(
-            23, 23, [1, 1], id="should return the correct value at the range boundaries"
+            23, 23, [1, 1],
+            id="should return the correct value at the range boundaries"
         ),
         pytest.param(
-            24, 24, [2, 2], id="should return the correct value at the range boundaries"
+            24, 24, [2, 2],
+            id="should return the correct value at the range boundaries"
         ),
         pytest.param(
-            27, 29, [2, 3], id="should return the correct value at the range boundaries"
+            27, 29, [2, 3],
+            id="should return the correct value at the range boundaries"
         ),
         pytest.param(
-            500, 500, [121, 97], id="should not return values when out normal range"
+            500, 500, [121, 97],
+            id="should not return values when out normal range"
         )
 
     ],
