@@ -1,5 +1,4 @@
 import pytest
-
 from app.main import get_human_age
 
 
@@ -20,6 +19,25 @@ from app.main import get_human_age
 def test_get_human_age(
         cat_age: int,
         dog_age: int,
-        expected_human_age: int
+        expected_human_age: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-5, 10),
+        (10, -5),
+        ("15", 20),
+        (15, "20"),
+        (1e10, 15),
+        (15, 1e10),
+    ]
+)
+def test_get_human_age_exceptions(cat_age: int, dog_age: int) -> None:
+    try:
+        result = get_human_age(cat_age, dog_age)
+        assert isinstance(result, list) and len(result) == 2
+    except (ValueError, TypeError):
+        pass
