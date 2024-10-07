@@ -3,7 +3,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, expected_error",
+    "cat_age, dog_age, expected_result",
     [
         (0, 0, [0, 0]),
         (14, 9, [0, 0]),
@@ -16,15 +16,15 @@ from app.main import get_human_age
         (40, 100, [6, 17]),
         (100, 100, [21, 17]),
         (249996, 199997, [62495, 39996]),
-        (-1, 5),
-        (5, -1),
-        (-10, -5)
+        (-1, 5, [0, 0]),
+        (5, -1, [0, 0]),
+        (-10, -5, [0, 0])
     ]
 )
 def test_get_human_age(
         cat_age: int,
         dog_age: int,
-        expected_error: type[BaseException]
+        expected_result: list[int]
 ) -> None:
-    with pytest.raises(expected_error):
-        get_human_age(cat_age, dog_age)
+    result = get_human_age(cat_age, dog_age)
+    assert result == expected_result
