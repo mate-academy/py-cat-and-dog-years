@@ -1,4 +1,7 @@
 import pytest
+
+from typing import Any
+
 from app.main import get_human_age
 
 
@@ -18,7 +21,7 @@ from app.main import get_human_age
     (10**8, 10**8, [24999996, 19999997]),
     (10**12, 10**12, [249999999996, 199999999997]),
 ])
-def test_cat_years(cat_age: int, dog_age: int, expected: list) -> None:
+def test_cat_years(cat_age: Any, dog_age: Any, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -32,6 +35,6 @@ def test_cat_years(cat_age: int, dog_age: int, expected: list) -> None:
     ({"cat": 15}, 15),
     (15, {"dog": 15}),
 ])
-def test_invalid_types(cat_age: int, dog_age: int) -> None:
+def test_invalid_type(cat_age: Any, dog_age: Any) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
