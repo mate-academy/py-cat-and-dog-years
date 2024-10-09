@@ -3,7 +3,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    ("cat_years", "dog_years", "result"),
+    "cat_years, dog_years, result",
     [
         pytest.param(0, 0, [0, 0],
                      id="Should return 0 if age < 15"),
@@ -25,10 +25,27 @@ from app.main import get_human_age
                      id="Should return zero when age < 0"),
     ]
 )
-def test_correct_result(cat_years: int, dog_years: int, result: list) -> None:
+def test_correct_result(
+        cat_years: int,
+        dog_years: int,
+        result: list[int]
+) -> None:
     assert get_human_age(cat_years, dog_years) == result
 
 
-def test_should_return_type_error() -> None:
-    with pytest.raises(TypeError):
-        get_human_age(2, "5")
+@pytest.mark.parametrize(
+    "cat_age, dog_age, error",
+    [
+        (2, "5", TypeError),
+        ("5", 10, TypeError),
+        (["2", 3], "1", TypeError),
+        ({}, 3.05, TypeError),
+    ]
+)
+def test_should_return_type_error(
+        cat_age: int,
+        dog_age: int,
+        error: Exception,
+) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_age, dog_age)
