@@ -28,9 +28,42 @@ from app.main import get_human_age
         "cat and dog different ages"
     ]
 )
-def test_get_human_age_valid(
+def test_get_human_age(
         cat_age: int,
         dog_age: int,
         expected: list[int]
 ) -> None:
+    """
+    This function tests the get_human_age function with valid inputs.
+
+    :param cat_age: The age of the cat in cat years.
+    :param dog_age: The age of the dog in dog years.
+    :param expected: The expected output list of ages in human years.
+    """
+    assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (1000, 1000, [246, 197]),
+        (5000, 5000, [1246, 997])
+    ],
+    ids=[
+        "large values",
+        "even larger values"
+    ]
+)
+def test_get_human_age_with_large_values(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
+    """
+    Test get_human_age function with large input values.
+
+    :param cat_age: The age of the cat in cat years (large value).
+    :param dog_age: The age of the dog in dog years (large value).
+    :param expected: The expected output list of ages in human years.
+    """
     assert get_human_age(cat_age, dog_age) == expected
