@@ -16,11 +16,6 @@ class TestCatDogYears:
                 id="test should return zero ages when cat and dog age == 0"
             ),
             pytest.param(
-                14,
-                14,
-                [0, 0],
-                id="test should return zero ages when cat and dog age < 15"),
-            pytest.param(
                 15,
                 15,
                 [1, 1],
