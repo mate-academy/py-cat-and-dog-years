@@ -7,52 +7,48 @@ from app.main import get_human_age
 
 class TestCatDogYears:
     @pytest.mark.parametrize(
-        "cat_age,dog_age,human_age",
+        "cat_age,dog_age,human_ages",
         [
             pytest.param(
                 0,
-                0,
+                14,
                 [0, 0],
-                id="test should return zero ages when cat and dog age == 0"
+                id=""
+                   "test should return human ages equal zero "
+                   "when cat or dog ages equal 0 or < 15"
             ),
             pytest.param(
+                14,
                 15,
-                15,
-                [1, 1],
-                id="test should return 1 ages when cat and dog age >= 15"
-            ),
-            pytest.param(
-                23,
-                23,
-                [1, 1],
-                id="test should return 1 ages when cat and dog age <= 23"
+                [0, 1],
+                id="first 15 cat or dog years should be equal to 1 human year"
             ),
             pytest.param(
                 24,
-                24,
-                [2, 2],
-                id="test should return 2 ages when cat and dog age == 24"
+                23,
+                [2, 1],
+                id="next 9 cat or dog years should give 1 more human year"
             ),
             pytest.param(
-                27,
-                27,
-                [2, 2],
-                id="test should return 2 ages when cat and dog age == 27"
-            ),
-            pytest.param(
+
                 28,
                 28,
                 [3, 2],
-                id=""
-                   "test should return "
-                   "3 cat age and 2 dog age "
-                   "when cat and dog age == 28"
+                id="every 4 next cat years should give 1 extra human year"
             ),
             pytest.param(
-                -1,
-                15,
-                [0, 1],
-                id="test should return zero when some age < 0"
+
+                28,
+                29,
+                [3, 3],
+                id="every 5 next dog years should give 1 extra human year"
+            ),
+            pytest.param(
+
+                0,
+                0,
+                [0, 0],
+                id="should return zeros when cat or dog age equals zeros"
             )
         ]
     )
@@ -60,20 +56,20 @@ class TestCatDogYears:
             self,
             cat_age: int,
             dog_age: int,
-            human_age: list
+            human_ages: list[int]
     ) -> None:
-        assert get_human_age(cat_age, dog_age) == human_age
+        assert get_human_age(cat_age, dog_age) == human_ages
 
     @pytest.mark.parametrize(
-        "cat_age,dog_age,exception",
+        "cat_age,dog_age,expected_error",
         [
             pytest.param(
-                "1",
-                2,
-                TypeError,
-                id=""
-                   "test should raise TypeError "
-                   "when some age is not a int type"
+                "29", [], AssertionError,
+                id="should rise error if age not integer"
+            ),
+            pytest.param(
+                -100, 1000, AssertionError,
+                id="should rise error if age not in normal range"
             )
         ]
     )
@@ -81,7 +77,7 @@ class TestCatDogYears:
             self,
             cat_age: Any,
             dog_age: Any,
-            exception: Type[Exception]
+            expected_error: Type[Exception]
     ) -> None:
-        with pytest.raises(exception):
+        with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
