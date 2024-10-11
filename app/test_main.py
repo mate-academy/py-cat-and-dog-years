@@ -79,9 +79,11 @@ class TestCatDogYears:
             dog_age: Any,
             expected_error: Type[Exception]
     ) -> None:
-        with pytest.raises(expected_error):
+        with (((pytest.raises(expected_error)))):
             get_human_age(cat_age, dog_age)
             assert isinstance(cat_age, int), "cat_age must be integer"
             assert isinstance(dog_age, int), "cat_age must be integer"
-            assert 0 <= cat_age <= 100, "cat_age must be in range from 0 to 100"
-            assert 0 <= dog_age <= 100, "dog_age must be in range from 0 to 100"
+            assert 0 <= cat_age <= 100, \
+                "cat_age must be in range from 0 to 100"
+            assert 0 <= dog_age <= 100, \
+                "dog_age must be in range from 0 to 100"
