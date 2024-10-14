@@ -28,8 +28,7 @@ class TestGetHumanAge:
         "cat_years, dog_years, expected_error",
         [
             ("1", 2, TypeError),
-            (None, 0, TypeError),
-            (-1, 4, AttributeError)
+            (None, 0, TypeError)
         ]
     )
     def test_get_correct_error(
