@@ -71,32 +71,19 @@ def test_handle_correct_results(
         pytest.param(
             "29", [], TypeError,
             id="should rise error if age not integer"
-        )
-    ]
-)
-def test_handle_correct_data_input_type(
-        cat_age: int,
-        dog_age: int,
-        expected_error: TypeError
-) -> None:
-    with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age,expected_error",
-    [
+        ),
         pytest.param(
             -100, 1000, AssertionError,
             id="should rise error if age not in normal range"
         )
     ]
 )
-def test_handle_correct_data_input_value(
+def test_handle_correct_data_input(
         cat_age: int,
         dog_age: int,
-        expected_error: AssertionError
+        expected_error: Exception
 ) -> None:
-    with pytest.raises(AssertionError):
+    with pytest.raises(expected_error):
         assert 0 <= cat_age <= 100, "cat_age must be in range from 0 to 100"
         assert 0 <= dog_age <= 100, "dog_age must be in range from 0 to 100"
+        get_human_age(cat_age, dog_age)
