@@ -14,6 +14,16 @@ class TestGetHumanAge:
             (27, 27, [2, 2]),
             (28, 28, [3, 2]),
             (100, 100, [21, 17])
+        ],
+        ids=[
+            "0 cat/dog years should convert into 0 human age.",
+            "14 cat/dog years should convert into 0 human age.",
+            "15 cat/dog years should convert into 1 human age.",
+            "23 cat/dog years should convert into 1 human age.",
+            "24 cat/dog years should convert into 2 human age.",
+            "27/27 cat/dog years should convert into 2 human age.",
+            "28/28 cat/dog years should convert into 3/2 human age.",
+            "100/100 cat/dog years should convert into 21/17 human age."
         ]
     )
     def test_get_correctly_human_age(
@@ -29,6 +39,10 @@ class TestGetHumanAge:
         [
             ("1", 2, TypeError),
             (None, 0, TypeError)
+        ],
+        ids=[
+            "should return TypeError",
+            "should return TypeError"
         ]
     )
     def test_get_correct_error(
