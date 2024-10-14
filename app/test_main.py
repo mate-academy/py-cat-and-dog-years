@@ -7,7 +7,7 @@ from app.main import get_human_age
     "cat_age, dog_age, expected_value",
     [
         pytest.param(
-            0, 0,
+            14, 14,
             [0, 0],
             id="should return zero when dog-cat ages equal 0"
         ),
@@ -33,7 +33,7 @@ from app.main import get_human_age
         ),
         pytest.param(
             27, 27,
-            [27, 27],
+            [2, 2],
             id="27 dog-cat years not enough for 3 human years"
         ),
         pytest.param(
