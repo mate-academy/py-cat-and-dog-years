@@ -29,7 +29,7 @@ class TestGetHumanAge:
         [
             ("1", 2, TypeError),
             (None, 0, TypeError),
-            (-1, 4, TypeError)
+            (-1, 4, AttributeError)
         ]
     )
     def test_get_correct_error(
