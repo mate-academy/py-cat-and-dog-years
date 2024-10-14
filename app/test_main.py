@@ -28,7 +28,7 @@ class TestGetHumanAge:
         "cat_years, dog_years, expected_error",
         [
             ("1", 2, TypeError),
-            ("", 0, ValueError),
+            (None, 0, ValueError),
             (-1, 4, ValueError)
         ]
     )
