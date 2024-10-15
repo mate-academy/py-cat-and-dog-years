@@ -40,14 +40,22 @@ def test_first(cat_age: int, dog_age: int, result: list) -> None:
         ([], 0, TypeError),
         (0, "", TypeError),
         ("", 0, TypeError),
+        (0, {}, TypeError),
+        ({}, 0, TypeError),
     ],
     ids=[
         "TypeError for cat list",
         "TypeError for dog list",
         "TypeError for dog string",
         "TypeError for dog string",
+        "TypeError for dog dict",
+        "TypeError for dog dict",
     ]
 )
-def test_raising_errors_correctly(cat_age: int, dog_age: int, expected_error: Exception) -> None:
+def test_raising_errors_correctly(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Exception
+) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
