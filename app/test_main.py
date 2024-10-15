@@ -38,11 +38,15 @@ class TestGetHumanAge:
         "cat_years, dog_years, expected_error",
         [
             ("1", 2, TypeError),
-            (None, 0, TypeError)
+            (None, 0, TypeError),
+            (-1, 3, ValueError),
+            (150, 23, ValueError)
         ],
         ids=[
             "should return TypeError",
-            "should return TypeError"
+            "should return TypeError",
+            "should return ValueError",
+            "should return ValueError"
         ]
     )
     def test_get_correct_error(
