@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -31,9 +33,9 @@ def test_get_human_age(
     ]
 )
 def test_raises_error_when_incorrect_data_type(
-        cat_age_incorrect,
-        dog_age_incorrect,
-        error
+        cat_age_incorrect: Any,
+        dog_age_incorrect: Any,
+        error: Exception
 ) -> None:
     with pytest.raises(error):
         get_human_age(cat_age_incorrect, dog_age_incorrect)
