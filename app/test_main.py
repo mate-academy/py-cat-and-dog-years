@@ -46,9 +46,9 @@ def test_first(cat_age: int, dog_age: int, result: list) -> None:
     ids=[
         "TypeError for cat list",
         "TypeError for dog list",
+        "TypeError for cat string",
         "TypeError for dog string",
-        "TypeError for dog string",
-        "TypeError for dog dict",
+        "TypeError for cat dict",
         "TypeError for dog dict",
     ]
 )
