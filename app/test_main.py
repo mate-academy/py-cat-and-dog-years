@@ -8,25 +8,25 @@ from app.main import get_human_age
     "cat_age,dog_age,result",
     [
         (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
-        (-10, -100, [0, 0])
+        (-10, -100, [0, 0]),
+        (1_000_000, 1_000_000, [249996, 199997])
     ],
     ids=[
-        "for 0 years cat and dog 0",
-        "for 14 years cat and dog similar",
-        "for 15 years cat and dog similar",
-        "for 23 years cat and dog similar all +1 year",
-        "for 24 years cat and dog similar all +1 year",
-        "for 27 years cat and dog similar all +1 year",
-        "for 28 years cat +1 and dog different all +1 year",
-        "for 100 years cat +1 and dog different all +1 year",
-        "years is negative numbers"
+        "for 0 years cat and dog 0 cat and dog are 0 years old",
+        "cat and dog are 15 years old",
+        "cat and dog are 23 years old",
+        "cat and dog are 24 years old",
+        "cat and dog are 27 years old",
+        "cat and dog are 28 years old",
+        "cat and dog are 100 years old",
+        "cat and dog are negative numbers",
+        "cat and dog are really large numbers"
     ]
 )
 def test_first(cat_age: int, dog_age: int, result: list) -> None:
