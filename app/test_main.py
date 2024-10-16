@@ -1,6 +1,6 @@
-import pytest
-
 from typing import Any
+
+import pytest
 
 from app.main import get_human_age
 
@@ -70,31 +70,25 @@ class TestGetHumanAge:
 
     @pytest.mark.parametrize(
         "cat_age,"
-        "dog_age,"
-        "expected_error", [
+        "dog_age", [
             pytest.param(
                 "20", "20",
-                TypeError,
                 id="test get 'str' should raising Type Error"
             ),
             pytest.param(
                 [21], [21],
-                TypeError,
                 id="test get 'list' should raising Type Error"
             ),
             pytest.param(
                 {21}, {21},
-                TypeError,
                 id="test get 'set' should raising Type Error"
             ),
             pytest.param(
                 {1: 1}, {2: 2},
-                TypeError,
                 id="test get 'dict' should raising Type Error"
             ),
             pytest.param(
                 (1, 1), (2, 2),
-                TypeError,
                 id="test get 'tuple' should raising Type Error"
             )
         ]
@@ -103,7 +97,6 @@ class TestGetHumanAge:
             self,
             cat_age: Any,
             dog_age: Any,
-            expected_error: type
     ) -> None:
 
         with pytest.raises(TypeError):
