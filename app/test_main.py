@@ -1,6 +1,8 @@
-from app.main import get_human_age
-
 import pytest
+
+from typing import Any
+
+from app.main import get_human_age
 
 
 class TestGetHumanAge:
@@ -73,16 +75,36 @@ class TestGetHumanAge:
             pytest.param(
                 "20", "20",
                 TypeError,
-                id="test should raising Type Error"
+                id="test get 'str' should raising Type Error"
+            ),
+            pytest.param(
+                [21], [21],
+                TypeError,
+                id="test get 'list' should raising Type Error"
+            ),
+            pytest.param(
+                {21}, {21},
+                TypeError,
+                id="test get 'set' should raising Type Error"
+            ),
+            pytest.param(
+                {1: 1}, {2: 2},
+                TypeError,
+                id="test get 'dict' should raising Type Error"
+            ),
+            pytest.param(
+                (1, 1), (2, 2),
+                TypeError,
+                id="test get 'tuple' should raising Type Error"
             )
         ]
     )
     def test_raising_errors_in_get_human_age(
             self,
-            cat_age: int,
-            dog_age: int,
+            cat_age: Any,
+            dog_age: Any,
             expected_error: type
     ) -> None:
 
-        with pytest.raises(expected_error):
+        with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
