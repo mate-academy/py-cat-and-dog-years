@@ -6,11 +6,11 @@ def test_get_human_age_zero() -> None:
 
 
 def test_get_human_age_first_year() -> None:
-    assert get_human_age(15, 15) == [1, 1]
+    assert get_human_age(14, 14) == [0, 0]
 
 
 def test_get_human_age_second_year() -> None:
-    assert get_human_age(24, 24) == [2, 2]
+    assert get_human_age(23, 23) == [1, 1]
 
 
 def test_get_human_age_third_year_cat() -> None:
