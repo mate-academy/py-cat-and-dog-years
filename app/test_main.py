@@ -42,7 +42,6 @@ def test_get_human_age_returns_correct_values(
     "cat_age,dog_age,expected_exception",
     [
         # negative values
-
         (-1, -1, ValueError),
         (-10, 0, ValueError),
         (0, -5, ValueError),
