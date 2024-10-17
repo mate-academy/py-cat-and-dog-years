@@ -17,7 +17,9 @@ from app.main import get_human_age
         "large_ages",
     ]
 )
-def test_get_human_age_valid_cases(cat_age, dog_age, expected) -> None:
+def test_get_human_age_valid_cases(cat_age: int,
+                                   dog_age: int,
+                                   expected: list[int, int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -40,7 +42,7 @@ def test_get_human_age_valid_cases(cat_age, dog_age, expected) -> None:
         "none_dog_age",
     ]
 )
-def test_get_human_age_invalid_cases(cat_age, dog_age) -> None:
+def test_get_human_age_invalid_cases(cat_age: any, dog_age: any) -> None:
     try:
         result = get_human_age(cat_age, dog_age)
         assert isinstance(result, list) and len(result) == 2
