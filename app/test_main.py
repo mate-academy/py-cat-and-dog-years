@@ -46,11 +46,11 @@ class TestGetHumanAge:
             (1200, 1500, [296, 297])
         ],
         ids=[
-            "Age of cat can't be less than 0",
-            "Age of dog can't be less than 0",
-            "Age of cat and dog can't be less than 0",
-            "Age of cat and dog can't be more than 100",
-            "Age of cat and dog can't be more than 100",
+            "Incorrect input: age of cat can't be less than 0",
+            "Incorrect input: age of dog can't be less than 0",
+            "Incorrect input: age of cat and dog can't be less than 0",
+            "Incorrect input: age of cat and dog can't be more very high",
+            "Incorrect input: age of cat and dog can't be more very high",
         ]
     )
     def test_get_negative_or_very_high_value(self,
