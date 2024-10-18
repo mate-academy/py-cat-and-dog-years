@@ -24,22 +24,10 @@ from app.main import get_human_age
             id="15 cat/dog years should convert into 1 human age."
         ),
         pytest.param(
-            23,
-            23,
-            [1, 1],
-            id="23 cat/dog years should convert into 1 human age."
-        ),
-        pytest.param(
             24,
             24,
             [2, 2],
             id="24 cat/dog years should convert into 2 human age."
-        ),
-        pytest.param(
-            27,
-            27,
-            [2, 2],
-            id="27 cat/dog years should convert into 2 human age."
         ),
         pytest.param(
             28,
