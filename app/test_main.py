@@ -28,6 +28,6 @@ def checking_big_values() -> None:
 def test_more_examples() -> None:
     assert get_human_age(15, 15) == [1, 1]
     assert get_human_age(16, 16) == [1, 1]
-    assert get_human_age(23, 23) == [2, 2]
+    assert get_human_age(23, 23) == [1, 1]
     assert get_human_age(27, 28) == [2, 2]
     assert get_human_age(100, 100) == [21, 17]
