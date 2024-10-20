@@ -40,9 +40,9 @@ def test_additional_years() -> None:
 
 def test_large_ages() -> None:
     assert get_human_age(50, 50) == [8, 7],\
-        f"Expected [10, 8], but got {get_human_age(50, 50)}"
+        f"Expected [8, 7], but got {get_human_age(50, 50)}"
     assert get_human_age(75, 75) == [14, 12],\
-        f"Expected [16, 12], but got {get_human_age(75, 75)}"
+        f"Expected [14, 12], but got {get_human_age(75, 75)}"
 
 
 def test_edge_cases() -> None:
