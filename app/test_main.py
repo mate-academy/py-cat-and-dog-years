@@ -19,7 +19,7 @@ from app.main import get_human_age
         "cat and dog age 14 should be equal to 0",
         "cat and dog age 15 should be equal to 1",
         "cat and dog age 23 should be equal to 1",
-        "cat and dog age 24 should be equal to 3",
+        "cat and dog age 24 should be equal to 2",
         "cat and dog age 27 should be equal to 2",
         "cat and dog age 100 should be equal to 21 and 17"
     ]
