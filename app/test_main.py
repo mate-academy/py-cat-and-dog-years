@@ -50,10 +50,9 @@ from app.main import get_human_age
         ),
     ]
 )
-
 def test_modify_convert_to_human(
-        cat_age,
-        dog_age,
-        result
+        cat_age: int,
+        dog_age: int,
+        result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
