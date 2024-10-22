@@ -1,7 +1,7 @@
 import pytest
-
-
 from app.main import get_human_age
+
+
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
@@ -32,7 +32,8 @@ from app.main import get_human_age
     ]
 )
 def test_func_should_return_correctly_result(
-        cat_age,
-        dog_age,
-        result):
+        cat_age: int,
+        dog_age: int,
+        result: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == result
