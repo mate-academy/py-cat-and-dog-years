@@ -32,7 +32,7 @@ def test_should_equal_expected_result(
         (17, 17)
     ]
 )
-def test_should_not_change_previous_value_if_output_change_some_integer(
+def test_should_return_one_for_specific_years(
     cat_year: int,
     dog_year: int
 ) -> None:
@@ -48,12 +48,13 @@ def test_should_not_change_previous_value_if_output_change_some_integer(
         (0, 0)
     ]
 )
-def test_should_shall_not_exceed_zero_and_hundred(
+def test_years_within_valid_range(
     cat_year: int,
     dog_year: int
 ) -> None:
-    assert 0 <= cat_year <= 100
-    assert 0 <= dog_year <= 100
+    human_cat_year, human_dog_year = get_human_age(cat_year, dog_year)
+    assert 0 <= human_cat_year <= 100
+    assert 0 <= human_dog_year <= 100
 
 
 @pytest.mark.parametrize(
