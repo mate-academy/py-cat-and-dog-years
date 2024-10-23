@@ -1,5 +1,5 @@
 import pytest
-
+from typing import Any
 
 from app.main import get_human_age
 
@@ -48,7 +48,7 @@ def test_should_not_change_previous_value_if_output_change_some_integer(
         (0, 0)
     ]
 )
-def test_should_shall_not_exceed(
+def test_should_shall_not_exceed_zero_and_hundred(
     cat_year: int,
     dog_year: int
 ) -> None:
@@ -72,8 +72,8 @@ def test_should_shall_not_exceed(
     ]
 )
 def test_should_raise_correct_exception_if_function_receive_an_incorrect_type(
-        cat_year: int,
-        dog_year: int,
+        cat_year: Any,
+        dog_year: Any,
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_year, dog_year)
