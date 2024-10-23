@@ -19,7 +19,7 @@ from app.main import get_human_age
 def test_should_equal_expected_result(
     cat_year: int,
     dog_year: int,
-    expected_result: list[int, int]
+    expected_result: list[int]
 ) -> None:
     assert get_human_age(cat_year, dog_year) == expected_result
 
@@ -32,7 +32,7 @@ def test_should_equal_expected_result(
         (17, 17)
     ]
 )
-def test_should_not_change_previous_value_if_output_change_with_some_integer(
+def test_should_not_change_previous_value_if_output_change_some_integer(
     cat_year: int,
     dog_year: int
 ) -> None:
