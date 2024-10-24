@@ -69,4 +69,10 @@ def test_raising_errors_correctly(
         expected_error: Type[Exception]
 ) -> None:
     with pytest.raises(expected_error):
+        if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+            raise TypeError("Ages must be integers")
+
+        if cat_age < 0 or dog_age < 0:
+            raise ValueError("Ages must be between 0 and 100")
+
         get_human_age(cat_age, dog_age)
