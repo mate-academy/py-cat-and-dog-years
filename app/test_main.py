@@ -1,6 +1,6 @@
-import pytest
-
 from app.main import get_human_age
+from typing import Type
+import pytest
 
 
 @pytest.mark.parametrize(
@@ -25,18 +25,6 @@ from app.main import get_human_age
             id="28/29 cat/dogs years is 3 human"
         ),
         pytest.param(
-            100.1,
-            100.5,
-            [21, 17],
-            id="remainder should be discarded"
-        ),
-        pytest.param(
-            -5,
-            -3,
-            [0, 0],
-            id="value is negative should return 0"
-        ),
-        pytest.param(
             0,
             0,
             [0, 0],
@@ -56,3 +44,29 @@ def test_modify_convert_to_human(
         result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [
+        pytest.param(
+            100.1,
+            100.5,
+            TypeError,
+            id="should raise error if type of value is non integer"
+        ),
+        pytest.param(
+            -5,
+            -3,
+            ValueError,
+            id="should raise error if value is negative"
+        ),
+    ]
+)
+def test_raising_errors_correctly(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Type[Exception]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
