@@ -37,4 +37,3 @@ def test_func_should_return_correctly_result(
         result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
-
