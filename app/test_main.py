@@ -29,13 +29,15 @@ class TestAnimalsYearsTransfer:
                 27,
                 27,
                 [2, 2],
-                id="should return [2, 2] if 24 <= `cat_years` < 28 and 24 <= `dog_years` < 29"
+                id="should return [2, 2] if 24 <= `cat_years` < 28 "
+                   "and 24 <= `dog_years` < 29"
             ),
             pytest.param(
                 28,
                 28,
                 [3, 2],
-                id="should return [3, 2] if `cat_years` >= 28 and 28 <= `dog_years` < 29"
+                id="should return [3, 2] if `cat_years` >= 28 "
+                   "and 28 <= `dog_years` < 29"
             ),
             pytest.param(
                 100,
