@@ -44,6 +44,12 @@ class TestAnimalsYearsTransfer:
                 100,
                 [21, 17],
                 id="should return [21, 17] when each animal years are 100"
+            ),
+            pytest.param(
+                -15,
+                -24,
+                [0, 0],
+                id="should return [0, 0] if animals ages are negative numbers"
             )
         ]
     )
