@@ -1,36 +1,58 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_get_human_age_with_zero_years() -> None:
-    """Test case for zero cat and dog years."""
-    assert get_human_age(0, 0) == [0, 0]
+class TestAgeForAnimal:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected",
+        [
+            (0, 0, [0, 0]),
+            (14, 14, [0, 0]),
+            (15, 15, [1, 1]),
+            (23, 23, [1, 1]),
+            (24, 24, [2, 2]),
+            (27, 27, [2, 2]),
+            (28, 28, [3, 2]),
+            (100, 100, [21, 17])
+        ]
+    )
+    def test_get_age_correctly(self, cat_age: int, dog_age: int, expected: list) -> None:
+        """Test if the function correctly converts cat and dog ages to human years."""
+        assert get_human_age(cat_age, dog_age) == expected
 
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected",
+        [
+            (-1, 5, [0, 0]),
+            (5, -1, [0, 0]),
+            (0, 5, [0, 0]),
+            (5, 0, [0, 0]),
+            (1000, 2000, [246, 397])
+        ]
+    )
+    def test_edge_cases(self, cat_age: int, dog_age: int, expected: list) -> None:
+        """Test edge cases with extreme or negative ages."""
+        assert get_human_age(cat_age, dog_age) == expected
 
-def test_get_human_age_with_cat_and_dog_below_threshold() -> None:
-    """Test case for cat and dog ages below the threshold for human years."""
-    assert get_human_age(14, 14) == [0, 0]
+    @pytest.mark.parametrize(
+        "cat_age, dog_age",
+        [
+            (5, 5),
+            (2, 7),
+        ]
+    )
+    def test_normal_cases(self, cat_age: int, dog_age: int) -> None:
+        """Test cases that should return [0, 0]."""
+        assert get_human_age(cat_age, dog_age) == [0, 0]
 
-
-def test_get_human_age_with_first_human_year() -> None:
-    """Test case for ages equal to the first threshold for human years."""
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_get_human_age_with_ages_above_first_threshold() -> None:
-    """Test case for cat and dog ages just above the first threshold."""
-    assert get_human_age(16, 16) == [1, 1]
-
-
-def test_get_human_age_with_second_human_year() -> None:
-    """Test case for ages that should yield two human years."""
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_get_human_age_with_cat_years_exceeding_second_threshold() -> None:
-    """Test case for cat ages exceeding the second threshold."""
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_get_human_age_with_large_ages() -> None:
-    """Test case for large ages to verify calculations."""
-    assert get_human_age(100, 100) == [21, 17]
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected",
+        [
+            (10, 10, [0, 0]),
+            (19, 20, [1, 1]),
+            (23, 25, [1, 2]),
+        ]
+    )
+    def test_additional_cases(self, cat_age: int, dog_age: int, expected: list) -> None:
+        """Test additional scenarios for various cat and dog ages."""
+        assert get_human_age(cat_age, dog_age) == expected
