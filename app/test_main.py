@@ -5,7 +5,7 @@ import pytest
 from app.main import get_human_age
 
 
-class TestHumanAge:
+class TestAnimalAge:
     @pytest.mark.parametrize(
         "cat_age, dog_age, expected",
         [
@@ -16,18 +16,20 @@ class TestHumanAge:
             (24, 24, [2, 2]),
             (28, 28, [3, 2]),
             (100, 100, [21, 17]),
+            (-1, 5, [0, 0]),
+            (5, -1, [0, 0]),
+            (1000, 2000, [246, 397]),
+            (10, 10, [0, 0]),
+            (19, 20, [1, 1]),
+            (23, 25, [1, 2]),
         ]
     )
-    def test_typical_human_age(
+    def test_get_age_correctly(
             self,
             cat_age: int,
             dog_age: int,
             expected: List[int]
     ) -> None:
-        """
-        Tests typical cases for calculating
-        human equivalent ages for cats and dogs.
-        """
         actual = get_human_age(cat_age, dog_age)
         assert actual == expected, (
             f"Expected {expected} when cat's age "
@@ -36,26 +38,15 @@ class TestHumanAge:
         )
 
     @pytest.mark.parametrize(
-        "cat_year,dog_year",
+        "cat_age, dog_age",
         [
-            (28, 28),
-            (100, 100),
-            (24, 24),
-            (0, 0)
+            (5, 5),
+            (2, 7),
         ]
     )
-    def test_range_of_years(
-            self,
-            cat_year: int,
-            dog_year: int
-    ) -> None:
-        """
-        Tests if calculated human ages for cats and dogs
-        are within an acceptable range.
-        """
-        human_cat_year, human_dog_year = get_human_age(cat_year, dog_year)
-        assert 0 <= human_cat_year <= 100
-        assert 0 <= human_dog_year <= 100
+    def test_normal_cases(self, cat_age: int, dog_age: int) -> None:
+        assert get_human_age(cat_age, dog_age) == [0, 0]
+
 
     @pytest.mark.parametrize(
         "cat_year,dog_year",
@@ -71,9 +62,5 @@ class TestHumanAge:
             cat_year: Any,
             dog_year: Any,
     ) -> None:
-        """
-        Tests if incorrect data types for cat or dog age
-        raise a TypeError.
-        """
         with pytest.raises(TypeError):
             get_human_age(cat_year, dog_year)
