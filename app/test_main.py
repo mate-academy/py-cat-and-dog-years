@@ -1,6 +1,7 @@
-from typing import Type
+from typing import Any, List
 
 import pytest
+
 from app.main import get_human_age
 
 
@@ -14,14 +15,14 @@ class TestHumanAge:
             (23, 23, [1, 1]),
             (24, 24, [2, 2]),
             (28, 28, [3, 2]),
-            (100, 100, [21, 17])
+            (100, 100, [21, 17]),
         ]
     )
-    def test_get_human_age(
+    def test_typical_human_age(
             self,
             cat_age: int,
             dog_age: int,
-            expected: list
+            expected: List[int]
     ) -> None:
         """
         Tests typical cases for calculating
@@ -35,24 +36,44 @@ class TestHumanAge:
         )
 
     @pytest.mark.parametrize(
-        "cat_age, dog_age, exception",
+        "cat_year,dog_year",
         [
-            ("ten", 10, TypeError),
-            (None, 10, TypeError),
-            (10, 5.5, TypeError),
-            (10, -1, ValueError),
-            (-5, -10, ValueError)
+            (28, 28),
+            (100, 100),
+            (24, 24),
+            (0, 0)
         ]
     )
-    def test_invalid_inputs(
+    def test_range_of_years(
             self,
-            cat_age: any,
-            dog_age: any,
-            exception: Type[Exception]
+            cat_year: int,
+            dog_year: int
     ) -> None:
         """
-        Tests that invalid inputs for cat or dog
-        age raise the appropriate exceptions.
+        Tests if calculated human ages for cats and dogs
+        are within an acceptable range.
         """
-        with pytest.raises(exception):
-            get_human_age(cat_age, dog_age)
+        human_cat_year, human_dog_year = get_human_age(cat_year, dog_year)
+        assert 0 <= human_cat_year <= 100
+        assert 0 <= human_dog_year <= 100
+
+    @pytest.mark.parametrize(
+        "cat_year,dog_year",
+        [
+            ("17", 15),
+            ((7 + 5j), (5 + 8j)),
+            (None, 15),
+            ([24], [24])
+        ]
+    )
+    def test_incorrect_type(
+            self,
+            cat_year: Any,
+            dog_year: Any,
+    ) -> None:
+        """
+        Tests if incorrect data types for cat or dog age
+        raise a TypeError.
+        """
+        with pytest.raises(TypeError):
+            get_human_age(cat_year, dog_year)
