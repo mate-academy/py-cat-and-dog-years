@@ -47,7 +47,6 @@ class TestAnimalAge:
     def test_normal_cases(self, cat_age: int, dog_age: int) -> None:
         assert get_human_age(cat_age, dog_age) == [0, 0]
 
-
     @pytest.mark.parametrize(
         "cat_year,dog_year",
         [
