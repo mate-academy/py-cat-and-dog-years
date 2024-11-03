@@ -1,59 +1,120 @@
 import pytest
-from app import main
+
+from app.main import get_human_age
 
 
-def convert_to_human(animal_age: int,
-                     first_year: int,
-                     second_year: int,
-                     each_year: int) -> int:
-    if animal_age < first_year:
-        return 0
-    elif animal_age < first_year + second_year:
-        return 1
-    else:
-        return 2 + (animal_age - first_year - second_year) // each_year
+class TestGetHumanAge:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected_converted_ages",
+        [
+            pytest.param(
+                0,
+                0,
+                [0, 0],
+                id="should return zeroes if animal\'s age equal zeroes"
+            ),
+            pytest.param(
+                14,
+                14,
+                [0, 0],
+                id="should return zeroes if animal\'s age less than 15"
+            ),
+            pytest.param(
+                15,
+                15,
+                [1, 1],
+                id="should calculate first human year "
+                   "if animal\'s age equal 15"
+            ),
+            pytest.param(
+                23,
+                23,
+                [1, 1],
+                id="should calculate first human year "
+                   "if animal\'s age are between 15 and 24"
+            ),
+            pytest.param(
+                24,
+                24,
+                [2, 2],
+                id="should calculate second human year "
+                   "if animal\'s age equal 24"
+            ),
+            pytest.param(
+                27,
+                27,
+                [2, 2],
+                id="should calculate second human year "
+                   "if animal\'s age are between 24 and 28"
+            ),
+            pytest.param(
+                28,
+                28,
+                [3, 2],
+                id="should increase cat age to third human year after 28"
+            ),
+            pytest.param(
+                26,
+                29,
+                [2, 3],
+                id="should increase dog age to third human year after 29"
+            ),
+            pytest.param(
+                100,
+                100,
+                [21, 17],
+                id="should accurately convert large cat and dog ages"
+            ),
+            pytest.param(
+                10000,
+                10000,
+                [2496, 1997],
+                id="should accurately convert extremely large cat and dog ages"
+            ),
+            pytest.param(
+                -1,
+                -1,
+                [0, 0],
+                id="should return zeroes if animal\'s age is negative"
+            ),
+            pytest.param(
+                10000,
+                10000,
+                [2496, 1997],
+                id="should accurately convert float cat and dog ages"
+            ),
+        ]
+    )
+    def test_convert_ages_correctly(
+            self,
+            cat_age: int | float,
+            dog_age: int | float,
+            expected_converted_ages: list
+    ) -> None:
+        assert get_human_age(cat_age, dog_age) == expected_converted_ages
 
-
-@pytest.mark.parametrize(
-    "first_year,"
-    "second_year,"
-    "each_year_cat,"
-    "each_year_dog,"
-    "cat_age,dog_age,"
-    "expected_human_ages",
-    [
-        (15, 9, 4, 5, 14, 14, [0, 0]),
-        (15, 9, 4, 5, 15, 15, [1, 1]),
-        (15, 9, 4, 5, 23, 23, [1, 1]),
-        (15, 9, 4, 5, 24, 24, [2, 2]),
-        (15, 9, 4, 5, 27, 27, [2, 2]),
-        (15, 9, 4, 5, 28, 28, [3, 3]),
-        (15, 9, 4, 5, 29, 29, [3, 3]),
-    ],
-    ids=[
-        "14 cat and dog years should convert into 0 human age.",
-        "15 cat and dog years should convert into 1 human age.",
-        "23 cat and dog years should convert into 1 human age.",
-        "24 cat and dog years should convert into 2 human age.",
-        "27 cat years should convert into 2 human age.",
-        "28 cat years should convert into 3 human age.",
-        "29 dog years should convert into 3 human age.",
-    ]
-)
-def test_ages(monkeypatch: pytest.MonkeyPatch,
-              first_year: int, second_year: int,
-              each_year_cat: int, each_year_dog: int,
-              cat_age: int, dog_age: int,
-              expected_human_ages: list[int]) -> None:
-    def mock_get_human_age(cat_age: int, dog_age: int) -> list[int]:
-        cat_to_human = convert_to_human(cat_age, first_year,
-                                        second_year, each_year_cat)
-        dog_to_human = convert_to_human(dog_age, first_year,
-                                        second_year, each_year_dog)
-        return [cat_to_human, dog_to_human]
-
-    monkeypatch.setattr(main, "get_human_age", mock_get_human_age)
-
-    result = main.get_human_age(cat_age, dog_age)
-    assert result == expected_human_ages,\
-        f"Expected {expected_human_ages} but got {result}"
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected_error",
+        [
+            pytest.param(
+                "a",
+                "b",
+                TypeError,
+                id="should raise error for string ages"
+            ),
+            pytest.param(
+                None,
+                None,
+                TypeError,
+                id="should raise error for None types"
+            ),
+        ]
+    )
+    def test_get_human_age_exceptions(
+            self,
+            cat_age: str | None,
+            dog_age: str | None,
+            expected_error: Exception
+    ) -> None:
+        with pytest.raises(expected_error):
+            get_human_age(cat_age, dog_age)
