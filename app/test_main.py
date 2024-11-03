@@ -1,13 +1,13 @@
 import pytest
 
-
 from app import main
+
 
 def convert_to_human(animal_age: int,
                      first_year: int,
                      second_year: int,
                      each_year: int
-) -> int:
+                     ) -> int:
     if animal_age < first_year:
         return 0
     if animal_age < first_year + second_year:
@@ -34,10 +34,16 @@ def convert_to_human(animal_age: int,
         "28/29 cat and dog years should convert into 3 human age.",
     ]
 )
-def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog):
-    def mock_get_human_age(cat_age, dog_age):
-        cat_to_human = convert_to_human(cat_age, first_year, second_year, each_year_cat)
-        dog_to_human = convert_to_human(dog_age, first_year, second_year, each_year_dog)
+def test_ages(monkeypatch: pytest.MonkeyPatch,
+              first_year: int,
+              second_year: int,
+              each_year_cat: int,
+              each_year_dog: int) -> None:
+    def mock_get_human_age(cat_age: int, dog_age: int) -> list:
+        cat_to_human = convert_to_human(cat_age, first_year,
+                                        second_year, each_year_cat)
+        dog_to_human = convert_to_human(dog_age, first_year,
+                                        second_year, each_year_dog)
         return [cat_to_human, dog_to_human]
 
     monkeypatch.setattr(main, "get_human_age", mock_get_human_age)
