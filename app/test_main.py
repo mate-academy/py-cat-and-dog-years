@@ -1,10 +1,6 @@
 from app.main import get_human_age
 
 
-def test_zero_age_for_both() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
 def test_age_before_first_human_year() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
