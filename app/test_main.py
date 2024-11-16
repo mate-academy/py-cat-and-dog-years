@@ -26,11 +26,6 @@ class TestValues:
                 0,
                 0,
                 [0, 0],
-                id="Return 0 when animal year is 0"),
-            pytest.param(
-                0,
-                0,
-                [0, 0],
                 id="Return 0 when animal age is 0"),
             pytest.param(
                 100.5,
