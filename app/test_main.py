@@ -1,37 +1,67 @@
 import pytest
-from app.main import get_human_age
+from app import main
 
-def test_zero_age():
-    assert get_human_age(0, 0) == [0, 0]
 
-def test_less_than_first_year():
-    assert get_human_age(14, 14) == [0, 0]
+# Перевірка загальних тестів для кішки та собаки
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (35, 35, [4, 4]),  # Перевірка для 35 років
+        (100, 100, [21, 17]),  # Перевірка для 100 років
+    ],
+)
+def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+    result = main.get_human_age(cat_age, dog_age)
+    assert result == expected, (f"Помилка при cat_age={cat_age}, "
+                                f"dog_age={dog_age}, отримано {result}")
 
-def test_exactly_first_year():
-    assert get_human_age(15, 15) == [1, 1]
 
-def test_between_first_and_second_year():
-    assert get_human_age(23, 23) == [1, 1]
+# Перевірка лише для віку кішки
+@pytest.mark.parametrize(
+    "cat_age, expected",
+    [
+        (60, [11, 0]),
+        (100, [21, 0]),
+    ],
+)
+def test_only_cat_age(cat_age: int, expected: list) -> None:
+    result = main.get_human_age(cat_age, 0)
+    assert result == expected, (f"Перевірка конвертації "
+                                f"лише віку кішки для cat_age={cat_age}")
 
-def test_exactly_second_year():
-    assert get_human_age(24, 24) == [2, 2]
 
-def test_after_second_year_but_not_enough_for_extra_year():
-    assert get_human_age(27, 27) == [2, 2]
+# Перевірка лише для віку собаки
+@pytest.mark.parametrize(
+    "dog_age, expected",
+    [
+        (60, [0, 9]),  # Очікується 9 для собаки
+        (100, [0, 17]),  # Велике значення
+    ],
+)
+def test_only_dog_age(dog_age: int, expected: list) -> None:
+    result = main.get_human_age(0, dog_age)
+    assert result == expected, (f"Перевірка конвертації "
+                                f"лише віку собаки для dog_age={dog_age}")
 
-def test_exactly_one_extra_year_for_cat():
-    assert get_human_age(28, 28) == [3, 2]
 
-def test_large_age():
-    assert get_human_age(100, 100) == [21, 17]
-
-def test_only_cat_age():
-    assert get_human_age(60, 0) == [11, 0]
-
-def test_only_dog_age():
-    assert get_human_age(0, 60) == [0, 9]
-
-def test_boundary_conditions():
-    assert get_human_age(16, 16) == [1, 1]
-    assert get_human_age(25, 25) == [2, 2]
-    assert get_human_age(29, 29) == [3, 3]
+# Тести для граничних умов
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (15, 9, [1, 0]),  # Граничні значення для кожної тварини
+        (28, 28, [3, 2]),
+    ],
+)
+def test_boundary_conditions(cat_age: int, dog_age: int,
+                             expected: list) -> None:
+    result = main.get_human_age(cat_age, dog_age)
+    assert result == expected, (f"Перевірка граничних "
+                                f"умов для cat_age={cat_age}, "
+                                f"dog_age={dog_age}")
