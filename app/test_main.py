@@ -62,14 +62,16 @@ def test_should_checking_for_two_human_year() -> None:
             < first_year + second_year + each_year_dog):
         assert check_func_get_human_age[1] == 2
 
+
 def test_should_checking_for_large_numbers() -> None:
     cat_age = 100
     dog_age = 100
     check_func_get_human_age = get_human_age(cat_age, dog_age)
 
     if cat_age > first_year + second_year + each_year_cat:
-        assert (check_func_get_human_age[0] == 2 +
-                (cat_age - first_year - second_year) // each_year_cat)
+        assert (check_func_get_human_age[0] == 2
+                + (cat_age - first_year - second_year) // each_year_cat)
+
     if dog_age > first_year + second_year + each_year_dog:
-        assert (check_func_get_human_age[1] == 2 +
-                (dog_age - first_year - second_year) // each_year_dog)
+        assert (check_func_get_human_age[1] == 2
+                + (dog_age - first_year - second_year) // each_year_dog)
