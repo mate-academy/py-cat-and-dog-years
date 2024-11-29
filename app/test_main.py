@@ -23,7 +23,7 @@ from app.main import get_human_age
         "Cat & Dog age = 24",
         "Cat & Dog age = 27",
         "Cat & Dog age = 28",
-        "Cat & Dog age = 28"
+        "Cat & Dog age = 100"
 
     ]
 )
