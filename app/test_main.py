@@ -21,7 +21,7 @@ class TestClass:
             self,
             cat_age: int,
             dog_age: int,
-            human_age: int
+            human_age: list[int]
     ) -> None:
         result = get_human_age(cat_age, dog_age)
         assert result == human_age
