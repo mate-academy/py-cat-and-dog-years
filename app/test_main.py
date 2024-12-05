@@ -27,7 +27,7 @@ from app.main import get_human_age
 def test_functionality(cat_to_human_years: int,
                        dog_to_human_years: int,
                        result: list[int, int]
-                      ) -> None:
+                       ) -> None:
     assert (get_human_age(cat_to_human_years, dog_to_human_years) == result),\
         (f"Cat: {cat_to_human_years}, and Dog: {dog_to_human_years}"
          f" should be equal to {result}")
