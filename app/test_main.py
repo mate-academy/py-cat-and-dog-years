@@ -14,7 +14,11 @@ class TestGetHumanAge:
             (-20, -15, [0, 0]),
         ]
     )
-    def test_should_be_equal_zero(self, cat_age, dog_age, expected_result) -> None:
+    def test_should_be_equal_zero(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_result: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
@@ -26,7 +30,11 @@ class TestGetHumanAge:
             (2, 23, [0, 1]),
         ]
     )
-    def test_should_be_equal_one(self, cat_age, dog_age, expected_result) -> None:
+    def test_should_be_equal_one(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_result: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     @pytest.mark.parametrize(
@@ -39,7 +47,11 @@ class TestGetHumanAge:
             (120, 120, [26, 21]),
         ]
     )
-    def test_should_be_result_function(self, cat_age, dog_age, expected_result) -> None:
+    def test_should_be_result_function(
+            self,
+            cat_age: int,
+            dog_age: int,
+            expected_result: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
     def test_should_type_error(self) -> None:
