@@ -25,20 +25,23 @@ from app.main import get_human_age
     ]
 )
 def test_functionality(cat_to_human_years: int,
-                        dog_to_human_years: int,
-                        result: list[int, int]
-                        ) -> None:
+                       dog_to_human_years: int,
+                       result: list[int, int]
+                      ) -> None:
     assert (get_human_age(cat_to_human_years, dog_to_human_years) == result),\
         (f"Cat: {cat_to_human_years}, and Dog: {dog_to_human_years}"
-        f" should be equal to {result}")
+         f" should be equal to {result}")
+
 
 def test_negative_value() -> None:
-    assert (get_human_age(-12, -2) == []), "The age shouldn't be negative numbers."
+    assert (get_human_age(-12, -2) == []), \
+        "The age shouldn't be negative numbers."
+
 
 def test_add_not_int_argument() -> None:
     with pytest.raises(TypeError):
-        get_human_age(12.52,"52.12")
+        get_human_age(12.52, "52.12")
+
 
 def test_too_large_age() -> None:
     assert (get_human_age(150, 200) == []), "The age shouldn't be too large"
-    
