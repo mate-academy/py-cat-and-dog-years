@@ -7,9 +7,11 @@ def test_add_not_int_argument() -> None:
     with pytest.raises(TypeError):
         get_human_age(12.52, "52.12")
 
+
 def test_negative_value() -> None:
     assert (get_human_age(-12, -2) == [0, 0]), \
         "The age shouldn't be negative"
+
 
 def test_get_human_age_should_return_list_two_elem() -> None:
     assert isinstance(get_human_age(16, 15), list)
