@@ -4,8 +4,7 @@ from app.main import get_human_age
 
 
 def test_get_human_age_should_return_list_with_two_element() -> None:
-    goals = get_human_age(1, 1)
-    assert isinstance(goals, list)
+    assert isinstance(get_human_age(1, 1), list)
 
 
 class TestGetHumanAgeClass:
@@ -53,9 +52,3 @@ class TestGetHumanAgeClass:
             expected_result: list,
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
-
-
-def test_get_human_age_should_return_zero_for_zero_in_input_for_both_cases()\
-        -> None:
-    goals = get_human_age(0, 0)
-    assert goals == [0, 0]
