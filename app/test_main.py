@@ -40,6 +40,10 @@ class TestGetHumanAgeClass:
                 id="should return both 3 value for min args within its range"
             ),
             pytest.param(
+                32, 34, [4, 4],
+                id="should return both 4 value for min args within its range"
+            ),
+            pytest.param(
                 100, 100, [21, 17],
                 id="should return 21 and 17 for 100 in arguments"
             ),
