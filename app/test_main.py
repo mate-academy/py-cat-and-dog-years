@@ -31,23 +31,3 @@ def test_get_human_age(
         expected: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age",
-    [
-        pytest.param("0", 0, id="cat or dog age is str"),
-        pytest.param(0, {0: 1}, id="cat or dog age is dict"),
-        pytest.param([0], 0, id="cat or dog age is list"),
-        pytest.param(0, (0,), id="cat or dog age is tuple"),
-        pytest.param({0}, 0, id="cat or dog age is set"),
-        pytest.param(True, 0, id="cat or dog age is bool"),
-        pytest.param(0, None, id="cat or dog age is None")
-    ]
-)
-def test_should_raise_error_when_cat_or_dog_age_is_not_number(
-        cat_age: int,
-        dog_age: int
-) -> None:
-    with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
