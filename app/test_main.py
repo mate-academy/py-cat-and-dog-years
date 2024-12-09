@@ -15,11 +15,12 @@ from app.main import get_human_age
     ids=[
         "14 cat/dog years -> 0 human age",
         "15 cat/dog years -> 1 human age",
-        "50 cat years -> 6 human, 50 dog years -> 5 human",
+        "50 cat years -> 8 human, 50 dog years -> 7 human",
         "-15 cat -> 0 human, 14.5 dog -> 0 human",
         "23 cat -> 1 human, 25 dog -> 2 human",
         "27 cat -> 2 human, 25 dog -> 2 human",
     ],
 )
-def test_check_age_converting(cat_age: int, dog_age: int, result: list) -> None:
+def test_check_age_converting(cat_age: int, dog_age: int, result: list
+                              ) -> None:
     assert get_human_age(cat_age, dog_age) == result
