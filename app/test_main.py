@@ -17,7 +17,6 @@ from app.main import get_human_age
         "15 cat/dog years -> 1 human age",
         "50 cat years -> 8 human, 50 dog years -> 7 human",
         "24 cat/dog years should convert into 2 human age.",
-        "-15 cat -> 0 human, 14.5 dog -> 0 human",
         "23 cat -> 1 human, 25 dog -> 2 human",
         "27 cat -> 2 human, 25 dog -> 2 human",
     ],
