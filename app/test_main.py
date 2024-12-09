@@ -1,6 +1,7 @@
 import pytest
 from app.main import get_human_age
 
+
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
@@ -20,5 +21,5 @@ from app.main import get_human_age
         "27 cat -> 2 human, 25 dog -> 2 human",
     ],
 )
-def test_check_age_converting(cat_age, dog_age, result) -> None:
+def test_check_age_converting(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
