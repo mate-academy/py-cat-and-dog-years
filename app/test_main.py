@@ -1,7 +1,6 @@
 import pytest
 from app.main import get_human_age
 
-
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
@@ -11,6 +10,10 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (23, 25, [1, 2]),
         (27, 25, [2, 2]),
+        (0, 0, [0, 0]),
+        (-10, -20, [0, 0]),
+        (1000, 1000, [244, 199]),
+        (15.5, 15.5, [1, 1]),
     ],
     ids=[
         "14 cat/dog years -> 0 human age",
@@ -19,8 +22,11 @@ from app.main import get_human_age
         "24 cat/dog years should convert into 2 human age.",
         "23 cat -> 1 human, 25 dog -> 2 human",
         "27 cat -> 2 human, 25 dog -> 2 human",
+        "No age -> 0 human age",
+        "Negative age -> 0 human age",
+        "Very large age -> high human age",
+        "Fractional boundary -> correct rounding",
     ],
 )
-def test_check_age_converting(cat_age: int, dog_age: int, result: list
-                              ) -> None:
+def test_check_age_converting(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
