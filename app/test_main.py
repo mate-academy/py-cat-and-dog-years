@@ -29,6 +29,6 @@ from app.main import get_human_age
         "Fractional boundary -> correct rounding",
     ],
 )
-def test_check_age_converting(cat_age: int, dog_age: int, result: list
-                             ) -> None:
+def test_check_age_converting(cat_age: int, dog_age: int,
+                              result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
