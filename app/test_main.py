@@ -46,5 +46,5 @@ import pytest
         )
     ]
 )
-def test_check_data_correctly(cat_age, dog_age, expected_data):
+def test_check_data_correctly(cat_age: int, dog_age: int, expected_data: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_data
