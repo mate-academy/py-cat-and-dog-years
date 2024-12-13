@@ -1,6 +1,6 @@
 from app.main import get_human_age
-
 import pytest
+
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_data",
@@ -40,11 +40,14 @@ import pytest
             28,
             [3, 2]
         ),
-        (   100,
+        (
+            100,
             100,
             [21, 17]
-        )
+        ),
     ]
 )
-def test_check_data_correctly(cat_age: int, dog_age: int, expected_data: list) -> None:
+def test_check_data_correctly(cat_age: int,
+                              dog_age: int,
+                              expected_data: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_data
