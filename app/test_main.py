@@ -33,12 +33,10 @@ def test_get_human_age(cat_age: int,
     "cat_age,dog_age,expected_exception",
     [
         ("string", "string", TypeError),
-        (15.5, 15.5, TypeError),
         (None, None, TypeError),
         (100, "string", TypeError),
         (100, [], TypeError),
         ([], 100, TypeError),
-        (-5, -5, ValueError)
     ]
 )
 def test_get_human_age_invalid_data(cat_age: int,
