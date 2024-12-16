@@ -33,6 +33,4 @@ from app.main import get_human_age
 def test_should_return_correct_result(
     cat_age: int, dog_age: int, result: list
 ) -> None:
-    with open("log.txt", "a") as log:
-        log.write(str(get_human_age(cat_age, dog_age)) + "\n")
     assert get_human_age(cat_age, dog_age) == result
