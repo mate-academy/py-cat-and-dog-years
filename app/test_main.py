@@ -1,22 +1,24 @@
 import pytest
-from app.main import get_human_age
+from app.main import get_human_age  # припустимо, функція знаходиться в main.py
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
-        (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
-        (23, 23, [1, 1]),
-        (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
+        (0, 0, [0, 0]),          # Вік 0 років для кота та собаки
+        (14, 14, [0, 0]),        # Коти та собаки на першому році життя
+        (15, 15, [1, 1]),        # Перше людське значення для кота та собаки
+        (23, 23, [1, 1]),        # Перший та другий рік
+        (24, 24, [2, 2]),        # Початок третього року життя
+        (27, 27, [2, 2]),        # Коти та собаки на 27-му році
+        (28, 28, [3, 2]),        # Коти та собаки на 28-му році
+        (100, 100, [21, 17]),    # Вік 100 років
     ]
 )
 def test_get_human_age_valid(
-        cat_age: int, dog_age: int, expected: list[int]
+        cat_age: int,
+        dog_age: int,
+        expected: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
