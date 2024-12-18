@@ -67,7 +67,7 @@ def test_human_years_should_be_1_for_animal_ages_from_15_to_24(
 ) -> None:
     cat_to_human, dog_to_human = get_human_age(cat_age, dog_age)
     assert cat_to_human == 1 and dog_to_human == 1, (
-        "Human years must be 0 for animal ages < 24"
+        "Human years must be 1g for animal ages < 24"
     )
 
 
