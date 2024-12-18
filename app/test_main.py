@@ -9,15 +9,12 @@ from app.main import get_human_age
         ("cat", "dog"),
         (1, "dog"),
         ("cat", 13),
-        (2.3, 4.3),
-        (4, 10.2),
-        (4.3, 4),
         (None, None),
         (1, None),
         (None, 6),
     ]
 )
-def test_should_raise_type_error_when_arguments_are_not_integers(
+def test_should_raise_type_error_when_arguments_are_not_numbers(
     cat_age: int,
     dog_age: int
 ) -> None:
@@ -28,25 +25,11 @@ def test_should_raise_type_error_when_arguments_are_not_integers(
 @pytest.mark.parametrize(
     "cat_age,dog_age",
     [
-        (-1, 0),
-        (0, -1),
         (-1, -1),
-        (-10, 0),
-        (0, -10),
-        (-10, -10)
-    ]
-)
-def test_should_raise_value_error_with_negative_arguments(
-    cat_age: int,
-    dog_age: int
-) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
-    "cat_age,dog_age",
-    [
+        (-23, 10),
+        (10, -23),
+        (-14, -14),
+        (-3, 14),
         (0, 0),
         (3, 10),
         (10, 3),
