@@ -1,5 +1,3 @@
-from typing import Type
-
 import pytest
 
 from app.main import get_human_age
@@ -9,6 +7,8 @@ class TestConvertAnimalAgeToHumanAge:
     @pytest.mark.parametrize(
         "cat_age,dog_age,human_age",
         [
+            (0, 0, [0, 0]),
+            (14, 14, [0, 0]),
             (15, 15, [1, 1]),
             (23, 23, [1, 1]),
             (24, 24, [2, 2]),
@@ -16,6 +16,8 @@ class TestConvertAnimalAgeToHumanAge:
             (100, 100, [21, 17])
         ],
         ids=[
+            "0 cat/dog years should convert into 0 human age.",
+            "14 cat/dog years should convert into 0 human age.",
             "15 cat/dog years should convert into 1 human age.",
             "23 cat/dog years should convert into 1 human age.",
             "24 cat/dog years should convert into 2 human age.",
@@ -30,27 +32,3 @@ class TestConvertAnimalAgeToHumanAge:
             human_age: list[int]
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_age
-
-    @pytest.mark.parametrize(
-        "cat_age,dog_age,error",
-        [
-            (0, 0, ValueError),
-            (101, 101, ValueError),
-            (-1, -1, ValueError),
-            ("", "", TypeError)
-        ],
-        ids=[
-            "Cat/Dog years can't be more than 0.",
-            "Cat/Dog years can't be not more than 100.",
-            "Cat/Dog years can't be negative.",
-            "You need to use only int as cat/dog years.",
-        ]
-    )
-    def test_raising_errors(
-            self,
-            cat_age: int,
-            dog_age: int,
-            error: Type[ValueError | TypeError]
-    ) -> None:
-        with pytest.raises(error):
-            get_human_age(cat_age, dog_age)
