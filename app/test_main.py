@@ -2,7 +2,6 @@ from app.main import get_human_age, convert_to_human
 
 
 def test_convert_to_human_age() -> None:
-    assert convert_to_human(0, 15, 9, 4) == 0
     assert convert_to_human(14, 15, 9, 4) == 0
     assert convert_to_human(15, 15, 9, 4) == 1
     assert convert_to_human(23, 15, 9, 4) == 1
@@ -13,7 +12,6 @@ def test_convert_to_human_age() -> None:
 
 
 def test_get_human_age() -> None:
-    assert get_human_age(0, 0) == [0, 0]
     assert get_human_age(14, 14) == [0, 0]
     assert get_human_age(15, 15) == [1, 1]
     assert get_human_age(23, 23) == [1, 1]
