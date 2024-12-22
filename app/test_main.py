@@ -12,7 +12,7 @@ from app.main import get_human_age
                      id="cat and/or dog years is 0"),
         pytest.param(-1,
                      -1,
-                     "Please enter integer value for cat and dog years",
+                     [0, 0],
                      id="cat and/or dog years is less than 0"),
         pytest.param(14,
                      14,
@@ -32,8 +32,7 @@ from app.main import get_human_age
                      id="every 5 next dog years give 1 extra human year"),
         pytest.param(101,
                      101,
-                     "Please make sure that you cat or dog"
-                     " has more then 100 years",
+                     [21, 17],
                      id="cat and/or dog years is more then 100 years")
     ]
 )
