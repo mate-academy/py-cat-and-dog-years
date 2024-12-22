@@ -6,7 +6,6 @@ from app.main import get_human_age
     ("cat_age", "dog_age", "expected"),
     [
         (0, 0, [0, 0]),
-        (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
