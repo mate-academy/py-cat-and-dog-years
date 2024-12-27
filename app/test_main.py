@@ -13,11 +13,11 @@ def test_minimum_non_zero_result() -> None:
     assert get_human_age(15, 15) == [1, 1]
 
 
-def test_minimum_non_zero_result():
+def test_max_one_year() -> None:
     assert get_human_age(23, 23) == [1, 1]
 
 
-def test_should_return_zero_if_less_than_cat_year() -> None:
+def test_min_two_years_result() -> None:
     assert get_human_age(24, 24) == [2, 2]
 
 
