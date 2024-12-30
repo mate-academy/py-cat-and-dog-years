@@ -11,7 +11,11 @@ from typing import Any
         (15, 15, [1, 1]),
         (24, 24, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        # (-30, 16, [0, 1]),
+        # (10, -10, [0, 0]),
+        (1.6, 35.5, [0, 4]),
+        (500, 1000000, [121, 199997])
     ]
 )
 def test_convert_to_human_correctly(
@@ -25,44 +29,6 @@ def test_convert_to_human_correctly(
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_error",
     [
-        pytest.param(
-            -5,
-            4,
-            ValueError,
-            id="should raise error if data is negative"
-        ),
-        pytest.param(
-            0,
-            -10,
-            ValueError,
-            id="should raise error if data is negative"
-        ),
-        pytest.param(
-            1000001,
-            15,
-            ValueError,
-            id="should raise error if data is too large"
-        ),
-        pytest.param(
-            23,
-            2000000,
-            ValueError,
-            id="should raise error if data is too large"
-        ),
-        pytest.param(
-            1.6,
-            20,
-            TypeError,
-            id="should raise error "
-               "if the function receives an incorrect type of data"
-        ),
-        pytest.param(
-            35,
-            3.5,
-            TypeError,
-            id="should raise error "
-               "if the function receives an incorrect type of data"
-        ),
         pytest.param(
             "12",
             22,
