@@ -38,6 +38,7 @@ def test_output_not_changed_with_previous_value() -> None:
     ]
 )
 def test_get_human_age(cat_a: int, dog_a: int, result: list) -> None:
-    assert(
-            get_human_age(cat_a, dog_a) == result
-    ), f"Cat {cat_a} should convert to {result[0]}, dog {dog_a} should convert to {result[1]}"
+    assert (
+        get_human_age(cat_a, dog_a) == result
+    ), (f"Cat {cat_a} should convert to {result[0]},"
+        f" dog {dog_a} should convert to {result[1]}")
