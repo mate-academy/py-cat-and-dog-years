@@ -38,7 +38,6 @@ class Animal:
             ),
         ]
     )
-
     def test_modify_class(self, cat_age: int,
                           dog_age: int,
                           result: list) -> None:
