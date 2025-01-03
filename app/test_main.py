@@ -4,9 +4,7 @@ from app.main import get_human_age
 
 class Animal:
     @pytest.mark.parametrize(
-        "cat_age",
-        "dog_age",
-        "result",
+        "cat_age,dog_age,result",
         [
             pytest.param(
                 0,
@@ -46,5 +44,5 @@ class Animal:
                           result: list) -> None:
         cat = cat_age
         dog = dog_age
-        get_human_age(cat, dog)
-        assert get_human_age == result
+        res = get_human_age(cat, dog)
+        assert res == result
