@@ -1,3 +1,5 @@
 from app.main import get_human_age
 
-# write your code here
+
+def test_get_human_age() -> None:
+    assert get_human_age(28, 28) == [3, 2]
