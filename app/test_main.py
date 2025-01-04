@@ -19,8 +19,8 @@ from typing import Any
     ]
 )
 def test_convert_to_human_correctly(
-        cat_age: int,
-        dog_age: int,human_age: list
+        cat_age: any,
+        dog_age: any,human_age: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
@@ -46,7 +46,7 @@ def test_convert_to_human_correctly(
 )
 
 def test_raising_errors_correctly(
-        cat_age: int, dog_age: int, expected_error: Any
+        cat_age: any, dog_age: any, expected_error: Any
 ) -> None:
     with pytest.raises(expected_error):
         get_human_age(cat_age, dog_age)
