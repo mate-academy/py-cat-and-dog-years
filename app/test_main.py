@@ -1,6 +1,7 @@
 import pytest
-from app.main import get_human_age
 
+
+from app.main import get_human_age
 
 class Animal:
     @pytest.mark.parametrize(
@@ -40,8 +41,5 @@ class Animal:
     )
     def test_modify_class(self, cat_age: int,
                           dog_age: int,
-                          result: list) -> None:
-        cat = cat_age
-        dog = dog_age
-        res = get_human_age(cat, dog)
-        assert res == result
+                          result: list[int]) -> None:
+        assert get_human_age(cat_age, dog_age) == result
