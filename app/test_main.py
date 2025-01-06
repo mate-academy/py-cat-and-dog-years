@@ -16,5 +16,5 @@ from app.main import get_human_age
         (100, 100, [21, 17])
     ]
 )
-def test_should_be_correct(age_cat, age_dog, result) -> None:
+def test_should_be_correct(age_cat: int, age_dog: int, result: list) -> None:
     assert get_human_age(age_cat, age_dog) == result
