@@ -1,14 +1,20 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
-    cat_to_human = convert_to_human(cat_age, 15, 9, 4)
-    dog_to_human = convert_to_human(dog_age, 15, 9, 5)
-    return [cat_to_human, dog_to_human]
+def get_human_age(animal_type: str, animal_age: int) -> int:
+    if not isinstance(animal_type, str) or not isinstance(animal_age, int):
+        raise ValueError("Invalid input: animal_type must be a string and animal_age must be an integer.")
 
-
-def convert_to_human(
-        animal_age: int, first_year: int, second_year: int, each_year: int
-) -> int:
-    if animal_age < first_year:
-        return 0
-    if animal_age < first_year + second_year:
-        return 1
-    return 2 + (animal_age - first_year - second_year) // each_year
+    if animal_type.lower() == "cat":
+        if animal_age <= 14:
+            return 0
+        elif animal_age <= 24:
+            return 1
+        else:
+            return (animal_age - 24) // 4 + 2
+    elif animal_type.lower() == "dog":
+        if animal_age <= 14:
+            return 0
+        elif animal_age <= 24:
+            return 1
+        else:
+            return (animal_age - 24) // 5 + 2
+    else:
+        raise ValueError("Unsupported animal type. Only 'cat' and 'dog' are supported.")
