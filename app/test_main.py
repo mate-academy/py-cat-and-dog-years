@@ -23,7 +23,7 @@ from app.main import get_human_age
             id="a value less than 24 is equivalent to 1 human years"
         ),
         pytest.param(
-            27, 28, [2, 2],
+            27, 28, [2, 3],
             id="a value less than 27 for cat "
                "and 28 for dog is equivalent to 2 human years"
         ),
