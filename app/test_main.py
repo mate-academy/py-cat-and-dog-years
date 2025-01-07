@@ -17,7 +17,6 @@ from app.main import get_human_age
         (0, 0, [0, 0]),
         (-10, -20, [0, 0]),
         (1000, 1000, [0, 0]),
-        ()
     ]
 )
 def test_get_human_age(
