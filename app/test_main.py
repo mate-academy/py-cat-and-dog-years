@@ -33,6 +33,7 @@ def test_human_age_for_28_animal_years() -> None:
 def test_human_age_for_100_animal_years() -> None:
     assert get_human_age(100, 100) == [21, 17]
 
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
@@ -44,7 +45,9 @@ def test_human_age_for_100_animal_years() -> None:
         (100, 100, [21, 17]),
     ]
 )
-
-
-def test_human_age_with_multiple_inputs(cat_age, dog_age, expected):
+def test_human_age_with_multiple_inputs(
+        cat_age: int,
+        dog_age: int,
+        expected: [int, int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
