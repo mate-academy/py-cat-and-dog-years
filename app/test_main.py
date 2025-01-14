@@ -10,11 +10,11 @@ def test_when_current_year_equal_first_year() -> None:
     assert get_human_age(15, 15) == [1, 1]
 
 
-def test_when_current_year_less_than_than_sum_of_first_and_second_year() -> None:
+def test_current_year_less_than_than_sum_of_first_and_second_year() -> None:
     assert get_human_age(23, 23) == [1, 1]
 
 
-def test_when_current_year_greater_than_sum_of_first_and_second_year() -> None:
+def test_current_year_greater_than_sum_of_first_and_second_year() -> None:
     assert get_human_age(24, 24) == [2, 2]
 
 
