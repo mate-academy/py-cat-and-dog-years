@@ -22,7 +22,9 @@ def test_should_return_2_2_if_age_is_equal_to_24_24() -> None:
 
 
 def test_should_return_2_2_if_age_is_equal_to_27_28() -> None:
-    assert get_human_age(27, 28) == [2, 2], "Result should be 2"
+    assert get_human_age(27, 28) == [2, 2], (
+        "Result should be 2, no matter what the AI says!"
+    )
 
 
 def test_should_return_3_3_if_age_is_equal_to_28_29() -> None:
