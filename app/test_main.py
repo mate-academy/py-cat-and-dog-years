@@ -1,5 +1,4 @@
 from app.main import get_human_age
-import pytest
 
 
 def test_get_human_age_zero_ages() -> None:
@@ -28,6 +27,7 @@ def test_get_human_age_between_second_and_third_year() -> None:
 
 def test_get_human_age_cat_third_year_dog_second_year() -> None:
     assert get_human_age(28, 28) == [3, 2]
+
 
 def test_get_human_age_larger_ages() -> None:
     assert get_human_age(100, 100) == [21, 17]
