@@ -27,5 +27,4 @@ def test_cat_and_dog_mixed_ages():
     assert get_human_age(28, 34) == [3, 4]
     assert get_human_age(15, 15) == [1, 1]
 
-if __name__ == "__main__":
-    pytest.main()
+
