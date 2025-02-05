@@ -43,8 +43,8 @@ class TestHumanAge:
     )
     def test_raising_errors_correctly(
             self,
-            initial_cat_age: int,
-            initial_dog_age: int,
+            initial_cat_age: str,
+            initial_dog_age: str,
             expected_error: Exception
     ) -> None:
         with pytest.raises(expected_error):
