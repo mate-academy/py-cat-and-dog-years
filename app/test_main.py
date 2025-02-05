@@ -45,7 +45,7 @@ class TestMainClass:
                 100,
                 21,
                 17,
-                id="should return 0 if animal_age > 24")
+                id="should return correct age if animal_age > 24")
         ]
     )
     def test_get_human_age(
