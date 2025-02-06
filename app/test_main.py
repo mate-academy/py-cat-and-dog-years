@@ -62,7 +62,11 @@ class TestInvalidInput:
             "Strings instead of both ages",
         ]
     )
-    def test_raise_other_type_of_attribute(self, cat_age, dog_age) -> None:
+    def test_raise_other_type_of_attribute(
+            self,
+            cat_age: int | str,
+            dog_age: int | str
+    ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
 
@@ -79,5 +83,9 @@ class TestInvalidInput:
             "Negative cat age",
         ]
     )
-    def test_negative_attributes_passed(self, cat_age, dog_age, result) -> None:
+    def test_negative_attributes_passed(
+            self,
+            cat_age: int,
+            dog_age: int,
+            result: list) -> None:
         assert get_human_age(cat_age, dog_age) == result
