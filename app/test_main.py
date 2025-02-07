@@ -1,5 +1,6 @@
 import pytest
 from app.main import get_human_age
+from typing import Any
 
 
 class TestConvertHumanAge:
@@ -42,8 +43,8 @@ class TestInvalidInputType:
     )
     def test_invalid_input_type(
         self,
-        cat_age,
-        dog_age
+        cat_age: Any,
+        dog_age: Any
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
