@@ -12,7 +12,7 @@ class TestConvertHumanAge:
             (23, 23, [1, 1]),
             (24, 24, [2, 2]),
             (27, 28, [2, 2]),
-            (29, 28, [3, 3]),
+            (28, 29, [3, 3]),
         ],
         ids=[
             "14 cat/dog years should convert into 0 human age.",
