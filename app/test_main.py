@@ -42,8 +42,8 @@ class TestInvalidInputType:
     )
     def test_invalid_input_type(
         self,
-        cat_age: int,
-        dog_age: int
+        cat_age,
+        dog_age
     ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
