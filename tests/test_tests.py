@@ -45,5 +45,5 @@ def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog
     monkeypatch.setattr(main, "get_human_age", mock_get_human_age)
 
     test_result = pytest.main(["app/test_main.py"])
-    print(f"test_result: {test_result}")
+    print(f"test_result{test_result}")
     assert test_result.value == 1
