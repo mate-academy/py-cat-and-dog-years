@@ -1,13 +1,32 @@
+import pytest
+
 from app.main import get_human_age
 
-def test_should_return_zero_if_age_is_under_fifteen() -> None:
-    assert get_human_age(14, 14) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_years,dog_years,human_years",
+    [
+        (14, 14,[0, 0]),
+        (15, 23, [1, 1]),
+        (32, 34, [4, 4]),
+        (28, 28, [3, 2])
+    ]
+)
+def test_should_calculate_years_correctly(cat_years,
+                                          dog_years,
+                                          human_years) -> None:
+    assert get_human_age(cat_years, dog_years) == human_years
 
-def test_should_return_one_if_age_is_over_fifteen_and_under_twenty_four() -> None:
-    assert get_human_age(15, 23) == [1, 1]
-
-def test_should_return_correct_age_of_four() -> None:
-    assert get_human_age(32, 34) == [4, 4]
-
-def test_should_return_different_age() -> None:
-    assert get_human_age(28, 28) == [3, 2]
+@pytest.mark.parametrize(
+    "cat_years,dog_years,error",
+    [
+        (72, -5, ValueError),
+        (0, 6, ValueError),
+        (200, 250, ValueError),
+        ("15","40", TypeError),
+    ]
+)
+def test_input_validation(cat_years,
+                          dog_years,
+                          error) -> None:
+    with pytest.raises(error):
+        get_human_age(cat_years, dog_years)
