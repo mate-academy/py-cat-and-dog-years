@@ -15,5 +15,5 @@ from app.main import get_human_age
         (28, 29, [3, 3]),
         (32, 34, [4, 4])
     ])
-def test_convert_age(cat_age, dog_age, expected) -> None:
+def test_convert_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert (get_human_age(cat_age, dog_age) == expected)
