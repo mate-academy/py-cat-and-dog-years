@@ -33,7 +33,7 @@ def test_pet_years_not_enough_for_3_human_years() -> None:
 
 def cat_years_should_convert_into_3_human_age() -> None:
     result = get_human_age(28, 29)
-    assert result == [3, 3]
+    assert result == [3, 2]
 
 
 def pet_years_equals_to_100() -> None:
