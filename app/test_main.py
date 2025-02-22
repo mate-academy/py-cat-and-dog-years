@@ -2,9 +2,6 @@ import pytest
 
 from app.main import get_human_age
 
-# first 15 cat years give 1 human year;
-# the next 9 cat years give 1 more human year;
-# every 4 next cat years give 1 extra human year.
 
 class TestConvertToHuman:
     @pytest.mark.parametrize(
@@ -32,7 +29,7 @@ class TestConvertToHuman:
                 23,
                 23,
                 [1, 1],
-                id="it should return [2, 2] if animals' ages equal to 23 in their years"
+                id="it should return [1, 1] if animals' ages equal to 23 in their years"
             ),
             pytest.param(
                 24,
