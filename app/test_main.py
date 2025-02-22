@@ -2,9 +2,6 @@ import pytest
 
 from app.main import get_human_age
 
-# first 15 cat years give 1 human year;
-# the next 9 cat years give 1 more human year;
-# every 4 next cat years give 1 extra human year.
 
 class TestConvertToHuman:
     @pytest.mark.parametrize(
