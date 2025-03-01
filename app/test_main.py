@@ -2,12 +2,8 @@ import pytest
 
 from app.main import get_human_age
 
-test_data = []
 
-for cat in range(-1, 28):
-    for dog in range(-1, 29):
-        test_data.append((cat, dog))
-
+test_data = [(cat, dog) for cat in range(-1, 28) for dog in range(-1, 29)]
 
 @pytest.mark.parametrize("cat_age, dog_age", test_data)
 class TestAnimalAgeToHumanAge:
