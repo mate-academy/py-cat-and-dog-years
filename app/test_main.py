@@ -25,7 +25,7 @@ positive_test_cases = [
     ),
     pytest.param(
         28, 28, [3, 2],
-        id="Different progression for cat and dog at age 28"
+        id="Progression for cat and dog at age 28"
     ),
     pytest.param(
         100, 100, [21, 17],
