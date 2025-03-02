@@ -1,4 +1,5 @@
 import pytest
+
 from app.main import get_human_age
 
 
@@ -16,10 +17,21 @@ from app.main import get_human_age
         (15, 0, [1, 0]),  # Only cat has age reaching human year
         (0, 15, [0, 1]),  # Only dog has age reaching human year
         (24, 15, [2, 1]),  # Different ages, both converted
-        (15, 24, [1, 2]),  # Different ages, reversed case
-        (-5, 20, [0, 1]),  # Edge case: Negative cat age
-        (20, -10, [1, 0]),  # Edge case: Negative dog age
+        (15, 24, [1, 2])  # Different ages, reversed case
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (-5, 20, [0, 1]),  # Edge case: Negative cat age
+        (20, -10, [1, 0]),  # Edge case: Negative dog age
+        (-5, -10, [0, 0])  # Edge case: Negative dog age
+    ]
+)
+def test_get_human_age_negative(cat_age: int, dog_age: int, expected: list) \
+        -> None:
     assert get_human_age(cat_age, dog_age) == expected
