@@ -38,3 +38,22 @@ def test_get_human_age_correctly(
         dog_age: int,
         human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error",
+    [
+        ("0", 0, TypeError),
+        (0, "0", TypeError),
+    ], ids=[
+        "should raise an error if incorrect type in cat_age",
+        "should raise an error if incorrect type in dog_age"
+    ]
+)
+def test_get_human_age_raise_error(
+        cat_age: int,
+        dog_age: int,
+        expected_error: type[BaseException]
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
