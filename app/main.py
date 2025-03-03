@@ -5,7 +5,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
 
 
 def convert_to_human(
-        animal_age: int, first_year: int, second_year: int, each_year: int
+    animal_age: int, first_year: int, second_year: int, each_year: int
 ) -> int:
     if animal_age == 0:
         return 0
@@ -13,4 +13,7 @@ def convert_to_human(
         return 0
     if animal_age < first_year + second_year:
         return 1
-    return 2 + ((animal_age - first_year - second_year + each_year - 1) // each_year)  # Округлення вгору
+    return 2 + (
+        (animal_age - first_year - second_year + each_year - 1)
+        // each_year
+    )  # Перенесено коректно
