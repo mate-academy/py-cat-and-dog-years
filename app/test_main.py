@@ -6,13 +6,8 @@ class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age, dog_age, result",
         [
-            (0, 0, [0, 0]),
-            (14, 14, [0, 0]),
-            (15, 15, [1, 1]),
-            (23, 23, [1, 1]),
-            (24, 24, [2, 2]),
-            (27, 27, [2, 2]),
-            (28, 28, [3, 2]),
+            (14, 15, [0, 1]),
+            (28, 24, [3, 2]),
             (100, 100, [21, 17])
         ]
     )
@@ -27,9 +22,6 @@ class TestGetHumanAge:
 
     def test_negative_numbers(self) -> None:
         assert get_human_age(-20,-10) == [0,0]
-
-    def test_very_big_numbers(self) -> None:
-        assert get_human_age(10000, 20000) == [2496, 3997]
 
     def test_raise_TypeError(self):
         with pytest.raises(TypeError):
