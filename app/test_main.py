@@ -37,3 +37,8 @@ def test_age_is_realistic(cat_age: int, dog_age: int) -> None:
         0 <= cat_age <= 120 and 0 <= dog_age <= 120
     ), f"Cat age {cat_age} and dog age {dog_age} should be between 0 and 120."
     print(cat_age, dog_age)
+
+
+def test_years_are_digits() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("0", "0")
