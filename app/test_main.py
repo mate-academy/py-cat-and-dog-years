@@ -40,7 +40,7 @@ class TestGetHumanAge:
             pytest.param("", "one", TypeError)
         ]
     )
-    def test_raising_errors_correctly(
+    def test_raising_errors(
             self,
             cat_age: int,
             dog_age: int,
