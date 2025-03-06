@@ -13,5 +13,5 @@ from app.main import get_human_age
                           (100, 100, [21, 17])])
 def test_parametrize(cat_age: int,
                      dog_age: int,
-                     result: list):
+                     result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
