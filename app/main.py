@@ -1,4 +1,4 @@
-def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+def get_human_age(cat_age: int, dog_age: int) -> list[float]:
     """Преобразует возраст кота и собаки в человеческие годы.
 
     Аргументы:
@@ -16,7 +16,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list[int]:
 
 def convert_to_human(
         animal_age: int, first_year: int, second_year: int, each_year: int
-) -> int:
+) -> float:
     """Преобразует возраст животного в человеческие годы.
 
     Аргументы:
@@ -29,7 +29,9 @@ def convert_to_human(
     Возраст животного в человеческих годах.
     """
     if animal_age < first_year:
-        return 0
+        return (animal_age / first_year) * 1
     if animal_age < first_year + second_year:
         return 1
-    return 2 + (animal_age - first_year - second_year) // each_year
+    if animal_age == first_year + second_year:
+        return 2
+    return 2 + (animal_age - first_year - second_year) / each_year
