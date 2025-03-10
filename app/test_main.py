@@ -1,13 +1,18 @@
+import pytest
 from app.main import get_human_age
 
-
-def test_should_return_0_when_age_less_than_15() -> None:
-    assert get_human_age(15, 14) == [1, 0]
-
-
-def test_should_return_1_when_age_less_than_24() -> None:
-    assert get_human_age(24, 23) == [2, 1]
-
-
-def test_should_return_array_when_age_bigger_29() -> None:
-    assert get_human_age(27, 29) == [2, 3]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (15, 14, [1, 0]),
+        (24, 23, [2, 1]),
+        (27, 29, [2, 3]),
+        (30, 30, [3, 3]),
+        (-1, 10, [0, 0]),
+        (10, -1, [0, 0]),
+        (-5, -5, [0, 0]),
+        (0, 0, [0, 0]),
+    ]
+)
+def test_get_human_age(cat_age, dog_age, expected) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
