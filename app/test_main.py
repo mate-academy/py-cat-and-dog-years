@@ -26,8 +26,8 @@ def test_get_human_age(cat_age: int,
     "cat_age, dog_age", [
         ("one", 10),
         (10, "two"),
-        (5.5, 5),
-        (3, 6.2)
+        ([1], 3),
+        (4, [14])
     ]
 )
 def test_correctness_of_input_values(cat_age: int,
