@@ -12,7 +12,7 @@ class TestGetHumanAge:
             (15, 15, [1, 1]),
             (23, 23, [1, 1]),
             (24, 24, [2, 2]),
-            (24, 24, [2, 2]),
+            (28, 28, [3, 2]),
             (100, 100, [21, 17])
         ],
         ids=[
@@ -21,7 +21,7 @@ class TestGetHumanAge:
             "one full year precisely",
             "almost a second year",
             "two full years precisely",
-            "both 24, so 3 and 2",
+            "both 28, so 3 and 2",
             "both 100, so 21 and 17"
         ]
     )
@@ -42,7 +42,7 @@ class TestGetHumanAge:
             "Negative numbers as zeros"
         ]
     )
-    def test_exception_raising(
+    def test_negative_numbers_as_zeros(
             self,
             cat_age: int,
             dog_age: int,
