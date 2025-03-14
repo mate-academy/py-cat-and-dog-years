@@ -2,8 +2,10 @@ import pytest
 
 from app.main import get_human_age
 
+
 class TestGetAge:
-    @pytest.mark.parametrize("cat_age, dog_age, expected",
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected",
         [
             (0, 0, [0, 0]),
             (14, 14, [0, 0]),
@@ -17,10 +19,10 @@ class TestGetAge:
     )
     def test_raising_error(
             self,
-            cat_age,
-            dog_age,
-            expected
-    ):
+            cat_age: int,
+            dog_age: int,
+            expected: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
     @pytest.mark.parametrize(
@@ -35,9 +37,9 @@ class TestGetAge:
     )
     def test_raise_error_negative_value(
             self,
-            invalid_cat,
-            invalid_dog
-    ):
+            invalid_cat: int,
+            invalid_dog: int
+    ) -> None:
         with pytest.raises(TypeError):
             get_human_age(invalid_cat, invalid_dog)
 
@@ -49,8 +51,8 @@ class TestGetAge:
     )
     def test_very_big_value(
             self,
-            cat_age,
-            dog_age
-    ):
+            cat_age: int,
+            dog_age: int
+    ) -> None:
         result = get_human_age(cat_age, dog_age)
         assert result[0] > 0 and result[1] > 0
