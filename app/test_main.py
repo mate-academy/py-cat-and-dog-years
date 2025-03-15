@@ -1,25 +1,49 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_should_return_zero_if_age_under_fifteen() -> None:
-    assert get_human_age(13, 13) == [0, 0]
-
-
-def test_should_return_one_for_first_fifteen_years() -> None:
-    assert get_human_age(23, 20) == [1, 1]
-
-
-def test_should_return_two_for_next_nine_years() -> None:
-    assert get_human_age(26, 24) == [2, 2]
-
-
-def test_should_return_one_extra_year_for_every_four_years_cats_life() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_return_one_extra_year_for_every_five_years_dogs_life() -> None:
-    assert get_human_age(28, 29) == [3, 3]
-
-
-def test_large_numbers() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+class TestHumanAgeClass:
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,result",
+        [
+            pytest.param(
+                0,
+                0,
+                [0, 0],
+                id="years equal to zero"
+            ),
+            pytest.param(
+                23,
+                20,
+                [1, 1],
+                id="test age above fifteen"
+            ),
+            pytest.param(
+                27,
+                27,
+                [2, 2],
+                id="test age above 24"
+            ),
+            pytest.param(
+                28,
+                24,
+                [3, 2],
+                id="extra years for cats"
+            ),
+            pytest.param(
+                24,
+                29,
+                [2, 3],
+                id="extra years for dogs"
+            ),
+            pytest.param(
+                100,
+                100,
+                [21, 17],
+                id="large numbers"
+            )
+        ]
+    )
+    def test_get_human_age(self, cat_age, dog_age, result):
+        assert get_human_age(cat_age, dog_age) == result
