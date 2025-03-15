@@ -19,5 +19,5 @@ def test_conversion_check(
     cat_years: int,
     dog_years: int,
     in_people_years_list: list[int]
-):
+) -> None:
     assert get_human_age(cat_years, dog_years) == in_people_years_list
