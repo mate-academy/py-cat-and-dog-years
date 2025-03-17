@@ -3,7 +3,7 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "first_animal_age, second_animal_age, expected_age",
+    "cat_age, dog_age, expected_age",
     [
         pytest.param(
             14,
@@ -34,8 +34,36 @@ import pytest
             id="expected have 21, 17")
     ]
 )
-def test_get_human_age(first_animal_age: int,
-                       second_animal_age: int,
-                       expected_age: list
-                       ) -> None:
-    assert get_human_age(first_animal_age, second_animal_age) == expected_age
+def test_get_human_age(cat_age: int,
+                       dog_age: int,
+                       expected_age: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_age
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        pytest.param(
+            "zero",
+            8,
+            id="str instead of cat_age"
+        ),
+        pytest.param(
+            76,
+            "nine",
+            id="str instead of dog_age"
+        ),
+        pytest.param(
+            None,
+            5,
+            id="None instead of cat_age"
+        ),
+        pytest.param(
+            5,
+            None,
+            id="None instead of dog_age"
+        )
+    ]
+)
+def test_get_human_age_invalid_input(cat_age: int, dog_age: int,):
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
