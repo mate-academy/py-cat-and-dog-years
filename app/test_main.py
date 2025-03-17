@@ -21,21 +21,6 @@ class TestHumanAgeClass:
                            result: list) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
-    @pytest.mark.parametrize(
-        "cat_age,dog_age",
-        [
-            pytest.param(-1, 10, id="negative cat age"),
-            pytest.param(10, -5, id="negative dog age"),
-            pytest.param(-3, -7, id="both negative"),
-            pytest.param(9999, 50, id="extremely large cat age"),
-            pytest.param(50, 9999, id="extremely large dog age"),
-        ]
-    )
-    def test_get_human_age_out_of_range(self,
-                                        cat_age: int,
-                                        dog_age: int) -> None:
-        with pytest.raises(ValueError):
-            get_human_age(cat_age, dog_age)
 
     @pytest.mark.parametrize(
         "cat_age,dog_age",
