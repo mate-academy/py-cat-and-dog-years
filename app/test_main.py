@@ -21,7 +21,6 @@ class TestHumanAgeClass:
                            result: list) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
-
     @pytest.mark.parametrize(
         "cat_age,dog_age",
         [
