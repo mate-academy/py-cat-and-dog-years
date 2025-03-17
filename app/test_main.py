@@ -1,7 +1,7 @@
-import pytest
 from app.main import get_human_age
 
-def test_get_human_age():
+
+def test_get_human_age() -> None:
     assert get_human_age(0, 0) == [0, 0]
     assert get_human_age(15, 0) == [1, 0]
     assert get_human_age(24, 0) == [2, 0]
