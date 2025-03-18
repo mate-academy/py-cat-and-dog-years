@@ -45,13 +45,13 @@ from app.main import get_human_age
             28,
             28,
             [3, 2],
-            id="test cats 28 years are 3 humans years 28 dogs years are 2 humans"
+            id="test cats 28 years are 3 humans years 28 dogs years are 2 humans"  # noqa: E501
         ),
         pytest.param(
             100,
             100,
             [21, 17],
-            id="test cats 100 years are 21 humans years 100 dogs years are 17 humans"
+            id="test cats 100 years are 21 humans years 100 dogs years are 17 humans"  # noqa: E501
         ),
         pytest.param(
             -1,
