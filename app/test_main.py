@@ -26,8 +26,15 @@ def test_get_human_age(cat_year: int, dog_year: int, result: list) -> None:
 @pytest.mark.parametrize(
     "cat_year,dog_year,exception",
     [
-        (
-            1, "1", TypeError
+        pytest.param(
+            1, "1", TypeError,
+            id="if the function receives an incorrect"
+               " type of data (str) it raises the correct exception."
+        ),
+        pytest.param(
+            [1, 2], 5, TypeError,
+            id="if the function receives an incorrect"
+            " type of data (list) it raises the correct exception."
         )
     ]
 )
