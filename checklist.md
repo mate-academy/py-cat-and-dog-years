@@ -12,8 +12,8 @@ Don't forget to delete them when you are ready to commit and push your code.
 2. Make sure you've tests checks all edged situations such as:
 * if output should change with some integer value you should 
 check that it is not changed with previous value;
-* if function resive data out of normal range, 
-such as negative numbers, zero, or realy large numbers;
+* if function receive data out of normal range, 
+such as negative numbers, zero, or really large numbers;
 * if the function receives an incorrect type of data it raises the correct exception.
 
 3. Use ```@pytest.mark.parametrize```
