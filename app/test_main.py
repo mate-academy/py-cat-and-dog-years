@@ -32,6 +32,6 @@ class TestGetHumanAge:
             self,
             cat_age: int,
             dog_age: int,
-            expected: int
+            expected: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
