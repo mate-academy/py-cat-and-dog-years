@@ -57,12 +57,11 @@ class TestGetHumanAge:
 
         ]
     )
-
     def test_convert_animal_years_to_human(
             self,
-            cat_age,
-            dog_age,
-            expected_human_age) -> None:
+            cat_age: int,
+            dog_age: int,
+            expected_human_age: int) -> None:
         assert get_human_age(
             cat_age,
             dog_age
