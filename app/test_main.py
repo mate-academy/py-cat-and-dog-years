@@ -31,6 +31,7 @@ def test_animals_age_convert_to_human_age(cat_age: int,
         ({}, "10")
     ]
 )
-def test_should_raise_errr_while_invalid_input(cat_age: int, dog_age: int) -> None:
+def test_should_raise_errr_while_invalid_input(cat_age: int,
+                                               dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
