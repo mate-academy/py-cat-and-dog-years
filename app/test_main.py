@@ -3,7 +3,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, expected",
+    "cat_age: float, dog_age: float, expected: list",
     [
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
@@ -17,7 +17,5 @@ from app.main import get_human_age
         (46, 24, [6, 2]),
     ],
 )
-
-def test_get_human_age_edge_cases(cat_age, dog_age, expected):
+def test_get_human_age_edge_cases(cat_age: float, dog_age: float, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-
