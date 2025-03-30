@@ -17,5 +17,7 @@ from app.main import get_human_age
         (46, 24, [6, 2]),
     ],
 )
-def test_get_human_age_edge_cases(cat_age: float, dog_age: float, expected: list) -> None:
+def test_get_human_age_edge_cases(cat_age: float,
+                                  dog_age: float,
+                                  expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
