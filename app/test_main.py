@@ -8,10 +8,16 @@ class TestGetHumanAge:
         "cat_age,dog_age,expected",
         [
             pytest.param(
-                30,
-                30,
+                28,
+                29,
                 [3, 3],
-                id="check normal values",
+                id="28/29 cat/dog years should convert into 3 human age",
+            ),
+            pytest.param(
+                27,
+                28,
+                [2, 2],
+                id="27/28 cat/dog years should convert into 2 human age",
             ),
             pytest.param(
                 14,
@@ -72,15 +78,7 @@ class TestConvertToHuman:
         "animal_age,first_year,second_year,each_year,expected",
         [
             pytest.param(
-                14, 9, 4, 5, 0,
-                id="lesser 15 animal years return 0 human",
-            ),
-            pytest.param(
-                30,
-                15,
-                9,
-                4,
-                3,
+                14, 15, 9, 4, 0,
                 id="check normal values",
             ),
             pytest.param(
