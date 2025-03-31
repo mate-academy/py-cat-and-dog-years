@@ -9,7 +9,7 @@ takes two integers `cat_age` (my cat's age in cat years) and `dog_age`
 - the first element is my cat's age in human years;
 - the second element is my dog's age in human years.
 
-As usually age is a whole number of years (discard the remainder).
+Usually age is a whole number of years (discard the remainder).
 
 Cat years are converted to human years following the next rules:
 
