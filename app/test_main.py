@@ -1,38 +1,77 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_zero_age() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+class TestConvertAnimalToHumanAge:
+    @pytest.mark.parametrize(
+        "cat_age,dog_age,expected_human_age",
+        [
+            pytest.param(
+                0,
+                0,
+                [0, 0],
+                id="test animal age 0"
+            ),
+            pytest.param(
+                14,
+                14,
+                [0, 0],
+                id="test animal age 14"
+            ),
+            pytest.param(
+                20,
+                21,
+                [1, 1],
+                id="test animal age above 15"
+            ),
+            pytest.param(
+                25,
+                26,
+                [2, 2],
+                id="test animal age above 24"
+            ),
+            pytest.param(
+                20,
+                30,
+                [1, 3],
+                id="test extra years for dog"
+            ),
+            pytest.param(
+                33,
+                23,
+                [4, 1],
+                id="test extra years for cat"
+            ),
+            pytest.param(
+                70,
+                45,
+                [13, 6],
+                id="just a test"
+            ),
+            pytest.param(
+                100,
+                100,
+                [21, 17],
+                id="test elder age"
+            ),
+            pytest.param(
+                133,
+                122,
+                [29, 21],
+                id="test vast age"
+            ),
+            pytest.param(
+                -7,
+                -2,
+                [0, 0],
+                id="test negative age"
+            ),
 
-
-def test_below_first_threshold() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-    assert get_human_age(1, 1) == [0, 0]
-
-
-def test_at_first_threshold() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_between_first_and_second_threshold() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-    assert get_human_age(16, 16) == [1, 1]
-
-
-def test_at_second_threshold() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_after_second_threshold() -> None:
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_different_conversion_rates() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(100, 100) == [21, 17]
-
-
-def test_boundary_conditions() -> None:
-    assert get_human_age(28, 29) == [3, 3]
-    assert get_human_age(31, 33) == [3, 3]
-    assert get_human_age(32, 34) == [4, 4]
+        ]
+    )
+    def test_convert_to_human_age(self,
+                                  cat_age: int,
+                                  dog_age: int,
+                                  expected_human_age: list)\
+            -> None:
+        assert get_human_age(cat_age, dog_age) == expected_human_age
