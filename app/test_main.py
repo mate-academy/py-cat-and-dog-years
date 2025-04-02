@@ -40,7 +40,7 @@ def test_cat_and_dog_age_convertion_to_human_age(
 )
 def test_if_raise_errors(cat_age: int,
                          dog_age: int,
-                         expected_exception: type(BaseException)
+                         expected_exception: type[BaseException]
                          ) -> None:
     with pytest.raises(expected_exception):
         get_human_age(cat_age, dog_age)
