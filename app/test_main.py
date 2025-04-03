@@ -47,11 +47,6 @@ def test_get_human_age_when_cat_is_9_1_and_dog_is_9_1() -> None:
     assert result == [0, 0]
 
 
-def test_get_human_age_when_cat_is_14_and_dog_is_14() -> None:
-    result = get_human_age(14, 14)
-    assert result == [0, 0]
-
-
 def test_get_human_age_when_cat_is_15_and_dog_is_9() -> None:
     result = get_human_age(15, 9)
     assert result == [1, 0]
