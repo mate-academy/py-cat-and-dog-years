@@ -46,7 +46,7 @@ class TestGetHumanAge:
             self,
             cat_age: int,
             dog_age: int,
-            expected: int | None
+            expected: [int]
     ) -> None:
         assert (
             get_human_age(cat_age, dog_age) == expected
@@ -65,12 +65,12 @@ class TestGetHumanAge:
     )
     def test_cannot_add_int_and_str(
             self,
-            cat_age: int,
-            dog_age: int,
+            cat_age: str,
+            dog_age: str,
             expected_error: Exception
     ) -> None:
         with pytest.raises(expected_error):
-            get_human_age(cat_age, dog_age)
+            get_human_age(cat_age, dog_age)  # passing str to check error type
 
 
 class TestConvertToHuman:
@@ -102,9 +102,7 @@ class TestConvertToHuman:
                 15 ** 1000,
                 9 ** 1000,
                 4 ** 1000,
-                (
-                    0
-                ),
+                0,
                 id="Should work properly with large numbers",
             )
         ],
@@ -115,7 +113,7 @@ class TestConvertToHuman:
             first_year: int,
             second_year: int,
             each_year: int,
-            expected: int | None
+            expected: int
     ) -> None:
         assert (
             convert_to_human(
@@ -147,12 +145,12 @@ class TestConvertToHuman:
             ),
         ]
     )
-    def test_cannot_add_int_and_str(
+    def test_invalid_parameter_type(
             self,
-            animal_age: int,
-            first_year: int,
-            second_year: int,
-            each_year: int,
+            animal_age: int | str,
+            first_year: int | str,
+            second_year: int | str,
+            each_year: int | str,
             expected_error: Exception
     ) -> None:
         with pytest.raises(expected_error):
