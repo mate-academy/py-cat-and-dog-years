@@ -18,6 +18,6 @@ from app.main import get_human_age
 def test_return_dogs_cats_years_to_humans_years(
         cat: int,
         dog: int,
-        result: int
+        result: list
 ) -> None:
     assert get_human_age(cat, dog) == result
