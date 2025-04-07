@@ -13,5 +13,9 @@ from app.main import get_human_age
         (28, 28, [3, 2]),
         (100, 100, [21, 17])
     ])
-def test_return_dogs_cats_years_to_human_years(cat: int, dog: int, result: int) -> None:
+def test_return_dogs_cats_years_to_human_years(
+        cat: int,
+        dog: int,
+        result: int
+) -> None:
     assert get_human_age(cat, dog) == result
