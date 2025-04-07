@@ -1,0 +1,237 @@
+[33mcommit 00f741e7c6587663d413ccbb8c41f55104420455[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Bohdan Mykyta <justkexitmail@gmail.com>
+Date:   Mon Apr 7 19:29:08 2025 +0300
+
+    i dont know
+
+[33mcommit 5d5ed5be08e3afdabf7df5e6ece859bc9cbc3b82[m
+Author: Bohdan Mykyta <justkexitmail@gmail.com>
+Date:   Mon Apr 7 19:24:46 2025 +0300
+
+    i dont know
+
+[33mcommit 1d47fbdccc025dee8fabf76e2a57b42a8573c38b[m
+Author: Bohdan Mykyta <justkexitmail@gmail.com>
+Date:   Mon Apr 7 18:47:45 2025 +0300
+
+    i dont know
+
+[33mcommit fa85a4c9a6ea8bf19d9a9348c823d49b7abce3c3[m
+Merge: 45fd943 e109a9a
+Author: Andrii Bovsunovskyi <an.bvsn@gmail.com>
+Date:   Thu Mar 20 09:36:23 2025 +0200
+
+    Merge pull request #1434 from Serhii-Leonenko/extend_AI_context
+    
+    added .reviewrelatedfiles
+
+[33mcommit e109a9a7d0310b831c7d567a0e03800282b04c3c[m
+Author: Serhii-Leonenko <leonenko3149@gmail.com>
+Date:   Wed Mar 19 14:25:02 2025 +0200
+
+    added .reviewrelatedfiles
+
+[33mcommit 45fd9431d136b40dd94d43e0fd47e8ac87709f56[m
+Author: Serhii Leonenko <104218550+Serhii-Leonenko@users.noreply.github.com>
+Date:   Thu Feb 23 14:36:45 2023 +0200
+
+    Update checklist.md
+
+[33mcommit 9187d500e320d39f7a2e130387720349585fd1bd[m
+Merge: a5f71d4 bb86a1e
+Author: Dmytro Svirsa <104418771+DmytroSvirsa@users.noreply.github.com>
+Date:   Wed Oct 12 13:07:25 2022 +0300
+
+    Merge pull request #182 from mate-academy/add_checklist
+    
+    checklist + more tests
+
+[33mcommit bb86a1e122151e846f2de8a10ca1dbf45bae7065[m
+Author: Dmytro Svirsa <104418771+DmytroSvirsa@users.noreply.github.com>
+Date:   Wed Oct 12 13:07:01 2022 +0300
+
+    Update checklist.md
+
+[33mcommit 572c2c1e96dc8202e7fccf219446376343dc9efd[m
+Author: Dmytro Svirsa <104418771+DmytroSvirsa@users.noreply.github.com>
+Date:   Wed Oct 12 13:05:05 2022 +0300
+
+    Update checklist.md
+
+[33mcommit dba04f02e05d907f66ee0749e771c853c60e38b4[m
+Author: Dmytro Svirsa <104418771+DmytroSvirsa@users.noreply.github.com>
+Date:   Wed Oct 12 12:47:27 2022 +0300
+
+    checlist added more checks"
+
+[33mcommit 4af3dfe46b78d20428e6881b481861b375bdb930[m
+Author: Dmytro Svirsa <104418771+DmytroSvirsa@users.noreply.github.com>
+Date:   Wed Oct 12 11:59:40 2022 +0300
+
+    acheclist + more tests
+
+[33mcommit a5f71d4146f13905e7465f01d3b70e16fce9e4cb[m
+Merge: 42bfb76 c31f131
+Author: Yaroslav <104159378+Y-Havryliv@users.noreply.github.com>
+Date:   Wed Oct 5 17:10:16 2022 +0300
+
+    Merge pull request #162 from mate-academy/add_annotation_to_main
+    
+    annotations to main.py added
+
+[33mcommit c31f13138c616fe2759456aa4c3fb4a3a3c7f120[m
+Author: Yaroslav Havryliv <yaroslav.h@mate.academy>
+Date:   Wed Oct 5 16:29:41 2022 +0300
+
+    annotations to main.py added
+
+[33mcommit 42bfb76a6b90a68dfe2519226e3336e45ae78c63[m
+Author: Danylo Tiutiushkin <48014331+danylott@users.noreply.github.com>
+Date:   Wed Oct 5 13:39:38 2022 +0300
+
+    Update requirements.txt
+
+[33mcommit 19b509707818a535bed2e99420d3453c5360e47e[m
+Author: Danylo Tiutiushkin <48014331+danylott@users.noreply.github.com>
+Date:   Wed Oct 5 13:39:21 2022 +0300
+
+    Update .flake8
+
+[33mcommit e63e7ece498bf061943a4b7fa3cc2e0ffcca82f6[m
+Merge: 3f3eecf 4204f33
+Author: Yaroslav <104159378+Y-Havryliv@users.noreply.github.com>
+Date:   Mon Aug 22 14:36:00 2022 +0300
+
+    Merge pull request #91 from mate-academy/README_modified
+    
+    README.md modified
+
+[33mcommit 4204f3360d8dc5acd1077e31cdc6ef92f4a95f71[m
+Author: Yaroslav Havryliv <yaroslav.h@mate.academy>
+Date:   Mon Aug 22 14:20:45 2022 +0300
+
+    list removed
+
+[33mcommit 53fc8d75fe59af8e88004308a774178558c266f7[m
+Author: Yaroslav Havryliv <yaroslav.h@mate.academy>
+Date:   Mon Aug 22 14:06:33 2022 +0300
+
+    README.md modified
+
+[33mcommit 3f3eecfcac87c8e98b3617732470e334c5da3d46[m
+Author: Alex Zhidkov <72562232+Abnormaltype@users.noreply.github.com>
+Date:   Fri Jun 10 13:24:43 2022 +0300
+
+    Update test.yml
+
+[33mcommit 21cc891496d803e77771b92ceff9d6090a2eb93b[m
+Merge: ebb6565 65ba14a
+Author: Alex Zhidkov <72562232+Abnormaltype@users.noreply.github.com>
+Date:   Thu Jun 9 16:22:41 2022 +0300
+
+    Merge pull request #63 from mate-academy/add-timeout
+    
+    add timeout on the tests
+
+[33mcommit 65ba14a21949bc401b6f988ebff564a984d2dfd1[m
+Author: Alex Zhidkov <72562232+Abnormaltype@users.noreply.github.com>
+Date:   Thu Jun 9 16:22:35 2022 +0300
+
+    add timeout on the tests
+
+[33mcommit ebb656529ab625cd7f8712d3a38175dbfd15141b[m
+Merge: 58828ee 801b216
+Author: Polina Tytarenko <47711774+TPolina@users.noreply.github.com>
+Date:   Thu Jun 2 18:54:21 2022 +0300
+
+    Merge pull request #51 from mate-academy/fix-parameter-name
+
+[33mcommit 801b2163000b29d1dfb130547ac077314428f1c3[m
+Author: polinatytarenko <p.tytarenko.20@gmail.com>
+Date:   Thu Jun 2 18:44:51 2022 +0300
+
+    Fix parameter name in main
+
+[33mcommit 58828ee6269375c13fbebca25f44bb0939f944fd[m
+Merge: 61ead40 337ca68
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Wed Jun 1 13:10:27 2022 +0300
+
+    Merge pull request #27 from mate-academy/add-pytest-xdist
+    
+    Add pytest-xdist for tests
+
+[33mcommit 337ca68585168e5abbf9625825518785fb0db55b[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Wed Jun 1 12:04:56 2022 +0300
+
+    Add pytest-xdist
+
+[33mcommit 61ead406874f4b9041c14ad71687e041497eee1f[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Tue May 31 13:07:42 2022 +0300
+
+    Update test_tests.py
+
+[33mcommit 8d472625d2e5785dc3f69f23f7c05b43f963fec7[m
+Merge: b44d477 1e02d81
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Tue May 31 09:51:44 2022 +0300
+
+    Merge pull request #24 from mate-academy/add-test-for-tests
+    
+    Add test for tests
+
+[33mcommit 1e02d8189437e406eabc6c090f695186c3cd5287[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Tue May 31 09:50:30 2022 +0300
+
+    Update test_tests.py
+
+[33mcommit 46a24aedae0a122fdbc2fe472b095efab689f05c[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Mon May 30 15:35:10 2022 +0300
+
+    Fix README
+
+[33mcommit ea3d455988ea2e30f5ee79f773227ae135bcf2af[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Mon May 30 15:25:04 2022 +0300
+
+    Add test for tests
+
+[33mcommit b44d477445ccf8e52f6559355b0be7d530a8ec63[m
+Merge: b3034fb 0df4d4a
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Thu Feb 3 14:06:41 2022 +0200
+
+    Merge pull request #4 from mate-academy/Edit
+    
+    Cat and Dog years
+
+[33mcommit 0df4d4a51974999034234ce04c3afc09dc198302[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Thu Feb 3 14:06:17 2022 +0200
+
+    Cat and Dog years
+
+[33mcommit b3034fb668d3a6774e55cdcf96cadc3d34104af4[m
+Merge: 9a72f15 326b474
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Thu Feb 3 10:19:59 2022 +0200
+
+    Merge pull request #1 from mate-academy/python-cat-and-dog-years
+    
+    Cat and Dog years
+
+[33mcommit 326b4741d472ac4da96a6ad8e137ec19ec393f59[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Wed Feb 2 11:39:52 2022 +0200
+
+    Cat and Dog years
+
+[33mcommit 9a72f152b292bd87d02cbf43f6155f0b4c0b15dc[m
+Author: Oleksii Proshchenko <80070761+MasterpieceElbow@users.noreply.github.com>
+Date:   Wed Feb 2 11:20:54 2022 +0200
+
+    Initial commit
