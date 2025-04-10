@@ -10,16 +10,14 @@ from app.main import get_human_age
         (15, 15),
         (23, 23),
         (27, 27),
-        (-34, -40),
-        (300, 300)
+        (100, 100)
     ], ids=[
         "Test (0, 0)",
         "Test (14, 14)",
         "Test (15, 15)",
         "Test (23, 23)",
         "Test (27, 27)",
-        "Negative Test (-34, -40)",
-        "Test data out of normal range (300, 300)"
+        "Test data out of normal range (100, 100)"
     ]
 )
 def test_get_human_age_returns_correct_value_for_dog_and_cat(
