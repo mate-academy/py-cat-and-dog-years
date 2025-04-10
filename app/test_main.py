@@ -1,6 +1,6 @@
 import pytest
 
-from app.main import get_human_age
+from app.main import get_human_age, convert_to_human
 
 
 @pytest.mark.parametrize(
@@ -24,16 +24,8 @@ def test_get_human_age_returns_correct_value_for_dog_and_cat(
         cat_years: int,
         dog_years: int
 ) -> None:
-    def for_test_convert_to_human(animal_age: int, each_year: int) -> int:
-        first_year, second_year = 15, 9
-        if animal_age < 15:
-            return 0
-        if animal_age < first_year + second_year:
-            return 1
-        return 2 + (animal_age - first_year - second_year) // each_year
-
-    cat_years_convert_to_human = for_test_convert_to_human(cat_years, 4)
-    dog_years_convert_to_human = for_test_convert_to_human(dog_years, 5)
+    cat_years_convert_to_human = convert_to_human(cat_years, 15, 9, 4)
+    dog_years_convert_to_human = convert_to_human(dog_years, 15, 9, 5)
     assert (
         get_human_age(cat_years, dog_years)
         == [
