@@ -13,7 +13,8 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (28, 28, [3, 2]),
         (21, 28, [1, 2]),
-        (100, 100, [21, 17])
+        (100, 100, [21, 17]),
+        (-5, 10, [0, 0])
     ]
 )
 def test_should_return_correct_value(first_value: int,
