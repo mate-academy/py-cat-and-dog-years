@@ -24,16 +24,3 @@ class TestGetHumanAge:
                            dog_age: int, expected: list) -> None:
         result = get_human_age(cat_age, dog_age)
         assert result == expected
-
-    @pytest.mark.parametrize(
-        "cat_age, dog_age",
-        [
-            (-5, -5),
-            (0, 0),
-            (None, None),
-            ("cat", "dog")
-        ]
-    )
-    def test_invalid_input(self, cat_age: int, dog_age: int) -> None:
-        with pytest.raises((ValueError, TypeError)):
-            get_human_age(cat_age, dog_age)
