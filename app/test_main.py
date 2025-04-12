@@ -19,7 +19,8 @@ class TestGetHumanAge:
             (1000, 1000, [246, 197]),
         ]
     )
-    def test_get_human_age(self, cat_age: int, dog_age: int, expected: list) -> None:
+    def test_get_human_age(self, cat_age: int,
+                           dog_age: int, expected: list) -> None:
         result = get_human_age(cat_age, dog_age)
         assert result == expected
 
@@ -27,9 +28,9 @@ class TestGetHumanAge:
         "cat_age, dog_age",
         [
             (-5, -5),
-            (0,0),
+            (0, 0),
             (None, None),
-            ("cat","dog")
+            ("cat", "dog")
         ]
     )
     def test_invalid_input(self, cat_age: int, dog_age: int) -> None:
