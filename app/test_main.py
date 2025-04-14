@@ -14,8 +14,8 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
-        (28, 29, [3, 3]),
-        (40, 40, [6, 5]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
         (100, 100, [21, 17]),
     ],
     ids=[
@@ -28,16 +28,17 @@ from app.main import get_human_age
         "cat_15_and_dog_15_years",
         "cat_23_and_dog_23_years",
         "cat_24_and_dog_24_years",
+        "cat_27_and_dog_27_years",
         "cat_28_and_dog_29_years",
-        "cat_40_and_dog_40_years",
         "cat_100_and_dog_100_years",
     ],
 )
-def test_get_human_age_returns_correct_values(cat_age: int, dog_age: int, expected_result: list):
+def test_get_human_age_returns_correct_values(
+        cat_age: int,
+        dog_age: int,
+        expected_result: list) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected_result
     assert isinstance(result, list)
     assert all(isinstance(x, int) for x in result)
     assert len(result) == 2
-
-
