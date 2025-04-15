@@ -2,7 +2,6 @@ from typing import List
 import pytest
 from app.main import get_human_age
 
-
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected", [
         (0, 0, [0, 0]),
@@ -21,7 +20,6 @@ def test_get_human_age_examples(
     """Перевірка прикладів із завдання."""
     result: List[int] = get_human_age(cat_age, dog_age)
     assert result == expected
-
 
 @pytest.mark.parametrize(
     "cat_age, dog_age", [
