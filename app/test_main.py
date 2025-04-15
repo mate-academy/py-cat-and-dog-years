@@ -14,7 +14,7 @@ from app.main import get_human_age
         (27, [2, 2])
     ]
 )
-def test_both_of_functions_should_return_the_same_result(
+def test_same_age_for_cat_and_dog(
         pet_years: int, result: list
 ) -> None:
     assert get_human_age(pet_years, pet_years) == result
@@ -27,7 +27,7 @@ def test_both_of_functions_should_return_the_same_result(
         (100, 100, [21, 17])
     ]
 )
-def test_cat_years_should_be_greater_than_dogs_years(
+def test_specific_cat_and_dog_years(
         cat_years: int, dog_years: int, result: list
 ) -> None:
     assert get_human_age(cat_years, dog_years) == result
