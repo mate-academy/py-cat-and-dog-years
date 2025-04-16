@@ -17,3 +17,13 @@ import pytest
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+def test_age_is_less_then_zero() -> None:
+    with pytest.raises(ValueError):
+        get_human_age(-1, -5)
+
+
+def test_age_is_not_integer() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("10", 14.5)
