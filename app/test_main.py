@@ -1,4 +1,6 @@
 import pytest
+from typing import Type
+
 from app.main import get_human_age
 
 
@@ -35,7 +37,8 @@ class TestGetHumanAge:
                     14,
                     14,
                     [0, 0],
-                    id="should work with boundary condition values to zero human year"
+                    id="should work with boundary "
+                       "condition values to zero human year"
                 )
             ),
             (
@@ -43,7 +46,8 @@ class TestGetHumanAge:
                     23,
                     23,
                     [1, 1],
-                    id="should work with boundary condition values to one human year"
+                    id="should work with boundary "
+                       "condition values to one human year"
                 )
             ),
             (
@@ -51,17 +55,19 @@ class TestGetHumanAge:
                     28,
                     28,
                     [3, 2],
-                    id="should work with boundary condition values to difference in cet/dog human years"
+                    id="should work with boundary "
+                       "condition values to difference "
+                       "in cet/dog human years"
                 )
             )
         ]
     )
     def test_age_in_human_years(
             self,
-            initial_cat_age,
-            initial_dog_age,
-            expected_list
-    ):
+            initial_cat_age: int,
+            initial_dog_age: int,
+            expected_list: list
+    ) -> None:
         assert get_human_age(
             initial_cat_age,
             initial_dog_age) == expected_list
@@ -74,17 +80,18 @@ class TestGetHumanAge:
                     "16",
                     "17",
                     TypeError,
-                    id="Should raise error if value for `cat_age` or `dog_age` is string"
+                    id="Should raise error if "
+                       "value for `cat_age` or `dog_age` is string"
                 )
             )
         ]
     )
     def test_raising_errors_correctly(
             self,
-            initial_cat_age,
-            initial_dog_age,
-            expected_error
-    ):
+            initial_cat_age: int,
+            initial_dog_age: int,
+            expected_error: Type[Exception]
+    ) -> None:
         with pytest.raises(expected_error):
             get_human_age(initial_cat_age,
                           initial_dog_age)
