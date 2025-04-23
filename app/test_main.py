@@ -13,7 +13,7 @@ from app.main import get_human_age
         (29, 30, [3, 3]),   # 29 cat years -> 3 human, 30 dog years -> 3 human
         (30, 50, [3, 7]),   # 30 cat years -> 3 human, 50 dog years -> 9 human
         (35, 80, [4, 13]),  # 35 cat years -> 4 human, 80 dog years -> 13 human
-        (40, 100, [6, 17]), # 40 cat years -> 6 human, 100 dog years -> 17 human
+        (40, 100, [6, 17]),  # 40 cat years -> 6 human, 100 dog years -> 17
     ]
 )
 def test_get_human_age(
