@@ -10,49 +10,49 @@ class TestMainModule:
                 0,
                 0,
                 [0, 0],
-                id="Test"
+                id="Test [0, 0]"
             ),
             pytest.param(
                 14,
                 14,
                 [0, 0],
-                id="Test"
+                id="Test [0, 0]"
             ),
             pytest.param(
                 15,
                 15,
                 [1, 1],
-                id="Test"
+                id="Test [1, 1]"
             ),
             pytest.param(
                 23,
                 23,
                 [1, 1],
-                id="Test"
+                id="Test [1, 1]"
             ),
             pytest.param(
                 24,
                 24,
                 [2, 2],
-                id="Test"
+                id="Test [2, 2]"
             ),
             pytest.param(
                 27,
                 27,
                 [2, 2],
-                id="Test"
+                id="Test [2, 2]"
             ),
             pytest.param(
                 28,
                 28,
                 [3, 2],
-                id="Test"
+                id="Test [3, 2]"
             ),
             pytest.param(
                 100,
                 100,
                 [21, 17],
-                id="Test"
+                id="Test [21, 17]"
             ),
         ]
     )
