@@ -19,7 +19,7 @@ class TestMainModule:
                 id="Test [0, 0]"
             ),
             pytest.param(
-                15,
+                "15",
                 15,
                 [1, 1],
                 id="Test [1, 1]"
