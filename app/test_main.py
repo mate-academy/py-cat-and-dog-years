@@ -59,6 +59,6 @@ class TestMainModule:
     def test_module(self, cat_age: int, dog_age: int, result: list) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
-    def test_module_error(self):
+    def test_module_error(self) -> None | Exception:
         with pytest.raises(TypeError):
             get_human_age("13", [13])
