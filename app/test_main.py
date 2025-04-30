@@ -19,7 +19,7 @@ class TestMainModule:
                 id="Test [0, 0]"
             ),
             pytest.param(
-                "15",
+                15,
                 15,
                 [1, 1],
                 id="Test [1, 1]"
@@ -57,5 +57,9 @@ class TestMainModule:
         ]
     )
     def test_module(self, cat_age: int, dog_age: int, result: list) -> None:
+        assert get_human_age(cat_age, dog_age) == result
+
+    def test_module_error(self):
         with pytest.raises(TypeError):
-            assert get_human_age(cat_age, dog_age) == result
+            get_human_age("13", [13])
+
