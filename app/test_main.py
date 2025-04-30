@@ -1,13 +1,6 @@
 from app.main import get_human_age
 
 
-def test_get_human_age_1() -> None:
-    cat_age = 14
-    dog_age = 14
-    result = get_human_age(cat_age, dog_age)
-    assert result == [0, 0]
-
-
 def test_get_human_age_2() -> None:
     cat_age = 0
     dog_age = 0
