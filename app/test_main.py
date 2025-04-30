@@ -57,8 +57,14 @@ class TestMainModule:
         ]
     )
     def test_module(self, cat_age: int, dog_age: int, result: list) -> None:
+        assert cat_age >= 0, f"Cat age is {cat_age} >= 0"
+        assert dog_age >= 0, f"Dog age is {dog_age} >= 0"
+        assert get_human_age(cat_age, dog_age)[0] < 10000,\
+            f"{cat_age} is realy large numbers"
+        assert get_human_age(cat_age, dog_age)[1] < 10000,\
+            f"{dog_age} is realy large numbers"
         assert get_human_age(cat_age, dog_age) == result
 
     def test_module_error(self) -> None | Exception:
         with pytest.raises(TypeError):
-            get_human_age("13", [13])
+            get_human_age("123", [123])
