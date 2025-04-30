@@ -62,4 +62,3 @@ class TestMainModule:
     def test_module_error(self):
         with pytest.raises(TypeError):
             get_human_age("13", [13])
-
