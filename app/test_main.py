@@ -6,7 +6,7 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age, dog_age, human_ages",
     [
-        pytest.param(14, 14 ,[0, 0],
+        pytest.param(14, 14, [0, 0],
                      id="The maximum limit value of which is not enough for 1 human year"),
         pytest.param(15, 15, [1, 1], id="Minimum threshold value for 1 person year"),
         pytest.param(23, 23, [1, 1], id="Maximum threshold value for 1 person year"),
