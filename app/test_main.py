@@ -2,8 +2,8 @@ from app.main import get_human_age
 import pytest
 
 
-@pytest.mark.paramertize(
-    "cat_age,dog_age,result",
+@pytest.mark.parametrize(
+    "cat_age, dog_age, result",
     [
         pytest.param(0, 0, [0, 0], id="cat and dog ages equal 0"),
         pytest.param(14, 14, [0, 0], id="cat and dog ages equal 14"),
