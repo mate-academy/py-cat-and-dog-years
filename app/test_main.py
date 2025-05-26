@@ -13,6 +13,5 @@ import pytest
         pytest.param(100, 100, [21, 17], id="cat and dog ages equal 100")
     ]
 )
-
 def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
