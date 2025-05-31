@@ -25,9 +25,9 @@ def test_returns_two_when_ages_are_twentyseven() -> None:
     assert get_human_age(27, 27) == [2, 2]
 
 
-def test_returns_three_for_cat_and_two_for_dog_when_ages_are_twenty_eight() -> None:
+def test_cat3_dog2_at_28() -> None:
     assert get_human_age(28, 28) == [3, 2]
 
 
-def test_returns_twentyone_for_dog_and_seventeen_for_cat_for_one_hundred_ages() -> None:
+def test_cat21_dog17_at_100() -> None:
     assert get_human_age(100, 100) == [21, 17]
