@@ -14,6 +14,11 @@ from app.main import get_human_age
 ])
 def test_get_human_age_valid_cases(cat_age: int,
                                    dog_age: int,
-                                   expected_ages: int
+                                   expected_ages: list[int]
                                    ) -> None:
     assert get_human_age(cat_age, dog_age) == expected_ages
+
+
+def test_invalid_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("cat", "dog")
