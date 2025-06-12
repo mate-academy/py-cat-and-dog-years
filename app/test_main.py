@@ -7,19 +7,21 @@ from app.main import get_human_age
     "cat_age, dog_age, expected",
     [
         (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
-        (23, 23, [1, 1]),
-        (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
-    ]
+        (1, 1, [15, 15]),
+        (2, 2, [24, 24]),
+        (3, 3, [28, 29]),
+        (4, 4, [32, 34]),
+        (5, 5, [36, 39]),
+        (10, 10, [56, 64]),
+        (15, 15, [76, 89]),
+        (20, 20, [96, 114]),
+        (100, 100, [416, 514]),
+    ],
 )
 def test_get_human_age(
     cat_age: int,
     dog_age: int,
-    expected: List[int],
+    expected: List[int]
 ) -> None:
 
     assert get_human_age(cat_age, dog_age) == expected
