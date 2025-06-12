@@ -1,14 +1,13 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
-    cat_to_human = convert_to_human(cat_age, 15, 9, 4)
-    dog_to_human = convert_to_human(dog_age, 15, 9, 5)
-    return [cat_to_human, dog_to_human]
-
-
-def convert_to_human(
-        animal_age: int, first_year: int, second_year: int, each_year: int
-) -> int:
-    if animal_age < first_year:
+def convert_to_human(pet_age: int, first: int, second: int, each: int) -> int:
+    if pet_age < first:
         return 0
-    if animal_age < first_year + second_year:
+    elif pet_age < first + second:
         return 1
-    return 2 + (animal_age - first_year - second_year) // each_year
+    return 2 + (pet_age - first - second) // each
+
+
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    return [
+        convert_to_human(cat_age, 15, 9, 4),
+        convert_to_human(dog_age, 15, 9, 5),
+    ]
