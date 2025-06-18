@@ -3,7 +3,7 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "a, b, result",
+    "cat_age, dog_age, expected",
     [
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
@@ -15,8 +15,8 @@ import pytest
         (100, 100, [21, 17])
     ]
 )
-def test_convert_into_human_age_correctly(cat_year: int,
-                                          dog_year: int,
-                                          result: list[int]
+def test_convert_into_human_age_correctly(cat_age: int,
+                                          dog_age: int,
+                                          expected: list[int]
                                           ) -> None:
-    assert get_human_age(cat_year, dog_year) == result
+    assert get_human_age(cat_age, dog_age) == expected
