@@ -1,5 +1,5 @@
 import pytest
-from app.main import calculate_human_age
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
@@ -17,4 +17,4 @@ def test_count_human_age(
         dog_age: int,
         result: list[int]
 ) -> None:
-    assert calculate_human_age(cat_age, dog_age) == result
+    assert get_human_age(cat_age, dog_age) == result
