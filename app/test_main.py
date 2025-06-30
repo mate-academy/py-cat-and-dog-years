@@ -1,12 +1,12 @@
 from app.main import get_human_age
 
 
-def test_get_cat_and_dog_age() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
 def test_get_cat_and_dog_age_zero() -> None:
     assert get_human_age(14, 14) == [0, 0]
+
+
+def test_get_cat_and_dog_age() -> None:
+    assert get_human_age(15, 15) == [1, 1]
 
 
 def test_get_cat_and_dog_age_no_second_year() -> None:
