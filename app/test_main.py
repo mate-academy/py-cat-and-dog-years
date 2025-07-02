@@ -22,4 +22,3 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
 def test_error() -> None:
     with pytest.raises(TypeError):
         get_human_age("str", 12)
-
