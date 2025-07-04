@@ -1,15 +1,18 @@
+import pytest
 from app.main import get_human_age
 
-def test_get_human_age():
-    assert get_human_age(0, 0) == [0, 0]
-    assert get_human_age(14, 14) == [0, 0]
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(100, 100) == [21, 17]
-    assert get_human_age(50, 50) == [8, 7]
-    assert get_human_age(9, 9) == [0, 0]
-    assert get_human_age(0, 1000) == [0, 197]
-    assert get_human_age(1000, 0) == [221, 0]
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (0, 0, [0, 0]),
+    (14, 14, [0, 0]),
+    (15, 15, [1, 1]),
+    (23, 23, [1, 1]),
+    (24, 24, [2, 2]),
+    (27, 27, [2, 2]),
+    (28, 28, [3, 2]),
+    (100, 100, [21, 17]),
+    (16, 9, [1, 0]),
+    (24, 15, [2, 1]),
+    (35, 29, [4, 3]),
+])
+def test_get_human_age(cat_age, dog_age, expected):
+    assert get_human_age(cat_age, dog_age) == expected
