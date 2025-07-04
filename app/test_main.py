@@ -15,8 +15,15 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
         (16, 9, [1, 0]),
         (24, 15, [2, 1]),
-        (35, 29, [4, 3]),
+        (
+            35, 29,
+            [4, 3]
+        ),
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected: list[int]) -> None:
+def test_get_human_age(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
