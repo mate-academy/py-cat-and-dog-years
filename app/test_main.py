@@ -14,9 +14,11 @@ from typing import List
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
-    ]
+    ],
 )
-def test_get_human_age_basic(cat_age: int, dog_age: int, expected: List[int]) -> None:
+def test_get_human_age_basic(
+    cat_age: int, dog_age: int, expected: List[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -28,9 +30,11 @@ def test_get_human_age_basic(cat_age: int, dog_age: int, expected: List[int]) ->
         (16, 15, [1, 1]),
         (33, 34, [3, 3]),
         (36, 40, [4, 4]),
-    ]
+    ],
 )
-def test_get_human_age_edge_cases(cat_age: int, dog_age: int, expected: List[int]) -> None:
+def test_get_human_age_edge_cases(
+    cat_age: int, dog_age: int, expected: List[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -40,7 +44,7 @@ def test_get_human_age_edge_cases(cat_age: int, dog_age: int, expected: List[int
         (-1, 10),
         (10, -1),
         (-5, -5),
-    ]
+    ],
 )
 def test_get_human_age_negative_values(cat_age: int, dog_age: int) -> None:
     with pytest.raises(ValueError):
@@ -56,8 +60,8 @@ def test_get_human_age_negative_values(cat_age: int, dog_age: int) -> None:
         (10, None),
         (5.5, 10),
         (10, 5.5),
-    ]
+    ],
 )
-def test_get_human_age_invalid_types(cat_age, dog_age) -> None:
+def test_get_human_age_invalid_types(cat_age: object, dog_age: object) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
