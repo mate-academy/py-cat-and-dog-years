@@ -1,6 +1,6 @@
 import pytest
 
-from main import get_human_age
+from .main import get_human_age
 
 
 @pytest.mark.parametrize(
