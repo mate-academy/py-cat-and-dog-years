@@ -15,8 +15,8 @@ from app.main import get_human_age
         (28, 28, [3, 2]),
         (100, 100, [21, 7])
     ]
-    
+
 
 )
-def test_get_human_age(cat_age: int, dog_age: int, result: list):
+def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     return get_human_age(cat_age, dog_age) == result
