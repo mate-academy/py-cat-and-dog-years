@@ -2,19 +2,19 @@ import pytest
 from app.main import get_human_age
 
 
-def test_negative_ages():
+def test_negative_ages() -> None:
     assert get_human_age(-5, -5) == [0, 0]
 
 
-def test_zero_ages():
+def test_zero_ages() -> None:
     assert get_human_age(0, 0) == [0, 0]
 
 
-def test_ages_less_than_15():
+def test_ages_less_than_15() -> None:
     assert get_human_age(12, 10) == [0, 0]
 
 
-def test_ages_less_than_24():
+def test_ages_less_than_24() -> None:
     assert get_human_age(23, 21) == [1, 1]
 
 
@@ -28,5 +28,9 @@ def test_ages_less_than_24():
         (48, 48, [8, 6])
     ]
 )
-def test_ages_greater_than_25(cat_age, dog_age, expected_result):
+def test_ages_greater_than_25(
+        cat_age: int,
+        dog_age: int,
+        expected_result: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
