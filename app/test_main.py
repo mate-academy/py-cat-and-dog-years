@@ -36,7 +36,7 @@ from app.main import get_human_age
         pytest.param(36, 36, [5, 4], id="test 36 years difference to cat/dog"),
         pytest.param(40, 40, [6, 5], id="test 40 years difference to cat/dog"),
 
-        pytest.param(100, 100, [21, 17], id="test for long livers"),
+        pytest.param(100, 100, [21, 17], id="test for long liver"),
     ],
 )
 def test_get_human_age(
