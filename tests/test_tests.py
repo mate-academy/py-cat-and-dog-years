@@ -1,4 +1,7 @@
 import pytest
+import os
+import sys
+from pathlib import Path
 
 from app import main
 
@@ -36,7 +39,6 @@ def convert_to_human(
     ]
 )
 def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog):
-
     def mock_get_human_age(cat_age, dog_age):
         cat_to_human = convert_to_human(cat_age, first_year, second_year, each_year_cat)
         dog_to_human = convert_to_human(dog_age, first_year, second_year, each_year_dog)
@@ -44,6 +46,10 @@ def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog
 
     monkeypatch.setattr(main, "get_human_age", mock_get_human_age)
 
-    test_result = pytest.main(["app/test_main.py"])
+    # Знаходимо правильний шлях до app/test_main.py
+    current_dir = Path(__file__).parent
+    test_file_path = current_dir.parent / "app" / "test_main.py"
+
+    test_result = pytest.main([str(test_file_path)])
     print(f"test_result{test_result}")
     assert test_result.value == 1
