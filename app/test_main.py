@@ -26,7 +26,7 @@ from app.main import get_human_age
             28, 28, [3, 2], id="test 28 years difference between cat and dog"
         ),
         pytest.param(
-            29, 29, [3, 3], id="test 29 years after third stage for both"
+            29, 29, [3, 3], id="test years after third stage for both"
         ),
 
         pytest.param(28, 28, [3, 2], id="test 28 years difference to cat/dog"),
