@@ -1,7 +1,5 @@
 from app.main import get_human_age
 
-from app.main import get_human_age
-
 
 def test_zero_ages():
     """Тест з нульовими віками"""
