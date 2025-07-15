@@ -10,8 +10,8 @@ from app.main import get_human_age
     (28, 28, [3, 2]),
     (29, 29, [3, 3]),
     (33, 34, [4, 4]),
-    (44, 44, [7, 7]),   # ← исправленные ожидания
-    (100, 100, [21, 17]),
+    (44, 44, [7, 6]),
+    (100, 100, [21, 17])
 ])
 def test_get_human_age(cat_age, dog_age, expected):
     assert get_human_age(cat_age, dog_age) == expected
