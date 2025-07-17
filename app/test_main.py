@@ -12,7 +12,8 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
     ]
 )
-def test_get_human_age_changes_only_on_threshold(cat_age: int, dog_age: int, expected: list) -> None:
+def test_get_human_age_changes_only_on_threshold(
+        cat_age: int, dog_age: int, expected: list) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected
 
@@ -25,7 +26,8 @@ def test_get_human_age_changes_only_on_threshold(cat_age: int, dog_age: int, exp
         (-10, -10),
     ]
 )
-def test_get_human_age_should_raise_for_negative_numbers(cat_age: int, dog_age: int) -> None:
+def test_get_human_age_should_raise_for_negative_numbers(
+        cat_age: int, dog_age: int) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
@@ -40,6 +42,7 @@ def test_get_human_age_should_raise_for_negative_numbers(cat_age: int, dog_age: 
         ([1, 2], 3),
     ]
 )
-def test_get_human_age_should_raise_for_invalid_types(cat_age: int, dog_age: int) -> None:
+def test_get_human_age_should_raise_for_invalid_types(
+        cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
