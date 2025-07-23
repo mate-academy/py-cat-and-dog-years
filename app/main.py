@@ -7,7 +7,8 @@ def get_human_age(cat_years: float, dog_years: float) -> list[int]:
     return [cat_human, dog_human]
 
 
-def convert_to_human(years: float, first: float, second: float, each: float) -> int:
+def convert_to_human(years: float, first: float, second: float,
+                     each: float) -> int:
     """
     Converts given years to human years using provided rules.
     """

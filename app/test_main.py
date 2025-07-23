@@ -13,6 +13,7 @@ from app import main
         (28, 29, [3, 3]),
     ],
 )
-def test_get_human_age(cat_age: float, dog_age: float, expected: list[int]) -> None:
+def test_get_human_age(cat_age: float, dog_age: float,
+                       expected: list[int]) -> None:
     result = main.get_human_age(cat_age, dog_age)
     assert result == expected
