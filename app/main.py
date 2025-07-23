@@ -1,7 +1,6 @@
 # main.py
 
 
-
 def convert_to_human(years: float, first: float, second: float, each: float) -> int:
     if years < first:
         return 0

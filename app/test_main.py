@@ -1,7 +1,6 @@
 # test_main.py
 
 
-
 import pytest
 import main
 
@@ -14,9 +13,8 @@ import main
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
         (28, 29, [3, 3]),
-    ]
+    ],
 )
 def test_get_human_age(cat_years: float, dog_years: float, expected: list[int]) -> None:
     result = main.get_human_age(cat_years, dog_years)
     assert result == expected
-
