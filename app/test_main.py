@@ -1,5 +1,3 @@
-from app.main import get_human_age
-
 import pytest
 import app.main as main
 
