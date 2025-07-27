@@ -21,4 +21,5 @@ def test_get_human_age(
         expected_result: int
 ) -> None:
     assert (get_human_age(cat_age, dog_age) == expected_result),\
-        f"get_human_age should return {expected_result} when input is {cat_age}, {dog_age}"
+        (f"get_human_age should return {expected_result}"
+         f" when input is {cat_age}, {dog_age}")
