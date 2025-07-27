@@ -2,6 +2,7 @@ from app.main import get_human_age
 
 import pytest
 
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_result",
     [
@@ -14,7 +15,10 @@ import pytest
         (100, 100, [21, 17])
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected_result: int) -> None:
-    assert (
-            get_human_age(cat_age, dog_age) == expected_result
-            ), f"get_human_age should return {expected_result} when input is {cat_age}, {dog_age}"
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected_result: int
+) -> None:
+    assert (get_human_age(cat_age, dog_age) == expected_result),\
+        f"get_human_age should return {expected_result} when input is {cat_age}, {dog_age}"
