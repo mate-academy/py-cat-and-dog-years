@@ -1,8 +1,4 @@
-from app.main import get_human_age
-
-
 def test_cats_and_dog_age_equals_zero() -> None:
-    cat_age = 14
     dog_age = 14
     assert get_human_age(cat_age, dog_age) == [0, 0]
 
