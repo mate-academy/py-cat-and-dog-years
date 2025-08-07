@@ -15,6 +15,7 @@ from app.main import get_human_age
 def test_animal_age(cat_age: int, dog_age: int, human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
-def test_invalid_input_type_raises_error():
+
+def test_invalid_input_type_raises_error() -> None:
     with pytest.raises(TypeError):
         get_human_age("a", "b")
