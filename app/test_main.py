@@ -12,5 +12,9 @@ from app.main import get_human_age
     pytest.param(28, 28, [3, 2], id="animal_age_28"),
     pytest.param(100, 100, [21, 17], id="animal_age_100")
 ])
-def test_animal_age(cat_age: int, dog_age: int, human_age: int) -> None:
+def test_animal_age(cat_age: int, dog_age: int, human_age: list) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+def test_invalid_input_type_raises_error():
+    with pytest.raises(TypeError):
+        get_human_age("a", "b")
