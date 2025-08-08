@@ -10,12 +10,25 @@ import pytest
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (100, 100, [21, 17])
+        (26, 27, [2, 2]),
+        (28, 29, [3, 3]),
+        (100, 104, [21, 18])
     ]
 )
 def test_get_human_ages_for_cat_and_dog(cat_age, dog_age, result):
+    assert get_human_age(cat_age, dog_age) == result
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, result",
+    [
+        (-7, -4, [0, 0]),
+        (-10, 17, [0, 1]),
+        (15, -15, [1, 0]),
+        (-23, -23, [0, 0]),
+    ]
+)
+def test_negative_cat_or_dog_ages(cat_age, dog_age, result):
     assert get_human_age(cat_age, dog_age) == result
 
 
