@@ -29,6 +29,9 @@ class TestBoundaryCatDogAge:
                                  pytest.param(
                                      29, 29, [3, 3],
                                      id="both 3 when human age 29"),
+                                 pytest.param(
+                                     100, 100, [21, 17],
+                                     id="cat 21, dog 17  when human age 28"),
 
                              ]
                              )
@@ -39,3 +42,9 @@ class TestBoundaryCatDogAge:
             expected_array: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_array
+
+
+
+def test_invalid_input_type_raises_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("a", "b")
