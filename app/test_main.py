@@ -7,28 +7,28 @@ class TestBoundaryCatDogAge:
                              [
                                  pytest.param(
                                      0, 0, [0, 0],
-                                     id="cat and dog age equal 0 when human age 0"),
+                                     id="both 0 when human age 0"),
                                  pytest.param(
                                      14, 14, [0, 0],
-                                     id="cat and dog age equal 0 when human age 14"),
+                                     id="both 0 when human age 14"),
                                  pytest.param(
                                      15, 15, [1, 1],
-                                     id="cat and dog age equal 1 when human age 15"),
+                                     id="both 1 when human age 15"),
                                  pytest.param(
                                      23, 23, [1, 1],
-                                     id="cat and dog age equal 1 when human age 23"),
+                                     id="both 1 when human age 23"),
                                  pytest.param(
                                      24, 24, [2, 2],
-                                     id="cat and dog age equal 2 when human age 24"),
+                                     id="both 2 when human age 24"),
                                  pytest.param(
                                      27, 27, [2, 2],
-                                     id="cat and dog age equal 2 when human age 27"),
+                                     id="both 2 when human age 27"),
                                  pytest.param(
                                      28, 28, [3, 2],
-                                     id="cat age equal 3, dog age equal 2  when human age 28"),
+                                     id="cat 3, dog 2  when human age 28"),
                                  pytest.param(
                                      29, 29, [3, 3],
-                                     id="cat and dog age equal 3 when human age 29"),
+                                     id="both 3 when human age 29"),
 
                              ]
                              )
