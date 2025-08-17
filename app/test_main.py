@@ -36,6 +36,36 @@ from app.main import get_human_age
             1000,
             [246, 197],
             id="should return correct age for big numbers"
+        ),
+        pytest.param(
+            23,
+            23,
+            [1, 1],
+            id="should return correct age"
+        ),
+        pytest.param(
+            24,
+            24,
+            [2, 2],
+            id="should return correct age"
+        ),
+        pytest.param(
+            27,
+            27,
+            [2, 2],
+            id="should return correct age"
+        ),
+        pytest.param(
+            28,
+            27,
+            [3, 2],
+            id="should return correct age"
+        ),
+        pytest.param(
+            100,
+            100,
+            [21, 17],
+            id="should return correct age"
         )
     ]
 )
@@ -61,6 +91,12 @@ def test_should_correctly_konvert_age(
             1.3,
             AttributeError,
             id="should raise 'AttributeError' if age's type is wrong"
+        ),
+        pytest.param(
+            None,
+            None,
+            AttributeError,
+            id="age cannot be empty"
         )
     ]
 )
