@@ -1,4 +1,12 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    for age in [cat_age, dog_age]:
+        if not isinstance(age, int):
+            raise AttributeError("Age must be an integer")
+        if age < 0:
+            raise ValueError("Age cannot be negative")
+        if age is None:
+            raise ValueError("Age must not be empty")
+
     cat_to_human = convert_to_human(cat_age, 15, 9, 4)
     dog_to_human = convert_to_human(dog_age, 15, 9, 5)
     return [cat_to_human, dog_to_human]
