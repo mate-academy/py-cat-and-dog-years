@@ -1,17 +1,20 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_animal_age_is_lower_than_1_human_years() -> None:
-    assert (get_human_age(14, 14) == [0, 0])
-
-
-def test_animal_age_between_1_and_2_human_years() -> None:
-    assert (get_human_age(23, 23) == [1, 1])
-
-
-def test_animal_age_between_2_and_3_human_years() -> None:
-    assert (get_human_age(27, 28) == [2, 2])
-
-
-def test_animal_age_above_3_human_years() -> None:
-    assert (get_human_age(28, 29) == [3, 3])
+@pytest.mark.parametrize(
+    "a,b,result",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 28, [2, 2]),
+        (28, 29, [3, 3]),
+        (100, 100, [21, 17])
+    ]
+)
+def test_animal_age_vs_human(a: int, b: int, result: list[int]) -> None:
+    assert (get_human_age(a, b) == result)
