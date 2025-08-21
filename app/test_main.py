@@ -1,32 +1,52 @@
 import pytest
-from app.main import get_human_age  # ajuste o import conforme seu projeto
+from app.main import get_human_age
 
-def test_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+# Testes principais usando parametrização
+@pytest.mark.parametrize(
+    "cat,dog,expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+        (15, 24, [1, 2]),
+        (24, 15, [2, 1]),
+        (0, 20, [0, 2]),
+        (20, 0, [2, 0]),
+    ]
+)
+def test_get_human_age_valid_inputs(cat, dog, expected):
+    assert get_human_age(cat, dog) == expected
 
-def test_before_first_threshold() -> None:
-    # menos que 15 anos de gato/cachorro
-    assert get_human_age(14, 14) == [0, 0]
+# Testes de valores negativos — devem gerar ValueError
+@pytest.mark.parametrize(
+    "cat,dog",
+    [
+        (-1, 5),
+        (5, -1),
+        (-2, -3),
+    ]
+)
+def test_get_human_age_negative_values(cat, dog):
+    with pytest.raises(ValueError):
+        get_human_age(cat, dog)
 
-def test_first_threshold() -> None:
-    # exatamente 15 anos
-    assert get_human_age(15, 15) == [1, 1]
-
-def test_after_first_threshold() -> None:
-    # entre 15 e 24 anos
-    assert get_human_age(23, 23) == [1, 1]
-    assert get_human_age(24, 24) == [2, 2]
-
-def test_middle_values() -> None:
-    assert get_human_age(27, 27) == [2, 2]
-    assert get_human_age(28, 28) == [3, 2]
-
-def test_large_ages() -> None:
-    assert get_human_age(100, 100) == [21, 17]
-
-def test_varied_values() -> None:
-    # valores diferentes de gato e cachorro
-    assert get_human_age(15, 24) == [1, 2]
-    assert get_human_age(24, 15) == [2, 1]
-    assert get_human_age(0, 20) == [0, 2]
-    assert get_human_age(20, 0) == [2, 0]
+# Testes de tipos inválidos — devem gerar TypeError
+@pytest.mark.parametrize(
+    "cat,dog",
+    [
+        ("3", 2),
+        (2, 5.5),
+        (None, 2),
+        (5, None),
+        ([15], 20),
+        (20, {"dog": 15}),
+    ]
+)
+def test_get_human_age_invalid_types(cat, dog):
+    with pytest.raises(TypeError):
+        get_human_age(cat, dog)
