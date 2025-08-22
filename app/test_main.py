@@ -32,7 +32,7 @@ def test_valid_inputs(cat_age: int, dog_age: int, expected: list[int]) -> None:
     ],
 )
 def test_negative_inputs_do_not_raise(cat_age: int, dog_age: int) -> None:
-    result = get_human_age(cat_age,dog_age)
+    result = get_human_age(cat_age, dog_age)
     assert isinstance(result, list)
     assert len(result) == 2
     assert all(isinstance(x, int) for x in result)
