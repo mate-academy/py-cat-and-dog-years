@@ -47,7 +47,7 @@ def test_negative_inputs_do_not_raise(cat_age: int, dog_age: int) -> None:
         ([15], 20),
     ],
 )
-def test_invalid_types_return_list(cat_age: int, dog_age: int):
+def test_invalid_types_return_list(cat_age: int, dog_age: int) -> None:
     result = get_human_age(cat_age, dog_age)
     assert isinstance(result, list)
     assert len(result) == 2
