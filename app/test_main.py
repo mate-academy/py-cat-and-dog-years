@@ -1,5 +1,4 @@
 import pytest
-from typing import List
 from app.main import get_human_age  # підкоригуй, якщо треба
 
 
@@ -12,7 +11,9 @@ from app.main import get_human_age  # підкоригуй, якщо треба
         # ... решта кейсів
     ],
 )
-def test_various_ages(cat_age: int, dog_age: int, expected: List[int]) -> None:
+def test_various_ages(
+    cat_age: int, dog_age: int, expected: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -25,7 +26,9 @@ def test_various_ages(cat_age: int, dog_age: int, expected: List[int]) -> None:
         # ... інші негативні кейси
     ],
 )
-def test_negative_ages_raise_value_error(cat_age: int, dog_age: int) -> None:
+def test_negative_ages_raise_value_error(
+    cat_age: int, dog_age: int
+) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
@@ -39,8 +42,12 @@ def test_negative_ages_raise_value_error(cat_age: int, dog_age: int) -> None:
         # ... інші неправильні типи
     ],
 )
-def test_invalid_types_raise_exception(cat_age: object, dog_age: object) -> None:
-    with pytest.raises((TypeError, ValueError)):
+def test_invalid_types_raise_exception(
+    cat_age: object, dog_age: object
+) -> None:
+    with pytest.raises(
+        (TypeError, ValueError)
+    ):
         get_human_age(cat_age, dog_age)
 
 
@@ -53,6 +60,30 @@ def test_invalid_types_raise_exception(cat_age: object, dog_age: object) -> None
         (29, 30),
     ],
 )
-def test_cat_monotonicity_at_thresholds(age_before: int, age_after: int) -> None:
-    assert get_human_age(age_before, 30)[0] <= get_human_age(age_after, 30)[0]
-    # інші перевірки...
+def test_cat_monotonicity_at_thresholds(
+    age_before: int, age_after: int
+) -> None:
+    assert (
+        get_human_age(age_before, 30)[0]
+        <= get_human_age(age_after, 30)[0]
+    )
+
+
+# Аналогічно для собак
+
+@pytest.mark.parametrize(
+    "age_before, age_after",
+    [
+        (14, 15),
+        (23, 24),
+        (28, 29),
+        (34, 35),
+    ],
+)
+def test_dog_monotonicity_at_thresholds(
+    age_before: int, age_after: int
+) -> None:
+    assert (
+        get_human_age(30, age_before)[1]
+        <= get_human_age(30, age_after)[1]
+    )
