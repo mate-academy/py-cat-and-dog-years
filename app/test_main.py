@@ -1,4 +1,5 @@
 import pytest
+from typing import List
 from app.main import get_human_age  # підкоригуй, якщо треба
 
 
@@ -11,7 +12,7 @@ from app.main import get_human_age  # підкоригуй, якщо треба
         # ... решта кейсів
     ],
 )
-def test_various_ages(cat_age, dog_age, expected) -> None:
+def test_various_ages(cat_age: int, dog_age: int, expected: List[int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -24,7 +25,7 @@ def test_various_ages(cat_age, dog_age, expected) -> None:
         # ... інші негативні кейси
     ],
 )
-def test_negative_ages_raise_value_error(cat_age, dog_age) -> None:
+def test_negative_ages_raise_value_error(cat_age: int, dog_age: int) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
@@ -38,7 +39,7 @@ def test_negative_ages_raise_value_error(cat_age, dog_age) -> None:
         # ... інші неправильні типи
     ],
 )
-def test_invalid_types_raise_exception(cat_age, dog_age) -> None:
+def test_invalid_types_raise_exception(cat_age: object, dog_age: object) -> None:
     with pytest.raises((TypeError, ValueError)):
         get_human_age(cat_age, dog_age)
 
@@ -52,11 +53,6 @@ def test_invalid_types_raise_exception(cat_age, dog_age) -> None:
         (29, 30),
     ],
 )
-def test_cat_monotonicity_at_thresholds(age_before, age_after) -> None:
+def test_cat_monotonicity_at_thresholds(age_before: int, age_after: int) -> None:
     assert get_human_age(age_before, 30)[0] <= get_human_age(age_after, 30)[0]
     # інші перевірки...
-
-
-# Аналогічно для собак
-
-# І так далі — всі функції в одному файлі
