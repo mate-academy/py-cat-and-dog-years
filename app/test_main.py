@@ -1,5 +1,5 @@
 import pytest
-from app.main import get_human_age  # Підкоригуй імпорт, якщо треба
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
@@ -14,13 +14,11 @@ from app.main import get_human_age  # Підкоригуй імпорт, якщ�
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
         (15, 24, [1, 2]),
-        (23, 29, [1, 2]),
-        (30, 50, [3, 5]),
+        (23, 29, [1, 3]),
+        (30, 50, [3, 7]),
     ],
 )
-def test_various_ages(
-    cat_age: int, dog_age: int, expected: list[int]
-) -> None:
+def test_various_ages(cat_age: int, dog_age: int, expected: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -32,9 +30,7 @@ def test_various_ages(
         (-3, -5),
     ],
 )
-def test_negative_ages_raise_value_error(
-    cat_age: int, dog_age: int
-) -> None:
+def test_negative_ages_raise_value_error(cat_age: int, dog_age: int) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
@@ -51,10 +47,8 @@ def test_negative_ages_raise_value_error(
         (3, {"age": 5}),
     ],
 )
-def test_invalid_types_raise_exception(
-    cat_age: object, dog_age: object
-) -> None:
-    with pytest.raises((TypeError, ValueError)):
+def test_invalid_types_raise_exception(cat_age: object, dog_age: object) -> None:
+    with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
 
 
@@ -67,9 +61,7 @@ def test_invalid_types_raise_exception(
         (29, 30),
     ],
 )
-def test_cat_monotonicity_at_thresholds(
-    age_before: int, age_after: int
-) -> None:
+def test_cat_monotonicity_at_thresholds(age_before: int, age_after: int) -> None:
     assert get_human_age(age_before, 30)[0] <= get_human_age(age_after, 30)[0]
 
 
@@ -78,16 +70,9 @@ def test_cat_monotonicity_at_thresholds(
     [
         (14, 15),
         (23, 24),
-        (28, 29),
+        (29, 30),
         (34, 35),
     ],
 )
-def test_dog_monotonicity_at_thresholds(
-    age_before: int, age_after: int
-) -> None:
+def test_dog_monotonicity_at_thresholds(age_before: int, age_after: int) -> None:
     assert get_human_age(30, age_before)[1] <= get_human_age(30, age_after)[1]
-
-
-def test_simple() -> None:
-    # Простий тест, щоб pytest точно щось знайшов
-    assert True
