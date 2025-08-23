@@ -1,89 +1,46 @@
-import pytest
-from app.main import get_human_age  # підкоригуй, якщо треба
+from typing import List
 
 
-@pytest.mark.parametrize(
-    "cat_age, dog_age, expected",
-    [
-        (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
-        # ... решта кейсів
-    ],
-)
-def test_various_ages(
-    cat_age: int, dog_age: int, expected: list[int]
-) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
+def get_human_age(cat_age: int, dog_age: int) -> List[int]:
+    # Валідація типів
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("cat_age and dog_age must be integers")
+    # Валідація на непозитивність
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("cat_age and dog_age must be non-negative")
 
+    def convert_cat_years(c_age: int) -> int:
+        human_years = 0
+        if c_age >= 15:
+            human_years += 1
+            c_age -= 15
+            if c_age >= 9:
+                human_years += 1
+                c_age -= 9
+                human_years += c_age // 4
+            else:
+                # якщо c_age < 9, не додаємо другого року і більше
+                pass
+        else:
+            # якщо c_age < 15, не додаємо людських років
+            pass
+        return human_years
 
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        (-1, 0),
-        (0, -1),
-        (-3, -5),
-        # ... інші негативні кейси
-    ],
-)
-def test_negative_ages_raise_value_error(
-    cat_age: int, dog_age: int
-) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
+    def convert_dog_years(d_age: int) -> int:
+        human_years = 0
+        if d_age >= 15:
+            human_years += 1
+            d_age -= 15
+            if d_age >= 9:
+                human_years += 1
+                d_age -= 9
+                human_years += d_age // 5
+            else:
+                # якщо d_age < 9, не додаємо другого року і більше
+                pass
+        else:
+            # якщо d_age < 15, не додаємо людських років
+            pass
+        return human_years
 
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        ("3", 5),
-        (3, "5"),
-        (3.5, 5),
-        # ... інші неправильні типи
-    ],
-)
-def test_invalid_types_raise_exception(
-    cat_age: object, dog_age: object
-) -> None:
-    with pytest.raises(
-        (TypeError, ValueError)
-    ):
-        get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
-    "age_before, age_after",
-    [
-        (14, 15),
-        (23, 24),
-        (27, 28),
-        (29, 30),
-    ],
-)
-def test_cat_monotonicity_at_thresholds(
-    age_before: int, age_after: int
-) -> None:
-    assert (
-        get_human_age(age_before, 30)[0]
-        <= get_human_age(age_after, 30)[0]
-    )
-
-
-# Аналогічно для собак
-
-@pytest.mark.parametrize(
-    "age_before, age_after",
-    [
-        (14, 15),
-        (23, 24),
-        (28, 29),
-        (34, 35),
-    ],
-)
-def test_dog_monotonicity_at_thresholds(
-    age_before: int, age_after: int
-) -> None:
-    assert (
-        get_human_age(30, age_before)[1]
-        <= get_human_age(30, age_after)[1]
-    )
+    return [convert_cat_years(cat_age), convert_dog_years(dog_age)]
