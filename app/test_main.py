@@ -18,7 +18,9 @@ from app.main import get_human_age
         (30, 50, [3, 7]),
     ],
 )
-def test_various_ages(cat_age: int, dog_age: int, expected: list[int]) -> None:
+def test_various_ages(
+    cat_age: int, dog_age: int, expected: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -30,7 +32,9 @@ def test_various_ages(cat_age: int, dog_age: int, expected: list[int]) -> None:
         (-3, -5),
     ],
 )
-def test_negative_ages_raise_value_error(cat_age: int, dog_age: int) -> None:
+def test_negative_ages_raise_value_error(
+    cat_age: int, dog_age: int
+) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
 
@@ -47,7 +51,9 @@ def test_negative_ages_raise_value_error(cat_age: int, dog_age: int) -> None:
         (3, {"age": 5}),
     ],
 )
-def test_invalid_types_raise_exception(cat_age: object, dog_age: object) -> None:
+def test_invalid_types_raise_exception(
+    cat_age: object, dog_age: object
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
 
@@ -61,7 +67,9 @@ def test_invalid_types_raise_exception(cat_age: object, dog_age: object) -> None
         (29, 30),
     ],
 )
-def test_cat_monotonicity_at_thresholds(age_before: int, age_after: int) -> None:
+def test_cat_monotonicity_at_thresholds(
+    age_before: int, age_after: int
+) -> None:
     assert get_human_age(age_before, 30)[0] <= get_human_age(age_after, 30)[0]
 
 
@@ -74,5 +82,7 @@ def test_cat_monotonicity_at_thresholds(age_before: int, age_after: int) -> None
         (34, 35),
     ],
 )
-def test_dog_monotonicity_at_thresholds(age_before: int, age_after: int) -> None:
+def test_dog_monotonicity_at_thresholds(
+    age_before: int, age_after: int
+) -> None:
     assert get_human_age(30, age_before)[1] <= get_human_age(30, age_after)[1]
