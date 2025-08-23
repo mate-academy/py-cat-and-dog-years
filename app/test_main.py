@@ -1,6 +1,7 @@
 import pytest
 from app.main import get_human_age  # підкоригуй, якщо треба
 
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
@@ -53,6 +54,7 @@ def test_invalid_types_raise_exception(cat_age, dog_age) -> None:
 )
 def test_cat_monotonicity_at_thresholds(age_before, age_after) -> None:
     assert get_human_age(age_before, 30)[0] <= get_human_age(age_after, 30)[0]
+    # інші перевірки...
 
 
 # Аналогічно для собак
