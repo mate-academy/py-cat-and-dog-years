@@ -1,35 +1,52 @@
-def get_human_age(cat_age: int, dog_age: int) -> list[int]:
-    # Перевірка типів
-    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
-        raise TypeError("Ages must be integers")
-    # Перевірка на негативні значення
-    if cat_age < 0 or dog_age < 0:
-        raise ValueError("Ages must be non-negative")
+import pytest
+from app.main import get_human_age
 
-    # Логіка для кота
-    if cat_age <= 14:
-        human_cat_age = 0
-    elif 15 <= cat_age <= 23:
-        human_cat_age = 1
-    elif 24 <= cat_age <= 27:
-        human_cat_age = 2
-    elif 28 <= cat_age <= 29:
-        human_cat_age = 3
-    else:
-        # Припустимо, кожен рік після 29 — це 1 людський рік
-        human_cat_age = 3 + (cat_age - 29)
 
-    # Логіка для собаки (відкоригована)
-    if dog_age <= 14:
-        human_dog_age = 0
-    elif 15 <= dog_age <= 23:
-        human_dog_age = 1
-    elif 24 <= dog_age <= 27:
-        human_dog_age = 2
-    elif 28 <= dog_age <= 29:
-        human_dog_age = 2  # Зверни увагу: тут 2, не 3
-    else:
-        # Кожен рік після 29 рахуємо як 1 людський рік
-        human_dog_age = 2 + (dog_age - 29)
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+    ],
+)
+def test_various_ages_valid(cat_age: int, dog_age: int, expected: list[int]) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
-    return [human_cat_age, human_dog_age]
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 0),
+        (0, -1),
+        (-5, -3),
+    ],
+)
+def test_negative_raise_value_error(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("3", 5),
+        (3, "5"),
+        (3.5, 5),
+        (5, 3.5),
+        (None, 1),
+        (1, None),
+        ([3], 5),
+        (5, {"age": 5}),
+    ],
+)
+def test_invalid_type_raise_type_error(
+    cat_age: object, dog_age: object
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
