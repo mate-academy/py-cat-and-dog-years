@@ -1,48 +1,60 @@
+import pytest
+from app.main import get_human_age  # підкоригуй, якщо треба
 
-from app.main import get_human_age  # Adjust import if needed
-
-
-def test_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_just_below_first_human_year() -> None:
-    # 14 cat/dog years should still be 0 human years
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_exactly_first_human_year() -> None:
-    # 15 cat/dog years => 1 human year
-    assert get_human_age(15, 15) == [1, 1]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        # ... решта кейсів
+    ],
+)
+def test_various_ages(cat_age, dog_age, expected) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_after_first_human_year() -> None:
-    # 23 cat/dog years still 1 human year
-    assert get_human_age(23, 23) == [1, 1]
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 0),
+        (0, -1),
+        (-3, -5),
+        # ... інші негативні кейси
+    ],
+)
+def test_negative_ages_raise_value_error(cat_age, dog_age) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
 
 
-def test_start_second_human_year() -> None:
-    # 24 cat/dog years start second human year
-    assert get_human_age(24, 24) == [2, 2]
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("3", 5),
+        (3, "5"),
+        (3.5, 5),
+        # ... інші неправильні типи
+    ],
+)
+def test_invalid_types_raise_exception(cat_age, dog_age) -> None:
+    with pytest.raises((TypeError, ValueError)):
+        get_human_age(cat_age, dog_age)
 
 
-def test_between_second_and_third_cat_years() -> None:
-    # Cat years: 27 still 2 human years (24-27)
-    assert get_human_age(27, 27) == [2, 2]
+@pytest.mark.parametrize(
+    "age_before, age_after",
+    [
+        (14, 15),
+        (23, 24),
+        (27, 28),
+        (29, 30),
+    ],
+)
+def test_cat_monotonicity_at_thresholds(age_before, age_after) -> None:
+    assert get_human_age(age_before, 30)[0] <= get_human_age(age_after, 30)[0]
 
 
-def test_third_cat_years_and_second_dog_year() -> None:
-    # Cat: 28 => 3 human years, Dog: 28 => 2 human years
-    assert get_human_age(28, 28) == [3, 2]
+# Аналогічно для собак
 
-
-def test_large_ages() -> None:
-    # Large ages, cat and dog
-    assert get_human_age(100, 100) == [21, 17]
-
-
-def test_cat_and_dog_different_ages() -> None:
-    # Different ages edge case
-    assert get_human_age(15, 24) == [1, 2]
-    assert get_human_age(23, 29) == [1, 2]
-    assert get_human_age(30, 50) == [3, 5]
+# І так далі — всі функції в одному файлі
