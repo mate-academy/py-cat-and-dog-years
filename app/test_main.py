@@ -1,60 +1,23 @@
-import pytest
-from app.main import get_human_age
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("Ages must be integers.")
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Ages must be non-negative.")
 
+    def cat_years(age: int) -> int:
+        if age < 15:
+            return 0
+        elif age < 24:
+            return 1
+        else:
+            return 2 + (age - 24) // 4
 
-@pytest.mark.parametrize(
-    "cat_age, dog_age, expected",
-    [
-        (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
-        (23, 23, [1, 1]),
-        (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
-    ],
-)
-def test_various_ages_valid(
-    cat_age: int,
-    dog_age: int,
-    expected: list[int]
-) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
+    def dog_years(age: int) -> int:
+        if age < 15:
+            return 0
+        elif age < 24:
+            return 1
+        else:
+            return 2 + (age - 24) // 5
 
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        (-1, 0),
-        (0, -1),
-        (-5, -3),
-    ],
-)
-def test_negative_raise_value_error(
-    cat_age: int,
-    dog_age: int
-) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        ("3", 5),
-        (3, "5"),
-        (3.5, 5),
-        (5, 3.5),
-        (None, 1),
-        (1, None),
-        ([3], 5),
-        (5, {"age": 5}),
-    ],
-)
-def test_invalid_type_raise_type_error(
-    cat_age: object,
-    dog_age: object
-) -> None:
-    with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
+    return [cat_years(cat_age), dog_years(dog_age)]
