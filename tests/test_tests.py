@@ -1,26 +1,25 @@
 import pytest
 from app.main import get_human_age
 
-@pytest.mark.parametrize(
-    "cat_years, dog_years, expected",
-    [
-        (0, 0, [0, 0]),
-        (1, 1, [15, 15]),
-        (2, 2, [24, 24]),
-        (3, 3, [28, 29]),
-        (4, 4, [32, 34]),
-        (5, 5, [36, 39]),
-    ]
-)
-def test_get_human_age(cat_years, dog_years, expected):
-    assert get_human_age(cat_years, dog_years) == expected
+@pytest.mark.parametrize("cat, dog, expected", [
+    (28, 28, [3, 2]),
+    (29, 29, [3, 3]),
+    (100, 100, [21, 17]),
+])
+def test_sample_cases(cat, dog, expected):
+    assert get_human_age(cat, dog) == expected
 
-def test_invalid_input():
+
+@pytest.mark.parametrize("cat, dog", [
+    (-5, 30),
+    (30, -5),
+    ("cat", 30),
+    (30, "dog"),
+    (None, 0),
+    (0, None),
+    (3.14, 10),
+    (10, 2.71),
+])
+def test_invalid_inputs(cat, dog):
     with pytest.raises(ValueError):
-        get_human_age(-1, 3)
-    with pytest.raises(ValueError):
-        get_human_age(3, -1)
-    with pytest.raises(ValueError):
-        get_human_age("two", 3)
-    with pytest.raises(ValueError):
-        get_human_age(3, "three")
+        get_human_age(cat, dog)
