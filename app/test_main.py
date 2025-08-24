@@ -3,7 +3,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat: int, dog: int, expected: list[int]",
+    "cat, dog, expected",
     [
         (0, 0, [0, 0]),
         (1, 1, [0, 0]),
