@@ -1,14 +1,30 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
-    cat_to_human = convert_to_human(cat_age, 15, 9, 4)
-    dog_to_human = convert_to_human(dog_age, 15, 9, 5)
-    return [cat_to_human, dog_to_human]
+def cat_years_to_human(cat_years: int) -> int:
+    if not isinstance(cat_years, int) or cat_years < 0:
+        raise ValueError("Cat years must be a non-negative integer")
 
-
-def convert_to_human(
-        animal_age: int, first_year: int, second_year: int, each_year: int
-) -> int:
-    if animal_age < first_year:
+    if cat_years <= 14:
         return 0
-    if animal_age < first_year + second_year:
+    elif cat_years <= 23:
         return 1
-    return 2 + (animal_age - first_year - second_year) // each_year
+    elif cat_years <= 27:
+        return 2
+    else:
+        return 3 + (cat_years - 28) // 4
+
+
+def dog_years_to_human(dog_years: int) -> int:
+    if not isinstance(dog_years, int) or dog_years < 0:
+        raise ValueError("Dog years must be a non-negative integer")
+
+    if dog_years <= 14:
+        return 0
+    elif dog_years <= 23:
+        return 1
+    elif dog_years <= 28:
+        return 2
+    else:
+        return 3 + (dog_years - 29) // 5
+
+
+def get_human_age(cat_years: int, dog_years: int) -> list[int]:
+    return [cat_years_to_human(cat_years), dog_years_to_human(dog_years)]
