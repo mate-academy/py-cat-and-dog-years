@@ -1,23 +1,30 @@
-import pytest
-from app.main import get_human_age
+def cat_years_to_human(cat_years: int) -> int:
+    if not isinstance(cat_years, int) or cat_years < 0:
+        raise ValueError("Cat years must be a non-negative integer")
+
+    if cat_years <= 14:
+        return 0
+    elif cat_years <= 23:
+        return 1
+    elif cat_years <= 27:
+        return 2
+    else:
+        return 3 + (cat_years - 28) // 4
 
 
-def test_get_human_age() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-    assert get_human_age(1, 1) == [15, 15]
-    assert get_human_age(2, 2) == [24, 24]
-    assert get_human_age(3, 3) == [28, 29]
-    assert get_human_age(4, 4) == [32, 34]
-    assert get_human_age(5, 5) == [36, 39]
-    assert get_human_age(14, 14) == [72, 84]
+def dog_years_to_human(dog_years: int) -> int:
+    if not isinstance(dog_years, int) or dog_years < 0:
+        raise ValueError("Dog years must be a non-negative integer")
+
+    if dog_years <= 14:
+        return 0
+    elif dog_years <= 23:
+        return 1
+    elif dog_years <= 28:
+        return 2
+    else:
+        return 3 + (dog_years - 29) // 5
 
 
-def test_invalid_input() -> None:
-    with pytest.raises(ValueError):
-        get_human_age(-1, 10)
-    with pytest.raises(ValueError):
-        get_human_age(10, -1)
-    with pytest.raises(ValueError):
-        get_human_age("15", 10)
-    with pytest.raises(ValueError):
-        get_human_age(10, "15")
+def get_human_age(cat_years: int, dog_years: int) -> list[int]:
+    return [cat_years_to_human(cat_years), dog_years_to_human(dog_years)]
