@@ -17,16 +17,24 @@ from app.main import get_human_age
         (28, 29, [3, 3]),
         (100, 100, [21, 17]),
         (10**6, 10**6, [249996, 199997]),
-        ("3", 4, int),
-        (3.5, 4, int),
-        (None, 2, int)
     ]
 )
 def test_should_be_output_human_age(cat: int, dog: int, expected: int) -> None:
     assert get_human_age(cat, dog) == expected
 
 
-def test_should_not_be_invalid_inputs(cat: int,
-                                      dog: int,
-                                      expected: int) -> None:
-    assert (type(cat) and type(dog)) == expected
+@pytest.mark.parametrize(
+    "cat, dog",
+    [
+        ("3", 4),
+        (2, 4.5),
+        (3, "4"),
+        (4, None),
+        (3.5, 4),
+        (None, 2)
+    ]
+)
+def test_should_raise_type_error_on_invalid_inputs(cat: int,
+                                                   dog: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat, dog)
