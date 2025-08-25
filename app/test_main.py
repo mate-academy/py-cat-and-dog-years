@@ -54,3 +54,25 @@ def test_invalid_input_error(
 ) -> None:
     with pytest.raises(expected_exception):
         get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_exception",
+    [
+        (-1, 10, ValueError),
+        (10, -1, ValueError),
+        (-5, -5, ValueError),
+    ],
+    ids=[
+        "cat age cannot be negative",
+        "dog age cannot be negative",
+        "both cat and dog ages cannot be negative",
+    ]
+)
+def test_negative_age_raises_value_error(
+        cat_age: Any,
+        dog_age: Any,
+        expected_exception: Type[BaseException],
+) -> None:
+    with pytest.raises(expected_exception):
+        get_human_age(cat_age, dog_age)
