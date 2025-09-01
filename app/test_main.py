@@ -5,57 +5,70 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
-        # zero ages
         (0, 0, [0, 0]),
-        # below first threshold (<15)
         (14, 14, [0, 0]),
-        # exactly at first threshold (15)
         (15, 15, [1, 1]),
-        # below second threshold (15 + 9 = 24)
         (23, 23, [1, 1]),
-        # exactly at second threshold (24)
         (24, 24, [2, 2]),
-        # between second and third thresholds
         (27, 27, [2, 2]),
-        # exactly at third threshold for cats (15+9+4=28)
-        # and below third threshold for dogs (15+9+5=29)
         (28, 28, [3, 2]),
-        # large ages
         (100, 100, [21, 17]),
     ],
 )
 def test_get_human_age_examples(cat_age, dog_age, expected):
-    """
-    Test get_human_age against the example cases from the specification.
-    """
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_human_ages_are_integers_and_floor_divided():
-    """
-    Ensure that any fractional human-year remainder is discarded.
-    For example, cat_age=26 → (26−24)//4 = 2//4 = 0 extra → total 2
-                 dog_age=29 → (29−24)//5 = 5//5 = 1 extra → total 3
-    """
-    result = get_human_age(26, 29)
-    assert isinstance(result[0], int) and isinstance(result[1], int)
-    assert result == [2, 3]
+def test_return_contract_is_list_of_two_ints():
+    result = get_human_age(15, 15)
+    assert isinstance(result, list)
+    assert len(result) == 2
+    assert all(isinstance(x, int) for x in result)
 
 
-def test_mixed_cat_and_dog_ages():
-    """
-    Test scenario where cat_age and dog_age map to different thresholds.
-    For example, cat_age=40 → 2 + (40−24)//4 = 2 + 16//4 = 6
-                 dog_age=40 → 2 + (40−24)//5 = 2 + 16//5 = 5
-    """
-    assert get_human_age(40, 40) == [6, 5]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (-1, 0, [0, 0]),
+        (0, -1, [0, 0]),
+        (-5, -3, [0, 0]),
+    ],
+)
+def test_negative_ages_are_clamped_to_zero(cat_age, dog_age, expected):
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_negative_and_zero_boundaries():
-    """
-    Though inputs are guaranteed valid, test explicit zero and small crossover.
-    """
-    # cat just below 15, dog at 15
-    assert get_human_age(14, 15) == [0, 1]
-    # cat at 24, dog just below 24
-    assert get_human_age(24, 23) == [2, 1]
+def test_very_large_ages():
+    one_million = 10**6
+    # cat: 2 + (1_000_000 - 24)//4 = 249996
+    # dog: 2 + (1_000_000 - 24)//5 = 199997
+    assert get_human_age(one_million, one_million) == [249996, 199997]
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("3", 5),
+        (5, "3"),
+        (None, 5),
+        (5, None),
+        ([1], 2),
+        (2, [1]),
+    ],
+)
+def test_invalid_types_raise_type_error(cat_age, dog_age):
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (3.5, 5.5, [0, 0]),
+        (15.2, 23.8, [1, 1]),
+        (24.0, 26.9, [2, 2]),
+        (26.99, 27.0, [2, 2]),
+    ],
+)
+def test_float_inputs_are_treated_as_years(cat_age, dog_age, expected):
+    assert get_human_age(cat_age, dog_age) == expected
