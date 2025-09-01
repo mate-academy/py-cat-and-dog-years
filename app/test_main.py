@@ -9,7 +9,6 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
-        # приклади зі специфікації
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -75,10 +74,10 @@ def test_invalid_types_raise_type_error(
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
-        (3.5, 5.5, [0, 0]),      # обидва <= 14
-        (15.2, 23.8, [1, 1]),    # обидва у діапазоні 15–23
-        (24.0, 26.9, [2, 2]),    # обидва у діапазоні 24–27
-        (26.99, 27.0, [2, 2]),   # граничний випадок <27
+        (3.5, 5.5, [0, 0]),
+        (15.2, 23.8, [1, 1]),
+        (24.0, 26.9, [2, 2]),
+        (26.99, 27.0, [2, 2]),
     ],
 )
 def test_float_inputs_are_treated_as_years(
