@@ -1,43 +1,117 @@
+import pytest
+
+
 from app.main import get_human_age
 
 
-def test_returns_zero_on_zero_years() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age, result",
+    [
+        pytest.param(
+            0,
+            0,
+            [0, 0],
+            id="Should return zero if age of animal is zero"
+        ),
+        pytest.param(
+            14,
+            14,
+            [0, 0],
+            id="Should return zero if age of animal is less than 15"),
+        pytest.param(
+            15,
+            15,
+            [1, 1],
+            id="Should return 1 if age of animal equals 15"),
+        pytest.param(
+            23,
+            17,
+            [1, 1],
+            id="Cats age is 1 if age of animal "
+               "less than 15 + 9, but more than 15"
+        ),
+        pytest.param(
+            18,
+            23,
+            [1, 1],
+            id="Dogs age is 1 if age of animal "
+               "less than 15 + 9, but more than 15"
+        ),
+        pytest.param(
+            24,
+            24,
+            [2, 2],
+            id="If age equals to 24-27, "
+               "for both  human age must be 2"
+        ),
+        pytest.param(
+            27,
+            27,
+            [2, 2],
+            id="If age less than 28, "
+               "for both  human age must be 2"
+        ),
+        pytest.param(
+            28,
+            28,
+            [3, 2],
+            id="If age is 28, cats start to age, "
+               "changing to 3 and dogs stay at 2"
+        ),
+        pytest.param(
+            28,
+            29,
+            [3, 3],
+            id="Both age on 5 years after 24, moving to 3"
+        ),
+        pytest.param(
+            100,
+            100,
+            [21, 17],
+            id="Check between cats and dogs "
+               "age increase difference"
+        ),
+        pytest.param(
+            92,
+            98,
+            [19, 16],
+            id="Check for different values"
+               " provided as dog and cats age"
+        )
+    ]
+)
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        result: list
+) -> None:
     assert (
-        get_human_age(0, 0) == [0, 0]
-    ), "Should return zero if age of animal is zero"
+        get_human_age(cat_age, dog_age) == result
+    ), (f"{cat_age} and {dog_age} should be "
+        f"converted as {result[0]} and {result[1]}")
 
 
-def test_returns_zero_if_less_than_15() -> None:
-    assert (
-        get_human_age(14, 14) == [0, 0]
-    ), "Should return zero if age of animal is less than 15"
-
-
-def test_returns_one_if_age_is_15() -> None:
-    assert (
-        get_human_age(15, 15) == [1, 1]
-    ), "Should return 1 if age of animal equals 15"
-
-
-def test_returns_one_if_age_is_between_15_and_24() -> None:
-    assert (
-        get_human_age(23, 23) == [1, 1]
-    ), "Should return 1 if age of animal less than 15 + 9, but more than 15"
-
-
-def test_result_for_both_is_2_if_age_less_than_28() -> None:
-    assert (
-        get_human_age(24, 24) == [2, 2]
-    ), "If age less than 24, for both  human age must be 2"
-
-
-def test_on_age_equals_28_cats_start_aging_and_dogs_dont() -> None:
-    assert (
-        get_human_age(28, 28) == [3, 2]
-    ), "If age is 28, cats start to age, changing to 3 and dogs stay at 2"
-
-
-def test_difference_in_cat_and_dog_age_for_greater_numbers() -> None:
-    assert (
-        get_human_age(100, 100) == [21, 17]
-    ), "Difference between cats and dogs age is increasing on greater numbers"
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error",
+    [
+        pytest.param(
+            0,
+            -1,
+            ValueError,
+            id="Should raise error on negative dog_age"
+        ),
+        pytest.param(
+            -1,
+            0,
+            ValueError,
+            id="Should raise error on negative cat_age"
+        ),
+    ], "Error must be rose"
+)
+def test_get_human_age_invalid_input(
+    cat_age: int,
+    dog_age: int,
+    expected_error: Exception
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
