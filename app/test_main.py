@@ -106,6 +106,12 @@ def test_get_human_age(
             ValueError,
             id="Should raise error on negative cat_age"
         ),
+        pytest.param(
+            0.5,
+            "Hahaha",
+            TypeError,
+            id="Should raise error on wrong input type"
+        ),
     ]
 )
 def test_get_human_age_invalid_input(
