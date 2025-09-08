@@ -106,7 +106,7 @@ def test_get_human_age(
             ValueError,
             id="Should raise error on negative cat_age"
         ),
-    ], "Error must be rose"
+    ]
 )
 def test_get_human_age_invalid_input(
     cat_age: int,
