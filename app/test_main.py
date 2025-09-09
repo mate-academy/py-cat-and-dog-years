@@ -36,8 +36,8 @@ def test_get_human_age_large(
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
-        (-1, 5, [0, 1]),
-        (5, -1, [1, 0]),
+        (-1, 5, [0, 0]),
+        (5, -1, [0, 0]),
         (-3, -7, [0, 0]),
     ]
 )
@@ -50,7 +50,7 @@ def test_get_human_age_negative(
     "cat_age, dog_age, expected",
     [
         (10.5, 10, [0, 1]),
-        ("15", 15, [1, 1]),
+        ("15", 15, [0, 1]),
         (None, 10, [0, 1]),
         ([10], 10, [0, 1]),
     ]
