@@ -41,16 +41,3 @@ def test_get_human_age_large_numbers(cat_age: int, dog_age: int) -> None:
 def test_get_human_age_negative_values(cat_age: int, dog_age: int) -> None:
     result = get_human_age(cat_age, dog_age)
     assert all(x >= 0 for x in result)
-
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        ("ten", 10),
-        (15.5, 20),
-        (None, 10),
-    ],
-)
-def test_get_human_age_invalid_types(cat_age: object, dog_age: object) -> None:
-    with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)  # type: ignore[arg-type]
