@@ -64,7 +64,7 @@ def test_get_human_age_negative_values(cat_age: int, dog_age: int) -> None:
     ],
 )
 def test_ages(
-    monkeypatch,
+    monkeypatch: pytest.MonkeyPatch,
     first_year: int,
     second_year: int,
     each_year_cat: int,
@@ -73,7 +73,9 @@ def test_ages(
     dog_age: int,
     expected: list[int],
 ) -> None:
-    def mock_get_human_age(cat_age_param: int, dog_age_param: int) -> list[int]:
+    def mock_get_human_age(
+            cat_age_param: int,
+            dog_age_param: int) -> list[int]:
         cat_human = convert_to_human(
             cat_age_param, first_year, second_year, each_year_cat
         )
