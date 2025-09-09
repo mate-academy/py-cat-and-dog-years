@@ -1,6 +1,6 @@
 import pytest
 from app.main import get_human_age
-from typing import Any
+
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
