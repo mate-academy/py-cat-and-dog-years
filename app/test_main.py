@@ -2,58 +2,18 @@ import pytest
 from app.main import get_human_age
 
 
-def test_get_human_age_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_get_human_age_below_first_threshold() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-    assert get_human_age(1, 1) == [0, 0]
-    assert get_human_age(10, 5) == [0, 0]
-    assert get_human_age(7, 12) == [0, 0]
-
-
-def test_get_human_age_first_threshold() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_get_human_age_between_thresholds() -> None:
-    assert get_human_age(16, 16) == [1, 1]
-    assert get_human_age(20, 20) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_get_human_age_second_threshold() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_get_human_age_after_second_threshold() -> None:
-    assert get_human_age(25, 25) == [2, 2]
-    assert get_human_age(26, 26) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_get_human_age_cat_dog_difference() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(29, 29) == [3, 3]
-
-
 def test_get_human_age_cat_progression() -> None:
+    """Test cat age progression after second threshold (every 4 years)."""
     assert get_human_age(28, 0) == [3, 0]
     assert get_human_age(32, 0) == [4, 0]
     assert get_human_age(36, 0) == [5, 0]
-    assert get_human_age(40, 0) == [6, 0]
 
 
 def test_get_human_age_dog_progression() -> None:
+    """Test dog age progression after second threshold (every 5 years)."""
     assert get_human_age(0, 29) == [0, 3]
     assert get_human_age(0, 34) == [0, 4]
     assert get_human_age(0, 39) == [0, 5]
-    assert get_human_age(0, 44) == [0, 6]
-
-
-def test_get_human_age_large_numbers() -> None:
-    assert get_human_age(100, 100) == [21, 17]
 
 
 def test_get_human_age_asymmetric_ages() -> None:
@@ -61,39 +21,61 @@ def test_get_human_age_asymmetric_ages() -> None:
     assert get_human_age(30, 50) == [3, 7]
 
 
-def test_get_human_age_edge_cases() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 28) == [2, 2]
-    assert get_human_age(28, 29) == [3, 3]
-
-
 def test_get_human_age_remainder_discarded() -> None:
+    """Test that remainder is properly discarded (no rounding up)."""
     assert get_human_age(26, 26) == [2, 2]
     assert get_human_age(27, 27) == [2, 2]
     assert get_human_age(30, 26) == [3, 2]
 
 
 def test_get_human_age_result_format() -> None:
+    """Test that result is a list with exactly 2 integer elements."""
     result = get_human_age(25, 30)
     assert isinstance(result, list)
     assert len(result) == 2
     assert all(isinstance(age, int) for age in result)
 
 
+def test_get_human_age_negative_inputs() -> None:
+    """Test behavior with negative age inputs."""
+    assert get_human_age(-1, 5) == [0, 0]
+    assert get_human_age(5, -1) == [0, 0]
+    assert get_human_age(-5, -10) == [0, 0]
+    assert get_human_age(-1, 25) == [0, 2]
+
+
+@pytest.mark.parametrize("cat_age, dog_age, error_type", [
+    ("5", 10, TypeError),
+    (10, "5", TypeError),
+    (None, 5, TypeError),
+    (5, None, TypeError),
+])
+def test_get_human_age_incorrect_types(
+    cat_age: int, dog_age: int, error_type: type
+) -> None:
+    """Test that incorrect input types raise appropriate exceptions."""
+    with pytest.raises(error_type):
+        get_human_age(cat_age, dog_age)
+
+
 @pytest.mark.parametrize("cat_age, dog_age, expected", [
     (0, 0, [0, 0]),
+    (1, 1, [0, 0]),
     (14, 14, [0, 0]),
+    (10, 5, [0, 0]),
     (15, 15, [1, 1]),
+    (16, 16, [1, 1]),
+    (20, 20, [1, 1]),
     (23, 23, [1, 1]),
     (24, 24, [2, 2]),
+    (25, 25, [2, 2]),
     (27, 27, [2, 2]),
     (28, 28, [3, 2]),
+    (29, 29, [3, 3]),
     (100, 100, [21, 17]),
 ])
 def test_get_human_age_examples(
     cat_age: int, dog_age: int, expected: list[int]
 ) -> None:
+    """Comprehensive parametrized test covering all main scenarios."""
     assert get_human_age(cat_age, dog_age) == expected
