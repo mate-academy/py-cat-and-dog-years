@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 
@@ -16,15 +17,9 @@ def test_get_human_age_dog_progression() -> None:
     assert get_human_age(0, 39) == [0, 5]
 
 
-def test_get_human_age_asymmetric_ages() -> None:
-    assert get_human_age(50, 30) == [8, 3]
-    assert get_human_age(30, 50) == [3, 7]
-
-
 def test_get_human_age_remainder_discarded() -> None:
     """Test that remainder is properly discarded (no rounding up)."""
     assert get_human_age(26, 26) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
     assert get_human_age(30, 26) == [3, 2]
 
 
@@ -44,6 +39,18 @@ def test_get_human_age_negative_inputs() -> None:
     assert get_human_age(-1, 25) == [0, 2]
 
 
+@pytest.mark.parametrize("cat_age, dog_age, expected_or_error", [
+    (3.5, 5, [0, 0]),  # Float values work, truncated in comparisons
+    (5, 3.5, [0, 0]),
+    (25.8, 30.2, [2, 3]),  # Float values converted properly
+])
+def test_get_human_age_float_inputs(
+    cat_age: Any, dog_age: Any, expected_or_error: list[int]
+) -> None:
+    """Test behavior with float input values."""
+    assert get_human_age(cat_age, dog_age) == expected_or_error
+
+
 @pytest.mark.parametrize("cat_age, dog_age, error_type", [
     ("5", 10, TypeError),
     (10, "5", TypeError),
@@ -51,7 +58,7 @@ def test_get_human_age_negative_inputs() -> None:
     (5, None, TypeError),
 ])
 def test_get_human_age_incorrect_types(
-    cat_age: int, dog_age: int, error_type: type
+    cat_age: Any, dog_age: Any, error_type: type
 ) -> None:
     """Test that incorrect input types raise appropriate exceptions."""
     with pytest.raises(error_type):
@@ -72,10 +79,12 @@ def test_get_human_age_incorrect_types(
     (27, 27, [2, 2]),
     (28, 28, [3, 2]),
     (29, 29, [3, 3]),
+    (50, 30, [8, 3]),
+    (30, 50, [3, 7]),
     (100, 100, [21, 17]),
 ])
 def test_get_human_age_examples(
     cat_age: int, dog_age: int, expected: list[int]
 ) -> None:
-    """Comprehensive parametrized test covering all main scenarios."""
+
     assert get_human_age(cat_age, dog_age) == expected
