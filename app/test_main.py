@@ -22,22 +22,12 @@ import pytest
         (1000000, 1000000, [249996, 199997])
     ]
 )
-def test_animal_age_0_0_to_convert_human_age(cat_age: int, dog_age: int, result: list) -> None:
+def test_animal_age_0_0_to_convert_human_age(
+        cat_age: int,
+        dog_age: int,
+        result: list) -> None:
     res_age = get_human_age(cat_age, dog_age)
     assert res_age == result
     assert isinstance(res_age, list)
     assert len(res_age) == 2
     assert all(isinstance(v, int) for v in res_age)
-
-    # with pytest.raises(ValueError):
-    #     get_human_age(cat_age, -5)
-    #
-    # with pytest.raises(ValueError):
-    #     get_human_age(-1, dog_age)
-    #
-    # with pytest.raises(ValueError):
-    #     get_human_age(3.5, dog_age)
-    #
-    # with pytest.raises(ValueError):
-    #     get_human_age(cat_age, "10")
-
