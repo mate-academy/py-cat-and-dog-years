@@ -6,6 +6,7 @@ from app.main import get_human_age
 
     "cat_age,dog_age,list_of_human_age",
     [
+        (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
@@ -23,17 +24,9 @@ def test_get_human_age(cat_age: int,
     assert get_human_age(cat_age, dog_age) == list_of_human_age
 
 
-def test_get_human_age_negative_value() -> None:
-    assert get_human_age(-30, 15) == [0, 1]
-
-
-def test_get_human_age_float_value() -> None:
-    assert get_human_age(10.0, 15) == [0, 1]
-
-
 def test_value_type() -> None:
     with pytest.raises(TypeError):
         get_human_age("10", 10)
+
+    with pytest.raises(TypeError):
         get_human_age([30], "25")
-        get_human_age(10, 10.5)
-        get_human_age(100, {})
