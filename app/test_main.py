@@ -12,10 +12,8 @@ import pytest
                              (27, 27, [2, 2]),
                              (28, 28, [3, 2]),
                              (100, 100, [21, 17]),
-                         ]
+                         ],
                          )
-
-
-
-def test_animal_to_human_age(cat_age, dog_age, human_age):
+def test_animal_to_human_age(cat_age: int, dog_age: int,
+                             human_age: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
