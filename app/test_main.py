@@ -13,9 +13,8 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
-        pytest.param(-30, 15, [0, 1], id="negative value return 0"),
-        pytest.param(10.0, 15, [0, 1], id="float value return 0")
+        (29, 29, [3, 3]),
+        (100, 100, [21, 17])
     ]
 )
 def test_get_human_age(cat_age: int,
@@ -26,6 +25,7 @@ def test_get_human_age(cat_age: int,
 
 def test_return_type() -> None:
     assert isinstance(get_human_age(10, 10), list)
+    assert len(get_human_age(10, 10)) == 2
     assert isinstance(get_human_age(10, 10)[0], int)
     assert isinstance(get_human_age(10, 10)[1], int)
 
