@@ -1,5 +1,3 @@
-from logging import exception
-
 import pytest
 from app.main import get_human_age
 
@@ -47,7 +45,8 @@ def test_return_type() -> None:
         "dog_age as float value",
     ]
 )
-def test_float_input_without_exception(cat_age, dog_age) -> None:
+def test_float_input_without_exception(cat_age: int,
+                                       dog_age: int) -> None:
     assert get_human_age(cat_age, dog_age) == [0, 0]
 
 
@@ -72,6 +71,7 @@ def test_float_input_without_exception(cat_age, dog_age) -> None:
         "dog_age as None",
     ]
 )
-def test_invalid_input_types_raise_typeerror(cat_age, dog_age) -> None:
+def test_invalid_input_types_raise_typeerror(cat_age: int,
+                                             dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
