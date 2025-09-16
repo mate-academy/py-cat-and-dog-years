@@ -6,7 +6,7 @@ def test_zero_years() -> None:
 
 
 def test_years_post_first_animal_first_year() -> None:
-    assert  get_human_age(14, 14) == [0, 0]
+    assert get_human_age(14, 14) == [0, 0]
 
 
 def test_years_first_animal_year() -> None:
@@ -31,4 +31,3 @@ def test_years_firs_only_cat_third_year() -> None:
 
 def test_years_100_years_old() -> None:
     assert get_human_age(100, 100) == [21, 17]
-
