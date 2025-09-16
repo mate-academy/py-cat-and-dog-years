@@ -25,7 +25,8 @@ def test_logic_of_the_function(
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
 
-def test_ages_are_numbers():
+
+def test_ages_are_numbers() -> None:
     with pytest.raises(TypeError):
         get_human_age("5", 10)
     with pytest.raises(TypeError):
