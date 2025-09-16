@@ -1,6 +1,5 @@
 import pytest
 from app import main
-from app.main import get_human_age
 
 
 def convert_to_human(
