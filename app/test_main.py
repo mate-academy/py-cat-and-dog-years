@@ -6,16 +6,16 @@ class TestGetHumanAge:
 
     def test_return_contract(self) -> None:
         result = get_human_age(15, 20)
-        
+
         assert isinstance(result, list), "Function should return a list"
         assert len(result) == 2, "Function should return exactly 2 elements"
-        assert isinstance(result[0], int), "First element should be an integer"
-        assert isinstance(result[1], int), "Second element should be an integer"
-        
+        assert isinstance(result[0], int), "First element should be integer"
+        assert isinstance(result[1], int), "Second element should be integer"
+
         result2 = get_human_age(0, 0)
         assert isinstance(result2, list) and len(result2) == 2
         assert isinstance(result2[0], int) and isinstance(result2[1], int)
-        
+
         result3 = get_human_age(100, 100)
         assert isinstance(result3, list) and len(result3) == 2
         assert isinstance(result3[0], int) and isinstance(result3[1], int)
