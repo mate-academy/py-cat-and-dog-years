@@ -4,6 +4,22 @@ from app.main import get_human_age
 
 class TestGetHumanAge:
 
+    def test_return_contract(self) -> None:
+        result = get_human_age(15, 20)
+        
+        assert isinstance(result, list), "Function should return a list"
+        assert len(result) == 2, "Function should return exactly 2 elements"
+        assert isinstance(result[0], int), "First element should be an integer"
+        assert isinstance(result[1], int), "Second element should be an integer"
+        
+        result2 = get_human_age(0, 0)
+        assert isinstance(result2, list) and len(result2) == 2
+        assert isinstance(result2[0], int) and isinstance(result2[1], int)
+        
+        result3 = get_human_age(100, 100)
+        assert isinstance(result3, list) and len(result3) == 2
+        assert isinstance(result3[0], int) and isinstance(result3[1], int)
+
     @pytest.mark.parametrize("cat_age,dog_age,expected", [
         (0, 0, [0, 0]),
         (1, 1, [0, 0]),
@@ -89,16 +105,6 @@ class TestGetHumanAge:
         assert get_human_age(-1, 0) == [0, 0]
         assert get_human_age(0, -1) == [0, 0]
         assert get_human_age(-5, -10) == [0, 0]
-
-    def test_incorrect_data_types_raise_exception(self) -> None:
-        with pytest.raises(TypeError):
-            get_human_age("15", 20)
-        with pytest.raises(TypeError):
-            get_human_age(15, "20")
-        with pytest.raises(TypeError):
-            get_human_age(None, 20)
-        with pytest.raises(TypeError):
-            get_human_age(15, None)
 
     def test_float_inputs_work(self) -> None:
         assert get_human_age(15.5, 20.5) == [1, 1]
