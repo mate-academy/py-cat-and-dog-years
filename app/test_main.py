@@ -16,6 +16,7 @@ import pytest
     (27, 27, [2, 2]),
     (28, 28, [3, 2]),
     (28, 29, [3, 3]),
+    (100, 100, [21, 17]),
 ])
 def test_human_age_boundaries(cat_age: int,
                               dog_age: int,
@@ -50,6 +51,10 @@ def test_invalid_types() -> None:
         get_human_age("2", 5)
     with pytest.raises(TypeError):
         get_human_age(None, 5)
+    with pytest.raises(TypeError):
+        get_human_age(2.5, 5)  # float кіт
+    with pytest.raises(TypeError):
+        get_human_age(5, 2.5)  # float собака
 
 # =====================
 # 4. Structural / type correctness
