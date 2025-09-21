@@ -22,5 +22,33 @@ def test_check_correct_calculate_cat_and_dog_age_in_human_age(
     assert get_human_age(cat_age, dog_age) == human_age
 
 
-def test_age_in_human_age_is_integer() -> None:
-    assert all(isinstance(age, int) for age in get_human_age(100, 100))
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("10", 10),
+        (10, "10"),
+        (10.5, 10),
+        (10, 10.5),
+        (10.5, 10.5),
+        ("10", "10")
+    ]
+)
+def test_correct_data_type(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 1),
+        (1, -1),
+        (-1, -1),
+        (500, 10),
+        (10, 500),
+        (500, 500)
+    ]
+)
+def test_normal_range_of_data(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
