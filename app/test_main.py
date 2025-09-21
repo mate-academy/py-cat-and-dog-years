@@ -13,6 +13,7 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
+        (29, 29, [3, 3]),  # ✅ boundary case for dog age exactly 29
         (100, 100, [21, 17]),
     ],
 )
