@@ -8,7 +8,12 @@ def get_human_age(cat_age: int, dog_age: int) -> list[int]:
 
     Returns:
         list[int]: [cat_human_age, dog_human_age]
+
+    Raises:
+        TypeError: If inputs are not integers.
     """
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("cat_age and dog_age must be integers")
 
     def convert(age: int, first: int, second: int, step: int) -> int:
         if age < first:
