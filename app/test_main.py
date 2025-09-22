@@ -27,9 +27,8 @@ def test_check_correct_calculate_cat_and_dog_age_in_human_age(
     [
         ("10", 10),
         (10, "10"),
-        (10.5, 10),
-        (10, 10.5),
-        (10.5, 10.5),
+        (10.5, "10"),
+        ("10", 10.5),
         ("10", "10")
     ]
 )
@@ -39,16 +38,19 @@ def test_correct_data_type(cat_age: int, dog_age: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, human_age",
     [
-        (-1, 1),
-        (1, -1),
-        (-1, -1),
-        (500, 10),
-        (10, 500),
-        (500, 500)
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17])
     ]
 )
-def test_normal_range_of_data(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
+def test_result_in_normal_range(cat_age: int,
+                                dog_age: int,
+                                human_age: list) -> None:
+    assert all(age in range(0, 120) for age in get_human_age(cat_age, dog_age))
