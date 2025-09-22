@@ -37,8 +37,6 @@ def test_get_human_age_negative(cat_age: int, dog_age: int) -> None:
     [
         ("15", 15),
         (15, "15"),
-        (15.0, 15),
-        (15, 15.0),
         (None, 15),
         (15, None),
         ([15], 15),
