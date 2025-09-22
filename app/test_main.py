@@ -38,16 +38,16 @@ def test_correct_data_type(cat_age: int, dog_age: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, human_age",
     [
-        (2, -1),
-        (-2, 10),
-        (-5, -10),
-        (0, 0),
-        (500, 800)
+        (27, -1, [2, 0]),
+        (-2, 15, [0, 1]),
+        (-5, -10, [0, 0]),
+        (500, 800, [121, 157])
     ]
 )
 def test_function_should_be_in_normal_range(
         cat_age: int,
-        dog_age: int) -> None:
-    assert all(age in range(0, 200) for age in get_human_age(cat_age, dog_age))
+        dog_age: int,
+        human_age: list) -> None:
+    assert get_human_age(cat_age, dog_age) == human_age
