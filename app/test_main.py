@@ -45,6 +45,6 @@ def test_get_human_age_negative(cat_age: int, dog_age: int) -> None:
         (15, {"age": 15}),
     ]
 )
-def test_get_human_age_type_error(cat_age, dog_age) -> None:
+def test_get_human_age_type_error(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
