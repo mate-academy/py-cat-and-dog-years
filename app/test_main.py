@@ -18,4 +18,6 @@ import pytest
 def test_get_human_age(
     cat_age: int, dog_age: int, in_human_years: int
 ) -> None:
-    assert (get_human_age(cat_age, dog_age) == in_human_years), f"Expected {in_human_years} and got {get_human_age(cat_age, dog_age)}"
+    assert (
+        get_human_age(cat_age, dog_age) == in_human_years
+    ), f"Expected {in_human_years} and got {get_human_age(cat_age, dog_age)}"
