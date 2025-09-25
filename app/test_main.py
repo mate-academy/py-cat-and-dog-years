@@ -1,6 +1,3 @@
-from app.main import get_human_age
-
-
 def get_human_age(cat_age: int, dog_age: int) -> list[int]:
     # 🔒 validações exigidas pelo checklist
     if not isinstance(cat_age, int) or not isinstance(dog_age, int):
