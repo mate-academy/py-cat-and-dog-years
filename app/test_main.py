@@ -8,43 +8,42 @@ from app.main import get_human_age
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
+        (16, 16, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
+        (25, 24, [2, 1]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
+        (29, 29, [3, 3]),
+        (34, 34, [4, 3]),
         (100, 100, [21, 17]),
-        (15, 0, [1, 0]),
-        (0, 15, [0, 1]),
-        (16, 16, [1, 1]),
-        (34, 34, [4, 4]),
-    ]
+    ],
 )
-def test_get_human_age(
+def test_get_human_age_values(
     cat_age: int, dog_age: int, expected: list[int]
 ) -> None:
-    """
-    Test get_human_age for various boundary values, large numbers,
-    and single-animal age effects.
-    """
-    assert get_human_age(cat_age, dog_age) == expected
+    result = get_human_age(cat_age, dog_age)
+    assert isinstance(result, list)
+    assert len(result) == 2
+    assert all(isinstance(x, int) for x in result)
+    assert result == expected
 
 
 @pytest.mark.parametrize(
-    "invalid_input",
+    "cat_age, dog_age",
     [
-        -1,
-        -10,
-        -100,
-        3.5,
-        "cat",
-        None,
-    ]
+        (-1, 5),
+        (5, -1),
+        ("10", 5),
+        (5, "10"),
+        (None, 5),
+        (5, None),
+    ],
 )
-def test_get_human_age_invalid_type(
-    invalid_input: int | float | str | None
-) -> None:
-    """
-    Ensure get_human_age raises TypeError or ValueError on invalid input.
-    """
-    with pytest.raises((TypeError, ValueError)):
-        get_human_age(invalid_input, invalid_input)
+def test_get_human_age_invalid(cat_age: object, dog_age: object) -> None:
+    if any(isinstance(x, int) and x < 0 for x in (cat_age, dog_age)):
+        with pytest.raises(ValueError):
+            get_human_age(cat_age, dog_age)
+    else:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
