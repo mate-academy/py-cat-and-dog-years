@@ -7,7 +7,6 @@ def test_should_return_zero_for_zero_ages() -> None:
 
 
 def test_should_return_zero_for_under_first_year_threshold() -> None:
-    # 14 років ще не дають людині жодного року
     assert get_human_age(14, 14) == [0, 0]
 
 
@@ -69,3 +68,22 @@ def test_cat_age_cases(cat_age: int, expected: int) -> None:
 def test_dog_age_cases(dog_age: int, expected: int) -> None:
     _, human_dog = get_human_age(0, dog_age)
     assert human_dog == expected
+
+
+# --- edge cases ---
+
+def test_negative_ages_should_return_zero() -> None:
+    assert get_human_age(-10, -10) == [0, 0]
+    assert get_human_age(-1, 20)[0] == 0
+    assert get_human_age(20, -5)[1] == 0
+
+
+def test_should_raise_typeerror_for_incorrect_types() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("cat", "dog")
+
+    with pytest.raises(TypeError):
+        get_human_age(15.5, 20.2)
+
+    with pytest.raises(TypeError):
+        get_human_age(None, None)
