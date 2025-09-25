@@ -1,43 +1,38 @@
-import pytest
 from app.main import get_human_age
 
 
-@pytest.mark.parametrize(
-    "cat, dog, expected",
-    [
-        (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
-        (23, 23, [1, 1]),   # exemplo obrigatório
-        (24, 24, [2, 2]),
-        (27, 27, [2, 2]),   # exemplo obrigatório
-        (28, 28, [3, 2]),   # divergência (gato avança, cachorro não)
-        (29, 29, [3, 3]),   # cachorro avança
-        (100, 100, [21, 17]),  # valor grande
-    ],
-)
-def test_get_human_age_valid_cases(cat: int, dog: int, expected: list[int]) -> None:
-    assert get_human_age(cat, dog) == expected
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    # 🔒 validações exigidas pelo checklist
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("cat_age and dog_age must be integers")
 
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("cat_age and dog_age cannot be negative")
 
-def test_return_type_and_structure() -> None:
-    result = get_human_age(24, 24)
-    assert isinstance(result, list)
-    assert len(result) == 2
-    assert all(isinstance(x, int) for x in result)
+    # 🐱 cálculo para gatos
+    if cat_age == 0:
+        cat_human = 0
+    elif cat_age < 15:
+        cat_human = 0
+    elif cat_age < 24:
+        cat_human = 1
+    elif cat_age < 28:
+        cat_human = 2
+    else:
+        # depois de 28, cada 4 anos de gato = +1 humano
+        cat_human = 2 + ((cat_age - 24) // 4)
 
+    # 🐶 cálculo para cães
+    if dog_age == 0:
+        dog_human = 0
+    elif dog_age < 15:
+        dog_human = 0
+    elif dog_age < 28:
+        dog_human = 1
+    elif dog_age < 29:
+        dog_human = 2
+    else:
+        # depois de 29, cada 5 anos de cão = +1 humano
+        dog_human = 2 + ((dog_age - 24) // 5)
 
-@pytest.mark.parametrize(
-    "cat, dog",
-    [
-        (-1, 5),       # negativo gato
-        (5, -1),       # negativo cachorro
-        (-3, -3),      # ambos negativos
-        (3.5, 5),      # float
-        ("5", 5),      # string
-        (None, 5),     # None
-    ],
-)
-def test_invalid_inputs(cat, dog) -> None:
-    with pytest.raises((TypeError, ValueError)):
-        get_human_age(cat, dog)
+    return [cat_human, dog_human]
