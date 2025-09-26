@@ -1,6 +1,7 @@
 import pytest
 from app.main import get_human_age
 
+
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
@@ -18,13 +19,18 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
 )
-def test_get_human_age_values(cat_age: int, dog_age: int, expected: list[int]) -> None:
+def test_get_human_age_values(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int],
+) -> None:
     """Test valid inputs for cat and dog ages."""
     result = get_human_age(cat_age, dog_age)
     assert isinstance(result, list)
     assert len(result) == 2
     assert all(isinstance(x, int) for x in result)
     assert result == expected
+
 
 @pytest.mark.parametrize(
     "cat_age,dog_age",
