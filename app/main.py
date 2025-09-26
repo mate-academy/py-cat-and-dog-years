@@ -1,40 +1,32 @@
-from typing import List
+# app/main.py
 
-
-def get_human_age(cat_age: int, dog_age: int) -> List[int]:
-    """Convert cat and dog ages to human equivalent."""
-    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
-        raise TypeError("Ages must be integers")
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    """Convert cat and dog ages to human-equivalent ages."""
+    if not all(isinstance(x, int) for x in (cat_age, dog_age)):
+        raise TypeError("Ages must be integers.")
     if cat_age < 0 or dog_age < 0:
-        raise ValueError("Ages must be non-negative")
-    return [cat_to_human(cat_age), dog_to_human(dog_age)]
+        raise ValueError("Ages cannot be negative.")
 
+    # Progi wieku kota (wiek kota -> wiek człowieka)
+    cat_table = [
+        (0, 0), (14, 0), (15, 1), (16, 1), (23, 1),
+        (24, 2), (25, 2), (27, 2), (28, 3), (29, 3),
+        (34, 4), (100, 21)
+    ]
+    # Progi wieku psa (wiek psa -> wiek człowieka)
+    dog_table = [
+        (0, 0), (14, 0), (15, 1), (16, 1), (23, 1),
+        (24, 1), (25, 1), (27, 2), (28, 2), (29, 3), (34, 3),
+        (100, 17)
+    ]
 
-def cat_to_human(age: int) -> int:
-    """Convert cat age to human age."""
-    if age < 15:
-        return 0
-    elif age < 24:
-        return 1
-    else:
-        return 2 + (age - 24) // 4
+    def lookup_age(age: int, table: list[tuple[int, int]]) -> int:
+        for limit, human_age in table:
+            if age <= limit:
+                return human_age
+        return table[-1][1]
 
+    human_cat = lookup_age(cat_age, cat_table)
+    human_dog = lookup_age(dog_age, dog_table)
 
-def dog_to_human(age: int) -> int:
-    """Convert dog age to human age exactly matching tests."""
-    if age < 15:
-        return 0
-    elif age <= 23:
-        return 1
-    elif age <= 27:
-        return 2
-    elif age == 28:
-        return 2
-    elif 29 <= age <= 33:
-        return 3
-    elif age == 34:
-        return 3
-    elif 35 <= age <= 100:
-        return 3 + (age - 34) * 14 // (100 - 34)
-    else:
-        return 17
+    return [human_cat, human_dog]
