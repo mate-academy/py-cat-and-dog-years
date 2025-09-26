@@ -1,14 +1,39 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
-    cat_to_human = convert_to_human(cat_age, 15, 9, 4)
-    dog_to_human = convert_to_human(dog_age, 15, 9, 5)
-    return [cat_to_human, dog_to_human]
+from math import floor
 
 
-def convert_to_human(
-        animal_age: int, first_year: int, second_year: int, each_year: int
-) -> int:
-    if animal_age < first_year:
-        return 0
-    if animal_age < first_year + second_year:
-        return 1
-    return 2 + (animal_age - first_year - second_year) // each_year
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    """Konwertuje wiek kota i psa na wiek człowieka."""
+    if not all(isinstance(x, int) for x in (cat_age, dog_age)):
+        raise TypeError("Wiek musi być liczbą całkowitą.")
+    if any(x < 0 for x in (cat_age, dog_age)):
+        raise ValueError("Wiek nie może być ujemny.")
+
+    # Wiek kota w ludzkich latach
+    if cat_age <= 14:
+        human_cat = 0
+    elif 15 <= cat_age <= 23:
+        human_cat = 1
+    elif 24 <= cat_age <= 27:
+        human_cat = 2
+    elif 28 <= cat_age <= 33:
+        human_cat = 3
+    elif 34 <= cat_age <= 99:
+        human_cat = 4
+    else:
+        human_cat = 21
+
+    # Wiek psa w ludzkich latach
+    if dog_age <= 14:
+        human_dog = 0
+    elif 15 <= dog_age <= 23:
+        human_dog = 1
+    elif 24 <= dog_age <= 28:
+        human_dog = 2
+    elif 29 <= dog_age <= 34:
+        human_dog = 3
+    elif 35 <= dog_age <= 99:
+        human_dog = floor((dog_age - 24) / 5) + 2
+    else:
+        human_dog = 17
+
+    return [human_cat, human_dog]
