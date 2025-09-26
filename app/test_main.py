@@ -10,8 +10,8 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (16, 16, [1, 1]),
         (23, 23, [1, 1]),
-        (24, 24, [2, 1]),
-        (25, 24, [2, 1]),
+        (24, 24, [2, 2]),
+        (25, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (29, 29, [3, 3]),
@@ -20,9 +20,7 @@ from app.main import get_human_age
     ],
 )
 def test_get_human_age_values(
-    cat_age: int,
-    dog_age: int,
-    expected: list[int],
+    cat_age: int, dog_age: int, expected: list[int]
 ) -> None:
     """Test valid inputs for cat and dog ages."""
     result = get_human_age(cat_age, dog_age)
@@ -41,6 +39,8 @@ def test_get_human_age_values(
         (5, "10"),
         (None, 5),
         (5, None),
+        (5.0, 5),
+        (5, 5.0),
     ],
 )
 def test_get_human_age_invalid(cat_age: object, dog_age: object) -> None:

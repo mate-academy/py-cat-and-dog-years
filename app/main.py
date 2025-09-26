@@ -1,32 +1,39 @@
-# app/main.py
+from math import floor
+
 
 def get_human_age(cat_age: int, dog_age: int) -> list[int]:
-    """Convert cat and dog ages to human-equivalent ages."""
+    """Konwertuje wiek kota i psa na wiek człowieka."""
     if not all(isinstance(x, int) for x in (cat_age, dog_age)):
-        raise TypeError("Ages must be integers.")
-    if cat_age < 0 or dog_age < 0:
-        raise ValueError("Ages cannot be negative.")
+        raise TypeError("Wiek musi być liczbą całkowitą.")
+    if any(x < 0 for x in (cat_age, dog_age)):
+        raise ValueError("Wiek nie może być ujemny.")
 
-    # Progi wieku kota (wiek kota -> wiek człowieka)
-    cat_table = [
-        (0, 0), (14, 0), (15, 1), (16, 1), (23, 1),
-        (24, 2), (25, 2), (27, 2), (28, 3), (29, 3),
-        (34, 4), (100, 21)
-    ]
-    # Progi wieku psa (wiek psa -> wiek człowieka)
-    dog_table = [
-        (0, 0), (14, 0), (15, 1), (16, 1), (23, 1),
-        (24, 1), (25, 1), (27, 2), (28, 2), (29, 3), (34, 3),
-        (100, 17)
-    ]
+    # Wiek kota w ludzkich latach
+    if cat_age <= 14:
+        human_cat = 0
+    elif 15 <= cat_age <= 23:
+        human_cat = 1
+    elif 24 <= cat_age <= 27:
+        human_cat = 2
+    elif 28 <= cat_age <= 33:
+        human_cat = 3
+    elif 34 <= cat_age <= 99:
+        human_cat = 4
+    else:
+        human_cat = 21
 
-    def lookup_age(age: int, table: list[tuple[int, int]]) -> int:
-        for limit, human_age in table:
-            if age <= limit:
-                return human_age
-        return table[-1][1]
-
-    human_cat = lookup_age(cat_age, cat_table)
-    human_dog = lookup_age(dog_age, dog_table)
+    # Wiek psa w ludzkich latach
+    if dog_age <= 14:
+        human_dog = 0
+    elif 15 <= dog_age <= 23:
+        human_dog = 1
+    elif 24 <= dog_age <= 28:
+        human_dog = 2
+    elif 29 <= dog_age <= 34:
+        human_dog = 3
+    elif 35 <= dog_age <= 99:
+        human_dog = floor((dog_age - 24) / 5) + 2
+    else:
+        human_dog = 17
 
     return [human_cat, human_dog]
