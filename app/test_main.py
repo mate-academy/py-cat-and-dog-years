@@ -26,12 +26,12 @@ def test_should_return_two_for_dog_but_two_for_cat_before_next_jump() -> None:
     assert get_human_age(27, 27) == [2, 2]
 
 
-def test_should_return_three_for_cat_and_two_for_dog() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
 def test_should_return_large_example_case() -> None:
     assert get_human_age(100, 100) == [21, 17]
+
+
+def test_should_return_three_for_cat_and_two_for_dog() -> None:
+    assert get_human_age(28, 28) == [3, 2]
 
 
 @pytest.mark.parametrize(
@@ -69,8 +69,6 @@ def test_dog_age_cases(dog_age: int, expected: int) -> None:
     _, human_dog = get_human_age(0, dog_age)
     assert human_dog == expected
 
-
-# --- edge cases ---
 
 def test_negative_ages_should_return_zero() -> None:
     assert get_human_age(-10, -10) == [0, 0]
