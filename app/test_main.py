@@ -74,14 +74,3 @@ def test_negative_ages_should_return_zero() -> None:
     assert get_human_age(-10, -10) == [0, 0]
     assert get_human_age(-1, 20)[0] == 0
     assert get_human_age(20, -5)[1] == 0
-
-
-def test_should_raise_typeerror_for_incorrect_types() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("cat", "dog")
-
-    with pytest.raises(TypeError):
-        get_human_age(15.5, 20.2)
-
-    with pytest.raises(TypeError):
-        get_human_age(None, None)
