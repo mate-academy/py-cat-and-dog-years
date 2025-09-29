@@ -1,5 +1,5 @@
 import pytest
-from typing import List, Optional, Union
+from typing import List
 from app.main import get_human_age
 
 
@@ -32,8 +32,7 @@ def test_get_human_age(
 
     assert isinstance(result, list)
     assert len(result) == 2
-    assert all(isinstance(x, int) for x in result), "All elements must be int"
-
+    assert all(isinstance(x, int) for x in result)
     assert result == expected
 
 
@@ -44,20 +43,28 @@ def test_get_human_age(
         (5, "5"),
         (None, 5),
         (5, None),
-        (3.5, 5),
-        (5, 3.5),
     ],
 )
-def test_get_human_age_invalid_type_outputs(
-    cat_age: Optional[Union[int, str, float]],
-    dog_age: Optional[Union[int, str, float]],
+def test_get_human_age_invalid_type_raises(
+    cat_age: object, dog_age: object
 ) -> None:
-    try:
-        result = get_human_age(cat_age, dog_age)
-    except Exception:
-        return
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
 
-    assert isinstance(result, list), "Result should be a list"
-    assert len(result) == 2, "Result list must have two elements"
-    assert all(isinstance(x, int) for x in result), \
-        "Result must only contain int"
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (3.5, 5, get_human_age(int(3.5), 5)),
+        (5, 3.5, get_human_age(5, int(3.5))),
+    ],
+)
+def test_get_human_age_with_float_inputs(
+    cat_age: float, dog_age: float, expected: List[int]
+) -> None:
+
+    result = get_human_age(cat_age, dog_age)
+    assert isinstance(result, list)
+    assert len(result) == 2
+    assert all(isinstance(x, int) for x in result)
+    assert result == expected
