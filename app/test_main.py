@@ -1,5 +1,5 @@
 import pytest
-
+from typing import Any
 from app.main import get_human_age
 
 
@@ -26,15 +26,27 @@ def test_get_human_age_various_scenarios(
 
 
 @pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (23.9, 23.9, [1, 1]),
+        (24.0, 24.0, [2, 2]),
+    ]
+)
+def test_get_human_age_handles_float_values(
+    cat_age: int, dog_age: int, expected: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
     "cat_age, dog_age",
     [
         ("20", 30),
         (20, "30"),
-        (20.5, 30.5),
-    ],
+    ]
 )
-def test_get_human_age_raises_error_for_invalid_types(
-    cat_age: int, dog_age: int
+def test_get_human_age_raises_error_for_string_types(
+    cat_age: Any, dog_age: Any
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
