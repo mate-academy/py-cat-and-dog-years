@@ -1,17 +1,22 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_when_age_lower_than_first_year() -> None:
-    assert get_human_age(0, 14) == [0, 0]
+class TestGetHumanAge:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected",
+        [
+            pytest.param(0, 14, [0, 0]),
+            pytest.param(23, 0, [1, 0]),
+            pytest.param(24, 24, [2, 2]),
+            pytest.param(28, 29, [3, 3]),
+            pytest.param(100, 100, [21, 17]),
+        ]
+    )
+
+    def test_get_human_age(self, cat_age, dog_age, expected):
+        assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_cat_and_dog_convert() -> None:
-    assert get_human_age(23, 0) == [0, 0]
-
-
-def test_different_each_year() -> None:
-    assert get_human_age(100, 100) == [21, 17]
-
-
-def check_integer() -> None:
-    assert all(isinstance(x, int) for x in get_human_age(28, 28))
+    def test_check_integer(self) -> None:
+        assert all(isinstance(x, int) for x in get_human_age(28, 28))
