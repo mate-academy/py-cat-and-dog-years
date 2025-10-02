@@ -39,3 +39,7 @@ class TestForErrors:
     def test_incorrect_type_negative(self) -> None:
         with pytest.raises(ValueError):
             get_human_age(-14, -28)
+
+    def test_bigger_than_hundred(self) -> None:
+        with pytest.raises(ValueError):
+            get_human_age(150, 101)
