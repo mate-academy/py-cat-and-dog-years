@@ -2,6 +2,7 @@ import pytest
 
 from app.main import get_human_age
 
+
 class TestForWorkingCases:
     @pytest.mark.parametrize(
         "cat_age,dog_age,result",
@@ -18,13 +19,14 @@ class TestForWorkingCases:
     )
     def test_to_get_correct_result(
             self,
-            cat_age,
-            dog_age, result
-    ):
+            cat_age: int,
+            dog_age: int,
+            result: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
 
 class TestForErrors:
-    def test_incorrect_type(self):
+    def test_incorrect_type(self) -> None:
         with pytest.raises(TypeError):
             get_human_age("28", "28")
