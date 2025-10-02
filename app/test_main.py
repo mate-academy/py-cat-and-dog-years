@@ -14,6 +14,7 @@ class TestForWorkingCases:
             (24, 24, [2, 2]),
             (27, 27, [2, 2]),
             (28, 28, [3, 2]),
+            (31, 35, [3, 4]),
             (100, 100, [21, 17])
         ]
     )
@@ -27,6 +28,14 @@ class TestForWorkingCases:
 
 
 class TestForErrors:
-    def test_incorrect_type(self) -> None:
+    def test_incorrect_type_string(self) -> None:
         with pytest.raises(TypeError):
             get_human_age("28", "28")
+
+    def test_incorrect_type_float(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(15.5, 28.3)
+
+    def test_incorrect_type_negative(self) -> None:
+        with pytest.raises(ValueError):
+            get_human_age(-14, -28)
