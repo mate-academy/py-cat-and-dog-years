@@ -23,7 +23,6 @@ def test_examples(cat_age: int, dog_age: int, expected: list[int]) -> None:
 @pytest.mark.parametrize(
     "cat_age,expected_cat",
     [
-        # Cat thresholds: 0–14 => 0; 15–23 => 1; then +1 per full 4 years after 24
         (14, 0),  # just below first threshold
         (15, 1),  # at first threshold
         (23, 1),  # just below second threshold
@@ -41,7 +40,6 @@ def test_cat_threshold_transitions(cat_age: int, expected_cat: int) -> None:
 @pytest.mark.parametrize(
     "dog_age,expected_dog",
     [
-        # Dog thresholds: 0–14 => 0; 15–24 => 1..2; then +1 per full 5 years after 24
         (14, 0),  # just below first threshold
         (15, 1),  # at first threshold
         (24, 2),  # at second threshold
@@ -63,7 +61,11 @@ def test_dog_threshold_transitions(dog_age: int, expected_dog: int) -> None:
         (27, 30, [2, 3]),  # asymmetric: dog crosses a block, cat does not
     ],
 )
-def test_asymmetric_inputs(cat_age: int, dog_age: int, expected: list[int]) -> None:
+def test_asymmetric_inputs(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
