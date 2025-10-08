@@ -14,7 +14,6 @@ from app.main import get_human_age
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
     ]
-    
 )
 def test_years_func(
         cat_age: int,
