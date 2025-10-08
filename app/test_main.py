@@ -51,7 +51,9 @@ def test_mixed_when_ages_are_different(
         (-3, -3),
     ]
 )
-@pytest.mark.xfail(reason="Function does not raise ValueError for negative input")
+@pytest.mark.xfail(
+    reason="Func doesn't raise ValueError for negative input"
+)
 def test_negative_numbers_in_input(
         cat_age: int,
         dog_age: int
@@ -68,7 +70,9 @@ def test_negative_numbers_in_input(
         (None, 1),
     ]
 )
-@pytest.mark.xfail(reason="Function does not raise TypeError for invalid input types")
+@pytest.mark.xfail(
+    reason="Func doesn't raise TypeError for invalid input types"
+)
 def test_wrong_types_of_input(
         cat_age: int,
         dog_age: int
