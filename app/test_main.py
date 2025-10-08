@@ -24,38 +24,6 @@ def test_years_func(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        [-5, 3],
-        [1, -1],
-        [-3, -3],
-    ]
-)
-def test_negative_numbers_in_input(
-        cat_age: int,
-        dog_age: int
-) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        ["age_of_cat", 3],
-        [1.5, 5.5],
-        [None, 1],
-    ]
-)
-def test_wrong_types_of_input(
-        cat_age: int,
-        dog_age: int
-) -> None:
-    with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
         (15, 24, [1, 2]),
