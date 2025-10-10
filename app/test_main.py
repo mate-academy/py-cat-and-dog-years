@@ -15,13 +15,17 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_get_human_age_returns_expected_values(cat_age: int, dog_age: int, expected: list) -> None:
+def test_get_human_age_returns_expected_values(
+        cat_age: int,
+        dog_age: int,
+        expected: list
+) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected
+
 
 def test_get_human_age_returns_two_integers() -> None:
     result = get_human_age(14, 14)
     assert isinstance(result, list)
     assert len(result) == 2
-    assert all(isinstance(x,int) for x in result)
-
+    assert all(isinstance(x, int) for x in result)
