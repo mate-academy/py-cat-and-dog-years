@@ -18,10 +18,12 @@ import pytest
         (100, 100, [21, 17])
     ]
 )
-def test_animal(cat_age: int, dog_age: int, result: int) -> None:
-    assert (
-        get_human_age(cat_age, dog_age) == result
-    )
+def test_animal(cat_age: int, dog_age: int, result: list) -> None:
+    output = get_human_age(cat_age, dog_age)
+    assert (output == result)
+    assert isinstance(output, list)
+    assert len(output) == 2
+    assert all(isinstance(age, int) for age in output)
 
 
 @pytest.mark.parametrize(
