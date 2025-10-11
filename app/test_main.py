@@ -12,8 +12,11 @@ class TestGetHumanAge:
             (15, 15, [1, 1]),
             (23, 23, [1, 1]),
             (24, 24, [2, 2]),
+            (27, 27, [2, 2]),
+            (27, 30, [2, 3]),
             (28, 28, [3, 2]),
             (28, 29, [3, 3]),
+            (100, 100, [21, 17]),
             (0, 0, [0, 0]),
             (1, 1, [0, 0]),
             (-1, 15, [0, 1]),
@@ -25,13 +28,16 @@ class TestGetHumanAge:
             "15 cat/dog years should convert into 1 human age.",
             "23 cat/dog years should convert into 1 human age.",
             "24 cat/dog years should convert into 2 human age.",
+            "27 cat/dog years should convert into 2 human age.",
+            "27/30 cat/dog years should convert into 2 and 3 human age.",
             "28/28 cat/dog years should convert into 3 and 2 human age.",
             "28/29 cat/dog years should convert into 3 human age.",
+            "100 cat/dog years should convert into 21 and 17 human age.",
             "0 cat/dog years should convert into 0 human age.",
             "1 cat/dog years should convert into 0 human age.",
             "-1 cat years should convert into 0 human age.",
             "-1 dog years should convert into 0 human age.",
-            "1000 cat/dog years should convert into 246 and 199 human age."
+            "1000 cat/dog years should convert into 246 and 197 human age."
         ]
     )
     def test_get_human_age_return_correct_values(self,
