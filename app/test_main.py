@@ -1,6 +1,8 @@
 import pytest
+from typing import Any
 
 from app.main import get_human_age
+
 
 class TestGetHumanAge:
     @pytest.mark.parametrize(
@@ -32,7 +34,10 @@ class TestGetHumanAge:
             "1000 cat/dog years should convert into 246 and 199 human age."
         ]
     )
-    def test_get_human_age_return_correct_values(self, cat_age, dog_age, expected):
+    def test_get_human_age_return_correct_values(self,
+                                                 cat_age: int,
+                                                 dog_age: int,
+                                                 expected: list[int]) -> None:
         assert get_human_age(cat_age, dog_age) == expected
 
     @pytest.mark.parametrize(
@@ -54,6 +59,8 @@ class TestGetHumanAge:
             "dog_age is a dict",
         ]
     )
-    def test_get_human_age_type_error(self, cat_age, dog_age):
+    def test_get_human_age_type_error(self,
+                                      cat_age: Any,
+                                      dog_age: Any) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
