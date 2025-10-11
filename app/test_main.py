@@ -1,25 +1,37 @@
 from app.main import get_human_age
+import pytest
 
 
-def test_animal_age_is_lower_than_first_year() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-    assert get_human_age(14, 14) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,result",
+    [
+        (-3, -5, [0, 0]),
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (27, 28, [2, 2]),
+        (28, 28, [3, 2]),
+        (28, 29, [3, 3]),
+        (100, 100, [21, 17])
+    ]
+)
+def test_animal(cat_age: int, dog_age: int, result: int) -> None:
+    assert (
+        get_human_age(cat_age, dog_age) == result
+    )
 
 
-def test_animal_age_between_first_and_second_year() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_animal_age_is_equal_to_first_year_and_second_year() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_animal_age_is_between_second_year_and_each_year() -> None:
-    assert get_human_age(27, 28) == [2, 2]
-
-
-def test_animal_age_is_greater_than_first_year_and_second_each_year() -> None:
-    assert get_human_age(28, 29) == [3, 3]
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("0", 3),
+        (4, None),
+        ([0, 3], 2)
+    ]
+)
+def test_invalid_types_raise_typeerror(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
