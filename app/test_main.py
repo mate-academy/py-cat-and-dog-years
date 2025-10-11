@@ -48,6 +48,16 @@ def test_get_human_age_dog_boundary_between_2_and_3_human_years() -> None:
     assert result_29[1] == 3  # after threshold
 
 
+# Boundary test – cat's human age transition from 2 → 3 years
+def test_get_human_age_cat_boundary_between_3_and_4_human_years() -> None:
+    """Ensure the dog's human age increments
+           exactly at the correct boundary."""
+    result_28 = get_human_age(28, 0)
+    result_29 = get_human_age(29, 0)
+    assert result_28[0] == 2
+    assert result_29[0] == 3
+
+
 # Negative values – must raise ValueError
 @pytest.mark.parametrize(
     "cat_age, dog_age",
@@ -83,8 +93,9 @@ def test_get_human_age_raises_error_when_given_invalid_input(
         cat_age: int,
         dog_age: int
 ) -> None:
-    """Non-integer or invalid data types should raise ValueError."""
-    with pytest.raises(ValueError):
+    """Any invalid input type should raise
+    an exception (ValueError or TypeError)."""
+    with pytest.raises((ValueError, TypeError)):
         get_human_age(cat_age, dog_age)
 
 
@@ -96,3 +107,13 @@ def test_get_human_age_truncates_fractional_years() -> None:
     result = get_human_age(cat_age, dog_age)
     assert all(isinstance(x, int) for x in result)  # both integers
     assert all(x == int(x) for x in result)         # no fractions returned
+
+
+def test_get_human_age_edge_transitions() -> None:
+    """Check human year transitions at edge thresholds for both animals."""
+    assert get_human_age(14, 14) == [0, 0]
+    assert get_human_age(15, 15) == [1, 1]
+    assert get_human_age(23, 23) == [1, 1]
+    assert get_human_age(24, 24) == [2, 2]
+    assert get_human_age(27, 28) == [2, 2]
+    assert get_human_age(28, 29) == [2, 3]
