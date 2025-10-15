@@ -16,3 +16,4 @@ def convert_to_human(
 
 def convert_to_dollar(euro: int) -> None:
     pass
+    pass
