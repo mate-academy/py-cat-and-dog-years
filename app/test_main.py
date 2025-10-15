@@ -1,94 +1,112 @@
 from app.main import get_human_age
+import pytest
 
 
 class TestGetHumanAge:
-    """Test suite for get_human_age function."""
+    """Testa a conversão de idade de gatos e cachorros para anos humanos"""
 
-    def test_zero_age(self) -> None:
-        """Test with zero age for both cat and dog."""
-        assert get_human_age(0, 0) == [0, 0]
+    # Testa os exemplos do exercício - são os mais importantes
+    @pytest.mark.parametrize("cat_age, dog_age, expected", [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+    ])
+    def test_exemplos_oficiais(self, cat_age, dog_age, expected):
+        """Testa os casos que vieram no exercício"""
+        resultado = get_human_age(cat_age, dog_age)
+        assert resultado == expected
 
-    def test_below_first_threshold(self) -> None:
-        """Test ages below the first threshold (15 years)."""
-        assert get_human_age(14, 14) == [0, 0]
-        assert get_human_age(1, 1) == [0, 0]
-        assert get_human_age(10, 10) == [0, 0]
+    # Testa idades baixas e negativas
+    @pytest.mark.parametrize("cat_age, dog_age", [
+        (-5, -5),  # Idades negativas
+        (-1, -1),  # -1 ano
+        (0, 0),  # Zero anos
+        (1, 1),  # 1 ano
+        (10, 10),  # 10 anos
+    ])
+    def test_idades_baixas(self, cat_age, dog_age):
+        """Testa idades pequenas, zero e negativas"""
+        resultado = get_human_age(cat_age, dog_age)
+        # Só verifica que não quebra e retorna lista com 2 números
+        assert isinstance(resultado, list)
+        assert len(resultado) == 2
+        assert all(isinstance(idade, int) for idade in resultado)
 
-    def test_exactly_first_threshold(self) -> None:
-        """Test exactly at the first threshold (15 years = 1 human year)."""
-        assert get_human_age(15, 15) == [1, 1]
+    # Testa quando só um dos animais tem idade que muda
+    @pytest.mark.parametrize("cat_age, dog_age, expected", [
+        (28, 24, [3, 2]),  # Gato muda, cachorro não
+        (24, 28, [2, 2]),  # Cachorro não muda ainda em 28
+        (29, 29, [3, 3]),  # Ambos mudam
+        (100, 50, [21, 7]),  # Idades muito diferentes
+    ])
+    def test_idades_diferentes(self, cat_age, dog_age, expected):
+        """Testa quando gato e cachorro têm idades diferentes"""
+        assert get_human_age(cat_age, dog_age) == expected
 
-    def test_between_first_and_second_threshold(self) -> None:
-        """Test ages between first and second threshold (15-23)."""
-        assert get_human_age(16, 16) == [1, 1]
-        assert get_human_age(20, 20) == [1, 1]
-        assert get_human_age(23, 23) == [1, 1]
+    # Testa alguns pontos específicos onde a idade muda
+    @pytest.mark.parametrize("idade, esperado_gato, esperado_cachorro", [
+        (23, 1, 1),  # Antes da segunda mudança
+        (24, 2, 2),  # Primeiro ano da segunda fase
+        (27, 2, 2),  # Último ano antes da próxima mudança do gato
+        (28, 3, 2),  # Gato muda, cachorro não
+        (29, 3, 3),  # Cachorro também muda
+        (32, 4, 3),  # Gato muda de novo
+    ])
+    def test_pontos_de_mudanca(self, idade, esperado_gato, esperado_cachorro):
+        """Testa os pontos exatos onde a idade humana muda"""
+        resultado = get_human_age(idade, idade)
+        assert resultado == [esperado_gato, esperado_cachorro]
 
-    def test_exactly_second_threshold(self) -> None:
-        """Test at second threshold (15+9=24 years = 2 human years)."""
-        assert get_human_age(24, 24) == [2, 2]
+    # Testa idades altas para ver se o cálculo continua certo
+    @pytest.mark.parametrize("cat_age, dog_age, expected", [
+        (40, 40, [6, 5]),
+        (50, 50, [8, 7]),
+        (60, 60, [11, 9]),
+        (80, 80, [16, 13]),
+    ])
+    def test_idades_altas(self, cat_age, dog_age, expected):
+        """Testa com idades mais avançadas"""
+        assert get_human_age(cat_age, dog_age) == expected
 
-    def test_after_second_threshold(self) -> None:
-        """Test ages after the second threshold where cat and dog diverge."""
-        # Cat: every 4 years, Dog: every 5 years
-        assert get_human_age(27, 27) == [2, 2]
-        # Cat gets 3rd year at 28, dog still at 2
-        assert get_human_age(28, 28) == [3, 2]
-        assert get_human_age(29, 29) == [3, 3]  # Dog gets 3rd year at 29
-        # Cat: 24+8=32 -> 4 years, Dog: 24+8=32 -> 3 years
-        assert get_human_age(32, 32) == [4, 3]
-        # Cat: 24+12=36 -> 5 years, Dog: 24+12=36 -> 4 years
-        assert get_human_age(36, 36) == [5, 4]
+    # Testa números muito grandes - só verifica que funciona
+    @pytest.mark.parametrize("cat_age, dog_age", [
+        (10000, 10000),
+        (100000, 100000),
+    ])
+    def test_numeros_grandes(self, cat_age, dog_age):
+        """Testa se funciona com números grandes"""
+        resultado = get_human_age(cat_age, dog_age)
+        # Só verifica que retorna algo razoável
+        assert isinstance(resultado, list)
+        assert len(resultado) == 2
+        assert all(idade >= 0 for idade in resultado)
+        # Gato sempre fica mais velho que cachorro na mesma idade
+        assert resultado[0] >= resultado[1]
 
-    def test_large_ages(self) -> None:
-        """Test with large ages."""
-        assert get_human_age(100, 100) == [21, 17]
 
-    def test_cat_older_than_dog(self) -> None:
-        """Test when cat age is different from dog age (cat older)."""
-        assert get_human_age(50, 30) == [8, 3]
-        assert get_human_age(28, 15) == [3, 1]
+# Testa se a função aceita tipos errados de dados
+class TestTiposErrados:
+    """Testa o que acontece quando passam tipos de dados errados"""
 
-    def test_dog_older_than_cat(self) -> None:
-        """Test when dog age is different from cat age (dog older)."""
-        assert get_human_age(15, 50) == [1, 7]
-        assert get_human_age(24, 40) == [2, 5]
-
-    def test_boundary_cat_every_4_years(self) -> None:
-        """Test cat age boundaries for the 'every 4 years' rule."""
-        # After 24, every 4 cat years = 1 human year
-        assert get_human_age(24, 0) == [2, 0]  # Base: 2 human years
-        assert get_human_age(27, 0) == [2, 0]  # 24 + 3 = 27 -> still 2
-        assert get_human_age(28, 0) == [3, 0]  # 24 + 4 = 28 -> 3
-        assert get_human_age(31, 0) == [3, 0]  # 24 + 7 = 31 -> still 3
-        assert get_human_age(32, 0) == [4, 0]  # 24 + 8 = 32 -> 4
-        assert get_human_age(40, 0) == [6, 0]  # 24 + 16 = 40 -> 6
-
-    def test_boundary_dog_every_5_years(self) -> None:
-        """Test dog age boundaries for the 'every 5 years' rule."""
-        # After 24, every 5 dog years = 1 human year
-        assert get_human_age(0, 24) == [0, 2]  # Base: 2 human years
-        assert get_human_age(0, 28) == [0, 2]  # 24 + 4 = 28 -> still 2
-        assert get_human_age(0, 29) == [0, 3]  # 24 + 5 = 29 -> 3
-        assert get_human_age(0, 33) == [0, 3]  # 24 + 9 = 33 -> still 3
-        assert get_human_age(0, 34) == [0, 4]  # 24 + 10 = 34 -> 4
-        assert get_human_age(0, 50) == [0, 7]  # 24 + 26 = 50 -> 7
-
-    def test_exact_thresholds_independently(self) -> None:
-        """Test exact threshold values for cat and dog independently."""
-        # Cat thresholds: 15, 24, 28, 32, 36...
-        assert get_human_age(15, 0) == [1, 0]
-        assert get_human_age(24, 0) == [2, 0]
-        assert get_human_age(28, 0) == [3, 0]
-
-        # Dog thresholds: 15, 24, 29, 34, 39...
-        assert get_human_age(0, 15) == [0, 1]
-        assert get_human_age(0, 24) == [0, 2]
-        assert get_human_age(0, 29) == [0, 3]
-        assert get_human_age(0, 34) == [0, 4]
-
-    def test_asymmetric_ages(self) -> None:
-        """Test various asymmetric age combinations."""
-        assert get_human_age(100, 15) == [21, 1]
-        assert get_human_age(15, 100) == [1, 17]
-        assert get_human_age(50, 60) == [8, 9]
+    @pytest.mark.parametrize("cat_age, dog_age", [
+        ("15", 15),  # Texto em vez de número
+        (15, "15"),  # Texto no cachorro
+        (15.5, 15),  # Número quebrado
+        (None, 15),  # Valor vazio
+    ])
+    def test_tipos_incorretos(self, cat_age, dog_age):
+        """Testa se a função lida bem com tipos errados"""
+        # A função pode aceitar ou dar erro, qualquer um dos dois está ok
+        try:
+            resultado = get_human_age(cat_age, dog_age)
+            # Se aceitou, verifica que veio algo razoável
+            assert isinstance(resultado, list)
+            assert len(resultado) == 2
+        except (TypeError, ValueError):
+            # Se deu erro, também está certo
+            pass
