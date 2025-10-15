@@ -1,9 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
-
 import pytest
-
 from app.main import get_human_age
 
 
@@ -54,8 +52,9 @@ def test_dog_boundaries(dog_age: int, expected_dog: int) -> None:
     assert dog_human == expected_dog
 
 
+# удалили дубликаты (0,0) и (15,15)
 @pytest.mark.parametrize(("cat_age", "dog_age"),
-                         [(0, 0), (10, 7), (15, 15), (40, 33)])
+                         [(10, 7), (40, 33)])
 def test_result_shape_and_types(cat_age: int, dog_age: int) -> None:
     res = get_human_age(cat_age, dog_age)
     assert isinstance(res, list)
