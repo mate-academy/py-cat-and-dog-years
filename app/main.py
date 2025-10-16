@@ -14,6 +14,5 @@ def convert_to_human(
     return 2 + (animal_age - first_year - second_year) // each_year
 
 
-def convert_to_dollar(euro: int) -> None:
-    pass
-    pass
+# def convert_to_dollar(euro: int) -> None:
+#     pass
