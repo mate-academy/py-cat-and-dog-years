@@ -26,14 +26,21 @@ def test_should_equal_to_correct_value(
     assert get_human_age(cat_age, dog_age) == value
 
 
-def test_non_integer_input() -> None:
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        (26.6, 24.4),
+        ("16", "18"),
+        (-15, -19),
+        (None, None),
+        ((43), (73)),
+        ([64], [96, 6, 9]),
+        ({"k": 3}, {"l": "adf"}),
+    ]
+)
+def test_when_function_takes_non_integer_values(
+        cat_age,
+        dog_age
+) -> None:
     with pytest.raises(TypeError):
-        get_human_age("15", "15")
-
-
-def test_negative_integer_input_should_return_empty_array() -> None:
-        assert get_human_age(-15, -18) == [0, 0]
-
-
-def test_float_input() -> None:
-    assert get_human_age(5.6, 18.9) == [0, 1]
+        get_human_age(cat_age, dog_age)
