@@ -12,11 +12,13 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
+        (24, 25, [2, 2]),
+        (31, 33, [3, 3]),
+        (32, 34, [4, 4]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (29, 29, [3, 3]),
         (30, 30, [3, 3]),
-        (31, 33, [3, 3]),
         (100, 100, [21, 17]),
         (15, 24, [1, 2]),
         (24, 15, [2, 1]),
@@ -39,8 +41,9 @@ def test_get_human_age_get_type_error_for_string() -> None:
 
 
 def test_get_human_age_get_type_error_for_float() -> None:
-    result = get_human_age(10, 42.0)
-    assert type(result[1]) is not int
+    with pytest.raises(TypeError):
+        get_human_age(10, 42.0)
+
 
 
 def test_get_human_age_get_type_error_for_none() -> None:
