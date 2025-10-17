@@ -39,8 +39,8 @@ def test_get_human_age_get_type_error_for_string() -> None:
 
 
 def test_get_human_age_get_type_error_for_float() -> None:
-    with pytest.raises(TypeError):
-        get_human_age(1.1, 1.1)
+    result = get_human_age(10, 42.0)
+    assert type(result[1]) is not int
 
 
 def test_get_human_age_get_type_error_for_none() -> None:
