@@ -35,13 +35,13 @@ class TestCountAges:
                 24,
                 24,
                 [2, 2],
-                id="should return [2, 2] when cat/dog age is 24.9/27.9"
+                id="should return [2, 2] when cat/dog age is 24/24"
             ),
             pytest.param(
                 27,
                 27,
                 [2, 2],
-                id="should return 3/2 cat/dog when their age is 28/28"
+                id="should return 2/2 cat/dog when their age is 27/27"
             ),
             pytest.param(
                 28,
@@ -53,7 +53,7 @@ class TestCountAges:
                 100,
                 100,
                 [21, 17],
-                id="shuld count correctly when cat/dog age is 100/100"
+                id="should count correctly when cat/dog age is 100/100"
             ),
             pytest.param(
                 1000,
