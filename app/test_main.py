@@ -18,8 +18,8 @@ from app.main import get_human_age
         (30, 30, [3, 3]),
         (31, 33, [3, 3]),
         (100, 100, [21, 17]),
-        (15, 24, [2, 1]),
-        (24, 15, [1, 2]),
+        (15, 24, [1, 2]),
+        (24, 15, [2, 1]),
         (1000, 1000, [246, 197]),
         (-1, -1, [0, 0]),
         (-100, -100, [0, 0]),
@@ -33,11 +33,16 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_get_human_age_get_value_error_for_string() -> None:
-    with pytest.raises(ValueError):
+def test_get_human_age_get_type_error_for_string() -> None:
+    with pytest.raises(TypeError):
         get_human_age("100", 100)
 
 
-def test_get_human_age_get_value_error_for_float() -> None:
-    with pytest.raises(ValueError):
+def test_get_human_age_get_type_error_for_float() -> None:
+    with pytest.raises(TypeError):
         get_human_age(1.1, 1.1)
+
+
+def test_get_human_age_get_type_error_for_none() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(None, None)
