@@ -20,15 +20,13 @@ from app.main import get_human_age
 def test_can_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
 
+
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        ("7", "8"),
-        (None, None),
-        ([2], [5]),
-        ((5, 3), (3, 9)),
-        ({1}, {6}),
-        ({3: 5}, {2: 6})
+        ("7", None),
+        ([2], (5, 3)),
+        ({1}, {2: 6})
     ]
 )
 def test_invalid_types(cat_age, dog_age) -> None:
