@@ -48,7 +48,6 @@ def test_negative_value(cat_age: int, dog_age: int) -> None:
         pytest.param(3.5, 10.0, id="floats")
     ]
 )
-
 @pytest.mark.skip(reason="Known failing test")
 def test_bad_value(cat_age: Any, dog_age: Any) -> None:
     with pytest.raises(TypeError):
