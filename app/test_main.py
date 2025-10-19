@@ -21,8 +21,10 @@ from app.main import get_human_age
 )
 def test_can_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     expected = get_human_age(cat_age, dog_age)
-    assert (len(expected) == 2,
-            expected == result)
+    assert isinstance(expected, list)
+    assert len(expected) == 2
+    assert (isinstance(obj, int) for obj in expected)
+    assert result == expected
 
 
 @pytest.mark.parametrize(
