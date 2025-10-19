@@ -21,9 +21,21 @@ from app.main import get_human_age
 def test_age_by_value(cat_age: int, dog_age: int, expected: list) -> None:
     test = get_human_age(cat_age, dog_age)
     assert test == expected
-    assert cat_age >= 0 and dog_age >= 0
     assert isinstance(test, list)
     assert all(isinstance(result, int) for result in test)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        pytest.param(1, -2, id="negative dog age"),
+        pytest.param(-3, 1, id="negative cat age "),
+        pytest.param(-4, -2, id="both negative"),
+    ]
+)
+def test_negative_value(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
 
 
 @pytest.mark.parametrize(
@@ -32,6 +44,7 @@ def test_age_by_value(cat_age: int, dog_age: int, expected: list) -> None:
         pytest.param(None, 123, id="Dog age is None"),
         pytest.param(33, [1 , 2], id="Cat age is list"),
         pytest.param({}, "nine", id="both incorrect type"),
+        pytest.param(3.5, 10.0, id="floats")
     ]
 )
 def test_bad_value(cat_age: Any, dog_age: Any) -> None:
@@ -40,18 +53,46 @@ def test_bad_value(cat_age: Any, dog_age: Any) -> None:
 
 
 @pytest.mark.parametrize(
-    "cat_age_before, dog_age_before, cat_age_after, dog_age_after",
+    "cat_age_before, cat_age_after, expected_result",
     [
-        pytest.param(27, 28, 28, 29, id="every 5 year border"),
-        pytest.param(23, 24, 24, 25, id="9 year border"),
-        pytest.param(13, 14, 14, 15, id="first border"),
+        pytest.param(27, 28, True, id="cat 5 year boarder"),
+        pytest.param(27, 27, False, id="cat 5 year boarder"),
+        pytest.param(23, 24, True, id="cat 9 year boarder"),
+        pytest.param(22, 23, False, id="cat 9 year boarder"),
+        pytest.param(14, 15, True, id="cat 15 year boarder"),
+        pytest.param(14, 13, False, id="cat 15 year boarder")
     ]
 )
-def test_borders(cat_age_before: int,
-                 dog_age_before: int,
-                 cat_age_after: int,
-                 dog_age_after: int
-                 ) -> None:
-    before = get_human_age(cat_age_before, dog_age_before)
-    after = get_human_age(cat_age_after, dog_age_after)
-    assert before != after
+def test_cat_age_borders(cat_age_before: int,
+                         cat_age_after: int,
+                         expected_result: bool
+                         ) -> None:
+    before = get_human_age(cat_age_before, 1)
+    after = get_human_age(cat_age_after, 1)
+    if expected_result:
+        assert before[0] != after[0]
+    else:
+        assert before[0] == after[0]
+
+
+@pytest.mark.parametrize(
+    "dog_age_before, dog_age_after, expected_result",
+    [
+        pytest.param(28, 29, True, id="dog 5 year boarder"),
+        pytest.param(27, 28, False, id="dog 5 year boarder"),
+        pytest.param(23, 24, True, id="dog 9 year boarder"),
+        pytest.param(22, 23, False, id="dog 9 year boarder"),
+        pytest.param(14, 15, True, id="dog 15 year boarder"),
+        pytest.param(14, 13, False, id="dog 15 year boarder")
+    ]
+)
+def test_dog_age_borders(dog_age_before: int,
+                         dog_age_after: int,
+                         expected_result: bool
+                         ) -> None:
+    before = get_human_age(1, dog_age_before)
+    after = get_human_age(1, dog_age_after)
+    if expected_result:
+        assert before[1] != after[1]
+    else:
+        assert before[1] == after[1]
