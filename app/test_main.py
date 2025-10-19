@@ -21,8 +21,7 @@ from app.main import get_human_age
 )
 def test_can_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     expected = get_human_age(cat_age, dog_age)
-    assert (isinstance(expected, list),
-            len(expected) == 2,
+    assert (len(expected) == 2,
             expected == result)
 
 
