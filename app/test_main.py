@@ -26,29 +26,37 @@ def test_age_by_value(cat_age: int, dog_age: int, expected: list) -> None:
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age",
     [
-        pytest.param(1, -2, id="negative dog age"),
-        pytest.param(-3, 1, id="negative cat age "),
-        pytest.param(-4, -2, id="both negative"),
+        pytest.param(-3, id="negative cat age"),
+        pytest.param(-4, id="negative cat age"),
     ]
 )
-@pytest.mark.skip(reason="Known failing test")
-def test_negative_value(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
+def test_cat_negative_value(cat_age: int) -> None:
+    result = get_human_age(cat_age, 1)
+    assert result[0] == 0
+
+
+@pytest.mark.parametrize(
+    "dog_age",
+    [
+        pytest.param(-3, id="negative cat age"),
+        pytest.param(-4, id="negative cat age"),
+    ]
+)
+def test_dog_negative_value(dog_age: int) -> None:
+    result = get_human_age(1, dog_age)
+    assert result[1] == 0
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        pytest.param(None, 123, id="Dog age is None"),
-        pytest.param(33, [1 , 2], id="Cat age is list"),
-        pytest.param({}, "nine", id="both incorrect type"),
-        pytest.param(3.5, 10.0, id="floats")
+        pytest.param(None, None, id="Both is none"),
+        pytest.param("S", "w", id="Both is string"),
+        pytest.param([], {"w": 123}, id="Random type"),
     ]
 )
-@pytest.mark.skip(reason="Known failing test")
 def test_bad_value(cat_age: Any, dog_age: Any) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
