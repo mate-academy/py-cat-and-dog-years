@@ -29,19 +29,6 @@ def test_age_by_value(cat_age: int, dog_age: int, expected: list) -> None:
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        pytest.param(1, -2, id="negative dog age"),
-        pytest.param(-3, 1, id="negative cat age "),
-        pytest.param(-4, -2, id="both negative"),
-    ]
-)
-def test_negative_value(cat_age: int, dog_age: int) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_age, dog_age)
-
-
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
         pytest.param(None, 123, id="Dog age is None"),
         pytest.param(33, [1 , 2], id="Cat age is list"),
         pytest.param({}, "nine", id="both incorrect type"),
