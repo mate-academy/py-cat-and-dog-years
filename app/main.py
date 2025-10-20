@@ -9,7 +9,7 @@ def convert_to_human(
 ) -> int:
     if not isinstance(animal_age, int):
         if animal_age is None or isinstance(animal_age, float):
-            raise TypeError(f"animal_age must be of type int")
+            raise TypeError("animal_age must be of type int")
 
     if animal_age < first_year:
         return 0

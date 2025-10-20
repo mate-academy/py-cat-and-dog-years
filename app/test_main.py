@@ -45,7 +45,6 @@ def test_get_human_age_get_type_error_for_float() -> None:
         get_human_age(10, 42.0)
 
 
-
 def test_get_human_age_get_type_error_for_none() -> None:
     with pytest.raises(TypeError):
         get_human_age(None, None)
