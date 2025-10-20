@@ -48,7 +48,7 @@ def test_negative_values(cat_age: int, dog_age: int) -> None:
     "cat_age, dog_age",
     [("ten", 10), (10, "twelve"), ("five", "six")],
 )
-def test_invalid_type_inputs(cat_age, dog_age) -> None:
+def test_invalid_type_inputs(cat_age: object, dog_age: object) -> None:
     """Test that invalid input types raise a TypeError."""
     with pytest.raises(TypeError):
         if not isinstance(cat_age, int) or not isinstance(dog_age, int):
