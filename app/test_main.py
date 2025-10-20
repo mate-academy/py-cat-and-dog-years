@@ -2,7 +2,7 @@ from app.main import get_human_age
 
 
 def test_get_human_age_zero() -> None:
-    assert  get_human_age(0, 0) == [0, 0]
+    assert get_human_age(0, 0) == [0, 0]
 
 
 def test_get_human_age_under_first_threshold() -> None:
