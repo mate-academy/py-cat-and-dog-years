@@ -51,7 +51,7 @@ def test_get_human_age_parametrized(
         (-5, -10),
     ],
 )
-def test_get_human_age_negative_raises(cat_age, dog_age) -> None:
+def test_get_human_age_negative_raises(cat_age: int, dog_age: int) -> None:
     with pytest.raises(ValueError):
         main.get_human_age(cat_age, dog_age)
 
@@ -69,6 +69,6 @@ def test_get_human_age_negative_raises(cat_age, dog_age) -> None:
         (0, {"age": 1}),
     ],
 )
-def test_get_human_age_invalid_type_raises(cat_age, dog_age) -> None:
+def test_get_human_age_invalid_type_raises(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         main.get_human_age(cat_age, dog_age)
