@@ -1,31 +1,31 @@
-# Cat and Dog years
+# Роки кота та собаки
 
-Read [the guideline](https://github.com/mate-academy/py-task-guideline/blob/main/README.md) before starting.
+Перед початком прочитайте [гайдлайн](https://github.com/mate-academy/py-task-guideline/blob/main/README.md).
 
-Inside `app/test_main.py`, write tests for `get_human_age` function that 
-takes two integers `cat_age` (my cat's age in cat years) and `dog_age` 
-(my dog's age in dog years) and returns an array where:
+У файлі `app/test_main.py` напишіть тести для функції `get_human_age`, яка
+приймає два цілих числа `cat_age` (вік мого кота у котячих роках) та `dog_age`
+(вік мого собаки у собачих роках) і повертає масив, де:
 
-- the first element is my cat's age in human years;
-- the second element is my dog's age in human years.
+- перший елемент — вік мого кота у людських роках;
+- другий елемент — вік мого собаки у людських роках.
 
-As usually age is a whole number of years (discard the remainder).
+Як зазвичай, вік вимірюється цілими роками (залишок відкидайте).
 
-Cat years are converted to human years following the next rules:
+Котячі роки конвертуються у людські за такими правилами:
 
-- first 15 cat years give 1 human year;
-- the next 9 cat years give 1 more human year;
-- every 4 next cat years give 1 extra human year.
+- перші 15 котячих років дають 1 людський рік;
+- наступні 9 котячих років дають ще 1 людський рік;
+- кожні наступні 4 котячі роки дають ще 1 людський рік.
 
-Dog years:
+Собачі роки:
 
-- first 15 dog years give 1 human year;
-- the next 9 dog years give 1 more human year;
-- every 5 next dog years give 1 extra human year.
+- перші 15 собачих років дають 1 людський рік;
+- наступні 9 собачих років дають ще 1 людський рік;
+- кожні наступні 5 собачих років дають ще 1 людський рік.
 
-**Please note:** you have to use `pytest` for writing tests.
+Зверніть увагу: для написання тестів потрібно використовувати `pytest`.
 
-Examples:
+Приклади:
 ```python
 get_human_age(0, 0) == [0, 0]
 get_human_age(14, 14) == [0, 0]
@@ -37,9 +37,9 @@ get_human_age(28, 28) == [3, 2]
 get_human_age(100, 100) == [21, 17]
 ```
 
-Run `pytest app/` to check if function pass your tests.
+Запустіть `pytest app/`, щоб перевірити, чи функція проходить ваші тести.
 
-Run `pytest --numprocesses=auto tests/` to check if your tests cover all boundary conditions
-and pass task tests.
+Запустіть `pytest --numprocesses=auto tests/`, щоб перевірити, що ваші тести покривають усі граничні випадки
+та проходять тести завдання.
 
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+### Примітка: Перед відправкою рішення перевірте свій код за цим [чеклістом](checklist.md)

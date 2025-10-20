@@ -1,5 +1,5 @@
 import pytest
-from app.main import get_human_age
+from app import main
 
 
 @pytest.mark.parametrize(
@@ -40,4 +40,35 @@ from app.main import get_human_age
 def test_get_human_age_parametrized(
     cat_age: int, dog_age: int, exp_cat: int, exp_dog: int
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == [exp_cat, exp_dog]
+    assert main.get_human_age(cat_age, dog_age) == [exp_cat, exp_dog]
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        (-1, 0),
+        (0, -1),
+        (-5, -10),
+    ],
+)
+def test_get_human_age_negative_raises(cat_age, dog_age) -> None:
+    with pytest.raises(ValueError):
+        main.get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("1", 1),
+        (1, "2"),
+        (1.0, 0),
+        (0, 1.5),
+        (None, 0),
+        (0, None),
+        ([1], 0),
+        (0, {"age": 1}),
+    ],
+)
+def test_get_human_age_invalid_type_raises(cat_age, dog_age) -> None:
+    with pytest.raises(TypeError):
+        main.get_human_age(cat_age, dog_age)
