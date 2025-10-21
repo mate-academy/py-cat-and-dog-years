@@ -1,4 +1,5 @@
 import pytest
+from typing import Any
 from app.main import get_human_age
 
 cases_zero = [
@@ -89,7 +90,7 @@ def test_negative_inputs(cat_age: int, dog_age: int, expected: list[int]) -> Non
 
 
 @pytest.mark.parametrize("cat_age, dog_age", cases_invalid)
-def test_invalid_types(cat_age, dog_age) -> None:
+def test_invalid_types(cat_age: Any, dog_age: Any) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
 
