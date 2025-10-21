@@ -12,23 +12,20 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
+        (33, 33, [4, 3]),
         (100, 100, [21, 17]),
-    ]
+    ],
 )
-def test_get_human_age_parametrized(cat_age: int,
-                                    dog_age: int,
-                                    expected: int) -> None:
+def test_get_human_age(cat_age, dog_age, expected):
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_cat_and_dog_age_independent() -> None:
-    cat_only = get_human_age(28, 0)[0]
-    dog_only = get_human_age(0, 28)[1]
-    assert cat_only == 3
-    assert dog_only == 2
+def test_fractional_boundaries():
+    assert get_human_age(26, 26) == [2, 2]
+    assert get_human_age(29, 29) == [3, 3]
 
 
-def test_large_values() -> None:
-    result = get_human_age(400, 400)
-    assert result[0] > 50
-    assert result[1] > 50
+def test_independent_animals():
+    assert get_human_age(28, 24) == [3, 2]
+    assert get_human_age(24, 28) == [2, 2]
+
