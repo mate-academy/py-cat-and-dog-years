@@ -74,7 +74,9 @@ def test_second_stage(cat_age: int, dog_age: int, expected: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
-@pytest.mark.parametrize("cat_age, dog_age, expected", cases_after_second)
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected", cases_after_second
+)
 def test_after_second_stage(cat_age: int, dog_age: int, expected: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
@@ -100,6 +102,8 @@ def test_dog_thresholds(dog_age: int, expected: int) -> None:
     assert get_human_age(28, dog_age)[1] == expected
 
 
-@pytest.mark.parametrize("cat_age, dog_age, expected", cases_mixed)
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected", cases_mixed
+)
 def test_mixed_values(cat_age: int, dog_age: int, expected: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
