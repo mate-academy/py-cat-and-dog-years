@@ -16,16 +16,15 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
 )
-def test_get_human_age(cat_age, dog_age, expected):
+def test_get_human_age(cat_age: int, dog_age: int, expected: int) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_fractional_boundaries():
+def test_fractional_boundaries() -> None:
     assert get_human_age(26, 26) == [2, 2]
     assert get_human_age(29, 29) == [3, 3]
 
 
-def test_independent_animals():
+def test_independent_animals() -> None:
     assert get_human_age(28, 24) == [3, 2]
     assert get_human_age(24, 28) == [2, 2]
-
