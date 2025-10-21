@@ -81,7 +81,8 @@ def test_second_stage(cat_age: int, dog_age: int, expected: list[int]) -> None:
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, expected", cases_after_second
+    "cat_age, dog_age, expected",
+    cases_after_second,
 )
 def test_after_second_stage(cat_age: int, dog_age: int, expected: list[int]) -> None:
     assert (
@@ -117,7 +118,8 @@ def test_dog_thresholds(dog_age: int, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, expected", cases_mixed
+    "cat_age, dog_age, expected",
+    cases_mixed,
 )
 def test_mixed_values(cat_age: int, dog_age: int, expected: list[int]) -> None:
     assert (
