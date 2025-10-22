@@ -1,11 +1,20 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("cat_age and dog_age must be integers")
+
+    cat_age = max(0, cat_age)
+    dog_age = max(0, dog_age)
+
     cat_to_human = convert_to_human(cat_age, 15, 9, 4)
-    dog_to_human = convert_to_human(dog_age, 15, 9, 5)
+    dog_to_human = convert_to_human(dog_age, 15, 9, 4)
     return [cat_to_human, dog_to_human]
 
 
 def convert_to_human(
-        animal_age: int, first_year: int, second_year: int, each_year: int
+    animal_age: int,
+    first_year: int,
+    second_year: int,
+    each_year: int,
 ) -> int:
     if animal_age < first_year:
         return 0
