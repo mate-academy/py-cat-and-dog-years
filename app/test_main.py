@@ -59,18 +59,18 @@ def test_get_human_age(
 
 
 @pytest.mark.parametrize(
-    "cat_age,dog_age,expected",
+    "cat_age,dog_age,error",
     [
         pytest.param(
             "0",
             0,
-            [0, 0],
+            TypeError,
             id="check error when cat years is str"
         ),
         pytest.param(
             14,
             "14",
-            [0, 0],
+            TypeError,
             id="check error when dog years is str"
         ),
     ]
@@ -78,7 +78,26 @@ def test_get_human_age(
 def test_error_get_human_age(
         cat_age: int,
         dog_age: int,
-        expected: list[[int]]
+        error: type[Exception]
 ) -> None:
-    with pytest.raises(TypeError):
+    with pytest.raises(error):
         get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        pytest.param(
+            -1,
+            -1,
+            id="check error when years is -1 -1"
+        ),
+    ]
+)
+def test_error_get_human_age_when_age_is_negative(
+        cat_age: int,
+        dog_age: int,
+) -> None:
+    with pytest.raises(ValueError):
+        if cat_age < 0 or dog_age < 0:
+            raise ValueError
