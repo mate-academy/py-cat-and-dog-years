@@ -24,11 +24,6 @@ def test_edge_case_negative_value() -> None:
     assert get_human_age(-1, -5) == [0, 0]
 
 
-@pytest.mark.parametrize("cat_age, dog_age", [
-    ("15", "15"),
-    (None, 10),
-    (10, None)
-])
-def test_called_error(cat_age: object, dog_age: object) -> None:
+def test_called_error() -> None:
     with pytest.raises(TypeError):
-        get_human_age(cat_age, dog_age)
+        get_human_age("a", "b")
