@@ -18,7 +18,23 @@ class TestCatDogYears:
             (100, 100, [21, 17]),
         ]
     )
-
-    def test_get_human_age(self, cat_age, dog_age, expected_result):
+    def test_get_human_age(self,
+                           cat_age: int,
+                           dog_age: int,
+                           expected_result: list
+                           ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_result
 
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_exception",
+    [
+        ("a", "b", TypeError),
+        (-1, -1, ValueError)
+    ]
+)
+def test_get_human_age_error(cat_age: int,
+                             dog_age: int,
+                             expected_exception: type) -> None:
+    with pytest.raises(expected_exception):
+        get_human_age(cat_age, dog_age)
