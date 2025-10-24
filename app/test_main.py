@@ -10,11 +10,17 @@ from app.main import get_human_age
     (24, 24, [2, 2]),
     (27, 27, [2, 2]),
     (28, 28, [3, 2]),
-    (100, 100, [21, 17])
+    (100, 100, [21, 17]),
+    (-1, -5, [0, 0])
 ])
 def test_should_return_elements(
         cat_age: int,
         dog_age: int,
-        result: int
+        result: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+def test_called_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("cat_age", "dog_age")
