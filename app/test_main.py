@@ -29,6 +29,6 @@ def test_edge_case_negative_value() -> None:
     (None, 10),
     (10, None)
 ])
-def test_called_error(cat_age, dog_age) -> None:
+def test_called_error(cat_age: object, dog_age: object) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
