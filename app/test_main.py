@@ -1,24 +1,33 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_not_years_for_animals():
-    assert get_human_age(0, 0) == [0, 0]
+class TestGetHumanAge:
+    @pytest.mark.parametrize(
+        "cat_years,dog_years,expected",
+        [
+            (0, 0, [0, 0]),
+            (14, 14, [0, 0]),
+            (15, 15, [1, 1]),
+            (23, 23, [1, 1]),
+            (24, 24, [2, 2]),
+            (27, 27, [2, 2]),
+            (28, 28, [3, 2]),
+            (100, 100, [21, 17]),
+            ("str", "str", TypeError),
+            (-1, -1, [0, 0])
+        ]
+    )
+    def test_for_dog_and_cat_years(
+            self,
+            cat_years: int,
+            dog_years: int,
+            expected: list
+    ) -> None:
+        if isinstance(expected, type) and issubclass(expected, Exception):
 
-
-def test_so_small_years_for_animals():
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_one_years_for_animals():
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_two_years_for_animals():
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_yeas_separately_for_cat_and_dog():
-    assert get_human_age(28, 28) == [3, 2]
-    assert get_human_age(100, 100) == [21, 17]
+            with pytest.raises(expected):
+                get_human_age(cat_years, dog_years)
+        else:
+            assert get_human_age(cat_years, dog_years) == expected
