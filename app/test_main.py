@@ -9,9 +9,23 @@ from app.main import get_human_age
         pytest.param(
             14, 14,
             [0, 0],
-            id="convert cat and dog age to human correctly"
+            id="below first threshold (14)"
         ),
-
+        pytest.param(
+            15, 15,
+            [1, 1],
+            id="at first threshold (15)"
+        ),
+        pytest.param(
+            23, 23,
+            [1, 1],
+            id="at second threshold (23)"
+        ),
+        pytest.param(
+            24, 24,
+            [2, 2],
+            id="just above second threshold (24)"
+        ),
         pytest.param(
             -10, -1,
             [0, 0],
