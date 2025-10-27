@@ -7,6 +7,11 @@ from app.main import get_human_age
     "cat_age, dog_age, expected_values",
     [
         pytest.param(
+            28, 28,
+            [3, 2],
+            id="returns different values for same years"
+        ),
+        pytest.param(
             14, 14,
             [0, 0],
             id="below first threshold (14)"
@@ -19,7 +24,7 @@ from app.main import get_human_age
         pytest.param(
             23, 23,
             [1, 1],
-            id="at second threshold (23)"
+            id="below second threshold (23)"
         ),
         pytest.param(
             24, 24,
