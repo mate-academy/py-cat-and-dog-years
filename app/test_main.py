@@ -1,3 +1,65 @@
+import pytest
+
 from app.main import get_human_age
 
-# write your code here
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_values",
+    [
+        pytest.param(
+            28, 28,
+            [3, 2],
+            id="returns different values for same years"
+        ),
+        pytest.param(
+            14, 14,
+            [0, 0],
+            id="below first threshold (14)"
+        ),
+        pytest.param(
+            15, 15,
+            [1, 1],
+            id="at first threshold (15)"
+        ),
+        pytest.param(
+            23, 23,
+            [1, 1],
+            id="below second threshold (23)"
+        ),
+        pytest.param(
+            24, 24,
+            [2, 2],
+            id="just above second threshold (24)"
+        ),
+        pytest.param(
+            -10, -1,
+            [0, 0],
+            id="should handle negative input"
+        ),
+        pytest.param(
+            0, 0,
+            [0, 0],
+            id="should handle zero input"
+        ),
+        pytest.param(
+            2000, 99999,
+            [496, 19997],
+            id="should handle large input"
+        ),
+    ]
+)
+def test_function_works_correctly(
+        cat_age: int,
+        dog_age: int,
+        expected_values: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected_values
+
+
+def test_output_differs_for_different_values() -> None:
+    assert get_human_age(15, 15) != get_human_age(30, 30)
+
+
+def test_raises_type_error_for_invalid_input() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("19", [1])
