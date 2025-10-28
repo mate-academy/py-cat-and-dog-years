@@ -17,6 +17,10 @@ def test_age_high_15() -> None:
     assert get_human_age(24, 24) == [2, 2]
 
 
+def test_if_year_23() -> None:
+    assert get_human_age(23, 23) == [1, 1]
+
+
 def test_age_low_dog_age() -> None:
     assert get_human_age(28, 24) == [3, 2]
 
