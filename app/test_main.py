@@ -15,6 +15,7 @@ from app.main import get_human_age
         pytest.param(28, 28, [3, 2], id="at 28"),
         pytest.param(29, 29, [3, 3], id="after 28"),
         pytest.param(100, 100, [21, 17], id="big numbers"),
+        pytest.param(-1, 2, [0, 0], id="negative_age"),
     ]
 )
 def test_get_human_age(cat_age: int,
@@ -27,8 +28,7 @@ def test_get_human_age(cat_age: int,
     "cat_age, dog_age, expected_error",
     [
         pytest.param(1, "1", TypeError, id="dog_str age"),
-        pytest.param(1.5, 0, [0, 0], id="cat_float age"),
-        pytest.param(-1, 2, [0, 0], id="negative_age"),
+        pytest.param(1.5, 0, TypeError, id="cat_float age"),
     ]
 )
 def test_get_human_age_error(cat_age: Any,
