@@ -22,7 +22,7 @@ from app.main import get_human_age
             24, 24, [2, 2], id="return 2 if 24<=age<=27"
         ),
         pytest.param(
-            24, 24, [2, 2], id="return 2 if 24<=age<=27"
+            27, 27, [2, 2], id="return 2 if 24<=age<=27"
         ),
         pytest.param(
             28, 28, [3, 2], id="return cat is older if age>=28"
