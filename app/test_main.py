@@ -6,26 +6,11 @@ class TestPyCatAndDogYears:
     @pytest.mark.parametrize(
         "cat_age,dog_age,result_list",
         [
-            (
-                14,
-                14,
-                [0, 0]
-            ),
-            (
-                15,
-                15,
-                [1, 1]
-            ),
-            (
-                28,
-                28,
-                [3, 2]
-            ),
-            (
-                0,
-                0,
-                [0, 0]
-            ),
+            (14, 14, [0, 0]),
+            (15, 15, [1, 1]),
+            (28, 28, [3, 2]),
+            (0, 0, [0, 0]),
+            (23, 24, [1, 2])
         ]
     )
     def test_py_cat_and_dog_years(self, cat_age: int,
