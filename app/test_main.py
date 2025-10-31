@@ -7,6 +7,9 @@ from app.main import get_human_age
     "cat_age, dog_age, expected",
     [
         pytest.param(
+            -10, -10, [0, 0], id="return zeros if ages are negative"
+        ),
+        pytest.param(
             0, 0, [0, 0], id="return zero if age is smaller 15"
         ),
         pytest.param(
@@ -34,3 +37,8 @@ from app.main import get_human_age
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+def test_raise_exception_when_invalid_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("ten", "twenty")
