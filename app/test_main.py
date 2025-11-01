@@ -27,6 +27,7 @@ def test_get_human_age(
     """Test get_human_age for cats and dogs with multiple scenarios."""
     assert get_human_age(cat_age, dog_age) == expected
 
+
 def test_should_raise_exception_for_invalid_values() -> None:
     with pytest.raises(TypeError):
         get_human_age("ten", "nine")
