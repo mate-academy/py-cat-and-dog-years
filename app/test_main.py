@@ -24,18 +24,32 @@ def test_expected_values(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, expected",
     [
-        (-1, 10),
-        (10, -5),
-        (-3, -3),
+        (-1, 10, [0, 0]),
+        (10, -5, [0, 0]),
+        (-3, -3, [0, 0]),
     ],
 )
-def test_negative_ages(cat_age: int, dog_age: int) -> None:
-    """Function should handle negative inputs without raising exceptions."""
-    result = get_human_age(cat_age, dog_age)
-    assert isinstance(result, list)
-    assert len(result) == 2
+def test_negative_ages(
+    cat_age: int, dog_age: int, expected: list[int]
+) -> None:
+    """Negative ages should return [0, 0] as stable baseline output."""
+    assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (7.5, 3, [0, 0]),
+        (15.9, 15.1, [1, 1]),
+    ],
+)
+def test_float_inputs(
+    cat_age: float, dog_age: float, expected: list[int]
+) -> None:
+    """Float inputs should produce valid integer results."""
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
@@ -52,10 +66,3 @@ def test_invalid_string_and_none_types(
     """Ensure string or None inputs raise TypeError."""
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
-
-
-def test_float_input_does_not_raise() -> None:
-    """Floats should be handled without raising exceptions."""
-    result = get_human_age(7.5, 3)
-    assert isinstance(result, list)
-    assert len(result) == 2
