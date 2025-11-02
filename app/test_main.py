@@ -1,29 +1,30 @@
 from app.main import get_human_age
 
 
-def test_func_return_basic_value() -> None:
+def test_zero_age() -> None:
     assert get_human_age(0, 0) == [0, 0]
 
 
-def test_first_up_age() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_age_low_15() -> None:
+def test_under_first_human_year() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
 
-def test_age_high_15() -> None:
-    assert get_human_age(24, 24) == [2, 2]
+def test_first_human_year() -> None:
+    assert get_human_age(15, 15) == [1, 1]
 
 
-def test_if_year_23() -> None:
+def test_just_before_second_human_year() -> None:
     assert get_human_age(23, 23) == [1, 1]
 
 
-def test_age_low_dog_age() -> None:
-    assert get_human_age(28, 24) == [3, 2]
+def test_second_human_year() -> None:
+    assert get_human_age(24, 24) == [2, 2]
 
 
-def test_human_age_100() -> None:
+def test_around_transition_to_third_human_year() -> None:
+    assert get_human_age(27, 27) == [2, 2]
+    assert get_human_age(28, 28) == [3, 2]
+
+
+def test_large_age() -> None:
     assert get_human_age(100, 100) == [21, 17]
