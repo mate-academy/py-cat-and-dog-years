@@ -15,7 +15,11 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
 )
-def test_get_human_age_examples(cat_age, dog_age, expected):
+def test_get_human_age_examples(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int],
+) -> None:
     """Test the given example cases."""
     assert get_human_age(cat_age, dog_age) == expected
 
@@ -30,7 +34,10 @@ def test_get_human_age_examples(cat_age, dog_age, expected):
         (90, 90),
     ],
 )
-def test_get_human_age_increases_with_age(cat_age, dog_age):
+def test_get_human_age_increases_with_age(
+    cat_age: int,
+    dog_age: int,
+) -> None:
     """Ensure human age never decreases as animal ages increase."""
     prev = get_human_age(max(0, cat_age - 1), max(0, dog_age - 1))
     current = get_human_age(cat_age, dog_age)
@@ -38,7 +45,7 @@ def test_get_human_age_increases_with_age(cat_age, dog_age):
     assert current[1] >= prev[1]
 
 
-def test_get_human_age_output_structure():
+def test_get_human_age_output_structure() -> None:
     """Ensure function returns a list of two integers."""
     result = get_human_age(50, 70)
     assert isinstance(result, list)
