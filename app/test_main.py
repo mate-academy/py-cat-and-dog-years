@@ -51,3 +51,36 @@ def test_get_human_age_output_structure() -> None:
     assert isinstance(result, list)
     assert len(result) == 2
     assert all(isinstance(x, int) for x in result)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 10),
+        (10, -5),
+        (-10, -20),
+    ],
+)
+def test_negative_ages(cat_age: int, dog_age: int) -> None:
+    """Ensure negative ages return [0, 0]."""
+    result = get_human_age(cat_age, dog_age)
+    assert result == [0, 0]
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("ten", 5),
+        (5, "three"),
+        (5.5, 10),
+        (10, 7.3),
+        (None, 5),
+    ],
+)
+def test_invalid_input_types(
+    cat_age: object,
+    dog_age: object,
+) -> None:
+    """Ensure invalid input types raise TypeError."""
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
