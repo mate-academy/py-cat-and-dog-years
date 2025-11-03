@@ -29,7 +29,7 @@ def test_returns_list_of_two_ints() -> None:
 def test_examples_from_readme(
         cat_age: int,
         dog_age: int,
-        expected: int
+        expected: list[int]
 ) -> None:
     assert main.get_human_age(cat_age, dog_age) == expected
 
@@ -55,3 +55,25 @@ def test_dog_boundary_transitions() -> None:
     assert main.get_human_age(0, 29)[1] == 3
     assert main.get_human_age(0, 30)[1] == 3
     assert main.get_human_age(0, 35)[1] == 4
+
+
+def test_negative_inputs_are_handled() -> None:
+
+    assert main.get_human_age(-1, -1) == [0, 0]
+    assert main.get_human_age(-100, 0)[0] == 0
+    assert main.get_human_age(0, -100)[1] == 0
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("a", "b"),  # строки
+        (None, 0),   # None
+        (0, None),   # None
+        ([], {}),    # коллекции
+    ],
+)
+def test_incorrect_types_raise_exception(cat_age: int, dog_age: int) -> None:
+
+    with pytest.raises((TypeError, ValueError)):
+        main.get_human_age(cat_age, dog_age)
