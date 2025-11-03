@@ -20,4 +20,3 @@ def test_get_human_age(cat_age: int,
                        expected: list[int]) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected
-
