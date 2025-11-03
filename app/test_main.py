@@ -33,3 +33,16 @@ def test_boundary_values() -> None:
 def test_large_values() -> None:
     assert get_human_age(200, 200) == [46, 37]
     assert get_human_age(1000, 1000) == [246, 197]
+
+
+def test_non_integer_inputs() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("5", 10)
+    with pytest.raises(TypeError):
+        get_human_age(5, "10")
+    with pytest.raises(TypeError):
+        get_human_age("cat", "dog")
+
+
+def test_negative_numbers() -> None:
+    assert get_human_age(-5, -10) == [0, 0]
