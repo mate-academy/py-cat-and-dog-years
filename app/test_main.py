@@ -11,6 +11,10 @@ from app.main import get_human_age
             id="0 cat/dog year should be 0 human years"
         ),
         pytest.param(
+            0, 0, [0, 0],
+            id="0 cat/dog year should be 0 human years"
+        ),
+        pytest.param(
             14, 14, [0, 0],
             id="14 cat/dog year should be 0 human years"
         ),
@@ -79,6 +83,18 @@ def test_correct_values(
             {1}, {1}, TypeError,
             id="cat/dog age should not be a set"
         ),
+        pytest.param(
+            True, True, TypeError,
+            id="cat/dog age should not be a boolean"
+        ),
+        pytest.param(
+            2.15, 2.15, TypeError,
+            id="cat/dog age should not be a float"
+        ),
+        pytest.param(
+            -10, -10, TypeError,
+            id="cat/dog age should not be a negative"
+        )
     ]
 )
 def test_error_codes(
