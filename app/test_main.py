@@ -35,3 +35,38 @@ def test_monotonic_increase_of_human_years() -> None:
         assert cat >= previous_cat
         assert dog >= previous_dog
         previous_cat, previous_dog = cat, dog
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [(-1, -10), (-5, 0), (0, -2)],
+)
+def test_negative_inputs(cat_age: int, dog_age: int) -> None:
+    """Check that negative ages raise ValueError."""
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("a", 10),
+        (None, 5),
+        (1.5, 2.3),
+        ([1], 3),
+        (10, "dog"),
+    ],
+)
+def test_invalid_type_inputs(cat_age: object, dog_age: object) -> None:
+    """Check that non-integer inputs raise TypeError."""
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
+
+
+def test_extremely_large_numbers() -> None:
+    """Check behavior for extremely large inputs."""
+    cat, dog = get_human_age(10**6, 10**6)
+    assert cat > 0
+    assert dog > 0
+    assert isinstance(cat, int)
+    assert isinstance(dog, int)
