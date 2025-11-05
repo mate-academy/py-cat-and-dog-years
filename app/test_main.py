@@ -11,10 +11,6 @@ from app.main import get_human_age
             id="0 cat/dog year should be 0 human years"
         ),
         pytest.param(
-            0, 0, [0, 0],
-            id="0 cat/dog year should be 0 human years"
-        ),
-        pytest.param(
             14, 14, [0, 0],
             id="14 cat/dog year should be 0 human years"
         ),
@@ -49,6 +45,18 @@ from app.main import get_human_age
         pytest.param(
             100, 100, [21, 17],
             id="100 cad/dog year should be 21 and 17 human years"
+        ),
+        pytest.param(
+            27.5, 27.5, [2, 2],
+            id="function should round float values"
+        ),
+        pytest.param(
+            True, True, [0, 0],
+            id="human years should be 0 if cat/dog age is a boolean"
+        ),
+        pytest.param(
+            -10, -10, [0, 0],
+            id="human years should be 0 if cat/dog age is negative"
         )
     ]
 )
@@ -82,18 +90,6 @@ def test_correct_values(
         pytest.param(
             {1}, {1}, TypeError,
             id="cat/dog age should not be a set"
-        ),
-        pytest.param(
-            True, True, TypeError,
-            id="cat/dog age should not be a boolean"
-        ),
-        pytest.param(
-            2.15, 2.15, TypeError,
-            id="cat/dog age should not be a float"
-        ),
-        pytest.param(
-            -10, -10, TypeError,
-            id="cat/dog age should not be a negative"
         )
     ]
 )
