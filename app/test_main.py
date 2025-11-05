@@ -24,6 +24,7 @@ from app.main import get_human_age
         (61, 61, 11, 9),
         (65, 65, 12, 10),
         (100, 100, 21, 17),
+        (-5, -10, 0, 0),  # ✅ Negative numbers
     ],
 )
 def test_get_human_age(
@@ -41,3 +42,16 @@ def test_get_human_age(
         f"Wiek Psa: Oczekiwano {expected_dog}, otrzymano {result[1]} "
         f"dla wejścia {dog_in}"
     )
+
+
+@pytest.mark.parametrize("cat_in, dog_in", [
+    ("15", 15),
+    (15, "15"),
+    (None, 15),
+    (15, None),
+    (15.5, 15),
+    (15, 15.5),
+])
+def test_get_human_age_invalid_types(cat_in, dog_in) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_in, dog_in)

@@ -1,6 +1,4 @@
 def get_human_age(cat_age: int, dog_age: int) -> list[int]:
-    print(f"[DEBUG] Wywołano get_human_age({cat_age}, {dog_age})")
-
     def convert_cat(age: int) -> int:
         if age < 15:
             return 0
