@@ -2,6 +2,10 @@ import pytest
 from app.main import get_human_age
 
 
+class NegativeAgeError(Exception):
+    pass
+
+
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
@@ -23,3 +27,15 @@ def test_get_human_age_returns_list() -> None:
     result = get_human_age(10, 10)
     assert isinstance(result, list)
     assert len(result) == 2
+
+
+def test_get_human_age_takes_only_positive_numbers() -> None:
+    with pytest.raises(NegativeAgeError):
+        get_human_age(-5, -3)
+
+
+def test_get_human_age_should_take_integers() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("five", "twenty")
+    with pytest.raises(TypeError):
+        get_human_age(16.7, 20.1)
