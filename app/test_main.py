@@ -1,35 +1,31 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_should_return_zero_for_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_one_for_first_year_threshold() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_two_for_second_year_threshold() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-    assert get_human_age(27, 27) == [2, 2]
-
-
-def test_should_return_three_when_cat_exceeds_second_threshold() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_return_large_correct_values() -> None:
-    assert get_human_age(100, 100) == [21, 17]
-
-
-def test_should_return_correct_values_for_random_cases() -> None:
-    assert get_human_age(29, 29) == [3, 3]
-    assert get_human_age(35, 40) == [4, 5]
-    assert get_human_age(50, 55) == [8, 8]
-    assert get_human_age(60, 70) == [11, 11]
-    assert get_human_age(90, 95) == [18, 16]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (29, 29, [3, 3]),
+        (35, 40, [4, 5]),
+        (50, 55, [8, 8]),
+        (60, 70, [11, 11]),
+        (90, 95, [18, 16]),
+        (100, 100, [21, 17]),
+    ],
+)
+def test_get_human_age(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int],
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 def test_monotonic_increase_of_human_years() -> None:
