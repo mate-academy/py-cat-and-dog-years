@@ -26,6 +26,8 @@ class TestGetHumanAge:
                          id="should return different resuld for dog and cat"),
             pytest.param(100, 100, [21, 17],
                          id="should return correct result with huge numbers"),
+            pytest.param(-1, -1, [0, 0],
+                         id="should return 0 with negative age"),
         ]
     )
     def test_get_human_age(self,
