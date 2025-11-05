@@ -24,7 +24,7 @@ from app.main import get_human_age
         (61, 61, 11, 9),
         (65, 65, 12, 10),
         (100, 100, 21, 17),
-        (-5, -10, 0, 0),  # ✅ Negative numbers
+        (-5, -10, 0, 0),
     ],
 )
 def test_get_human_age(
@@ -52,6 +52,6 @@ def test_get_human_age(
     (15.5, 15),
     (15, 15.5),
 ])
-def test_get_human_age_invalid_types(cat_in, dog_in) -> None:
+def test_get_human_age_invalid_types(cat_in: object, dog_in: object) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_in, dog_in)
