@@ -1,57 +1,65 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_zero_age_should_return_zero() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (23, 16, [1, 1]),
+
+        (24, 24, [2, 2]),
+
+        (27, 28, [2, 2]),
+
+        (28, 28, [3, 2]),
+        (29, 29, [3, 3]),
+
+        (100, 100, [21, 17]),
+    ],
+)
+def test_age_conversions_match_expected(
+        cat_age: int,
+        dog_age: int,
+        expected: list
+) -> None:
     assert (
-        get_human_age(0, 0) == [0, 0]
-    ), "Dla (0, 0) oczekiwano [0, 0]"
+        get_human_age(cat_age, dog_age) == expected
+    )
 
 
-def test_age_just_below_first_threshold_should_return_zero() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 10),
+        (10, -5),
+        (-10, -10),
+    ],
+)
+def test_negative_input_should_return_zero_or_handle_appropriately(
+        cat_age: int,
+        dog_age: int
+) -> None:
     assert (
-        get_human_age(14, 14) == [0, 0]
-    ), "Dla (14, 14) oczekiwano [0, 0]"
+        get_human_age(cat_age, dog_age) == [0, 0]
+    )
 
 
-def test_age_at_first_threshold_should_return_one() -> None:
-    assert (
-        get_human_age(15, 15) == [1, 1]
-    ), "Dla (15, 15) oczekiwano [1, 1]"
-
-
-def test_age_just_below_second_threshold_should_return_one() -> None:
-    assert (
-        get_human_age(23, 23) == [1, 1]
-    ), "Dla (23, 23) oczekiwano [1, 1]"
-
-    assert (
-        get_human_age(23, 16) == [1, 1]
-    ), "Dla (23, 16) oczekiwano [1, 1]"
-
-
-def test_age_at_second_threshold_should_return_two() -> None:
-    assert (
-        get_human_age(24, 24) == [2, 2]
-    ), "Dla (24, 24) oczekiwano [2, 2]"
-
-
-def test_cat_and_dog_age_just_below_next_human_year() -> None:
-    assert (
-        get_human_age(27, 28) == [2, 2]
-    ), "Dla (27, 28) oczekiwano [2, 2] (reszta odrzucona)"
-
-
-def test_conversion_to_three_human_years() -> None:
-    assert (
-        get_human_age(28, 28) == [3, 2]
-    ), "Dla (28, 28) oczekiwano [3, 2] (pies ma tylko 2 lata ludzkie)"
-
-    assert (
-        get_human_age(29, 29) == [3, 3]
-    ), "Dla (29, 29) oczekiwano [3, 3]"
-
-
-def test_large_age_conversion() -> None:
-    assert (
-        get_human_age(100, 100) == [21, 17]
-    ), "Dla (100, 100) oczekiwano [21, 17]"
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("20", 20),
+        (10, "10"),
+        (None, 5),
+    ],
+)
+def test_non_integer_input_should_raise_typeerror(
+        cat_age: int,
+        dog_age: int
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
