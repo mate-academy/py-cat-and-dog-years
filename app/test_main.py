@@ -27,6 +27,6 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_years
 
-    def test_human_age_error(self):
+    def test_human_age_error(self) -> None:
         with pytest.raises(TypeError):
             get_human_age("str", 2.5)
