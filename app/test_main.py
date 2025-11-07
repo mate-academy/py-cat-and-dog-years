@@ -2,6 +2,7 @@ import pytest
 
 from app.main import get_human_age
 
+
 class TestGetHumanAge:
 
     @pytest.mark.parametrize(
@@ -17,5 +18,10 @@ class TestGetHumanAge:
             (100, 100, [21, 17]),
         ]
     )
-    def test_human_age(self, cat_age: int, dog_age: int, human_years: list) -> None:
+    def test_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            human_years: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == human_years
