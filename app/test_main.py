@@ -15,5 +15,10 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_cat_dog_age(cat_age: int, dog_age: int, expected: int) -> None:
+def test_cat_dog_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+def test_error_ex() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("dog_age", "12")
