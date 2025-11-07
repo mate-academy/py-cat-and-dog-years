@@ -1,3 +1,5 @@
+from typing import Any
+
 from app.main import get_human_age
 import pytest
 
@@ -16,8 +18,9 @@ import pytest
         (0, 0, [0, 0]),
     ]
 )
-def test_different_values(cat_age, dog_age, expected) -> None:
+def test_different_values(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
@@ -27,8 +30,9 @@ def test_different_values(cat_age, dog_age, expected) -> None:
         (0, 0, [0, 0]),
     ]
 )
-def test_incorrect_values(cat_age, dog_age, expected) -> None:
+def test_incorrect_values(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
 
 @pytest.mark.parametrize(
     "cat_age, dog_age",
@@ -37,6 +41,6 @@ def test_incorrect_values(cat_age, dog_age, expected) -> None:
         ([1, 2, 3], None),
     ]
 )
-def test_incorrect_data_types(cat_age, dog_age) -> None:
+def test_incorrect_data_types(cat_age: Any, dog_age: Any) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
