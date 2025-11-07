@@ -16,6 +16,7 @@ class TestGetHumanAge:
             (27, 27, [2, 2]),
             (28, 28, [3, 2]),
             (100, 100, [21, 17]),
+            (-100, -100, [0, 0]),
         ]
     )
     def test_human_age(
@@ -25,3 +26,7 @@ class TestGetHumanAge:
             human_years: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == human_years
+
+    def test_human_age_error(self):
+        with pytest.raises(TypeError):
+            get_human_age("str", 2.5)
