@@ -9,6 +9,10 @@ from app.main import get_human_age
     "cat_age,dog_age,converted_ages_list",
     [
         pytest.param(
+            -10, -1, [0, 0],
+            id="should convert to 0 when age negative"
+        ),
+        pytest.param(
             0, 0, [0, 0],
             id="should convert to 0 when age equals 0"
         ),
@@ -74,10 +78,6 @@ def test_check_first_and_next_years(
     "cat_invalid_age,dog_invalid_age,error",
     [
         pytest.param(
-            -2, -2, ValueError,
-            id="should raise error when negative"
-        ),
-        pytest.param(
             [], 24, TypeError,
             id="should raise error when not int"
         ),
@@ -94,7 +94,7 @@ def test_check_first_and_next_years(
 def test_invalid_datatypes(
         cat_invalid_age: Any,
         dog_invalid_age: Any,
-        error: type[Exception]
+        error: type[TypeError]
 ) -> None:
    with pytest.raises(error):
        get_human_age(cat_invalid_age, dog_invalid_age)
