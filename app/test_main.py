@@ -53,9 +53,9 @@ from app.main import get_human_age
         pytest.param(
             28, 28, [3, 2],
             id=(
-                    "should convert to [3, 2] "
-                    "after the first 15 years "
-                    "and more than the following 9 have been already lived"
+                "should convert to [3, 2] "
+                "after the first 15 years "
+                "and more than the following 9 have been already lived"
             )
         ),
         pytest.param(
@@ -73,6 +73,7 @@ def test_check_first_and_next_years(
         converted_ages_list: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == converted_ages_list
+
 
 @pytest.mark.parametrize(
     "cat_invalid_age,dog_invalid_age,error",
@@ -96,6 +97,5 @@ def test_invalid_datatypes(
         dog_invalid_age: Any,
         error: type[TypeError]
 ) -> None:
-   with pytest.raises(error):
-       get_human_age(cat_invalid_age, dog_invalid_age)
-
+    with pytest.raises(error):
+        get_human_age(cat_invalid_age, dog_invalid_age)
