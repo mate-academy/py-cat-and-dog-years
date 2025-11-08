@@ -7,6 +7,10 @@ from app.main import get_human_age
     "cat_age, dog_age, expected_result",
     [
         pytest.param(
+            -1, -1, [0, 0],
+            id="cat/dog years lesser than zero should return 0"
+        ),
+        pytest.param(
             0, 0, [0, 0], id="cat/dog years equal to zero should return 0"
         ),
         pytest.param(
@@ -49,10 +53,6 @@ def test_get_human_age_values(
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected_error",
     [
-        pytest.param(
-            -1, -1, ValueError,
-            id="cat/dog years lesser than zero should return ValueError"
-        ),
         pytest.param(
             "", "", TypeError,
             id="cat/dog should return TypeError when args type not int"
