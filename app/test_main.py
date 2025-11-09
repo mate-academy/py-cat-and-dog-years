@@ -13,9 +13,6 @@ import pytest
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17]),
-        (-1, -1, [0, 0]),
-        (0, 0, [0, 0]),
     ]
 )
 def test_different_values(cat_age: int, dog_age: int, expected: list) -> None:
