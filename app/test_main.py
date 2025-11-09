@@ -2,6 +2,7 @@
 import pytest
 from app.main import get_human_age
 
+
 @pytest.mark.parametrize(
     "cat_year,dog_year,expected",
     [
@@ -15,8 +16,13 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_correct_get_human_age(cat_year, dog_year, expected):
+def test_correct_get_human_age(
+        cat_year: int,
+        dog_year: int,
+        expected: list[int]
+) -> None:
     assert get_human_age(cat_year, dog_year) == expected
+
 
 @pytest.mark.parametrize(
     "cat_year,dog_year,error",
@@ -25,6 +31,9 @@ def test_correct_get_human_age(cat_year, dog_year, expected):
         ("five", 9, TypeError),
     ]
 )
-def test_get_human_age_negative_values(cat_year, dog_year, error):
+def test_get_human_age_negative_values(
+        cat_year: int,
+        dog_year: int,
+        error: Exception(ValueError, TypeError)) -> None:
     with pytest.raises(error):
         get_human_age(cat_year, dog_year)
