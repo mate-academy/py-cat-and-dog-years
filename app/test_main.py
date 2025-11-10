@@ -16,7 +16,6 @@ class TestGetHumanAge:
             pytest.param(28, 29, [3, 3], id="both at third threshold"),
             pytest.param(100, 100, [21, 17], id="large equal numbers"),
 
-            # Boundary checks - ensuring increment happens at right moment
             pytest.param(27, 16, [2, 1], id="cat: one before boundary (27)"),
             pytest.param(28, 16, [3, 1], id="cat: exactly at boundary (28)"),
             pytest.param(31, 16, [3, 1], id="cat: between increments (31)"),
@@ -27,11 +26,9 @@ class TestGetHumanAge:
             pytest.param(16, 33, [1, 3], id="dog: between increments (33)"),
             pytest.param(16, 34, [1, 4], id="dog: next increment (34)"),
 
-            # Asymmetric large numbers
             pytest.param(105, 120, [22, 21], id="different large numbers"),
             pytest.param(200, 150, [46, 27], id="very large asymmetric"),
 
-            # Edge case: one zero, one non-zero
             pytest.param(0, 50, [0, 7], id="cat zero, dog adult"),
             pytest.param(50, 0, [8, 0], id="cat adult, dog zero"),
         ],
@@ -57,7 +54,6 @@ class TestGetHumanAge:
             pytest.param(25, [25], TypeError, id="list for dog_age"),
             pytest.param(25, None, TypeError, id="None for dog_age"),
 
-            # Both invalid
             pytest.param("cat", "dog", TypeError, id="both strings"),
             pytest.param([15], [25], TypeError, id="both lists"),
         ],
