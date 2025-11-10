@@ -40,6 +40,9 @@ class TestGetHumanAge:
             pytest.param((15,), 25, TypeError, id="tuple and int"),
             pytest.param("str", 25, TypeError, id="str and int"),
             pytest.param([25], 25, TypeError, id="list and int"),
+            pytest.param(25, set, TypeError, id="int and set"),
+            pytest.param(25, {"key": 46}, TypeError, id="int and dict"),
+            pytest.param(16, "39", TypeError, id="int and str"),
         ],
     )
     def test_should_raise_error_if_parameter_has_wrong_data_type(
