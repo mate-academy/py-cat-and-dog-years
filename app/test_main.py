@@ -1,49 +1,74 @@
+import pytest
 from app.main import get_human_age
 
 
-def test_zero_age() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+class TestCatAge:
+    @pytest.mark.parametrize(
+        "cat_age, expected",
+        [
+            (0, 0),
+            (14, 0),
+            (15, 1),
+            (23, 1),
+            (24, 2),
+            (27, 2),
+            (28, 3),
+            (32, 4),
+            (100, 21),
+        ]
+    )
+    def test_cat_years_to_human(self, cat_age: int, expected: int) -> None:
+        assert get_human_age(cat_age, 0)[0] == expected
 
 
-def test_less_than_first_threshold() -> None:
-    assert get_human_age(14, 14) == [0, 0]
+class TestDogAge:
+    @pytest.mark.parametrize(
+        "dog_age, expected",
+        [
+            (0, 0),
+            (14, 0),
+            (15, 1),
+            (23, 1),
+            (24, 2),
+            (28, 2),
+            (29, 3),
+            (34, 4),  # ✅ виправлено
+            (35, 4),
+            (100, 17),
+        ]
+    )
+    def test_dog_years_to_human(self, dog_age: int, expected: int) -> None:
+        assert get_human_age(0, dog_age)[1] == expected
 
 
-def test_exact_first_threshold() -> None:
-    assert get_human_age(15, 15) == [1, 1]
+class TestCombinedAges:
+    @pytest.mark.parametrize(
+        "cat_age, dog_age, expected",
+        [
+            (0, 0, [0, 0]),
+            (14, 14, [0, 0]),
+            (15, 15, [1, 1]),
+            (23, 23, [1, 1]),
+            (24, 24, [2, 2]),
+            (27, 27, [2, 2]),
+            (28, 28, [3, 2]),
+            (28, 29, [3, 3]),
+            (100, 100, [21, 17]),
+        ]
+    )
+    def test_get_human_age_both(self,
+                                cat_age: int,
+                                dog_age: int,
+                                expected: list[int]) -> None:
+        assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_between_first_and_second_threshold() -> None:
-    assert get_human_age(23, 23) == [1, 1]
+class TestOutputFormat:
+    def test_result_always_two_values(self) -> None:
+        result = get_human_age(50, 50)
+        assert isinstance(result, list)
+        assert len(result) == 2
 
-
-def test_exact_second_threshold() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_cat_and_dog_have_different_step_growth() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_large_age_conversion() -> None:
-    assert get_human_age(100, 100) == [21, 17]
-
-
-def test_only_cat_ages() -> None:
-    assert get_human_age(32, 0) == [4, 0]
-
-
-def test_only_dog_ages() -> None:
-    assert get_human_age(0, 29) == [0, 3]
-
-
-def test_age_just_before_extra_growth() -> None:
-    assert get_human_age(27, 28) == [2, 2]
-
-
-def test_age_just_after_extra_growth() -> None:
-    assert get_human_age(28, 29) == [3, 3]
-
-
-def test_result_length_always_two() -> None:
-    assert len(get_human_age(50, 50)) == 2
+    def test_result_values_are_integers(self) -> None:
+        result = get_human_age(50, 50)
+        assert all(isinstance(age, int) for age in result)
