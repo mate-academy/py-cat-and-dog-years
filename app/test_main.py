@@ -31,6 +31,9 @@ class TestGetHumanAge:
 
             pytest.param(0, 50, [0, 7], id="cat zero, dog adult"),
             pytest.param(50, 0, [8, 0], id="cat adult, dog zero"),
+
+            pytest.param(1000, 1000, [246, 197], id="very large equal"),
+            pytest.param(5000, 3000, [1246, 597], id="extremely large"),
         ],
     )
     def test_should_return_list_of_ages(
@@ -67,55 +70,15 @@ class TestGetHumanAge:
         with pytest.raises(expected_error):
             get_human_age(cat_age, dog_age)
 
-    def test_return_type_is_list(self) -> None:
-        result = get_human_age(15, 15)
-        assert isinstance(result, list)
-        assert not isinstance(result, tuple)
-
-    def test_list_contains_exactly_two_elements(self) -> None:
-        result = get_human_age(50, 60)
-        assert len(result) == 2
-
-    def test_returned_elements_are_integers(self) -> None:
-        result = get_human_age(100, 100)
-        assert all(isinstance(age, int) for age in result)
-
-    def test_independent_calculations(self) -> None:
-        cat_only = get_human_age(50, 0)
-        dog_only = get_human_age(0, 60)
-        both = get_human_age(50, 60)
-
-        assert cat_only[0] == both[0], "Cat age should be independent"
-        assert dog_only[1] == both[1], "Dog age should be independent"
-
     @pytest.mark.parametrize(
-        ("cat_age", "dog_age"),
+        ("cat_age", "dog_age", "result"),
         [
-            pytest.param(1000, 1000, id="very large equal"),
-            pytest.param(5000, 3000, id="extremely large"),
-        ],
-    )
-    def test_very_large_numbers(self, cat_age: int, dog_age: int) -> None:
-        result = get_human_age(cat_age, dog_age)
-        assert isinstance(result, list)
-        assert len(result) == 2
-        assert all(isinstance(age, int) and age >= 0 for age in result)
-
-    @pytest.mark.parametrize(
-        ("cat_age", "dog_age"),
-        [
-            pytest.param(-1, 25, id="negative cat_age"),
-            pytest.param(25, -1, id="negative dog_age"),
-            pytest.param(-5, -6, id="both negative"),
+            pytest.param(-1, 25, [0, 2], id="negative cat_age"),
+            pytest.param(25, -1, [2, 0], id="negative dog_age"),
+            pytest.param(-5, -6, [0, 0], id="both negative"),
         ],
     )
     def test_negative_numbers_return_zero(
-            self, cat_age: int, dog_age: int
+            self, cat_age: int, dog_age: int, result: list
     ) -> None:
-        result = get_human_age(cat_age, dog_age)
-
-        if cat_age < 0:
-            assert result[0] == 0
-
-        if dog_age < 0:
-            assert result[1] == 0
+        assert get_human_age(cat_age, dog_age) == result
