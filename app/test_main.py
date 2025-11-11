@@ -17,7 +17,11 @@ from app.main import get_human_age
         pytest.param(100, 100, [21, 17], id="large numbers"),
     ]
 )
-def test_get_human_age_boundary_nums(cat_age: int, dog_age: int, expected: list) -> None:
+def test_get_human_age_boundary_nums(
+        cat_age: int,
+        dog_age: int,
+        expected: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -29,7 +33,11 @@ def test_get_human_age_boundary_nums(cat_age: int, dog_age: int, expected: list)
         pytest.param(-3, -3, [0, 0], id="both negative"),
     ]
 )
-def test_get_human_age_negative(cat_age: int, dog_age: int, expected: list) -> None:
+def test_get_human_age_negative(
+        cat_age: int,
+        dog_age: int,
+        expected: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
