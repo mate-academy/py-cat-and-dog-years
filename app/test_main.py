@@ -55,3 +55,39 @@ def test_last_boundary_age(
 def test_only_one_age_are_boundary() -> None:
     assert get_human_age(24, 14) == [2, 0]
     assert get_human_age(14, 24) == [0, 2]
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("5", 10),      # string замість int
+        (10, "7"),      # string
+        (None, 10),     # None
+        (10, None),     # None
+        ([1, 2], 5),    # list
+        (3.5, 4),       # float
+        (5, {"a": 1}),  # dict
+    ],
+)
+def test_get_human_age_invalid_type_raises_type_error(
+        cat_age: any,
+        dog_age: any
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        (-1, 10),
+        (10, -5),
+        (-10, -10),
+    ],
+)
+def test_get_human_age_negative_input_raises_value_error(
+        cat_age: any,
+        dog_age: any
+) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
