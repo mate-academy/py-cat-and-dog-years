@@ -22,9 +22,10 @@ def test_age_below_15(cat_age: int,
     [
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
+        (24, 24, [2, 2])
     ]
 )
-def test_boundary_age_between_15_and_23(
+def test_boundary_age_between_15_and_24(
         cat_age: int,
         dog_age: int,
         expected: list
@@ -35,6 +36,7 @@ def test_boundary_age_between_15_and_23(
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
+        (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (29, 28, [3, 2]),
         (29, 30, [3, 3]),
