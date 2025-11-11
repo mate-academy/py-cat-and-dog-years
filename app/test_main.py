@@ -44,7 +44,8 @@ def test_get_human_age_negative(
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        pytest.param(3.5, "lol", id="only integers"),
+        pytest.param(10, "dog", id="string dog"),
+        pytest.param("cat", "dog", id="both invalid"),
     ]
 )
 def test_get_human_age_only_int(cat_age: int, dog_age: int) -> None:
