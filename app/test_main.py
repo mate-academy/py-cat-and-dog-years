@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -70,8 +72,8 @@ def test_only_one_age_are_boundary() -> None:
     ],
 )
 def test_get_human_age_invalid_type_raises_type_error(
-        cat_age: any,
-        dog_age: any
+        cat_age: Any,
+        dog_age: Any
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
@@ -86,8 +88,8 @@ def test_get_human_age_invalid_type_raises_type_error(
     ],
 )
 def test_get_human_age_negative_input_raises_value_error(
-        cat_age: any,
-        dog_age: any
+        cat_age: int,
+        dog_age: int
 ) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_age, dog_age)
