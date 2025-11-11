@@ -54,4 +54,3 @@ def test_invalid_data_types_should_not_crash() -> None:
         else:
             assert isinstance(result, list)
             assert len(result) == 2
-
