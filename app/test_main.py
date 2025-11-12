@@ -32,6 +32,6 @@ def test_get_human_age_valid_values(
         (15, 5.5),
     ],
 )
-def test_get_human_age_invalid_types(cat_age, dog_age) -> None:
+def test_get_human_age_invalid_types(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
