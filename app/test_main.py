@@ -15,7 +15,11 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
 )
-def test_should_return_correct_human_years(cat_age, dog_age, expected):
+def test_should_return_correct_human_years(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -27,7 +31,10 @@ def test_should_return_correct_human_years(cat_age, dog_age, expected):
         (-3, -3),
     ],
 )
-def test_negative_values_are_handled_gracefully(cat_age, dog_age):
+def test_negative_values_are_handled_gracefully(
+        cat_age: int,
+        dog_age: int
+) -> None:
     result = get_human_age(cat_age, dog_age)
     assert isinstance(result, list)
     assert len(result) == 2
@@ -41,7 +48,10 @@ def test_negative_values_are_handled_gracefully(cat_age, dog_age):
         ("a", "b"),
     ],
 )
-def test_incorrect_types_are_handled_gracefully(cat_age, dog_age):
+def test_incorrect_types_are_handled_gracefully(
+        cat_age: object,
+        dog_age: object
+) -> None:
     try:
         result = get_human_age(cat_age, dog_age)
         assert isinstance(result, list)
@@ -57,5 +67,9 @@ def test_incorrect_types_are_handled_gracefully(cat_age, dog_age):
         (28, 27, [3, 2]),
     ],
 )
-def test_threshold_changes_are_correct(cat_age, dog_age, expected):
+def test_threshold_changes_are_correct(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected
