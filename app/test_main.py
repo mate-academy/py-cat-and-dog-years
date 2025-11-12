@@ -29,7 +29,6 @@ def test_get_human_age_returns_correct_values(
 def test_get_human_age_with_negative_values(
     cat_age: int, dog_age: int
 ) -> None:
-    """Перевіряє, що від’ємний вік дає 0 років для обох."""
     result = get_human_age(cat_age, dog_age)
     assert result[0] >= 0
     assert result[1] >= 0
@@ -42,7 +41,6 @@ def test_get_human_age_with_negative_values(
 def test_cat_and_dog_ages_change_independently(
     cat_age: int, dog_age: int
 ) -> None:
-    """Кіт і пес мають незалежну шкалу віку."""
     cat_human, dog_human = get_human_age(cat_age, dog_age)
     assert isinstance(cat_human, int)
     assert isinstance(dog_human, int)
