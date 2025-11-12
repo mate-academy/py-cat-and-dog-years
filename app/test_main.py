@@ -12,6 +12,7 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
+        (-5, -10, [0, 0]),
     ],
 )
 def test_get_human_age_valid_values(
