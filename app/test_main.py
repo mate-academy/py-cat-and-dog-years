@@ -12,7 +12,8 @@ from app.main import get_human_age
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
         (28, 29, [3, 3]),
-        (-1, -2, [0, 0])
+        (-1, -2, [0, 0]),
+        ("one", "two", TypeError)
 
     ],
 
@@ -23,16 +24,16 @@ from app.main import get_human_age
         "cats and dogs years equal to 23",
         "cats and dogs years in range 24-27",
         "cats and dogs have extra year",
-        "cats and dogs age is negative number"
+        "cats and dogs age is negative number",
+        "string ages should raise exception"
     ]
 )
 def test_cats_and_dogs_years(
         cats_age: int,
         dogs_age: int, expected_result: list
 ) -> None:
-    assert get_human_age(cats_age, dogs_age) == expected_result
-
-
-def test_string_age_should_raise_exception() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("one", "two")
+    if expected_result == TypeError:
+        with pytest.raises(TypeError):
+            get_human_age("one", "two")
+    else:
+        assert get_human_age(cats_age, dogs_age) == expected_result
