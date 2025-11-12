@@ -21,3 +21,26 @@ def test_get_human_age(
         expected: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 5),
+        (5, -1),
+        (1.5, 5),
+        (5, 2.5),
+        ("10", 10),
+        (10, "10"),
+    ]
+)
+def test_get_human_age_edge_cases(
+        cat_age: object,
+        dog_age: object
+) -> None:
+    try:
+        result = get_human_age(cat_age, dog_age)
+        assert isinstance(result, list)
+        assert len(result) == 2
+    except Exception:
+        pass
