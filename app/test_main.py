@@ -24,20 +24,19 @@ def test_should_return_correct_human_years(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, expected",
     [
-        (-1, 10),
-        (10, -5),
-        (-3, -3),
+        (-1, 10, [0, 0]),
+        (10, -5, [0, 0]),
+        (-3, -3, [0, 0]),
     ],
 )
 def test_negative_values_are_handled_gracefully(
         cat_age: int,
-        dog_age: int
+        dog_age: int,
+        expected: list[int]
 ) -> None:
-    result = get_human_age(cat_age, dog_age)
-    assert isinstance(result, list)
-    assert len(result) == 2
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
@@ -52,11 +51,8 @@ def test_incorrect_types_are_handled_gracefully(
         cat_age: object,
         dog_age: object
 ) -> None:
-    try:
-        result = get_human_age(cat_age, dog_age)
-        assert isinstance(result, list)
-    except Exception:
-        pytest.skip()
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
 
 
 @pytest.mark.parametrize(
