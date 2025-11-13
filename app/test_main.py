@@ -10,16 +10,18 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
         (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
     ],
 
     ids=[
         "zero years",
-        "before_year_1",
+        "before year 1",
         "first human year",
-        "before_year_2",
+        "before year 2",
         "two human years",
+        "before cat get extra year",
         "cat extra year",
         "old animals"
     ]
