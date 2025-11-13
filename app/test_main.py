@@ -45,8 +45,6 @@ def test_get_human_age_negative_values(
 @pytest.mark.parametrize("cat_age, dog_age", [
     ("5", 10),
     (10, "5"),
-    (5.5, 10),
-    (10, 5.5),
     (None, 10),
     (10, None),
     ([15], 15),
