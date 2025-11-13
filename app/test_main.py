@@ -10,7 +10,7 @@ from app.main import get_human_age
         ("a", "b"),
     ],
 )
-def test_get_human_age_with_invalid_string_types(cat_age, dog_age) -> None:
+def test_get_human_age_with_invalid_string_types(cat_age: object, dog_age: object) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
 
@@ -22,7 +22,7 @@ def test_get_human_age_with_invalid_string_types(cat_age, dog_age) -> None:
         (10, 9.9),
     ],
 )
-def test_get_human_age_with_float_values(cat_age, dog_age) -> None:
+def test_get_human_age_with_float_values(cat_age: float, dog_age: float) -> None:
     result = get_human_age(cat_age, dog_age)
     assert isinstance(result, list)
     assert len(result) == 2
