@@ -25,7 +25,7 @@ def test_get_human_age_returns_correct_values(
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
-        (-1, 10, [0, 2]),
+        (-1, 10, [0, 0]),
         (10, -5, [0, 0]),
         (-3, -7, [0, 0]),
     ],
