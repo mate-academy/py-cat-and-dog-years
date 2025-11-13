@@ -53,7 +53,5 @@ def test_get_human_age_negative_values(
     (15, {"age": 15}),
 ])
 def test_get_human_age_invalid_types(cat_age: Any, dog_age: Any) -> None:
-    try:
+    with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
-    except Exception:
-        pass
