@@ -23,24 +23,28 @@ def test_get_human_age_returns_correct_values(
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [(-1, 10), (10, -5), (-3, -7)],
+    "cat_age, dog_age, expected",
+    [
+        (-1, 10, [0, 2]),
+        (10, -5, [0, 0]),
+        (-3, -7, [0, 0]),
+    ],
 )
 def test_get_human_age_with_negative_values(
-    cat_age: int, dog_age: int
+    cat_age: int, dog_age: int, expected: List[int]
 ) -> None:
-    result = get_human_age(cat_age, dog_age)
-    assert result[0] >= 0
-    assert result[1] >= 0
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [(15, 14), (23, 22), (28, 27)],
+    "cat_age, dog_age, expected",
+    [
+        (15, 14, [1, 0]),
+        (23, 22, [1, 1]),
+        (28, 27, [3, 2]),
+    ],
 )
 def test_cat_and_dog_ages_change_independently(
-    cat_age: int, dog_age: int
+    cat_age: int, dog_age: int, expected: List[int]
 ) -> None:
-    cat_human, dog_human = get_human_age(cat_age, dog_age)
-    assert isinstance(cat_human, int)
-    assert isinstance(dog_human, int)
+    assert get_human_age(cat_age, dog_age) == expected
