@@ -1,5 +1,5 @@
-from typing import List
 import pytest
+from typing import List
 from app.main import get_human_age
 
 
@@ -16,34 +16,42 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_get_human_age_common(cat_age: int,
-                              dog_age: int, expected: List[int]) -> None:
+def test_get_human_age_common_cases(cat_age: int, dog_age: int,
+                                    expected: List[int]) -> None:
+    """Test normal valid inputs."""
     assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        (-1, 0),
-        (0, -1),
-        (-5, -10),
+        (-1, 10),
+        (10, -5),
+        (-100, -100),
     ]
 )
-def test_negative_ages(cat_age: int, dog_age: int) -> None:
-    assert get_human_age(cat_age, dog_age) == [0, 0]
+def test_negative_ages_return_zero(cat_age: int, dog_age: int) -> None:
+    """
+    The original implementation does NOT raise errors for negatives.
+    It simply treats them as < first_year ⇒ returns 0.
+    """
+    result = get_human_age(cat_age, dog_age)
+    assert result == [0, 0]
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
-        ("15", 10),
-        (10, "20"),
+        ("10", 10),
+        (10, "5"),
         ("abc", "xyz"),
-        (3.14, 2.71),
-        (None, 0),
-        (0, None),
+        (10.5, 20),
+        (10, 20.8),
+        ([], {}),
+        (None, None),
     ]
 )
-def test_invalid_types(cat_age: int, dog_age: int) -> None:
+def test_invalid_types_raise_exception(cat_age: int, dog_age: int) -> None:
+    """Incorrect types MUST raise TypeError."""
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
