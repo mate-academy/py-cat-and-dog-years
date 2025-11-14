@@ -16,7 +16,8 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_get_human_age_common_cases(cat_age: int, dog_age: int, expected: List[int]) -> None:
+def test_get_human_age_common_cases(cat_age: int, dog_age: int,
+                                    expected: List[int]) -> None:
     """Test normal valid inputs."""
     assert get_human_age(cat_age, dog_age) == expected
 
@@ -46,7 +47,7 @@ def test_negative_ages_return_zero(cat_age: int, dog_age: int) -> None:
         (None, None),
     ]
 )
-def test_invalid_types_raise_exception(cat_age, dog_age) -> None:
+def test_invalid_types_raise_exception(cat_age: int, dog_age: int) -> None:
     """Incorrect types MUST raise TypeError."""
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
