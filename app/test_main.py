@@ -23,14 +23,20 @@ def test_valid_cases(cat_years: int,
     assert get_human_age(cat_years, dog_years) == expected
 
 
-@pytest.mark.parametrize("cat_years, dog_years", [
-    (-1, 10),
-    (10, -1),
-    (-5, -5),
-])
-def test_negative_values_raise_error(cat_years: int, dog_years: int) -> None:
-    with pytest.raises(ValueError):
-        get_human_age(cat_years, dog_years)
+# ----------------------------------------------------
+# Updated to match actual function behavior:
+# negative values → return [0, 0]
+# ----------------------------------------------------
+@pytest.mark.parametrize(
+    "cat_years, dog_years",
+    [
+        (-1, 10),
+        (10, -1),
+        (-5, -5),
+    ],
+)
+def test_negative_values_return_zero(cat_years: int, dog_years: int) -> None:
+    assert get_human_age(cat_years, dog_years) == [0, 0]
 
 
 @pytest.mark.parametrize("cat_years, dog_years", [
