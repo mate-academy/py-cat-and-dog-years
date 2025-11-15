@@ -13,7 +13,9 @@ class TestMain:
             (24, 24, [2, 2]),
             (27, 27, [2, 2]),
             (28, 28, [3, 2]),
-            (100, 100, [21, 17])
+            (100, 100, [21, 17]),
+            (1000, 1000, [246, 197]),
+            (5000, 3000, [1246, 597]),
         ],
         ids=[
             "human age must be 0 because animal age is less than 15 years old",
@@ -23,7 +25,9 @@ class TestMain:
             "human age must be 2 because animal age 25 years old",
             "human age must be 2 because animal age is less than 29 years old",
             "human age must be 3 and 2  because cat and dog age == 28",
-            "human age must be 21 and 17 because cat and dog age == 100"
+            "human age must be 21 and 17 because cat and dog age == 100",
+            "It is very large number",
+            "It is too very large number",
 
         ]
     )
