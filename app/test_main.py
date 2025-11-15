@@ -16,20 +16,19 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
 )
-def test_valid_cases(cat_years, dog_years, expected):
+def test_valid_cases(cat_years: int,
+                     dog_years: int,
+                     expected: list[int]
+                     ) -> None:
     assert get_human_age(cat_years, dog_years) == expected
 
-
-# --------------------
-# Edge cases (checklist item #2)
-# --------------------
 
 @pytest.mark.parametrize("cat_years, dog_years", [
     (-1, 10),
     (10, -1),
     (-5, -5),
 ])
-def test_negative_values_raise_error(cat_years, dog_years):
+def test_negative_values_raise_error(cat_years: int, dog_years: int) -> None:
     with pytest.raises(ValueError):
         get_human_age(cat_years, dog_years)
 
@@ -41,6 +40,8 @@ def test_negative_values_raise_error(cat_years, dog_years):
     (None, 5),
     (5, None),
 ])
-def test_invalid_type_inputs_raise_error(cat_years, dog_years):
+def test_invalid_type_inputs_raise_error(cat_years: object,
+                                         dog_years: object
+                                         ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_years, dog_years)
