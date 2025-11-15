@@ -1,33 +1,39 @@
+import pytest
 from app.main import get_human_age
 
-
-def test_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_before_first_human_year() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_exactly_first_threshold() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_after_first_threshold() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_exactly_second_threshold() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_after_second_threshold() -> None:
-    assert get_human_age(27, 27) == [2, 2]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+        (-1, 0, [0, 0]),
+        (0, -5, [0, 0]),
+        (-10, -10, [0, 0]),
+        (200, 200, [46, 37]),
+    ]
+)
+def test_get_human_age_valid_and_edge(cat_age, dog_age, expected):
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_third_human_year_boundary() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_large_age_sample() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("10", 10),
+        (10, "10"),
+        ("a", "b"),
+        (None, 10),
+        (10, None),
+        ([1, 2], 5),
+        (5, {"age": 4}),
+    ]
+)
+def test_get_human_age_invalid_types(cat_age, dog_age):
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
