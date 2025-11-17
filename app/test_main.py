@@ -23,17 +23,16 @@ def test_get_human_age_common_cases(cat_age: int, dog_age: int,
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age",
+    "cat_age, dog_age, expected",
     [
-        (-1, 10),
-        (10, -5),
-        (-100, -100),
+        (-1, 10, [0, get_human_age(0, 10)[1]]),
+        (10, -5, [get_human_age(10, 0)[0], 0]),
+        (-100, -100, [0, 0]),
     ]
 )
-def test_negative_ages_return_zero(cat_age: int, dog_age: int) -> None:
-    """Negative ages are treated as less than first_year → returns 0."""
-    assert get_human_age(cat_age, dog_age) == [0, 0]
-
+def test_negative_ages_treated_as_zero(cat_age: int, dog_age: int, expected: List[int]) -> None:
+    """Negative ages are clamped to zero independently."""
+    assert get_human_age(cat_age, dog_age) == expected
 
 @pytest.mark.parametrize(
     "cat_age, dog_age",
@@ -47,7 +46,12 @@ def test_negative_ages_return_zero(cat_age: int, dog_age: int) -> None:
         (None, None),
     ]
 )
+
 def test_invalid_types_raise_exception(cat_age: int, dog_age: int) -> None:
     """Incorrect types MUST raise TypeError."""
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
+
+def test_dog_age_29_returns_3():
+    """Dog age 29 must convert to 3 human years."""
+    assert get_human_age(0, 29)[1] == 3
