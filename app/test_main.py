@@ -13,6 +13,7 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
+        (28, 29, [3, 3]),
         (100, 100, [21, 17]),
         (-1, -1, [0, 0])
     ],
@@ -32,7 +33,8 @@ def test_human_age_calculating(
 @pytest.mark.parametrize(
     "cat_years, dog_years, expected_error",
     [
-        ("3", "t", TypeError),
+        ("3", 2, TypeError),
+        (23, "t", TypeError)
     ],
 )
 def test_cat_and_dog_years(
