@@ -18,3 +18,11 @@ class TestAnimal:
     )
     def test_should_check_age_animal_is_human(self, cat_age: int, dog_age: int, expected: list) -> None:
         assert get_human_age(cat_age, dog_age) == expected
+
+    def test_should_raise_type_error(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("1", 2.5)
+
+    def test_should_raise_value_error(self) -> None:
+        with pytest.raises(ValueError):
+            get_human_age(-5, -5)
