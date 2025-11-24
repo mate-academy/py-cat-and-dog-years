@@ -19,11 +19,19 @@ def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
 
 
-def test_only_int() -> None:
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (1, 4.2),
+        ([1], 4),
+        (1, "8")
+    ]
+)
+def test_only_int(cat_age: int, dog_age: int) -> None:
     with pytest.raises(TypeError):
-        get_human_age("9", [8])
+        get_human_age(cat_age, dog_age)
 
 
-def test_cannot_be_negitive_or_float() -> None:
+def test_cannot_be_negitive() -> None:
     with pytest.raises(ValueError):
         get_human_age(-1, 42)
