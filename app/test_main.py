@@ -17,3 +17,13 @@ from app.main import get_human_age
 )
 def test_get_human_age(cat_age: int, dog_age: int, result: list) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+def test_only_int() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("9", [8])
+
+
+def test_cannot_be_negitive_or_float() -> None:
+    with pytest.raises(ValueError):
+        get_human_age(-1, 42)
