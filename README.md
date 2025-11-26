@@ -42,4 +42,4 @@ Run `pytest app/` to check if function pass your tests.
 Run `pytest --numprocesses=auto tests/` to check if your tests cover all boundary conditions
 and pass task tests.
 
-### Note: Check your code using this [checklist](checklist.md) before pushing your solution.
+### Note: Check your code using this [checklist]() before pushing your solution.
