@@ -14,10 +14,9 @@ from app.main import get_human_age
         (28, 28, [3, 2]),
         (29, 29, [3, 3]),
         (100, 100, [21, 17]),
-        (-144, -144, [0, 0])
-
-
-
+        (-144, -144, [0, 0]),
+        (15.8, 15, [1, 1]),
+        (15, 15.9, [1, 1]),
     ]
 )
 def test_different_mind_get_human_age(cat_age: int,
@@ -34,8 +33,7 @@ def test_different_mind_get_human_age(cat_age: int,
         ("15", "15", TypeError),
         ([15], 15, TypeError),
         (15, [15], TypeError),
-        (15.8, 15, TypeError),
-        (15, 15.9, TypeError),
+
     ]
 )
 def test_error_get_human_age(cat_age: int,
