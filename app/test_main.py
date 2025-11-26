@@ -34,6 +34,8 @@ def test_different_mind_get_human_age(cat_age: int,
         ("15", "15", TypeError),
         ([15], 15, TypeError),
         (15, [15], TypeError),
+        (15.8, 15, TypeError),
+        (15, 15.9, TypeError),
     ]
 )
 def test_error_get_human_age(cat_age: int,
