@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 
 from app.main import get_human_age
@@ -61,3 +63,30 @@ def test_dog_output_changes_on_boundaries(
     prev_val = get_human_age(0, dog_prev)[1]
     next_val = get_human_age(0, dog_next)[1]
     assert prev_val != next_val
+
+
+def test_get_human_age_negative_values() -> None:
+    """
+    Checks behavior for out-of-normal-range negative ages.
+    According to current implementation they are treated as 0.
+    """
+    assert get_human_age(-1, -5) == [0, 0]
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        pytest.param("15", 10, id="cat_as_string"),
+        pytest.param(15, "10", id="dog_as_string"),
+        pytest.param("15", "10", id="both_as_string"),
+    ],
+)
+def test_get_human_age_incorrect_types(
+    cat_age: Any,
+    dog_age: Any,
+) -> None:
+    """
+    Ensures that passing incorrect data types leads to TypeError.
+    """
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
