@@ -4,7 +4,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    'cat_age,dog_age,result',
+    "cat_age,dog_age,result",
     [
         pytest.param(0, 0, [0, 0], id="should return 0 for 0"),
         pytest.param(14, 14, [0, 0], id="should return 0 for 14"),
