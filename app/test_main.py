@@ -51,4 +51,5 @@ def test_function(cat_age: int, dog_age: int, expected: list | str) -> None:
     if expected == TypeError:
         with pytest.raises(TypeError):
             assert get_human_age(cat_age, dog_age)
-    assert get_human_age(cat_age, dog_age) == expected
+    else:
+        assert get_human_age(cat_age, dog_age) == expected
