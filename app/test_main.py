@@ -40,8 +40,15 @@ from app.main import get_human_age
                              pytest.param(-5,
                                           -10,
                                           [0, 0],
+                                          id="data outside the normal age"),
+                             pytest.param("-5",
+                                          -10,
+                                          TypeError,
                                           id="data outside the normal age")
                          ]
                          )
-def test_function(cat_age: int, dog_age: int, expected: list) -> None:
+def test_function(cat_age: int, dog_age: int, expected: list | str) -> None:
+    if expected == TypeError:
+        with pytest.raises(TypeError):
+            assert get_human_age(cat_age, dog_age)
     assert get_human_age(cat_age, dog_age) == expected
