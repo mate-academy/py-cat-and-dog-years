@@ -32,11 +32,15 @@ from app.main import get_human_age
                              pytest.param(28,
                                           28,
                                           [3, 2],
-                                          id="test_cat_age_less_dog_year"),
+                                          id="test cat age less dog age"),
                              pytest.param(100,
                                           100,
                                           [21, 17],
-                                          id="test_cat_age_more_dog_year")
+                                          id="test cat age more dog age"),
+                             pytest.param(-5,
+                                          -10,
+                                          [0, 0],
+                                          id="data outside the normal age")
                          ]
                          )
 def test_function(cat_age: int, dog_age: int, expected: list) -> None:
