@@ -1,4 +1,33 @@
+import pytest
+
 from app.main import get_human_age
+
+
+@pytest.mark.parametrize(
+    "cat_year",
+    "dog_year",
+    "expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+(24, 24, [2, 2]),
+(27, 27, [2, 2]),
+(28, 28, [3, 2]),
+(100, 100, [21, 17]
+
+
+"test_bottom_boundary_zero_year"
+"test_top_boundary_zero_year"
+"test_bottom_boundary_first_year"
+"test_top_boundary_first_year"
+"test_bottom_boundary_second_year"
+"test_top_boundary_second_year"
+"test_cat_age_less_dog_year"
+"test_cat_age_more_dog_year"
+    ]
+)
 
 
 def test_bottom_boundary_zero_year() -> None:
