@@ -51,7 +51,6 @@ class TestGetHumanAgePositiveScenario:
 
 class TestGetHumanAgeNegativeScenario:
 
-
     def test_incorrect_data_types(self) -> None:
         """Test that incorrect data types raise TypeError"""
         # Test with strings
