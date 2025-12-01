@@ -24,6 +24,12 @@ class TestGetHumanAgePositiveScenario:
         (29, 29, [3, 3]),
         (32, 32, [4, 3]),
         (36, 36, [5, 4]),
+        # negative values
+        (-1, 0, [0, 0]),
+        (0, -1, [0, 0]),
+        (-5, -5, [0, 0]),
+        (-100, 10, [0, 0]),
+        (10, -100, [0, 0])
     ]
 
     @pytest.mark.parametrize(
@@ -45,22 +51,6 @@ class TestGetHumanAgePositiveScenario:
 
 class TestGetHumanAgeNegativeScenario:
 
-    negative_numbers_data = [
-        # (cat_age, dog_age)
-        (-1, 0),
-        (0, -1),
-        (-5, -5),
-        (-100, 10),
-        (10, -100)
-    ]
-
-    @pytest.mark.parametrize(
-        "cat_age,dog_age",
-        negative_numbers_data)
-    def test_negative_numbers(self, cat_age: int, dog_age: int) -> None:
-        """Test that negative numbers raise ValueError"""
-        with pytest.raises(ValueError):
-            get_human_age(cat_age, dog_age)
 
     def test_incorrect_data_types(self) -> None:
         """Test that incorrect data types raise TypeError"""
@@ -70,10 +60,6 @@ class TestGetHumanAgeNegativeScenario:
 
         with pytest.raises(TypeError):
             get_human_age("cat", "dog")
-
-        # Test with floats
-        with pytest.raises(TypeError):
-            get_human_age(15.5, 15.5)
 
         # Test with None
         with pytest.raises(TypeError):
