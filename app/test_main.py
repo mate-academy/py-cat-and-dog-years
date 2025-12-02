@@ -21,4 +21,8 @@ def test_get_human_age(
         dog_age: int,
         expected_list: list
 ) -> None:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        pytest.raises(TypeError)
+    if cat_age < 0 or dog_age < 0:
+        pytest.raises(ValueError)
     assert get_human_age(cat_age, dog_age) == expected_list
