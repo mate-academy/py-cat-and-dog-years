@@ -50,7 +50,7 @@ from app.main import get_human_age
         pytest.param(
             100,
             100,
-            [3, 3],
+            [21, 17],
             id="test return 2 if animal age equals 100",
         ),
         pytest.param(
