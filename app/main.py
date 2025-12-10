@@ -15,7 +15,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         else:
             result[0] = 1
 
-
     while cat_age > 0:
         cat_age = cat_age - 4
         if cat_age < 0:
@@ -42,6 +41,3 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         result[1] += 1
 
     return result
-
-if __name__ == '__main__':
-    get_human_age(15, 15)
