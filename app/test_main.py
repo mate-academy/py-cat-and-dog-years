@@ -49,11 +49,17 @@ class TestGetHumanAge:
                 id="28 returns 3 cat and 2 dog"
             ),
             pytest.param(
-                28,
-                28,
-                [3, 2],
+                100,
+                100,
+                [21, 17],
                 id="any large number returns"
                    " cat and dog correctly"
+            ),
+            pytest.param(
+                -1,
+                -1,
+                [0, 0],
+                id="negative numbers return 0"
             )
         ]
     )
@@ -64,3 +70,7 @@ class TestGetHumanAge:
             expected: list
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected
+
+    def test_typeerror(self) -> None:
+        with pytest.raises(TypeError):
+            get_human_age("text", "text")
