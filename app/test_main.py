@@ -43,6 +43,7 @@ def test_should_raise_type_error_when_dog_age_is_not_int() -> None:
     with pytest.raises(TypeError):
         get_human_age(5, "10")
 
+
 def test_should_raise_type_error_when_both_age_is_not_int() -> None:
     with pytest.raises(TypeError):
         get_human_age("5", "10")
