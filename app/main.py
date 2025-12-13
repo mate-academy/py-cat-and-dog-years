@@ -1,4 +1,7 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Age cannot be negative")
+
     # Cat age conversion
     cat_human = 0
     age = cat_age
