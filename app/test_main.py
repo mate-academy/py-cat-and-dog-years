@@ -29,3 +29,7 @@ def test_should_raise_exception_when_cat_age_is_negative():
 def test_should_raise_exception_when_both_ages_are_negative():
     with pytest.raises(ValueError):
         get_human_age(-5, -3)
+
+def test_should_raise_type_error_when_cat_age_is_not_int():
+    with pytest.raises(TypeError):
+        get_human_age("5", 10)
