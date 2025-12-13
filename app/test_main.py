@@ -18,18 +18,22 @@ import pytest
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
-def test_should_raise_exception_when_dog_age_is_negative():
+
+def test_should_raise_exception_when_dog_age_is_negative() -> None:
     with pytest.raises(ValueError):
         get_human_age(10, -1)
 
-def test_should_raise_exception_when_cat_age_is_negative():
+
+def test_should_raise_exception_when_cat_age_is_negative() -> None:
     with pytest.raises(ValueError):
         get_human_age(-1, 10)
 
-def test_should_raise_exception_when_both_ages_are_negative():
+
+def test_should_raise_exception_when_both_ages_are_negative() -> None:
     with pytest.raises(ValueError):
         get_human_age(-5, -3)
 
-def test_should_raise_type_error_when_cat_age_is_not_int():
+
+def test_should_raise_type_error_when_cat_age_is_not_int() -> None:
     with pytest.raises(TypeError):
         get_human_age("5", 10)
