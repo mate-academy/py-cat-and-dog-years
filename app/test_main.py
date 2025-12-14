@@ -38,8 +38,6 @@ def test_return_1_for_age_between_15_and_23(cat_years, dog_years, expected):
         f"Received: {actual}, when expected: {expected}"
     )
 
-# get_human_age(15, 15) == [1, 1]
-# get_human_age(23, 23) == [1, 1]
 
 # test_return_correct_value_for_age_between_24_and_27
 # get_human_age(24, 24) == [2, 2]
