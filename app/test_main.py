@@ -34,7 +34,7 @@ def test_return_0_for_age_less_than_15(cat_years, dog_years, expected):
 def test_return_1_for_age_between_15_and_23(cat_years, dog_years, expected):
     actual = get_human_age(cat_years, dog_years)
     assert (actual == expected), (
-        "Function should return 1 for age between 15 and 23. ",
+        "Function should return 1 for age between 15 and 23. "
         f"Received: {actual}, when expected: {expected}"
     )
 
