@@ -22,6 +22,8 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     human_years = [0, 0]
     animal_years = [cat_age, dog_age]
     for i in range(len(animal_years)):
+        if animal_years[i] < 0 or animal_years[i] > 100:
+            raise ValueError
         if animal_years[i] // 15 > 0:
             human_years[i] += 1
             animal_years[i] -= 15
