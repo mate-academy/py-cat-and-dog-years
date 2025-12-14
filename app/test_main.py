@@ -2,6 +2,7 @@ from app.main import get_human_age
 
 import pytest
 
+
 @pytest.mark.parametrize(
     "cat_years, dog_years, expected",
     [
@@ -13,12 +14,17 @@ import pytest
         "cat: 14, dog: 14",
     ]
 )
-def test_return_0_for_age_less_than_15(cat_years, dog_years, expected):
+def test_return_0_for_age_less_than_15(
+    cat_years: int,
+    dog_years: int,
+    expected: list[int]
+) -> None:
     actual = get_human_age(cat_years, dog_years)
     assert (actual == expected), (
         "15 cat/dog years equal to 1 human year. "
         f"Received: {actual}, when expected: {expected}"
     )
+
 
 @pytest.mark.parametrize(
     "cat_years, dog_years, expected",
@@ -31,12 +37,17 @@ def test_return_0_for_age_less_than_15(cat_years, dog_years, expected):
         "cat: 23, dog: 23",
     ]
 )
-def test_return_1_for_age_between_15_and_23(cat_years, dog_years, expected):
+def test_return_1_for_age_between_15_and_23(
+    cat_years: int,
+    dog_years: int,
+    expected: list[int]
+) -> None:
     actual = get_human_age(cat_years, dog_years)
     assert (actual == expected), (
         "Function should return 1 for age between 15 and 23. "
         f"Received: {actual}, when expected: {expected}"
     )
+
 
 @pytest.mark.parametrize(
     "cat_years, dog_years, expected",
@@ -49,12 +60,17 @@ def test_return_1_for_age_between_15_and_23(cat_years, dog_years, expected):
         "cat: 27, dog: 27",
     ]
 )
-def test_return_2_for_age_between_24_and_27(cat_years, dog_years, expected):
+def test_return_2_for_age_between_24_and_27(
+    cat_years: int,
+    dog_years: int,
+    expected: list[int]
+) -> None:
     actual = get_human_age(cat_years, dog_years)
     assert (actual == expected), (
         "Function should return 2 for age between 24 and 27. "
         f"Received: {actual}, when expected: {expected}"
     )
+
 
 @pytest.mark.parametrize(
     "cat_years, dog_years, expected",
@@ -67,12 +83,17 @@ def test_return_2_for_age_between_24_and_27(cat_years, dog_years, expected):
         "cat: 100, dog: 100",
     ]
 )
-def test_return_correct_value_for_age_more_than_27(cat_years, dog_years, expected):
+def test_return_correct_value_for_age_more_than_27(
+    cat_years: int,
+    dog_years: int,
+    expected: list[int]
+) -> None:
     actual = get_human_age(cat_years, dog_years)
     assert (actual == expected), (
         "Function should return correct value for age more than 27. "
         f"Received: {actual}, when expected: {expected}"
     )
+
 
 @pytest.mark.parametrize(
     "cat_years, dog_years",
@@ -83,13 +104,17 @@ def test_return_correct_value_for_age_more_than_27(cat_years, dog_years, expecte
         "cat and dog params should be unchanged"
     ]
 )
-def test_initial_parameters_should_not_be_changed_by_function(cat_years, dog_years):
+def test_initial_parameters_should_not_be_changed_by_function(
+    cat_years: int,
+    dog_years: int
+) -> None:
     old_cat_years = cat_years
     old_dog_years = dog_years
     get_human_age(cat_years, dog_years)
     assert (
         cat_years == old_cat_years and old_dog_years == dog_years
     ), "Initial parameters should stay unchanged"
+
 
 @pytest.mark.parametrize(
     "cat_years, dog_years",
@@ -102,10 +127,14 @@ def test_initial_parameters_should_not_be_changed_by_function(cat_years, dog_yea
         "animal age too big number"
     ]
 )
-def test_should_raise_error_for_invalid_input_years_value(cat_years, dog_years):
+def test_should_raise_error_for_invalid_input_years_value(
+    cat_years: int,
+    dog_years: int
+) -> None:
     with pytest.raises(ValueError) as e:
         get_human_age(cat_years, dog_years)
     assert str(e.value) == "Only age between 0 and 100 is accepted"
+
 
 @pytest.mark.parametrize(
     "cat_years, dog_years",
@@ -118,7 +147,10 @@ def test_should_raise_error_for_invalid_input_years_value(cat_years, dog_years):
         "list as dog age"
     ]
 )
-def test_should_raise_error_for_invalid_input_years_type(cat_years, dog_years):
+def test_should_raise_error_for_invalid_input_years_type(
+    cat_years: int,
+    dog_years: int
+) -> None:
     with pytest.raises(TypeError) as e:
         get_human_age(cat_years, dog_years)
     assert str(e.value) == "Only 'int' type as accepted as input"
