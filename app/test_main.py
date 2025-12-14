@@ -2,9 +2,23 @@ from app.main import get_human_age
 
 import pytest
 
-# test_return_correct_value_for_age_less_than_15
-# get_human_age(0, 0) == [0, 0]
-# get_human_age(14, 14) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_years, dog_years, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0])
+    ],
+    ids=[
+        "cat: 0, dog: 0",
+        "cat: 14, dog: 14",
+    ]
+)
+def test_return_correct_value_for_age_less_than_15(cat_years, dog_years, expected):
+    actual = get_human_age(cat_years, dog_years)
+    assert (actual == expected), (
+        "Function should return correct value for age less than 15, ",
+        f"received: {actual}, when expected: {expected}"
+    )
 
 # test_return_correct_value_for_age_between_15_and_23
 # get_human_age(15, 15) == [1, 1]
