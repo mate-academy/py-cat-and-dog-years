@@ -73,3 +73,52 @@ def test_return_correct_value_for_age_more_than_27(cat_years, dog_years, expecte
         "Function should return correct value for age more than 27. "
         f"Received: {actual}, when expected: {expected}"
     )
+
+@pytest.mark.parametrize(
+    "cat_years, dog_years",
+    [
+        (28, 28)
+    ],
+    ids=[
+        "cat and dog params should be unchanged"
+    ]
+)
+def test_initial_parameters_should_not_be_changed_by_function(cat_years, dog_years):
+    old_cat_years = cat_years
+    old_dog_years = dog_years
+    get_human_age(cat_years, dog_years)
+    assert (
+        cat_years == old_cat_years and old_dog_years == dog_years
+    ), "Initial parameters should stay unchanged"
+
+@pytest.mark.parametrize(
+    "cat_years, dog_years",
+    [
+        (-2, 10),
+        (10, 220)
+    ],
+    ids=[
+        "animal age negative int",
+        "animal age too big number"
+    ]
+)
+def test_should_raise_error_for_invalid_input_years_value(cat_years, dog_years):
+    with pytest.raises(ValueError) as e:
+        get_human_age(cat_years, dog_years)
+    assert str(e.value) == "Only age between 0 and 100 is accepted"
+
+@pytest.mark.parametrize(
+    "cat_years, dog_years",
+    [
+        ("2", 10),
+        (10, [7])
+    ],
+    ids=[
+        "string in as cat age",
+        "list as dog age"
+    ]
+)
+def test_should_raise_error_for_invalid_input_years_type(cat_years, dog_years):
+    with pytest.raises(TypeError) as e:
+        get_human_age(cat_years, dog_years)
+    assert str(e.value) == "Only 'int' type as accepted as input"
