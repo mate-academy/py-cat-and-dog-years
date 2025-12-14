@@ -12,6 +12,7 @@ from app.main import get_human_age
         pytest.param(24, 24, [2, 2], id="both_at_24"),
         pytest.param(27, 27, [2, 2], id="both_between_24_and_next_step"),
         pytest.param(28, 28, [3, 2], id="cat_steps_at_28"),
+        pytest.param(28, 29, [3, 3], id="dog_steps_at_29"),
         pytest.param(100, 100, [21, 17], id="both_large_ages"),
     ],
 )
