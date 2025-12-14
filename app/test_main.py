@@ -76,10 +76,12 @@ def test_return_2_for_age_between_24_and_27(
     "cat_years, dog_years, expected",
     [
         (28, 28, [3, 2]),
+        (28, 29, [3, 3]),
         (100, 100, [21, 17])
     ],
     ids=[
         "cat: 28, dog: 28",
+        "cat: 28, dog: 29",
         "cat: 100, dog: 100",
     ]
 )
