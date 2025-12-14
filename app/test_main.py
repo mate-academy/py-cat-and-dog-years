@@ -38,10 +38,23 @@ def test_return_1_for_age_between_15_and_23(cat_years, dog_years, expected):
         f"Received: {actual}, when expected: {expected}"
     )
 
-
-# test_return_correct_value_for_age_between_24_and_27
-# get_human_age(24, 24) == [2, 2]
-# get_human_age(27, 27) == [2, 2]
+@pytest.mark.parametrize(
+    "cat_years, dog_years, expected",
+    [
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2])
+    ],
+    ids=[
+        "cat: 24, dog: 24",
+        "cat: 27, dog: 27",
+    ]
+)
+def test_return_2_for_age_between_24_and_27(cat_years, dog_years, expected):
+    actual = get_human_age(cat_years, dog_years)
+    assert (actual == expected), (
+        "Function should return 2 for age between 24 and 27. "
+        f"Received: {actual}, when expected: {expected}"
+    )
 
 # test_return_correct_value_for_age_more_than_27
 # get_human_age(28, 28) == [3, 2]
