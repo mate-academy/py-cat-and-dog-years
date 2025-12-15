@@ -1,6 +1,5 @@
 import pytest
-from typing import List, Any
-from .main import get_human_age
+from app.main import get_human_age
 
 
 class TestGetHumanAge:
@@ -38,7 +37,7 @@ class TestGetHumanAge:
         (100, 100, [21, 17]),
         (200, 200, [46, 37]),
     ])
-    def test_both_same_age(self, cat_age, dog_age, expected):
+    def test_both_same_age(self, cat_age: int, dog_age: int, expected: int) -> None:
         """Test with both pets at the same age"""
         assert get_human_age(cat_age, dog_age) == expected
 
@@ -71,7 +70,7 @@ class TestGetHumanAge:
         (50, 8),
         (100, 21),
     ])
-    def test_cat_age_progression(self, cat_age, expected_cat_human_age):
+    def test_cat_age_progression(self, cat_age: int, expected_cat_human_age: int) -> None:
         """Test cat age conversion at various points"""
         assert get_human_age(cat_age, 0)[0] == expected_cat_human_age
 
@@ -104,7 +103,7 @@ class TestGetHumanAge:
         (60, 9),
         (100, 17),
     ])
-    def test_dog_age_progression(self, dog_age, expected_dog_human_age):
+    def test_dog_age_progression(self, dog_age: int, expected_dog_human_age: int) -> None:
         """Test dog age conversion at various points"""
         assert get_human_age(0, dog_age)[1] == expected_dog_human_age
 
@@ -118,7 +117,7 @@ class TestGetHumanAge:
         (20, 10, [1, 0]),
         (30, 35, [3, 4]),
     ])
-    def test_different_ages(self, cat_age, dog_age, expected):
+    def test_different_ages(self, cat_age: int, dog_age: int, expected: int) -> None:
         """Test with different ages for cat and dog"""
         assert get_human_age(cat_age, dog_age) == expected
 
@@ -133,7 +132,7 @@ class TestGetHumanAge:
         (31, 3),  # Just before next increment
         (32, 4),  # At next increment
     ])
-    def test_cat_boundary_values(self, cat_age, expected_cat_human_age):
+    def test_cat_boundary_values(self, cat_age: int, expected_cat_human_age: int) -> None:
         """Test boundary values for cat age conversion"""
         assert get_human_age(cat_age, 0)[0] == expected_cat_human_age
 
@@ -148,7 +147,7 @@ class TestGetHumanAge:
         (33, 3),  # Just before next increment
         (34, 4),  # At next increment
     ])
-    def test_dog_boundary_values(self, dog_age, expected_dog_human_age):
+    def test_dog_boundary_values(self, dog_age: int, expected_dog_human_age: int) -> None:
         """Test boundary values for dog age conversion"""
         assert get_human_age(0, dog_age)[1] == expected_dog_human_age
 
@@ -168,17 +167,17 @@ class TestGetHumanAge:
         (26, 2),  # 24 + 2, so 2 + (2 // 5) = 2
         (28, 2),  # 24 + 4, so 2 + (4 // 5) = 2
     ])
-    def test_dog_remainder_discarded(self, dog_age, expected_dog_human_age):
+    def test_dog_remainder_discarded(self, dog_age: int, expected_dog_human_age: int) -> None:
         """Test that remainders are properly discarded for dogs"""
         assert get_human_age(0, dog_age)[1] == expected_dog_human_age
 
-    def test_return_type(self):
+    def test_return_type(self) -> None:
         """Test that function returns a list"""
         result = get_human_age(15, 15)
         assert isinstance(result, list)
         assert len(result) == 2
 
-    def test_return_values_are_integers(self):
+    def test_return_values_are_integers(self) -> None:
         """Test that returned values are integers"""
         result = get_human_age(15, 15)
         assert isinstance(result[0], int)
@@ -195,7 +194,7 @@ class TestGetHumanAge:
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
     ])
-    def test_specific_examples(self, cat_age, dog_age, expected):
+    def test_specific_examples(self, cat_age: int, dog_age: int, expected: int) -> None:
         """Test all specific examples from the problem statement"""
         assert get_human_age(cat_age, dog_age) == expected
 
@@ -206,7 +205,7 @@ class TestGetHumanAge:
         (-10, 10),
         (10, -10),
     ])
-    def test_negative_ages(self, cat_age, dog_age):
+    def test_negative_ages(self, cat_age: int, dog_age: int) -> None:
         """Test that function handles negative ages appropriately"""
         result = get_human_age(cat_age, dog_age)
         assert isinstance(result, list)
@@ -223,7 +222,7 @@ class TestGetHumanAge:
         ([15], 15),
         (15, [15]),
     ])
-    def test_invalid_data_types(self, cat_age, dog_age):
+    def test_invalid_data_types(self, cat_age: int, dog_age: int) -> None:
         """Test that function raises TypeError for invalid data types"""
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
