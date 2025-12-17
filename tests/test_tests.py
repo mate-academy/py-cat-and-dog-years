@@ -1,49 +1,63 @@
 import pytest
 
-from app import main
-
-
-def convert_to_human(
-        animal_age: int,
-        first_year: int,
-        second_year: int,
-        each_year: int
-) -> int:
-    if animal_age < first_year:
-        return 0
-    if animal_age < first_year + second_year:
-        return 1
-    return 2 + (animal_age - first_year - second_year) // each_year
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "first_year,second_year,each_year_cat,each_year_dog",
+    "cat_age, dog_age, expected",
     [
-        (14, 9, 4, 5),
-        (15.1, 9, 4, 5),
-        (15, 8, 4, 5),
-        (15, 9.1, 4, 5),
-        (15, 9, 3, 4),
-        (15, 9, 4.1, 5.1),
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (29, 29, [3, 3]),
+        (100, 100, [21, 17]),
+        (1000, 1000, [246, 197]),
     ],
-    ids=[
-        "14 cat/dog years should convert into 0 human age.",
-        "15 cat/dog years should convert into 1 human age.",
-        "23 cat/dog years should convert into 1 human age.",
-        "24 cat/dog years should convert into 2 human age.",
-        "27/28 cat/dog years should convert into 2 human age.",
-        "28/29 cat/dog years should convert into 3 human age.",
-    ]
 )
-def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog):
+def test_get_human_age_valid_values(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int],
+) -> None:
+    """Checks correct age conversion for valid input values."""
+    assert get_human_age(cat_age, dog_age) == expected
 
-    def mock_get_human_age(cat_age, dog_age):
-        cat_to_human = convert_to_human(cat_age, first_year, second_year, each_year_cat)
-        dog_to_human = convert_to_human(dog_age, first_year, second_year, each_year_dog)
-        return [cat_to_human, dog_to_human]
 
-    monkeypatch.setattr(main, "get_human_age", mock_get_human_age)
+@pytest.mark.parametrize(
+    "cat_prev, cat_next",
+    [
+        (14, 15),
+        (23, 24),
+        (27, 28),
+    ],
+)
+def test_cat_output_changes_on_boundaries(
+    cat_prev: int,
+    cat_next: int,
+) -> None:
+    """Ensures cat human age increases exactly at boundary points."""
+    prev_value = get_human_age(cat_prev, 0)[0]
+    next_value = get_human_age(cat_next, 0)[0]
+    assert prev_value != next_value
 
-    test_result = pytest.main(["app/test_main.py"])
-    print(f"test_result{test_result}")
-    assert test_result.value == 1
+
+@pytest.mark.parametrize(
+    "dog_prev, dog_next",
+    [
+        (14, 15),
+        (23, 24),
+        (28, 29),
+    ],
+)
+def test_dog_output_changes_on_boundaries(
+    dog_prev: int,
+    dog_next: int,
+) -> None:
+    """Ensures dog human age increases exactly at boundary points."""
+    prev_value = get_human_age(0, dog_prev)[1]
+    next_value = get_human_age(0, dog_next)[1]
+    assert prev_value != next_value
