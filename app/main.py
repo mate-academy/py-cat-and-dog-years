@@ -20,4 +20,9 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     """
     # TODO: Implement this function
     # Write your tests first, then implement the logic
-    return [0, 0]
+    animal_ages = [cat_age, dog_age]
+    human_ages = [1, 1]
+    for i, age in enumerate(animal_ages):
+        if age <= 15:
+            human_ages[i] = 3.5
+    return human_ages
