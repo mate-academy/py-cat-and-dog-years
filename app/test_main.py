@@ -1,53 +1,42 @@
+import pytest
 from app.main import get_human_age
 from typing import List
-import pytest
 
 
 class TestGetHumanAge:
-    @pytest.mark.parametrize("initial_value, value, expected", [
-        pytest.param(
-            0,
-            0,
-            [0, 0],
-            id="On receipt, 0 should return the same age"
-        ),
-        pytest.param(
-            14,
-            14,
-            [0, 0],
-            id="First human year has 15 years of cats or dogs live"
-        ),
-        pytest.param(
-            15,
-            15,
-            [1, 1],
-            id="15 years should be equal to one human year"
-        ),
-
-        pytest.param(
-            24,
-            24,
-            [2, 2],
-            id="24 years should be converted into 2 human years"
-        ),
-
-        pytest.param(
-            28,
-            28,
-            [3, 2],
-            id="Cats years shouldn't be counted the same as dogs"
-        ),
-        pytest.param(
-            100,
-            100,
-            [21, 17],
-            id="Should be correctly calculated according to the requirements"
-        ),
+    @pytest.mark.parametrize("cat_age, dog_age, expected", [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 28, [2, 2]),
+        (28, 29, [3, 3]),
+        (100, 100, [21, 17]),
     ])
-    def test_main(
+    def test_get_human_age_valid_cases(
             self,
-            initial_value: int,
-            value: int,
+            cat_age: int,
+            dog_age: int,
             expected: List[int]
     ) -> None:
-        assert get_human_age(initial_value, value) == expected
+        assert get_human_age(cat_age, dog_age) == expected
+
+    @pytest.mark.parametrize("cat_age, dog_age", [
+        (-1, 5),
+        (5, -10),
+        (-20, -20),
+    ])
+    def test_negative_ages(self, cat_age: int, dog_age: int) -> None:
+        result = get_human_age(cat_age, dog_age)
+        assert all(age >= 0 for age in result)
+
+    @pytest.mark.parametrize("cat_age, dog_age", [
+        ("20", 20),
+        (20, [20]),
+        (None, 20),
+        (20.5, 20),
+    ])
+    def test_invalid_types(self, cat_age: int, dog_age: int) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)

@@ -15,18 +15,12 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(24, 24) == [2, 2]
     """
 
-    def calculate_age(duration: int) -> int:
-        result = 0
-        for age in range(1, cat_age + 1):
-            if 15 <= age < 24:
-                result = 1
-            elif age == 24:
-                result += 1
-            elif age >= 28 and age % duration == 0:
-                result += 1
-        return result
+    def calculate_age(animal_age: int, duration: int) -> int:
+        if animal_age < 15:
+            return 0
+        if animal_age < 24:
+            return 1
 
-    cat_human_age = calculate_age(4)
-    dog_human_age = calculate_age(5)
+        return 2 + (animal_age - 24) // duration
 
-    return [cat_human_age, dog_human_age]
+    return [calculate_age(cat_age, 4), calculate_age(dog_age, 5)]
