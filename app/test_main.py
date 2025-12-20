@@ -28,8 +28,8 @@ class TestGetHumanAge:
         (-20, -20),
     ])
     def test_negative_ages(self, cat_age: int, dog_age: int) -> None:
-        result = get_human_age(cat_age, dog_age)
-        assert all(age >= 0 for age in result)
+        with pytest.raises(ValueError):
+            get_human_age(cat_age, dog_age)
 
     @pytest.mark.parametrize("cat_age, dog_age", [
         ("20", 20),
