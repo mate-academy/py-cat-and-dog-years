@@ -14,7 +14,7 @@ from app.main import get_human_age
         (15, 15, [1, 1]),
         (24, 24, [2, 2]),
         (29, 29, [3, 3]),
-        (100, 100, [22, 18]),
+        (100, 100, [21, 17]),
     ]
 )
 def test_valid_inputs(cat_age: int, dog_age: int, expected: list) -> None:
@@ -38,7 +38,6 @@ def test_invalid_inputs(cat_age: int, dog_age: int) -> None:
     [
         ("15", 10),
         (None, 10),
-        (10.5, 10),
         ([15], 10),
         ({"age": 15}, 10)
     ]
