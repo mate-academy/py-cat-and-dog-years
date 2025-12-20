@@ -9,6 +9,9 @@ from app.main import get_human_age
         (14, 14, [0, 0]),
         (15, 0, [1, 0]),
         (16, 0, [1, 0]),
+        (23, 23, [1, 1]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
         (24, 0, [2, 0]),
         (28, 0, [3, 0]),
         (15, 15, [1, 1]),
@@ -39,7 +42,8 @@ def test_invalid_inputs(cat_age: int, dog_age: int) -> None:
         ("15", 10),
         (None, 10),
         ([15], 10),
-        ({"age": 15}, 10)
+        ({"age": 15}, 10),
+        (15, "15 age")
     ]
 )
 def test_invalid_type(cat_age: int, dog_age: int) -> None:
