@@ -1,10 +1,10 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("cat_age and dog_age must be integers")
     if cat_age < 0 or dog_age < 0:
         raise ValueError("cat_age and dog_age must be positive")
     if cat_age > 100 or dog_age > 100:
         raise ValueError("cat_age and dog_age must be less than 100")
-    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
-        raise TypeError("cat_age and dog_age must be integers")
     animal_ages = [cat_age, dog_age]
     human_ages = [0, 0]
     for i, age in enumerate(animal_ages):
