@@ -15,6 +15,10 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(24, 24) == [2, 2]
     """
     def convert(age: int, first: int, second: int, step: int) -> int:
+        if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+            raise TypeError("Ages must be integers.")
+        if cat_age < 0 or dog_age < 0:
+            raise TypeError("Ages cannot be negative.")
         if age < first:
             return 0
         if age < first + second:
