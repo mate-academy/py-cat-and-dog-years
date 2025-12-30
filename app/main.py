@@ -1,6 +1,3 @@
-import math
-
-
 def get_human_age(cat_age: int, dog_age: int) -> list:
     result = [0, 0]
 
@@ -10,7 +7,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         result[0] = 2
     elif cat_age >= 28:
         cat_rest_years = cat_age - 27
-        result[0] = 2 + math.ceil(cat_rest_years / 4)
+        result[0] = 2 + (cat_age - 24) // 4
 
     if dog_age >= 15 and dog_age < 24:
         result[1] = 1
@@ -18,6 +15,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         result[1] = 2
     elif dog_age >= 29:
         dog_rest_years = dog_age - 28
-        result[1] = 2 + math.ceil(dog_rest_years / 5)
+        result[1] = 2 + (dog_age - 24) // 5
 
     return result
