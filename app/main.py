@@ -7,8 +7,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
             return 0
         if age < 24:
             return 1
-        # Перші 24 роки дають 2 людських роки
-        # Решту ділимо на поріг (4 для котів, 5 для собак)
         return 2 + (age - 24) // extra_year_threshold
 
     cat_human_age = calculate_age(cat_age, 4)
