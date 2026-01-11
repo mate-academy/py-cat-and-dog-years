@@ -12,7 +12,9 @@ import pytest
         pytest.param(23, 23, [1, 1], id="default test 23"),
         pytest.param(14, 14, [0, 0], id="default test 14"),
         pytest.param(15, 15, [1, 1], id="default test 15"),
-        pytest.param(24, 24, [2, 2], id="default test 15"),
+        pytest.param(24, 24, [2, 2], id="default test 24"),
+        pytest.param(0, 0, [0, 0], id="default test 0"),
+        pytest.param(100, 100, [21, 17], id="default test 100"),
     ]
 )
 def test_works_correctly(
