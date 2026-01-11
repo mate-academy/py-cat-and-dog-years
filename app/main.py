@@ -1,23 +1,36 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
+def convert_to_human(
+    animal_age: float,
+    first_year: float,
+    second_year: float,
+    each_year: float
+) -> int:
+    if animal_age <= first_year:
+        return 0
+
+    remaining = animal_age - first_year
+
+    if remaining <= second_year:  # ← ВАЖНО: <=
+        return 1
+
+    age = 2
+    remaining -= second_year
+    age += int(remaining // each_year)
+
+    return age
+
+
+def get_human_age(cat_age: float, dog_age: float) -> tuple[int, int]:
+    return (
+        convert_to_human(cat_age, 14, 9, 4),
+        convert_to_human(dog_age, 14, 9, 4)
+    )
+
+
+def get_human_age(cat_age: float, dog_age: float) -> tuple[int, int]:
     """
-    Convert cat and dog ages to human years.
-    
-    Rules:
-    Cat: first 15 years = 1 human year, next 9 = +1, then every 4 = +1
-    Dog: first 15 years = 1 human year, next 9 = +1, then every 5 = +1
-    
-    Args:
-        cat_age: Cat's age in cat years
-        dog_age: Dog's age in dog years
-        
-    Returns:
-        List with [cat_human_age, dog_human_age]
-        
-    Examples:
-        get_human_age(0, 0) == [0, 0]
-        get_human_age(15, 15) == [1, 1]
-        get_human_age(24, 24) == [2, 2]
+    Возвращает возраст кошки и собаки в человеческих годах.
     """
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    return (
+        convert_to_human(cat_age, 14, 9, 4),
+        convert_to_human(dog_age, 14, 9, 4)
+    )
