@@ -13,6 +13,7 @@ from app.main import get_human_age
         (28, 29, (3, 3)),
     ],
 )
-def test_get_human_age(cat_age: float, dog_age: float, expected: tuple[int, int]) -> None:
+def test_get_human_age(cat_age: float, dog_age:
+float, expected: tuple[int, int]) -> None:
     result = get_human_age(cat_age, dog_age)
     assert result == expected
