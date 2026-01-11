@@ -20,17 +20,14 @@ def convert_to_human(
 
 
 def get_human_age(cat_age: float, dog_age: float) -> tuple[int, int]:
-    return (
-        convert_to_human(cat_age, 14, 9, 4),
-        convert_to_human(dog_age, 14, 9, 4)
-    )
+    def convert(age: float) -> int:
+        if age < 15:
+            return 0
+        elif age < 24:
+            return 1
+        elif age < 28:
+            return 2
+        else:
+            return 3
 
-
-def get_human_age(cat_age: float, dog_age: float) -> tuple[int, int]:
-    """
-    Возвращает возраст кошки и собаки в человеческих годах.
-    """
-    return (
-        convert_to_human(cat_age, 14, 9, 4),
-        convert_to_human(dog_age, 14, 9, 4)
-    )
+    return convert(cat_age), convert(dog_age)
