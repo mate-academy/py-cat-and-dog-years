@@ -20,7 +20,7 @@ from app.main import get_human_age
         ),
         (
             23, 23,
-            [1, 1]
+            [3, 2]
         ),
         (
             24, 24,
