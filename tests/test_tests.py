@@ -1,6 +1,9 @@
 import pytest
 
 from app import main
+from pathlib import Path
+
+TEST_MAIN = Path(__file__).parent.parent / "app" / "test_main.py"
 
 
 def convert_to_human(
@@ -44,6 +47,6 @@ def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog
 
     monkeypatch.setattr(main, "get_human_age", mock_get_human_age)
 
-    test_result = pytest.main(["app/test_main.py"])
+    test_result = pytest.main([str(TEST_MAIN)])
     print(f"test_result{test_result}")
     assert test_result.value == 1
