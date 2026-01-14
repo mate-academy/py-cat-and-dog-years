@@ -1,30 +1,22 @@
-import math
-from typing import Tuple
+def get_human_age(cat_age:int, dog_age:int):
+    human_age1 = 0
+    if cat_age < 15:
+        human_age1 = 0
+    elif cat_age < 24:
+        human_age1 = 1
+    else:
+        human_age1 = 2
+        additional_years = (cat_age - 24) // 4
+        human_age1 += additional_years
 
+    human_age2 = 0
+    if dog_age < 15:
+        human_age2 = 0
+    elif dog_age < 24:
+        human_age2 = 1
+    else:
+        human_age2 = 2
+        additional_years = (dog_age - 24) // 5
+        human_age2 += additional_years
 
-def convert_to_human(
-    animal_age: float,
-    first_year: float,
-    second_year: float,
-    each_year: float,
-) -> int:
-    # Первый человеческий год
-    if animal_age <= first_year:
-        return 0
-
-    # Второй человеческий год
-    if animal_age <= first_year + second_year:
-        return 1
-
-    # Остаток после первых двух лет
-    remaining = animal_age - first_year - second_year
-
-    # Каждый полный each_year добавляет 1 год
-    return 1 + math.ceil(remaining / each_year)
-
-
-def get_human_age(cat_age: float, dog_age: float) -> Tuple[int, int]:
-    return (
-        convert_to_human(cat_age, 14, 9, 4),
-        convert_to_human(dog_age, 14, 9, 5),
-    )
+    return (human_age1, human_age2)
