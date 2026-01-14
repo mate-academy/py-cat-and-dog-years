@@ -1,4 +1,7 @@
-def get_human_age(cat_age:int, dog_age:int):
+from typing import Tuple
+
+
+def get_human_age(cat_age:int, dog_age:int) -> Tuple[int, int]:
     human_age1 = 0
     if cat_age < 15:
         human_age1 = 0
@@ -19,4 +22,4 @@ def get_human_age(cat_age:int, dog_age:int):
         additional_years = (dog_age - 24) // 5
         human_age2 += additional_years
 
-    return (human_age1, human_age2)
+    return human_age1, human_age2
