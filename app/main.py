@@ -1,7 +1,7 @@
 from typing import Tuple
 
 
-def get_human_age(cat_age:int, dog_age:int) -> Tuple[int, int]:
+def get_human_age(cat_age: int, dog_age: int) -> Tuple[int, int]:
     human_age1 = 0
     if cat_age < 15:
         human_age1 = 0
