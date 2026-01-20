@@ -1,4 +1,6 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Age can not be < 0")
     human_age = [0, 0]
     age_after_24 = (4, 5)
     i = -1
