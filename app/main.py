@@ -9,8 +9,9 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
 
 
 def convert_to_human(age: int, div: int) -> int:
-    if age < 15:
+    if age >= 0 and age <= 15:
         return 0
-    if age < 24:
+    elif age > 15 and age < 24:
         return 1
-    return 2 + (age - 24) // div
+    else:
+        return 2 + (age - 24) // div
