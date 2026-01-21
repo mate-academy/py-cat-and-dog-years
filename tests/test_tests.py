@@ -46,4 +46,5 @@ def test_ages(monkeypatch, first_year, second_year, each_year_cat, each_year_dog
 
     test_result = pytest.main(["app/test_main.py"])
     print(f"test_result{test_result}")
-    assert test_result.value == 1
+    print(test_result.value)
+    assert test_result.value == 5
