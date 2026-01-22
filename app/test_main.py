@@ -15,5 +15,13 @@ import pytest
         (100, 100, [21, 17])
     ]
 )
-def test_to_check_if_age_converts_correctly_under_15(cat_age, dog_age, expected) -> None:
+def test_to_check_if_age_converts_correctly(cat_age, dog_age, expected) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+def test_to_check_if_age_converts_correctly_type() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("6", 2)
+
+def test_to_check_if_age_converts_correctly_num() -> None:
+    with pytest.raises(ValueError):
+        get_human_age(-6, 2)
