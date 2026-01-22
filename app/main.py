@@ -1,4 +1,5 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
+def get_human_age(cat_age: int,
+                  dog_age: int) -> list:
     ls = [0, 0]
     human_c = 0
     if cat_age < 0 or dog_age < 0:
