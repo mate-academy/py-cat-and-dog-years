@@ -27,15 +27,10 @@ def test_get_human_age_logic(
 
 
 def test_get_human_age_negative_input() -> None:
-    # Assuming negative age should return 0 or be handled gracefully as 0
-    # based on 0,0 case.
-    # If the logic is "if age < 15 return 0", negative fits.
     assert get_human_age(-1, -1) == [0, 0]
 
 
 def test_get_human_age_type_error() -> None:
-    # Checklist: "if the function receives an incorrect type...
-    # it raises the correct exception."
     with pytest.raises(TypeError):
         get_human_age("15", 15)
     with pytest.raises(TypeError):
