@@ -23,6 +23,3 @@ def calculate_age(age: int, animal: str) -> int:
         else:
             div = ((age - 24) // 5) + 2
     return div
-
-
-print(get_human_age(14, 14))
