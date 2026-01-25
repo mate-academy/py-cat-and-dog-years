@@ -54,7 +54,7 @@ def test_data_inputs_are_naturals(
     ],
 )
 def test_animal_age_to_human_years(num1: int, num2: int, result: list) -> None:
-    assert (
-        main.get_human_age(num1, num2) == result
-    ), f"The human age for a dog with {num2} years is {result[1]}"
-    f" and the human age for a cat with {num1} years is {result[0]}"
+    assert main.get_human_age(num1, num2) == result, (
+        f"The human age for a dog with {num2} years is {result[1]}"
+        f" and the human age for a cat with {num1} years is {result[0]}"
+    )
