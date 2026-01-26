@@ -31,7 +31,7 @@ from app.main import get_human_age
 
         # Larger values
         (40, 40, [6, 5]),
-        (100, 100, [21, 16]),
+        (100, 100, [21, 17]),
 
         # Mixed ages
         (24, 15, [2, 1]),
