@@ -1,20 +1,21 @@
+import pytest
+
 from app.main import get_human_age
 
-def test_get_human_age_less_than_one():
-    assert get_human_age(14,14) == [0, 0]
+@pytest.mark.parametrize("cat_age,dog_age,result_conver",
+                         [(0, 0, [0,0]),
+                          (14, 14, [0, 0]),
+                          (15 ,15, [1, 1]),
+                          (23, 23, [1, 1]),
+                          (24, 24, [2, 2]),
+                          (27, 27, [2, 2]),
+                          (28, 28, [3, 2]),
+                          (100, 100, [21, 17])
+                          ])
+def test_get_human_age(cat_age, dog_age, result_conver):
+    assert get_human_age(cat_age, dog_age) == result_conver
 
 
-def test_get_human_age_without_randing():
-    assert get_human_age(28,29) == [3, 3]
-
-
-def test_get_human_age_with_randing():
-    assert get_human_age(29,30) == [3, 3]
-
-
-def test_pet_age_convert_should_equal_1():
-    assert get_human_age(15,15) == [1, 1]
-
-
-def test_pet_age_convert_should_equal_one():
-    assert get_human_age(23,23) == [1, 1]
+def test_should_raise_type_error():
+    with pytest.raises(TypeError):
+        assert get_human_age("3","3")
