@@ -1,3 +1,5 @@
+import pytest
+
 from app.main import get_human_age
 
 
@@ -25,9 +27,6 @@ def test_cat_and_dog_calculated_independently():
 
 def test_large_values():
     assert get_human_age(1000, 1000) == [
-        2 + (1000 - 24) // 4,
-        2 + (1000 - 24) // 5,
-    ] [
         2 + (1000 - 24) // 4,
         2 + (1000 - 24) // 5,
     ]
