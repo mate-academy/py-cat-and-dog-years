@@ -14,10 +14,10 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     # DOG
     if 15 <= dog_age < 24:
         final_ages[1] = 1
-    if 24 <= dog_age <= 29:
+    if 24 <= dog_age < 29:
         final_ages[1] = 2
-    if dog_age >= 28:
-        extra_dog_age = dog_age - 25
+    if dog_age >= 29:
+        extra_dog_age = dog_age - 24
         if extra_dog_age // 5 >= 1:
             final_ages[1] = 2 + (extra_dog_age // 5)
 
