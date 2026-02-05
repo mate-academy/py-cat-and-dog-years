@@ -22,3 +22,9 @@ def test_get_human_age(
         result: list[int]
 ) -> None:
     assert get_human_age(cat_years, dog_years) == result
+
+def test_get_human_age_with_not_integer_values() -> None:
+    with pytest.raises(TypeError): get_human_age([2], "3")
+
+def test_get_human_age_with_negative_values() -> None:
+    with pytest.raises(ValueError): get_human_age(-1, -3)
