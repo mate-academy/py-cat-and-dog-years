@@ -45,6 +45,11 @@ from app.main import get_human_age
             0,
             15,
             [0, 1]
+        ),
+        (
+            27,
+            27,
+            [2, 2]
         )
     ]
 )
