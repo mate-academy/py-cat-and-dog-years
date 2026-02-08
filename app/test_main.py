@@ -57,3 +57,24 @@ def test_my_all_tests(cat_age: int,
                       dog_age: int,
                       expected_result: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected_error", [
+        (
+            -2,
+            15,
+            ValueError
+        ),
+        (
+            "str",
+            15,
+            TypeError
+        )
+    ]
+)
+def test_should_raise_errors(cat_age: int,
+                             dog_age: int,
+                             expected_error: BaseException) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
