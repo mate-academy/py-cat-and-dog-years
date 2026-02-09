@@ -4,6 +4,7 @@ def convert_cat_age(
         second_span: int = 9,
         next_span_leng: int = 4
 ) -> int:
+    cat_age = int(cat_age)
     human = 0
     if cat_age < 0:
         return 0
@@ -27,6 +28,7 @@ def convert_dog_age(
         second_span: int = 9,
         next_span_leng: int = 5
 ) -> int:
+    dog_age = int(dog_age)
     human2 = 0
     if dog_age < 0:
         return 0
