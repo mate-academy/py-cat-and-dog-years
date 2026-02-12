@@ -1,3 +1,7 @@
+# flake8: noqa: W293
+from app.errors import OutOfRangeError
+
+
 def get_human_age(cat_age: int, dog_age: int) -> list:
     """
     Convert cat and dog ages to human years.
@@ -19,5 +23,24 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(24, 24) == [2, 2]
     """
     # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("Cat and dog ages must be integers")
+    if cat_age < 0 or dog_age < 0:
+        raise OutOfRangeError("Cat and dog ages can't be negative")
+    if cat_age > 200 or dog_age > 200:
+        raise OutOfRangeError("Very large numbers")
+    dog_counter = [15, 9, 5]
+    cat_counter = [15, 9, 4]
+    return [
+        animal_age_check_new(cat_age, cat_counter),
+        animal_age_check_new(dog_age, dog_counter),
+    ]
+
+
+def animal_age_check_new(age: int, age_step: list) -> int:
+    if age < age_step[0]:
+        return 0
+    if age < age_step[0] + age_step[1]:
+        return 1
+    age -= (age_step[0] + age_step[1])
+    return 2 + (age // age_step[2])
