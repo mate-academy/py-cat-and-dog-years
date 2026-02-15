@@ -1,4 +1,6 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise ValueError("Parameters should be int!")
     converted_age = {"for_cat": 0, "for_dog": 0}
     if cat_age < 0:
         converted_age["for_cat"] = None

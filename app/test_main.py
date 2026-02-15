@@ -45,3 +45,21 @@ def test_human_age_conversion(
         human_age: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age, f"conversion should return {human_age}"
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        (1.0, 0),
+        (0.0, 1.0),
+        (1.0, 1.0)
+    ],
+    ids=[
+        f"expected error for {1.0, 0}",
+        f"expected error for {0.0, 1.0}",
+        f"expected error for {1.0, 1.0}"
+    ]
+)
+def test_errro_if_parameters_are_not_int(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
