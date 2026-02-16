@@ -15,17 +15,17 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         if cat_years < 15:
             break
         cat_years -= 15
-        cat_human +=1
+        cat_human += 1
         if cat_years - 9 >= 0:
             cat_years -= 9
-            cat_human +=1
+            cat_human += 1
         else:
             break
-        if cat_years - 4 >=0:
+        if cat_years - 4 >= 0:
             while True:
                 cat_years -= 4
-                cat_human +=1
-                if (cat_years -4) < 0:
+                cat_human += 1
+                if (cat_years - 4) < 0:
                     break
         break
 
@@ -34,17 +34,16 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         if dog_years < 15:
             break
         dog_years -= 15
-        dog_human +=1
+        dog_human += 1
         if dog_years - 9 >= 0:
             dog_years -= 9
-            dog_human +=1
+            dog_human += 1
         else:
             break
-        if dog_years - 5 >=0:
+        if dog_years - 5 >= 0:
             while True:
                 dog_years -= 5
-                dog_human +=1
-                if (dog_years -5) < 0:
+                dog_human += 1
+                if (dog_years - 5) < 0:
                     break
     return [cat_human, dog_human]
-
