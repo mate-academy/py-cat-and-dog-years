@@ -1,17 +1,18 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
-    cat_human = 0
-    dog_human = 0
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError
 
-    if cat_age >= 15:
-        cat_human = 1
-    if cat_age >= 24:
-        cat_human = 2
-        cat_human += (cat_age - 24) // 4
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError
 
-    if dog_age >= 15:
-        dog_human = 1
-    if dog_age >= 24:
-        dog_human = 2
-        dog_human += (dog_age - 24) // 5
+    def convert(age: int, step: int) -> int:
+        if age < 15:
+            return 0
+        if age < 24:
+            return 1
+        return 2 + (age - 24) // step
 
-    return [cat_human, dog_human]
+    cat_human = convert(cat_age, 4)
+    dog_human = convert(dog_age, 5)
+
+    return [int(cat_human), int(dog_human)]
