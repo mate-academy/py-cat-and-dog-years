@@ -35,26 +35,29 @@ from app.main import get_human_age
     ],
 )
 def test_get_human_age(
-        cat_age: int,
-        dog_age: int,
-        expected: list[int]
+    cat_age: int,
+    dog_age: int,
+    expected: list[int],
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
-    "cat_age,dog_age",
+    "cat_age,dog_age,expected",
     [
-        (-1, 0),
-        (0, -1),
-        (-10, -5),
+        (-1, 0, [0, 0]),
+        (0, -1, [0, 0]),
+        (-10, -5, [0, 0]),
+        (-100, 20, [0, 1]),
+        (20, -100, [1, 0]),
     ],
 )
-def test_get_human_age_negative_values(cat_age: int, dog_age: int) -> None:
-    # Define expected behavior — here we assume negatives behave like < 15 → 0
-    result = get_human_age(cat_age, dog_age)
-    assert isinstance(result, list)
-    assert len(result) == 2
+def test_get_human_age_negative_values(
+    cat_age: int,
+    dog_age: int,
+    expected: list[int],
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
@@ -67,6 +70,9 @@ def test_get_human_age_negative_values(cat_age: int, dog_age: int) -> None:
         (10, None),
     ],
 )
-def test_get_human_age_invalid_types(cat_age: object, dog_age: object) -> None:
+def test_get_human_age_invalid_types(
+        cat_age: object,
+        dog_age: object
+) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
