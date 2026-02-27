@@ -22,5 +22,5 @@ def test_get_human_age_various_thresholds(cat_age: int,
                                           dog_age: int,
                                           expected_result: list) -> None:
     assert (
-           get_human_age(cat_age, dog_age) == expected_result
-    ), f"Should return {expected_result} for ages ({cat_age}, {dog_age})"
+           get_human_age(cat_age, dog_age) == expected_result)\
+        , f"Should return {expected_result} for ages ({cat_age}, {dog_age})"
