@@ -1,41 +1,9 @@
-import pytest
-from main import get_human_age
+def get_human_age(cat_age: int, dog_age: int) -> list:
+    def to_human(age: int, third_step: int) -> int:
+        if age < 15:
+            return 0
+        if age < 24:
+            return 1
+        return 2 + (age - 24) // third_step
 
-
-@pytest.mark.parametrize("cat_age, dog_age, expected", [
-    (0, 0, [0, 0]),
-    (14, 14, [0, 0]),
-    (15, 15, [1, 1]),
-    (23, 23, [1, 1]),
-    (24, 24, [2, 2]),
-    (27, 27, [2, 2]),
-    (28, 28, [3, 2]),
-    (100, 100, [21, 17]),
-])
-def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
-
-
-@pytest.mark.parametrize("cat_age, dog_age, expected", [
-    (14, 14, [0, 0]),
-    (15, 15, [1, 1]),
-    (23, 23, [1, 1]),
-    (24, 24, [2, 2]),
-])
-def test_boundary_values_do_not_change_before_threshold(
-    cat_age: int, dog_age: int, expected: list
-) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
-
-
-def test_cat_threshold_differs_from_dog_at_28() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_negative_age_returns_zero() -> None:
-    assert get_human_age(-1, -1) == [0, 0]
-
-
-def test_large_values() -> None:
-    result = get_human_age(100, 100)
-    assert result == [21, 17]
+    return [to_human(cat_age, 4), to_human(dog_age, 5)]
