@@ -1,23 +1,24 @@
+def calculator_human(age: int, divisor: int) -> int:
+    if age < 0:
+        raise ValueError("age must be non-negative")
+    if not isinstance(age, int):
+        raise TypeError("age must be int")
+    age_animal = age
+    age_human = 0
+    if age_animal < 15:
+        return 0
+    else:
+        age_animal -= 15
+        age_human += 1
+
+    if age_animal >= 9:
+        age_animal -= 9
+        age_human += 1
+        age_human += age_animal // divisor
+    return age_human
+
+
 def get_human_age(cat_age: int, dog_age: int) -> list:
-    """
-    Convert cat and dog ages to human years.
-    
-    Rules:
-    Cat: first 15 years = 1 human year, next 9 = +1, then every 4 = +1
-    Dog: first 15 years = 1 human year, next 9 = +1, then every 5 = +1
-    
-    Args:
-        cat_age: Cat's age in cat years
-        dog_age: Dog's age in dog years
-        
-    Returns:
-        List with [cat_human_age, dog_human_age]
-        
-    Examples:
-        get_human_age(0, 0) == [0, 0]
-        get_human_age(15, 15) == [1, 1]
-        get_human_age(24, 24) == [2, 2]
-    """
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    cat = calculator_human(cat_age, 4)
+    dog = calculator_human(dog_age, 5)
+    return [cat, dog]
