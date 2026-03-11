@@ -1,33 +1,34 @@
-from app.main import get_human_age
+import pytest
+
+from app import main
 
 
-def test_zero_ages():
-    assert get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize(
+    ("cat_age", "dog_age", "expected", "expected_exception"),
+    [
+        (0, 0, [0, 0], None),
+        (14, 14, [0, 0], None),
+        (15, 15, [1, 1], None),
+        (23, 23, [1, 1], None),
+        (24, 24, [2, 2], None),
+        (27, 28, [2, 2], None),
+        (28, 29, [3, 3], None),
+        (100, 100, [21, 17], None),
+        (-1, -1, [0, 0], None),
+        ("1", 1, None, TypeError),
+        (1, "1", None, TypeError),
+    ],
+)
+def test_get_human_age(
+    cat_age: int | str,
+    dog_age: int | str,
+    expected: list[int] | None,
+    expected_exception: type[Exception] | None,
+) -> None:
+    if expected_exception is not None:
+        with pytest.raises(expected_exception):
+            main.get_human_age(cat_age, dog_age)
 
+        return
 
-def test_fourteen_years_are_still_zero():
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_fifteen_years_convert_to_one():
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_twenty_three_years_are_still_one():
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_twenty_four_years_convert_to_two():
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_cat_and_dog_have_different_step_sizes_after_twenty_four():
-    assert get_human_age(27, 28) == [2, 2]
-
-
-def test_next_full_step_after_twenty_four():
-    assert get_human_age(28, 29) == [3, 3]
-
-
-def test_large_ages():
-    assert get_human_age(100, 100) == [21, 17]
+    assert main.get_human_age(cat_age, dog_age) == expected
