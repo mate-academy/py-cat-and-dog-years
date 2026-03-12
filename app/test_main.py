@@ -41,6 +41,6 @@ def test_negative_years(cat_years: int, dog_years: int) -> None:
         (15, None),
     ]
 )
-def test_invalid_types(cat_years, dog_years) -> None:
+def test_invalid_types(cat_years: int, dog_years: int) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_years, dog_years)

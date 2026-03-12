@@ -1,4 +1,9 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("Ages must be integers")
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Ages cannot be negative")
+
     if cat_age < 15:
         human_cat = 0
     elif cat_age < 24:
