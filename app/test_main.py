@@ -15,13 +15,12 @@ from typing import Any
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
         (-1, -1, [0, 0]),
-        (-100, 5, [0, 0]),
+        (-100, 5, [0, 5 // 5 if 5 >= 24 else 0]),
     ]
 )
 def test_get_human_age_values(cat_age: int,
                               dog_age: int,
-                              expected: list
-                              ) -> None:
+                              expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
