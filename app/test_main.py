@@ -5,6 +5,7 @@ import pytest
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
+        (-10, -5, [0, 0]),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
