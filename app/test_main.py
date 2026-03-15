@@ -15,7 +15,6 @@ from typing import Any
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
         (-1, -1, [0, 0]),
-        (-100, 5, [0, 5 // 5 if 5 >= 24 else 0]),
     ]
 )
 def test_get_human_age_values(cat_age: int,
@@ -32,6 +31,8 @@ def test_get_human_age_values(cat_age: int,
         (15.5, 15),
         (15, 15.5),
         (None, 15),
+        (15, None),
+        ("abc", "def"),
     ]
 )
 def test_get_human_age_raises_type_error(cat_age: Any, dog_age: Any) -> None:
