@@ -11,14 +11,18 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 28, [2, 2]),
         (28, 28, [3, 2]),
+        (14, 23, [0, 1]),
+        (23, 14, [1, 0]),
         (100, 100, [21, 17])
     ],
     ids=[
-        "should return zeros for 15 cat and dog years.",
+        "should return zeros for 0 cat and dog years.",
         "should return one for 15 cat and dog years.",
         "should return two for 24 cat and dog years.",
         "should return two for 27 cat and 28 dog years.",
         "should return correct human ages for 28 cat and dog",
+        "should return correct human ages for 14 cat and 23 dog years",
+        "should return correct human ages for 23 cat and 14 dog years",
         "should return correct human ages for 100 cat and dog"
     ]
 )
