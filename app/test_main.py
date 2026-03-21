@@ -38,12 +38,14 @@ def test_valid_inputs(
     "cat_age,dog_age,expected_error",
     [
         (23, -34, ValueError),
+        (43, 101, ValueError),
         (124124, 22551241, ValueError),
         ("21", 32, TypeError)
     ],
     ids=[
         "should raise error when age is negative",
-        "test should raise error when age is very large",
+        "should raise error when age is larger than 100",
+        "should raise error when age is very large",
         "should raise error if age is string"
     ]
 )
