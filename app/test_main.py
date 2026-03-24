@@ -15,15 +15,21 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
 )
-def test_get_human_age(
-    cat_age: int,
-    dog_age: int,
-    expected: list[int],
-) -> None:
+def test_get_human_age(cat_age: int, dog_age: int, expected: list[int]) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_return_type() -> None:
-    result = get_human_age(15, 15)
-    assert isinstance(result, list)
-    assert len(result) == 2
+def test_invalid_negative_values() -> None:
+    with pytest.raises(ValueError):
+        get_human_age(-1, 10)
+
+    with pytest.raises(ValueError):
+        get_human_age(10, -1)
+
+
+def test_invalid_types() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", 10)
+
+    with pytest.raises(TypeError):
+        get_human_age(10, "15")
