@@ -29,6 +29,25 @@ class TestErrors:
         with pytest.raises(ValueError):
             get_human_age(cat_age, dog_age)
 
+    @pytest.mark.parametrize("cat_age, dog_age",
+                             [
+                                 pytest.param(4.6, 7.8),
+                                 pytest.param("31", "25"),
+                                 pytest.param((1,), (2,)),
+                                 pytest.param(None, None),
+                                 pytest.param({22}, {10}),
+                                 pytest.param({"cat": 12}, {"dog": 11}),
+                                 pytest.param([12], [19])
+                             ]
+                             )
+    def test_should_error_when_age_is_not_int(
+            self,
+            cat_age: int,
+            dog_age: int
+    ) -> None:
+        with pytest.raises(TypeError):
+            get_human_age(cat_age, dog_age)
+
 
 class TestOutput:
     @pytest.mark.parametrize("cat_age, dog_age, human_list",

@@ -44,7 +44,7 @@ def dog_year_converting(dog_age: int) -> int:
         raise TypeError("dog age must be an integer")
 
     if dog_age < 0:
-        raise ValueError("cat's age must be >= 0")
+        raise ValueError("dog's age must be >= 0")
     elif dog_age < 15:
         return human_age
     elif 15 <= dog_age < 23:
