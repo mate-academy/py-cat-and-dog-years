@@ -30,7 +30,7 @@ def cat_year_converting(cat_age: int) -> int:
         raise ValueError("cat's age must be >= 0")
     elif cat_age < 15:
         return human_age
-    elif 15 <= cat_age < 23:
+    elif 15 <= cat_age < 24:
         human_age = 1
         return human_age
     else:
@@ -47,7 +47,7 @@ def dog_year_converting(dog_age: int) -> int:
         raise ValueError("dog's age must be >= 0")
     elif dog_age < 15:
         return human_age
-    elif 15 <= dog_age < 23:
+    elif 15 <= dog_age < 24:
         human_age = 1
         return human_age
     else:
