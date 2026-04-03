@@ -15,24 +15,14 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(24, 24) == [2, 2]
     """
 
-    def cat_to_human(age: int) -> int:
+    def to_human(age: int, divisor: int) -> int:
         if age < 15:
             return 0
         human_years = 1
-        if age >= 24:
+        if age >= 24:  # 15 + 9
             human_years += 1
             age -= 24
-            human_years += age // 4
+            human_years += age // divisor
         return human_years
 
-    def dog_to_human(age: int) -> int:
-        if age < 15:
-            return 0
-        human_years = 1
-        if age >= 24:
-            human_years += 1
-            age -= 24
-            human_years += age // 5
-        return human_years
-
-    return [cat_to_human(cat_age), dog_to_human(dog_age)]
+    return [to_human(cat_age, 4), to_human(dog_age, 5)]
