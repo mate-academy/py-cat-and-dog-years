@@ -12,11 +12,30 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (100, 100, [21, 17])
-    ]
+        (100, 100, [21, 17]),
+    ],
 )
 def test_get_human_age(
-        cat_age: int,
-        dog_age: int,
-        expected_result: list) -> None:
+    cat_age: int,
+    dog_age: int,
+    expected_result: list,
+) -> None:
     assert get_human_age(cat_age, dog_age) == expected_result
+
+
+def test_negative_numbers() -> None:
+    assert get_human_age(-1, -5) == [0, 0]
+
+
+def test_wrong_types() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", 20)
+
+    with pytest.raises(TypeError):
+        get_human_age(15, "20")
+
+    with pytest.raises(TypeError):
+        get_human_age(15.5, 20)
+
+    with pytest.raises(TypeError):
+        get_human_age(None, 20)
