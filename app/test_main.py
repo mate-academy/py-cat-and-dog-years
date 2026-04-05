@@ -38,6 +38,10 @@ from app.main import get_human_age
         pytest.param(
             100, 100, [21, 17],
             id="test 100 year"
+        ),
+        pytest.param(
+            -1, -1, [0, 0],
+            id="test negative numbers"
         )
 
     ]
@@ -48,3 +52,19 @@ def test_get_human_age(
         human_age: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == human_age
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected_error", [
+        pytest.param(
+            "15", "24", TypeError,
+            id="test should raise TypeError"
+        )
+    ])
+def test_get_human_age_errors(
+        cat_age: int,
+        dog_age: int,
+        expected_error: Exception
+) -> None:
+    with pytest.raises(expected_error):
+        get_human_age(cat_age, dog_age)
