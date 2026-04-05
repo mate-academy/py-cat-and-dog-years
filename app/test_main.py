@@ -12,6 +12,10 @@ from app.main import get_human_age
             id="test should return zeroes"
         ),
         pytest.param(
+            14, 14, [0, 0],
+            id="test should return zeroes if 14"
+        ),
+        pytest.param(
             15, 15, [1, 1],
             id="test should return ones"
         ),
@@ -22,6 +26,10 @@ from app.main import get_human_age
         pytest.param(
             24, 24, [2, 2],
             id="nine year increment"
+        ),
+        pytest.param(
+            27, 27, [2, 2],
+            id="test should return ones if 27"
         ),
         pytest.param(
             28, 28, [3, 2],
