@@ -12,6 +12,7 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
+        (29, 29, [3, 3]),
         (100, 100, [21, 17]),
     ],
     ids=[
@@ -22,6 +23,7 @@ from app.main import get_human_age
         "exactly_24",
         "cat_dog_mid_range",
         "cat_extra_growth",
+        "dog_boundary_29",
         "large_numbers",
     ],
 )
