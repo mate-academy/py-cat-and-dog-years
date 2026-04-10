@@ -9,6 +9,9 @@ def _convert_one(age: int, extra_period: int) -> int:
 
 
 def get_human_age(cat_age: int, dog_age: int) -> list[int]:
-    cat_h = _convert_one(cat_age, 4)
-    dog_h = _convert_one(dog_age, 5)
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("cat_age and dog_age must be int")
+    else:
+        cat_h = _convert_one(cat_age, 4)
+        dog_h = _convert_one(dog_age, 5)
     return [cat_h, dog_h]
