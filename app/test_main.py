@@ -24,4 +24,3 @@ def test_get_human_age_wrong_type() -> None:
 
     with pytest.raises(TypeError):
         get_human_age(15, 15.5)
-
