@@ -18,6 +18,11 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
+    if not isinstance(cat_age, int) or isinstance(cat_age, bool):
+        raise TypeError("cat age must be an integer")
+    if not isinstance(dog_age, int) or isinstance(dog_age, bool):
+        raise TypeError("dog age must be an integer")
+
     def to_human_age(animal_age: int, extra_year_step: int) -> int:
         if animal_age < 15:
             return 0
