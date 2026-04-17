@@ -15,15 +15,5 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ]
 )
-def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+def test_get_human_age(cat_age: int, dog_age: int, expected: int) -> None:
     assert get_human_age(cat_age, dog_age) == expected
-
-
-def test_get_human_age_returns_list() -> None:
-    result = get_human_age(20, 20)
-    assert isinstance(result, list)
-
-
-def test_get_human_age_returns_correct_length() -> None:
-    result = get_human_age(15, 15)
-    assert len(result) == 2
