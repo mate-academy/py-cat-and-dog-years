@@ -32,3 +32,27 @@ def test_get_human_age_negative_values() -> None:
 
     with pytest.raises(Exception):
         get_human_age(10, -5)
+
+    with pytest.raises(Exception):
+        get_human_age(101, 15)
+
+    with pytest.raises(Exception):
+        get_human_age(12, 101)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("10", 10),
+        (10, "10"),
+        (10.5, 10),
+        (10, 5.5),
+        (None, 10),
+        (10, None),
+        ([10], 10),
+        (10, {"age": 3})
+    ],
+)
+def test_get_human_age_invalid_types(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
