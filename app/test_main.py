@@ -9,6 +9,8 @@ from app.main import get_human_age
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (100, 100, [21, 17]),
     ],
@@ -22,3 +24,11 @@ def test_get_human_age(
         f"Cat age: {cat_age} and dog age: {dog_age} "
         f"should return {result}"
     )
+
+
+def test_get_human_age_negative_values() -> None:
+    with pytest.raises(Exception):
+        get_human_age(-1, 10)
+
+    with pytest.raises(Exception):
+        get_human_age(10, -5)
