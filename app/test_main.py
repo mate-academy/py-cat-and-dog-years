@@ -1,25 +1,29 @@
-from app.main import get_human_age
+import pytest
+import app.main
 
 
-def test_zero_age() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_age_less_than_15() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_age_equals_15() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_age_in_second_period() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_cat_dog_differ_in_third_period() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_large_age() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 15, [0, 1]),
+        (24, 23, [2, 1]),
+        (28, 28, [3, 2]),
+        (100, 1, [21, 0]),
+        (15, 24, [1, 2]),
+    ],
+    ids=[
+        "zero_age",
+        "cat_0_dog_1",
+        "cat_2_dog_1",
+        "diff_after_24",
+        "extreme_diff",
+        "cat_1_dog_2"
+    ]
+)
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
+    assert app.main.get_human_age(cat_age, dog_age) == expected
