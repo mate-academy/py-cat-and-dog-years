@@ -26,3 +26,38 @@ def test_get_human_age_conversion(
 ) -> None:
 
     assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age", [
+        pytest.param(-1, 0, id="negative_cat_value"),
+        pytest.param(0, -1, id="negative_dog_value")
+    ]
+)
+def test_negative_values_get_human_age(
+
+        cat_age: int,
+        dog_age: int
+
+) -> None:
+
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age", [
+        pytest.param("1", 1, id="cat_str_type_error"),
+        pytest.param(1, "1", id="dog_str__type_error"),
+        pytest.param(5.5, 5, id="cat_float_type_error"),
+        pytest.param(5, 5.5, id="dog_float_type_error")
+    ]
+)
+def test_type_error_get_human_age(
+
+        cat_age: object,
+        dog_age: object
+
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
