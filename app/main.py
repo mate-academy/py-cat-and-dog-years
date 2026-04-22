@@ -1,7 +1,9 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
     result = []
 
-    if cat_age < 15:
+    if cat_age < 0:
+        raise ValueError
+    elif cat_age < 15:
         result.append(0)
     elif cat_age < 24:
         result.append(1)
@@ -15,7 +17,9 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         age += cat_age // 4
         result.append(age)
 
-    if dog_age < 15:
+    if dog_age < 0:
+        raise ValueError
+    elif dog_age < 15:
         result.append(0)
     elif dog_age < 24:
         result.append(1)
