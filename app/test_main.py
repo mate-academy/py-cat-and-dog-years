@@ -23,7 +23,6 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_human_age
 
-
     @pytest.mark.parametrize("cat_age, dog_age, expected_human_age",
                              [
                                  (-1, -1, [0, 0]),
@@ -37,7 +36,6 @@ class TestGetHumanAge:
     ) -> None:
         assert get_human_age(cat_age, dog_age) == expected_human_age
 
-
     @pytest.mark.parametrize("cat_age, dog_age",
                              [
                                  (None, 15),
@@ -48,6 +46,6 @@ class TestGetHumanAge:
             self,
             cat_age: int,
             dog_age: int,
-    ):
+    ) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat_age, dog_age)
