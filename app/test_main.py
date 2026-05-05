@@ -3,7 +3,7 @@ from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
-    "cat_age: int, dog_age: int, expected: int",
+    "cat_age, dog_age, expected",
     [
         # --- Casos de Borda: 0 anos humanos ---
         (0, 0, [0, 0]),  # Zero absoluto
