@@ -11,4 +11,3 @@ def test_cat_and_dog_age_convert_to_human_age() -> None:
 
 def test_zero_value_in_function() -> None:
     assert get_human_age(0, 0) == [0, 0]
-
