@@ -18,6 +18,7 @@ from app.main import get_human_age
     (33, 33, [4, 3]),
     (34, 34, [4, 4]),
     (100, 100, [21, 17]),
+    (-1, -1, [0, 0]),
 ])
 def test_get_human_age(
     cat_age: int,
@@ -33,29 +34,6 @@ def test_returns_list() -> None:
     assert len(result) == 2
 
 
-def test_zero_ages() -> None:
-    assert get_human_age(0, 0) == [0, 0]
-
-
-def test_just_below_first_threshold() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_exactly_first_threshold() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_exactly_second_threshold() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_cat_and_dog_diverge_at_28() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_dog_catches_up_at_29() -> None:
-    assert get_human_age(28, 29) == [3, 3]
-
-
-def test_large_ages() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+def test_string_input_raises_type_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("15", 15)
