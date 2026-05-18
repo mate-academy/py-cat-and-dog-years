@@ -28,7 +28,7 @@ from app.main import get_human_age
         "large age",
     ],
 )
-def test_get_human_age(cat_age, dog_age, expected):
+def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
 
 
@@ -45,7 +45,7 @@ def test_get_human_age(cat_age, dog_age, expected):
         (28, 3),
     ],
 )
-def test_cat_age_boundaries(cat_age, expected_cat_human_age):
+def test_cat_age_boundaries(cat_age: int, expected_cat_human_age: int) -> None:
     result = get_human_age(cat_age, 0)
     assert result[0] == expected_cat_human_age
     assert result[1] == 0
@@ -65,7 +65,7 @@ def test_cat_age_boundaries(cat_age, expected_cat_human_age):
         (29, 3),
     ],
 )
-def test_dog_age_boundaries(dog_age, expected_dog_human_age):
+def test_dog_age_boundaries(dog_age: int, expected_dog_human_age: int) -> None:
     result = get_human_age(0, dog_age)
     assert result[0] == 0
     assert result[1] == expected_dog_human_age

@@ -6,7 +6,8 @@ def _convert_to_human(animal_age: int, years_per_extra_human_year: int) -> int:
         return 0
     if animal_age < first_period + second_period:
         return 1
-    return 2 + (animal_age - first_period - second_period) // years_per_extra_human_year
+    extra_years = animal_age - first_period - second_period
+    return 2 + extra_years // years_per_extra_human_year
 
 
 def get_human_age(cat_age: int, dog_age: int) -> list:
