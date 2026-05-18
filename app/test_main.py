@@ -1,3 +1,22 @@
+import pytest
 from app.main import get_human_age
 
-# write your code here
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age, case_result",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (-1, -50, [0, 0]),
+        (100, 100, [21, 17]),
+        (1000, 500, [246, 97])
+    ]
+)
+def test_margin_cases(cat_age: int, dog_age: int, case_result: list) -> None:
+    result = get_human_age(cat_age, dog_age)
+    assert result == case_result
