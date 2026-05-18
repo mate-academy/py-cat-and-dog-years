@@ -1,22 +1,36 @@
+import pytest
 from app.main import get_human_age
 
-# write your code here
-def test_return_a_list_and_correct_len_and_data_is_int() -> None:
-    result = get_human_age(0 , 0)
-    assert result == [0, 0]
 
-def test_limit_age_more_15_years() -> None:
-    result = get_human_age(15, 15)
-    assert result == [1, 1]
+# write your code her
+@pytest.mark.parametrize(
+    "cat_age, dog_age, case_result",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (28, 28, [3, 2]),
+        (-1, -1, [0, 0]),
+        (100, 100, [21, 17])
+    ]
+)
+def test_margin_cases(cat_age: int, dog_age: int, case_result: int) -> None:
+    result = get_human_age(cat_age, dog_age)
+    assert result == case_result
 
-def test_if_not_more_than_23() -> None:
-    result = get_human_age(23, 23)
-    assert result == [1, 1]
 
-def test_limit_age_over_24_years() -> None:
-    result = get_human_age(24, 24)
-    assert result == [2, 2]
-
-def test_count_the_right_step() -> None:
-    result = get_human_age(28, 28)
-    assert result == [3, 2]
+@pytest.mark.parametrize(
+    "invalid_cat, invalid_dog",
+    [
+        ("str", 15),
+        (None, 15),
+        ([1, 2], 15)
+    ]
+)
+def test_raise_type_error_value_err_none(invalid_cat: int,
+                                         invalid_dog: int
+                                         ) -> None:
+    with pytest.raises((TypeError, ValueError)):
+        get_human_age(invalid_cat, invalid_dog)
