@@ -1,5 +1,6 @@
 from app.main import get_human_age
 
+
 def test_age_should_be_right() -> None:
     assert get_human_age(0, 0) == [0, 0]
     assert get_human_age(14, 14) == [0, 0]
