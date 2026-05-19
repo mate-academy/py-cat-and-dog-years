@@ -1,5 +1,4 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
-    # 🐱 Рахуємо вік кота
     cat_human_age = 0
     if cat_age >= 15:
         cat_age -= 15
@@ -11,7 +10,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
                 cat_age -= 4
                 cat_human_age += 1
 
-    # 🐶 Рахуємо вік собаки
     dog_human_age = 0
     if dog_age >= 15:
         dog_age -= 15
@@ -24,4 +22,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
                 dog_human_age += 1
 
     return [cat_human_age, dog_human_age]
+
+
 print(get_human_age(1, 0))
