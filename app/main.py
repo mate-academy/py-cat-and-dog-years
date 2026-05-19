@@ -24,3 +24,4 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
                 dog_human_age += 1
 
     return [cat_human_age, dog_human_age]
+print(get_human_age(1, 0))
