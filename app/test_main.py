@@ -36,8 +36,6 @@ from app.main import get_human_age
         ),
     ]
 )
-
-
 def test_correct_cases(
         cat_age: int,
         dogs_age: int,
