@@ -17,8 +17,8 @@ def test_if_animals_two_years() -> None:
 
 
 def test_if_animals_three_years() -> None:
-    age_animals = get_human_age(28, 29)
-    assert age_animals == [3, 3]
+    age_animals = get_human_age(28, 28)
+    assert age_animals == [3, 2]
 
 
 def test_if_animals_up_2_years() -> None:
