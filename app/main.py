@@ -18,8 +18,10 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    cat_human_age = dog_human_age = 0 \
-        if cat_age < 15 else 1 if cat_age < 24 else 2
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError
+    cat_human_age = 0 if cat_age < 15 else 1 if cat_age < 24 else 2
+    dog_human_age = 0 if dog_age < 15 else 1 if dog_age < 24 else 2
     cat_age -= 24
     dog_age -= 24
     if cat_age > 0:
