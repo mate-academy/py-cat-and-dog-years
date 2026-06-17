@@ -19,6 +19,38 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert main.get_human_age(cat_age, dog_age) == expected
 
 
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (-1, 0, [0, 0]),
+        (0, -1, [0, 0]),
+        (10 ** 6, 10 ** 6, [249996, 199997]),
+    ]
+)
+def test_get_human_age_out_of_range(
+        cat_age: int, dog_age: int, expected: list) -> None:
+    assert main.get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "age_below, age_at, expected_below, expected_at",
+    [
+        (14, 15, [0, 0], [1, 1]),
+        (23, 24, [1, 1], [2, 2]),
+        (27, 28, [2, 2], [3, 2]),
+        (28, 29, [3, 2], [3, 3]),
+    ]
+)
+def test_get_human_age_boundaries(
+        age_below: int,
+        age_at: int,
+        expected_below: list,
+        expected_at: list,
+) -> None:
+    assert main.get_human_age(age_below, age_below) == expected_below
+    assert main.get_human_age(age_at, age_at) == expected_at
+
+
 @pytest.mark.parametrize("cat_age, dog_age", [
     ("5", 10),
     (5, "10"),
