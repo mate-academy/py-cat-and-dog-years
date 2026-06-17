@@ -2,7 +2,9 @@ from math import floor
 
 
 def get_human_age(cat_age: int, dog_age: int) -> list:
-    age_numbers = [cat_age, dog_age]
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError
+    age_numbers = [round(cat_age), round(dog_age)]
     final_age = []
     for index, age in enumerate(age_numbers):
         if age < 15:

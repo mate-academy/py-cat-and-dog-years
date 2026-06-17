@@ -1,30 +1,59 @@
+import pytest
+
 from app.main import get_human_age
 
 
 # write your code here
-class TestGetHumanAge:
-    def test_should_return_0_when_(self) -> None:
-        assert get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (29, 29, [3, 3]),
+        (100, 100, [21, 17]),
+        (1000, 1000, [246, 197]),
+    ],
+)
+def test_get_human_age(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
-    def test_should_return_0_when_age_lower_than_15(self) -> None:
-        assert get_human_age(14, 14) == [0, 0]
 
-    def test_should_return_1_when_age_is_15(self) -> None:
-        assert get_human_age(15, 15) == [1, 1]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected",
+    [
+        (-1, -1, [0, 0]),
+        (-100, 15, [0, 1]),
+        (15, -100, [1, 0]),
+    ],
+)
+def test_negative_ages(
+        cat_age: int,
+        dog_age: int,
+        expected: list[int]
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
-    def test_should_count_right_when_age_lower_than_24(self) -> None:
-        assert get_human_age(23, 23) == [1, 1]
 
-    def test_should_count_right_when_age_is_24(self) -> None:
-        assert get_human_age(24, 24) == [2, 2]
-
-    def test_should_count_right_when_age_between_24_and_higher(self) -> None:
-        assert get_human_age(27, 27) == [2, 2]
-
-    def test_should_count_right_cat_and_dog_formula_on_age_higher_27(
-            self
-    ) -> None:
-        assert get_human_age(28, 28) == [3, 2]
-
-    def test_should_work_with_big_args(self) -> None:
-        assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("10", 10),
+        (10, "10"),
+        (10.5, 10),
+        (10, 10.5),
+        (None, 10),
+        (10, None),
+    ],
+)
+def test_invalid_types(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
