@@ -9,6 +9,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         years += 1
         age -= 9
         years += age // step
-        return round(years, 1)
+        return years
 
     return [convert(cat_age, 4), convert(dog_age, 5)]
