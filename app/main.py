@@ -2,6 +2,13 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     cat_age_result = None
     dog_age_result = None
 
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Age cannot be negative")
+    if cat_age > 100 or dog_age > 100:
+        raise ValueError("Age is too large")
+    if isinstance(cat_age, float | str) or isinstance(dog_age, float | str):
+        raise TypeError("Incorrect type")
+
     if cat_age < 15:
         cat_age_result = 0
     elif 15 <= cat_age < 24:
