@@ -43,15 +43,17 @@ class TestInvalidInput:
     def test_negative_and_large(self, cat: int, dog: int) -> None:
         with pytest.raises(ValueError):
             get_human_age(cat, dog)
+
     @pytest.mark.parametrize("cat, dog", [
         ("15", 10),
         (10, "15"),
         (15.5, 10),
         (10, 15.5),
     ])
-    def test_wrong_types(self, cat, dog) -> None:
+    def test_wrong_types(self, cat: int, dog: int) -> None:
         with pytest.raises(TypeError):
             get_human_age(cat, dog)
+
 
 class TestMixedRanges:
     @pytest.mark.parametrize("cat, dog, expected", [
@@ -59,5 +61,10 @@ class TestMixedRanges:
         (25, 10, [2, 0]),
         (30, 20, [3, 1]),
     ])
-    def test_independent_calculation(self, cat, dog, expected):
+    def test_independent_calculation(
+            self,
+            cat: int,
+            dog: int,
+            expected: list
+    ) -> None:
         assert get_human_age(cat, dog) == expected
