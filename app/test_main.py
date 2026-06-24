@@ -22,7 +22,7 @@ def test_get_human_age_returns_correct_result(
 
 
 @pytest.mark.parametrize("cat_age, dog_age", [
-    (0, 0), (14, 14), (15, 15), (23, 23), (24, 24), (100, 100),
+    (0, 1), (3, 6), (15, 16),
 ])
 def test_get_human_age_returns_list_of_two_elements(
     cat_age: int,
@@ -33,7 +33,7 @@ def test_get_human_age_returns_list_of_two_elements(
 
 
 @pytest.mark.parametrize("cat_age, dog_age", [
-    (0, 0), (15, 15), (100, 100),
+    (0, 34), (10, 15), (-4, 100),
 ])
 def test_get_human_age_returns_integers(
     cat_age: int,
