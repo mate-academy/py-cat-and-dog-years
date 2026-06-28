@@ -21,28 +21,22 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     cat_human_age = 0
     dog_human_age = 0
 
-    if cat_age < 15:
-        cat_human_age = 0
-    else:
-        cat_human_age += 1
-        cat_age -= 15
-        if cat_age >= 9:
-            cat_human_age += 1
-            cat_age -= 9
-            if cat_age >= 4:
-                cat_human_age += cat_age // 4
+    def get_base_years(animal_age: int, coefficient: int) -> int:
+        if type(animal_age) is not int:
+            raise TypeError
+        animal_human_age = 0
+        if animal_age >= 15:
+            animal_human_age += 1
+            animal_age -= 15
+            if animal_age >= 9:
+                animal_human_age += 1
+                animal_age -= 9
+                if animal_age >= 4:
+                    animal_human_age += animal_age // coefficient
 
-    if dog_age < 15:
-        dog_human_age = 0
-    else:
-        dog_human_age += 1
-        dog_age -= 15
-        if dog_age >= 9:
-            dog_human_age += 1
-            dog_age -= 9
-            if dog_age >= 4:
-                dog_human_age += dog_age // 5
+        return animal_human_age
 
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
+    cat_human_age = get_base_years(cat_age, 4)
+    dog_human_age = get_base_years(dog_age, 5)
+
     return [cat_human_age, dog_human_age]
