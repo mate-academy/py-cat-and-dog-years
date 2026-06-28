@@ -1,9 +1,10 @@
 from app.main import get_human_age
 import pytest
-# write your code here
 
 
 @pytest.mark.parametrize("cat_age, dog_age, human_age", [
+    (-1, -10, [0, 0]),
+    (10000, 10000, [0, 0]),
     (0, 0, [0, 0]),
     (14, 14, [0, 0]),
     (15, 15, [1, 1]),

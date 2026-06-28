@@ -18,14 +18,12 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    cat_human_age = 0
-    dog_human_age = 0
 
     def get_base_years(animal_age: int, coefficient: int) -> int:
         if type(animal_age) is not int:
             raise TypeError
         animal_human_age = 0
-        if animal_age >= 15:
+        if 15 <= animal_age <= 100:
             animal_human_age += 1
             animal_age -= 15
             if animal_age >= 9:
@@ -33,7 +31,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
                 animal_age -= 9
                 if animal_age >= 4:
                     animal_human_age += animal_age // coefficient
-
         return animal_human_age
 
     cat_human_age = get_base_years(cat_age, 4)
