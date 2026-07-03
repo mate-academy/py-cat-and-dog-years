@@ -28,6 +28,31 @@ def test_get_human_age(
     assert get_human_age(cat_age, dog_age) == expected_output
 
 
+@pytest.mark.parametrize(
+    "animal,boundary_age,old_human,new_human",
+    [
+        ("cat", 15, [0, 0], [1, 0]),
+        ("cat", 24, [1, 0], [2, 0]),
+        ("cat", 28, [2, 0], [3, 0]),
+        ("dog", 15, [0, 0] , [0, 1]),
+        ("dog", 24, [0, 1], [0, 2]),
+        ("dog", 29, [0, 2], [0, 3])
+    ]
+)
+def test_get_human_age_boundary_thresholds(
+        animal: str,
+        boundary_age: int,
+        old_human: list,
+        new_human: list
+) -> None:
+    if animal == "cat":
+        assert get_human_age(boundary_age - 1, 0) == old_human
+        assert get_human_age(boundary_age, 0) == new_human
+    elif animal == "dog":
+        assert get_human_age(0, boundary_age - 1) == old_human
+        assert get_human_age(0, boundary_age) == new_human
+
+
 def test_get_human_age_should_raise_type_error_for_invalid_types() -> None:
     invalid_inputs = [
         ("15", 15),
