@@ -7,7 +7,7 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected_output",
     [
-        (-1, -1, [0, 0]),
+        (-1000, -1000, [0, 0]),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -16,8 +16,8 @@ from app.main import get_human_age
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
         (29, 29, [3, 3]),
-        (100, 100, [21, 17])
-
+        (100, 100, [21, 17]),
+        (10000, 10000, [2496, 1997])
     ]
 )
 def test_get_human_age(
@@ -29,5 +29,15 @@ def test_get_human_age(
 
 
 def test_get_human_age_should_raise_type_error_for_invalid_types() -> None:
-    with pytest.raises(TypeError):
-        get_human_age("15", 15)
+    invalid_inputs = [
+        ("15", 15),
+        (15, "15"),
+        (15.5, 15),
+        (15, 15.5),
+        (None, 15),
+        (15, None)
+    ]
+
+    for cat, dog in invalid_inputs:
+        with pytest.raises(TypeError):
+            get_human_age(cat, dog)
