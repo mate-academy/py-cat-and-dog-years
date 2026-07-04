@@ -1,34 +1,33 @@
+import pytest
 from app import main
 
 
-def test_should_return_zeros_for_ages_less_than_fifteen() -> None:
-    assert main.get_human_age(14, 14) == [0, 0]
-    assert main.get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize("cat_age, dog_age, expected", [
+    (0, 0, [0, 0]),
+    (14, 14, [0, 0]),
+    (15, 15, [1, 1]),
+    (23, 23, [1, 1]),
+    (24, 24, [2, 2]),
+    (27, 27, [2, 2]),
+    (28, 28, [3, 2]),
+    (100, 100, [21, 17]),
+    (1000, 1000, [246, 197])
+])
+def test_get_human_age_logic(
+        cat_age: int,
+        dog_age: int,
+        expected: int
+) -> None:
+    assert main.get_human_age(cat_age, dog_age) == expected
 
 
-def test_should_return_one_human_year_at_exactly_fifteen_years() -> None:
-    assert main.get_human_age(15, 15) == [1, 1]
-
-
-def test_should_stay_one_human_year_just_before_twenty_four() -> None:
-    assert main.get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_two_human_years_at_exactly_twenty_four() -> None:
-    assert main.get_human_age(24, 24) == [2, 2]
-
-
-def test_should_stay_two_human_years_just_before_next_step() -> None:
-    assert main.get_human_age(27, 28) == [2, 2]
-
-
-def test_should_increment_cat_age_every_four_years_after_twenty_four() -> None:
-    assert main.get_human_age(28, 24) == [3, 2]
-    assert main.get_human_age(31, 24) == [3, 2]
-    assert main.get_human_age(32, 24) == [4, 2]
-
-
-def test_should_increment_dog_age_every_five_years_after_twenty_four() -> None:
-    assert main.get_human_age(24, 29) == [2, 3]
-    assert main.get_human_age(24, 33) == [2, 3]
-    assert main.get_human_age(24, 34) == [2, 4]
+@pytest.mark.parametrize("cat_age, dog_age", [
+    ("15", 15),
+    (15, "15"),
+    (None, 15),
+    (15.5, 15),
+    (15, 15.5)
+])
+def test_get_human_age_invalid_types(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        main.get_human_age(cat_age, dog_age)
