@@ -71,7 +71,7 @@ def test_different_values_return_different_lists(
     "cat_age,dog_age,result",
     [
         (9.162, 23.739, [0, 1]),
-        (27.54, 30.44, [2, 2])
+        (27.54, 30.44, [2, 3])
     ]
 )
 def test_func_rounds_floats_into_integers(
@@ -85,10 +85,10 @@ def test_func_rounds_floats_into_integers(
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
-        (56, 0, [8, 0]),
-        (0, 73, [0, 10]),
-        (42, 90, [5, 14]),
-        (60, 30, [9, 2])
+        (56, 0, [10, 0]),
+        (0, 73, [0, 11]),
+        (42, 90, [6, 15]),
+        (60, 30, [11, 3])
     ]
 )
 def test_counts_big_age_values_correctly(
@@ -102,8 +102,8 @@ def test_counts_big_age_values_correctly(
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
-        (999999, -9999999, [249994, 0]),
-        (9999999, 100000000000, [2499994, 19999999996])
+        (999999, -9999999, [249995, 0]),
+        (9999999, 100000000000, [2499995, 19999999997])
     ]
 )
 def test_counts_large_age_values_correctly(
