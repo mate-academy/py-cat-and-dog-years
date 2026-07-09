@@ -18,6 +18,15 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    def count_age(age_raw: int, step: int) -> int:
+        age = int(age_raw)
+        if age <= 14:
+            return 0
+        elif age in range(15, 25):
+            return 1
+        elif age in range(25, 30):
+            return 2
+        else:
+            return (age - 30) // step + 2
+
+    return [count_age(cat_age, 4), count_age(dog_age, 5)]
