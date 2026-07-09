@@ -6,6 +6,7 @@ def calculate_animal_age(age: int, divisor: int) -> int:
     else:
         return 2 + (age - 24) // divisor
 
+
 def get_human_age(cat_age: int, dog_age: int) -> list:
     cat_human_age = calculate_animal_age(cat_age, divisor=4)
     dog_human_age = calculate_animal_age(dog_age, divisor=5)
