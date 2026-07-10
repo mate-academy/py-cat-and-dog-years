@@ -15,21 +15,21 @@ from app import main
         (100, 100, [21, 17]),
     ],
 )
-def test_examples(cat, dog, expected) -> None:
+def test_examples(cat: int, dog: int, expected: list[int]) -> None:
     assert main.get_human_age(cat, dog) == expected
 
 
 @pytest.mark.parametrize(
     "age,cat_expected", [(14, 0), (15, 1), (23, 1), (24, 2)]
 )
-def test_cat_boundaries(age, cat_expected) -> None:
+def test_cat_boundaries(age: int, cat_expected: int) -> None:
     assert main.get_human_age(age, 0)[0] == cat_expected
 
 
 @pytest.mark.parametrize(
     "age,dog_expected", [(14, 0), (15, 1), (23, 1), (24, 2)]
 )
-def test_dog_boundaries(age, dog_expected) -> None:
+def test_dog_boundaries(age: int, dog_expected: int) -> None:
     assert main.get_human_age(0, age)[1] == dog_expected
 
 
