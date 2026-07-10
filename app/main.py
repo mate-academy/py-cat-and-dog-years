@@ -1,4 +1,10 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    for age in (cat_age, dog_age):
+        if not isinstance(age, int) or isinstance(age, bool):
+            raise TypeError("Age must be an integer")
+        if age < 0:
+            raise ValueError("Age must be non-negative")
+
     step_dog = 5
     step_cat = 4
     result_list = []
