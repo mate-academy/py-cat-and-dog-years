@@ -18,16 +18,26 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
+    if not isinstance(cat_age, int):
+        raise TypeError("Cat age must be integer.")
+
+    if not isinstance(dog_age, int):
+        raise TypeError("Dog age must be integer.")
+
     human_age = [0, 0]
 
     if cat_age > 23:
         human_age[0] = 2 + (cat_age - 24) // 4
     elif cat_age > 14:
         human_age[0] = 1
+    elif cat_age < 0:
+        raise ValueError("Cat age must not be negative.")
 
     if dog_age > 23:
-        human_age[1] = 2 + (cat_age - 24) // 5
+        human_age[1] = 2 + (dog_age - 24) // 5
     elif dog_age > 14:
         human_age[1] = 1
+    elif dog_age < 0:
+        raise ValueError("Dog age must not be negative.")
 
     return human_age
