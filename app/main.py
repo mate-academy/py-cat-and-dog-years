@@ -25,24 +25,20 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
 
     def convert_cat_age(age: int) -> int:
         if age == 0:
-            return 1
+            return 0
         if age < 15:
             return 0
         if age < 24:
             return 1
-        if age < 30:
-            return 2
-        return 3 + (age - 30) // 10
+        return 2 + ((age - 24) // 4)
 
     def convert_dog_age(age: int) -> int:
         if age == 0:
-            return 1
+            return 0
         if age < 15:
             return 0
         if age < 24:
             return 1
-        if age < 30:
-            return 2
-        return 3 + (age - 30) // 10
+        return 2 + ((age - 24) // 5)
 
     return [convert_cat_age(cat_age), convert_dog_age(dog_age)]
