@@ -15,5 +15,3 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     elif dog_age >= 24:
         human_ages.append((dog_age - 24) // 5 + 2)
     return human_ages
-
-
