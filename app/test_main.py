@@ -2,6 +2,7 @@ import pytest
 
 from app.main import get_human_age
 
+
 @pytest.mark.parametrize(
     "cat_age,dog_age,result",
     [
@@ -16,4 +17,4 @@ from app.main import get_human_age
     ]
 )
 def test_limit_values(cat_age: int, dog_age: int, result: list[int]) -> None:
-    assert  get_human_age(cat_age, dog_age) == result
+    assert get_human_age(cat_age, dog_age) == result
