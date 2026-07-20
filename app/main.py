@@ -19,5 +19,21 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(24, 24) == [2, 2]
     """
     # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    human_age = [0, 0]
+    index = 0
+    years = 4
+    for age in [cat_age, dog_age]:
+        counter = age
+        if 14 < age:
+            human_age[index] += 1
+            counter -= 15
+            if 23 < age:
+                human_age[index] += 1
+                counter -= 9
+                while counter >= years:
+                    human_age[index] += 1
+                    counter -= years
+        index += 1
+        years += 1
+
+    return human_age
