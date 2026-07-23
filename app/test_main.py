@@ -24,6 +24,7 @@ def test_dog_age_converted_independently_from_cat_age() -> None:
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
+        (-1, -1, [0, 0]),
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -35,6 +36,7 @@ def test_dog_age_converted_independently_from_cat_age() -> None:
         (100, 100, [21, 17]),
     ],
     ids=[
+        "negative ages give zero human years",
         "zero ages give zero human years",
         "ages below 15 give zero human years",
         "first 15 years give 1 human year",
@@ -55,3 +57,26 @@ def test_get_human_age_boundary_values(
         f"get_human_age({cat_age}, {dog_age}) "
         f"should return {expected}"
     )
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        (None, 15),
+        (15, None),
+    ],
+    ids=[
+        "cat age as string",
+        "dog age as string",
+        "cat age as None",
+        "dog age as None",
+    ],
+)
+def test_incorrect_types_should_raise_type_error(
+    cat_age: int | str | None,
+    dog_age: int | str | None,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
