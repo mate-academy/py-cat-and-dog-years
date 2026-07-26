@@ -1,18 +1,31 @@
+import pytest
+
 from app import main
 
 
-# write your code here
-def test_get_human_age() -> None:
-    assert main.get_human_age(10, 10) == [1, 1]
-
-
-def test_get_human_age_cat_and_dog_between_15_and_24() -> None:
-    assert main.get_human_age(16, 16) == [2, 2]
-
-
-def test_get_human_age_cat_and_dog_between_25_and_29() -> None:
-    assert main.get_human_age(26, 26) == [3, 3]
-
-
-def test_get_human_age_cat_and_dog_between_30_and_34() -> None:
-    assert main.get_human_age(31, 31) == [4, 4]
+@pytest.mark.parametrize(
+    "cat_age,dog_age,expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+    ],
+    ids=[
+        "0 cat/dog years should convert into [0, 0] human years",
+        "14 cat/dog years should convert into [0, 0] human years",
+        "15 cat/dog years should convert into [1, 1] human years",
+        "23 cat/dog years should convert into [1, 1] human years",
+        "24 cat/dog years should convert into [2, 2] human years",
+        "27 cat/dog years should convert into [2, 2] human years",
+        "28 cat/dog years should convert into [3, 2] human years "
+        "(cats and dogs use different intervals)",
+        "100 cat/dog years should convert into [21, 17] human years",
+    ],
+)
+def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+    assert main.get_human_age(cat_age, dog_age) == expected
