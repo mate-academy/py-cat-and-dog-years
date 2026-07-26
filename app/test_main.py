@@ -29,3 +29,38 @@ from app import main
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert main.get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("10", 10),
+        (10, "10"),
+        (10.5, 10),
+        (10, 10.5),
+        (None, 10),
+        (10, None),
+        ([10], 10),
+        (10, [10]),
+        (True, 10),
+        (10, False),
+    ],
+    ids=[
+        "cat_age as str should raise TypeError",
+        "dog_age as str should raise TypeError",
+        "cat_age as float should raise TypeError",
+        "dog_age as float should raise TypeError",
+        "cat_age as None should raise TypeError",
+        "dog_age as None should raise TypeError",
+        "cat_age as list should raise TypeError",
+        "dog_age as list should raise TypeError",
+        "cat_age as bool should raise TypeError",
+        "dog_age as bool should raise TypeError",
+    ],
+)
+def test_get_human_age_raises_type_error(
+    cat_age: object,
+    dog_age: object
+) -> None:
+    with pytest.raises(TypeError):
+        main.get_human_age(cat_age, dog_age)
