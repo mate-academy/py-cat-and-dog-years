@@ -18,6 +18,17 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+
+    # Define a single helper function for the shared logic
+    def calculate_animal_age(age: int, divisor: int) -> int:
+        if age < 15:
+            return 0
+        if age < 24:
+            return 1
+
+        return 2 + ((age - 24) // divisor)
+
+    human_cat_age = calculate_animal_age(cat_age, divisor=4)
+    human_dog_age = calculate_animal_age(dog_age, divisor=5)
+
+    return [human_cat_age, human_dog_age]
