@@ -34,15 +34,6 @@ def test_get_human_age(
         (15, None),
     ],
 )
-@pytest.mark.parametrize(
-    "cat_age, dog_age",
-    [
-        ("15", 15),
-        (15, "15"),
-        (None, 15),
-        (15, None),
-    ],
-)
 def test_should_raise_type_error_for_invalid_types(
     cat_age: object,
     dog_age: object,
