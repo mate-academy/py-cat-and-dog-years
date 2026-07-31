@@ -1,29 +1,42 @@
+import pytest
+
 from app.main import get_human_age
 
 
-def test_should_return_zero_when_both_ages_are_zero() -> None:
-    assert get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+        (-1, 0, [0, 0]),
+        (0, -5, [0, 0]),
+    ],
+)
+def test_get_human_age(
+    cat_age: int,
+    dog_age: int,
+    expected: list,
+) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
 
 
-def test_should_return_zero_when_age_is_less_than_15() -> None:
-    assert get_human_age(14, 14) == [0, 0]
-
-
-def test_should_return_one_when_age_is_15() -> None:
-    assert get_human_age(15, 15) == [1, 1]
-
-
-def test_should_return_one_when_age_is_between_15_and_23() -> None:
-    assert get_human_age(23, 23) == [1, 1]
-
-
-def test_should_return_two_when_age_is_24() -> None:
-    assert get_human_age(24, 24) == [2, 2]
-
-
-def test_should_calculate_additional_years_correctly() -> None:
-    assert get_human_age(28, 28) == [3, 2]
-
-
-def test_should_calculate_large_ages_correctly() -> None:
-    assert get_human_age(100, 100) == [21, 17]
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        (None, 15),
+        (15, None),
+    ],
+)
+def test_should_raise_type_error_for_invalid_types(
+    cat_age,
+    dog_age,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
