@@ -14,6 +14,7 @@ from app.main import get_human_age
         pytest.param(14, 14, [0, 0], id="Less then 15 pet years"),
         pytest.param(15, 15, [1, 1], id="Pet 15 years equal 1 human"),
         pytest.param(23, 23, [1, 1], id="Pet 23 years equal 1 human"),
+        pytest.param(24, 24, [2, 2], id="Pet 23 years equal 1 human"),
         pytest.param(27, 27, [2, 2], id="Pet 27 years equal 2 human"),
         pytest.param(28, 28, [3, 2],
                      id="Cat 28 years equal 3 human "
