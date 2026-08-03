@@ -8,6 +8,7 @@ class TestHumanAge:
         "cat_age,dog_age,expected_result",
         [
             (28, 100, [3, 17]),
+            (14, 14, [0, 0]),
             (27, 28, [2, 2]),
             (100, 33, [21, 3]),
             (0, -100, [0, 0]),
@@ -15,6 +16,7 @@ class TestHumanAge:
         ],
         ids=[
             "should return values in human age",
+            "should return 0 if age is < 15",
             "should not increase human cat age before 28 years",
             "should not increase human dog age before 34 years",
             "should not increase value if one of the value are <= 0",

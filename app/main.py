@@ -5,10 +5,10 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     def count_years(age: int, remainder: int) -> int:
         result = 0
 
-        if age <= 0:
+        if age <= 0 or age < 15:
             return result
 
-        if age <= 15:
+        if age == 15:
             return 1
 
         result = (age - 24) // remainder + 2
