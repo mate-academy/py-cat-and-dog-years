@@ -28,6 +28,9 @@ from app.main import get_human_age
             28, 29, [3, 3],
             id="test 28 and 29 years returns 3 human years"),
         pytest.param(
+            28, 28, [3, 2],
+            id="test 28 years returns 3 human years for cat and 2 for dog"),
+        pytest.param(
             100, 100, [21, 17],
             id="test max age edge case"),
     ]
