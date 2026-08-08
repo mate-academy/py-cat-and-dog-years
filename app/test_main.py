@@ -9,8 +9,12 @@ def test_returns_zeros_when_age_is_under_15_years() -> None:
     assert get_human_age(14, 14) == [0, 0]
 
 
-def test_returns_ones_when_age_15() -> None:
+def test_returns_one_when_age_15() -> None:
     assert get_human_age(15, 15) == [1, 1]
+
+
+def test_returns_one_when_age_is_23() -> None:
+    assert get_human_age(23, 23) == [1, 1]
 
 
 def test_returns_two_when_age_is_24() -> None:
