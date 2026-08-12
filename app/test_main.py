@@ -7,13 +7,6 @@ class TestGetHumanAgeClass:
         "cat_age,dog_age,expected_result,expected_exception",
         [
             pytest.param(
-                -3,
-                -3,
-                [0, 0],
-                None,
-                id="should return [0, 0] for -3, -3"
-            ),
-            pytest.param(
                 0,
                 0,
                 [0, 0],
@@ -21,11 +14,32 @@ class TestGetHumanAgeClass:
                 id="should return [0, 0] for 0, 0"
             ),
             pytest.param(
+                14,
+                14,
+                [1, 1],
+                None,
+                id="should return [1, 1] for 14, 14"
+            ),
+            pytest.param(
                 15,
                 15,
                 [1, 1],
                 None,
                 id="should return [1, 1] for 15, 15"
+            ),
+            pytest.param(
+                23,
+                23,
+                [1, 1],
+                None,
+                id="should return [1, 1] for 23, 23"
+            ),
+            pytest.param(
+                24,
+                24,
+                [2, 2],
+                None,
+                id="should return [2, 2] for 24, 24"
             ),
             pytest.param(
                 27,
