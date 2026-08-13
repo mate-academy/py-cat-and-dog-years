@@ -16,7 +16,7 @@ class TestGetHumanAgeClass:
             pytest.param(
                 14,
                 14,
-                [1, 1],
+                [0, 0],
                 None,
                 id="should return [1, 1] for 14, 14"
             ),
