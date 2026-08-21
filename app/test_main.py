@@ -31,3 +31,18 @@ def test_get_human_age_boundaries(
         cat_age: int, dog_age: int, expected: list
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+def test_negative_cat_age_raises_error() -> None:
+    with pytest.raises(ValueError):
+        get_human_age(-1, 5)
+
+
+def test_negative_dog_age_raises_error() -> None:
+    with pytest.raises(ValueError):
+        get_human_age(5, -1)
+
+
+def test_non_integer_type_raises_error() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("5", 5)
