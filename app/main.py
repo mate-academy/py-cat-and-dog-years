@@ -14,7 +14,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    if type(cat_age) != int or type(dog_age) != int:
+    if type(cat_age) is not int or type(dog_age) is not int:
         raise TypeError("cat_age and dog_age must be of type int")
     if not 0 <= cat_age <= 100 or not 0 <= dog_age <= 100:
         raise ValueError("cat_age and dog_age must be between 0 and 100")
