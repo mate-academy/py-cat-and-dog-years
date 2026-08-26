@@ -22,3 +22,21 @@ def test_should_return_human_age_by_list(
         result: list[int]
 ) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
+
+def test_raise_type_error_when_age_type_is_not_int() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(2, "5")
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        (-1, 5),
+        (5, -1),
+        (-2, -2)
+    ]
+)
+def test_with_negative_age(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(-2, -1)
