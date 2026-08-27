@@ -92,6 +92,30 @@ from app.main import get_human_age
             [21, 17],
             id="output should be 21 for cat and 17 for dog"
         ),
+        pytest.param(
+            14,
+            14,
+            [0, 0],
+            id="cat and dog age == 14, so output should be 0"
+        ),
+        pytest.param(
+            15,
+            15,
+            [1, 1],
+            id="cat and dog age == 15, so output should be 1"
+        ),
+        pytest.param(
+            23,
+            23,
+            [1, 1],
+            id="cat and dog age == 23, so output should be 1"
+        ),
+        pytest.param(
+            24,
+            24,
+            [2, 2],
+            id="cat and dog age == 24, so output should be 2"
+        ),
     ],
 )
 def test_get_human_age(
