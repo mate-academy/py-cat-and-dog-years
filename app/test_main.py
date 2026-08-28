@@ -1,4 +1,5 @@
-﻿import pytest
+from typing import Any
+import pytest
 
 from app.main import get_human_age
 
@@ -33,6 +34,7 @@ def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
         (15, None),
     ],
 )
-def test_get_human_age_invalid_types(cat_age: any, dog_age: any) -> None:
+def test_get_human_age_invalid_types(cat_age: Any, dog_age: Any) -> None:
     with pytest.raises((TypeError, ValueError)):
         get_human_age(cat_age, dog_age)
+
