@@ -17,6 +17,20 @@ class TestGetHumanAge:
             (28, 28, [3, 2]),
             (29, 29, [3, 3]),
             (100, 100, [21, 17])
+        ],
+        ids=[
+            "should return zero if age is zero",
+            "should return zero if age lower than 15",
+            "should return zero only for dog if dog age lower than 15",
+            "should return zero only for cat if cat age lower than 15",
+            "should return ones",
+            "should return ones if age lower than 24",
+            "should return twos",
+            "should return twos if cat age lower than 28 and if dog age lower than 29",
+            "should return 3 for cat if age are equal 28",
+            "should return 3 for dog if age are equal 29",
+            "should return correct age"
+
         ]
     )
     def test_calculation_age_correctly(
