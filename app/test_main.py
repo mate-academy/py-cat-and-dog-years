@@ -26,7 +26,7 @@ class TestGetHumanAge:
             "should return ones",
             "should return ones if age lower than 24",
             "should return twos",
-            "should return twos if cat age lower than 28 and if dog age lower than 29",
+            "should return correct values for dog and cat",
             "should return 3 for cat if age are equal 28",
             "should return 3 for dog if age are equal 29",
             "should return correct age"
