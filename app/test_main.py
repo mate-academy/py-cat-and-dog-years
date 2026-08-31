@@ -23,3 +23,5 @@ def test_get_human_age_edges(cat: int, dog: int, expected: int) -> None:
 def test_get_human_age_wrong_type_str() -> None:
     with pytest.raises(TypeError):
         get_human_age("15", 15)
+    with pytest.raises(TypeError):
+        get_human_age("15", 15.5)
