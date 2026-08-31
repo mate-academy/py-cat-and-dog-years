@@ -55,7 +55,7 @@ def test_cat_and_dog_ages_calculated_independently() -> None:
     ],
 )
 def test_get_human_age_raises_type_error_for_invalid_types(
-    cat_age: type, dog_age: type
+    cat_age, dog_age
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
