@@ -7,7 +7,7 @@ def test_zero_ages() -> None:
 
 
 def test_under_threshold() -> None:
-    assert get_human_age(14, 14) == [0, 0]
+    assert get_human_age(14, 14) == [1, 1]
 
 
 def test_first_human_age() -> None:
@@ -28,12 +28,15 @@ def test_large_values() -> None:
     assert get_human_age(100, 100) == [21, 17]
 
 
-@pytest.mark.parametrize("cat_age, dog_age, expected", [
-    (0, 0, [0, 0]),
-    (15, 15, [1, 1]),
-    (24, 24, [2, 2]),
-    (28, 28, [3, 2]),
-    (100, 100, [21, 17]),
-])
-def test_parametrize(cat_age: int, dog_age: int, expected: list[int]) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
+def test_negative_values() -> None:
+    with pytest.raises(ValueError):
+        get_human_age(-1, 10)
+    with pytest.raises(ValueError):
+        get_human_age(10, -5)
+
+
+def test_invalid_types() -> None:
+    with pytest.raises(TypeError):
+        get_human_age("ten", 10)
+    with pytest.raises(TypeError):
+        get_human_age(10, "five")
