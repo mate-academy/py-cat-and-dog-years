@@ -1,25 +1,19 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
-    if not isinstance(cat_age, (int, float)) or 
-        not isinstance(dog_age, (int, float)):
-        raise TypeError("Ages must be integers")
-    if isinstance(cat_age, bool) or isinstance(dog_age, bool):
-        raise TypeError("Ages must be integers")
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
+    cat_human_years = 0
+    dog_human_years = 0
 
-    def calculate_cat_years(age: int) -> int:
-        if age < 15:
-            return 0
-        elif age < 24:
-            return 1
-        else:
-            return 2 + (age - 24) // 4
+    if cat_age >= 15:
+        cat_human_years += 1
+    if cat_age >= 24:
+        cat_human_years += 1
+    if cat_age >= 28:
+        cat_human_years += (cat_age - 24) // 4
 
-    def calculate_dog_years(age: int) -> int:
-        if age < 15:
-            return 0
-        elif age < 24:
-            return 1
-        else:
-            return 2 + (age - 24) // 5
+    if dog_age >= 15:
+        dog_human_years += 1
+    if dog_age >= 24:
+        dog_human_years += 1
+    if dog_age >= 29:
+        dog_human_years += (dog_age - 24) // 5
 
-    return [calculate_cat_years(cat_age), calculate_dog_years(dog_age)]
-
+    return [cat_human_years, dog_human_years]
