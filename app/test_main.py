@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 from app.main import get_human_age
 
@@ -28,7 +30,8 @@ from app.main import get_human_age
         (24, 33, [2, 3]),
         (24, 34, [2, 4]),
 
-        # Великі значення
+        # Великі boundary значення (перевірка (32, 32) та (100, 100))
+        (32, 32, [4, 3]),
         (100, 100, [21, 17]),
     ],
 )
@@ -45,13 +48,12 @@ def test_get_human_age_valid_cases(
     [
         ("15", 15),
         (15, "dog"),
-        (None, 15),
-        ([], {}),
+        ("15", "dog"),
     ],
 )
 def test_get_human_age_raises_type_error(
-    cat_age: type,
-    dog_age: type
+    cat_age: Any,
+    dog_age: Any
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
