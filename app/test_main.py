@@ -7,7 +7,7 @@ def test_zero_ages() -> None:
 
 
 def test_under_threshold() -> None:
-    assert get_human_age(14, 14) == [1, 1]
+    assert get_human_age(14, 14) == [0, 0]
 
 
 def test_first_human_age() -> None:
