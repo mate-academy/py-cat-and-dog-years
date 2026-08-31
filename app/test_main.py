@@ -1,3 +1,4 @@
+from typing import Any
 import pytest
 from app.main import get_human_age
 
@@ -55,7 +56,7 @@ def test_cat_and_dog_ages_calculated_independently() -> None:
     ],
 )
 def test_get_human_age_raises_type_error_for_invalid_types(
-    cat_age, dog_age
+    cat_age: Any, dog_age: Any
 ) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
