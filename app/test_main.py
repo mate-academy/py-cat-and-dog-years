@@ -1,4 +1,52 @@
+
+from typing import Any
+
+import pytest
+
 from app import main
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 5),
+        (5, -1),
+        (-1, -1),
+    ],
+    ids=["negative_cat_age", "negative_dog_age", "both_negative"],
+)
+def test_should_raise_value_error_for_negative_age(
+    cat_age: Any, dog_age: Any
+) -> None:
+    with pytest.raises(ValueError):
+        main.get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("5", 5),
+        (5, "5"),
+        (None, 5),
+        (5, None),
+        (5.5, 5),
+        (5, 5.5),
+    ],
+    ids=[
+        "cat_age_string",
+        "dog_age_string",
+        "cat_age_none",
+        "dog_age_none",
+        "cat_age_float",
+        "dog_age_float",
+    ],
+)
+def test_should_raise_type_error_for_invalid_type(
+    cat_age: Any,
+    dog_age: Any
+) -> None:
+    with pytest.raises(TypeError):
+        main.get_human_age(cat_age, dog_age)
 
 
 def test_should_return_zero_when_age_is_zero() -> None:
