@@ -1,10 +1,12 @@
 import pytest
 from app.main import get_human_age
+
+
 class TestGetHumanAge:
     @pytest.mark.parametrize(
         "cat_age, dog_age, result",
         [
-            pytest.param(0, 0, [0,0], id="1_1"),
+            pytest.param(0, 0, [0, 0], id="1_1"),
             pytest.param(14, 14, [0, 0], id="14_14"),
             pytest.param(15, 15, [1, 1], id="15_15"),
             pytest.param(23, 23, [1, 1], id="23_23"),
@@ -14,7 +16,12 @@ class TestGetHumanAge:
             pytest.param(100, 100, [21, 17], id="100_100"),
         ]
     )
-    def test_get_human_age(self, cat_age: int, dog_age: int, result: list) -> None:
+    def test_get_human_age(
+            self,
+            cat_age: int,
+            dog_age: int,
+            result: list
+    ) -> None:
         assert get_human_age(cat_age, dog_age) == result
 
     @pytest.mark.parametrize(
@@ -24,6 +31,11 @@ class TestGetHumanAge:
             pytest.param("two", "hello", TypeError, id="wrong type")
         ]
     )
-    def test_get_human_age_errors(self, cat_age: int, dog_age: int, exepted_error: Exception) -> None:
+    def test_get_human_age_errors(
+            self,
+            cat_age: int,
+            dog_age: int,
+            exepted_error: Exception
+    ) -> None:
         with pytest.raises(exepted_error):
             get_human_age(cat_age, dog_age)
