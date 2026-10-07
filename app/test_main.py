@@ -5,6 +5,10 @@ import pytest
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
+        # Від'ємні числа
+        (-1, -1, [0, 0]),
+        (-10, -15, [0, 0]),
+        # Граничні значення та нуль
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
@@ -17,3 +21,20 @@ import pytest
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        ("15", "15"),
+        (15.5, 15),
+        (15, [15]),
+    ],
+)
+def test_get_human_age_raises_type_error(
+    cat_age: int, dog_age: int
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
