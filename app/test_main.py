@@ -1,14 +1,12 @@
-from app.main import get_human_age
 import pytest
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
     "cat_age,dog_age,expected",
     [
-        # Отрицательные значения
         (-1, -1, [0, 0]),
         (-10, -15, [0, 0]),
-        # Граничные значения и ноль
         (0, 0, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
