@@ -1,44 +1,53 @@
+from typing import Any
+import pytest
 import app.main
 
 
-def test_zero_years() -> None:
-    assert app.main.get_human_age(0, 0) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (28, 29, [3, 3]),
+        (100, 100, [21, 17]),
+        (100, 14, [21, 0]),
+        (14, 100, [0, 17]),
+    ],
+)
+def test_get_human_age_valid_inputs(
+    cat_age: int, dog_age: int, expected: list[int]
+) -> None:
+    assert app.main.get_human_age(cat_age, dog_age) == expected
 
 
-def test_boundary_before_first_human_year() -> None:
-    assert app.main.get_human_age(14, 14) == [0, 0]
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 10),
+        (10, -1),
+    ],
+)
+def test_get_human_age_negative_ages(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
+        app.main.get_human_age(cat_age, dog_age)
 
 
-def test_boundary_exactly_first_human_year() -> None:
-    assert app.main.get_human_age(15, 15) == [1, 1]
-
-
-def test_boundary_before_second_human_year() -> None:
-    assert app.main.get_human_age(23, 23) == [1, 1]
-
-
-def test_boundary_exactly_second_human_year() -> None:
-    assert app.main.get_human_age(24, 24) == [2, 2]
-
-
-def test_boundary_before_third_human_year() -> None:
-    # Cat hits 3rd year at 28, Dog hits 3rd year at 29
-    assert app.main.get_human_age(27, 27) == [2, 2]
-    assert app.main.get_human_age(27, 28) == [2, 2]
-
-
-def test_boundary_exactly_third_human_year_for_cat() -> None:
-    assert app.main.get_human_age(28, 28) == [3, 2]
-
-
-def test_boundary_exactly_third_human_year_for_dog() -> None:
-    assert app.main.get_human_age(28, 29) == [3, 3]
-
-
-def test_large_numbers() -> None:
-    assert app.main.get_human_age(100, 100) == [21, 17]
-
-
-def test_different_ages_for_animals() -> None:
-    assert app.main.get_human_age(100, 14) == [21, 0]
-    assert app.main.get_human_age(14, 100) == [0, 17]
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        (15.5, 15),
+        (15, 15.5),
+        (None, 15),
+        (15, None),
+    ],
+)
+def test_get_human_age_invalid_types(cat_age: Any, dog_age: Any) -> None:
+    with pytest.raises(TypeError):
+        app.main.get_human_age(cat_age, dog_age)
