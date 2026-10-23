@@ -1,50 +1,52 @@
+import pytest
+
+
 from app.main import get_human_age
 
 
-def test_should_return_zeros_if_cat_age_and_dog_age_less_than_15() -> None:
-    result = get_human_age(cat_age=14, dog_age=14)
+@pytest.mark.parametrize(
+    "cat_age, dog_age, result",
+    [
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (26, 26, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+    ]
+)
+def test_calculate_years(cat_age: int, dog_age: int, result: list) -> None:
     assert (
-        result == [0, 0]
-    ), "Should return zeros if parameters less than 15"
+        get_human_age(cat_age, dog_age) == result
+    ), (
+        f"Error cat age {cat_age} and dog age {dog_age}. "
+        f"Expexted {result}"
+    )
 
 
-def test_should_return_one_if_parameters_are_equal_to_15() -> None:
-    result = get_human_age(cat_age=15, dog_age=15)
-    assert (
-        result == [1, 1]
-    ), "Should return one if parameters equal 15"
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        (None, 17),
+        (19, [25]),
+    ]
+)
+def test_cannot_pass_if_arent_integers(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
 
 
-def test_should_return_one_if_parameters_are_less_than_24() -> None:
-    result = get_human_age(cat_age=23, dog_age=23)
-    assert (
-        result == [1, 1]
-    ), "Should return one if parameters less than 24"
-
-
-def test_should_return_two_if_parameters_are_more_than_24() -> None:
-    result = get_human_age(cat_age=24, dog_age=24)
-    assert (
-        result == [2, 2]
-    ), "Should return two if parameters more than 24"
-
-
-def test_if_parameters_are_more_than_24_but_less_than_28() -> None:
-    result = get_human_age(cat_age=26, dog_age=26)
-    assert (
-        result == [2, 2]
-    ), "Should return two if parameters more than 24 and less than 28"
-
-
-def test_if_parameters_are_equal_to_28() -> None:
-    result = get_human_age(cat_age=28, dog_age=28)
-    assert (
-        result == [3, 2]
-    ), "Should return [3, 2] if parameters equal 28"
-
-
-def test_if_parameters_are_equal_to_100() -> None:
-    result = get_human_age(cat_age=100, dog_age=100)
-    assert (
-        result == [21, 17]
-    ), "Should return [21, 17] if parameters equal to 100"
+@pytest.mark.parametrize(
+    "cat_age,dog_age",
+    [
+        (-3, -5),
+        (100000000000, 300000000000),
+        (0, 0),
+    ]
+)
+def test_negative_zeros_or_huge_numbers(cat_age: int, dog_age: int) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
