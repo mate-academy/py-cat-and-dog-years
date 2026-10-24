@@ -24,7 +24,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     ):
         raise TypeError("Ages must be numbers")
 
-    if cat_age <= 0 or dog_age <= 0:
+    if cat_age < 0 or dog_age < 0:
         raise ValueError("Ages should be greater than 0")
 
     if cat_age > 150 or dog_age > 150:
