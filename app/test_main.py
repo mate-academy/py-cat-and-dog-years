@@ -1,3 +1,4 @@
+
 import pytest
 
 from app.main import get_human_age
@@ -7,6 +8,9 @@ from app.main import get_human_age
     "cat_age, dog_age, expected",
     [
         (0, 0, [0, 0]),
+        (-5, -5, [0, 0]),
+        (-10, 10, [0, 0]),
+        (10, -10, [0, 0]),
         (14, 14, [0, 0]),
         (15, 15, [1, 1]),
         (23, 23, [1, 1]),
@@ -41,3 +45,8 @@ def test_get_human_age_with_float() -> None:
 def test_get_human_age_with_bool() -> None:
     with pytest.raises(TypeError):
         get_human_age(True, 5)
+
+
+def test_get_human_age_with_bool_as_dog_age() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(5, False)
