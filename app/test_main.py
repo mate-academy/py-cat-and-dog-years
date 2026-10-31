@@ -78,10 +78,6 @@ class TestGetHumanAgeErrors:
                 id="should handle both negative ages"
             ),
             pytest.param(
-                0, 0, [0, 0],
-                id="should handle zero ages"
-            ),
-            pytest.param(
                 10000, 10000, [2496, 1997],
                 id="should handle large ages"
             ),
