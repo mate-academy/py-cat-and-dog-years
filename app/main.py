@@ -1,4 +1,9 @@
-def convert_to_human(age: int, first_year: int, second_year: int, each_year: int) -> int:
+def convert_to_human(
+        age: int,
+        first_year: int,
+        second_year: int,
+        each_year: int
+) -> int:
     if type(age) is not int or type(first_year) is not int \
        or type(second_year) is not int or type(each_year) is not int:
         raise TypeError("All arguments must be integers")
@@ -11,7 +16,6 @@ def convert_to_human(age: int, first_year: int, second_year: int, each_year: int
         return 1
     else:
         return 2 + (age - first_year - second_year) // each_year
-
 
 
 def get_human_age(cat_age: int, dog_age: int) -> list:

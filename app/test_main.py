@@ -1,6 +1,7 @@
 import pytest
 import app.main as main
 
+
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
