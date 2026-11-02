@@ -1,5 +1,6 @@
 import pytest
-import app.main as main
+
+from app.main import get_human_age
 
 
 @pytest.mark.parametrize(
@@ -20,23 +21,23 @@ def test_basic_examples(
     dog_age: int,
     expected: list[int],
 ) -> None:
-    assert main.get_human_age(cat_age, dog_age) == expected
+    assert get_human_age(cat_age, dog_age) == expected
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age, expected",
     [
         (-1, -1, ValueError),
-        (15.5, 21.2, TypeError),   # float
-        ("15", "21", TypeError),   # str
-        (None, None, TypeError),   # None
-        (True, False, TypeError),  # bool
+        (15.5, 21.2, TypeError),
+        ("15", "21", TypeError),
+        (None, None, TypeError),
+        (True, False, TypeError),
     ],
 )
 def test_errors(
-        cat_age: float | int,
-        dog_age: float | int,
-        expected: type[Exception]
+    cat_age: float | int,
+    dog_age: float | int,
+    expected: type[Exception],
 ) -> None:
     with pytest.raises(expected):
-        main.get_human_age(cat_age, dog_age)
+        get_human_age(cat_age, dog_age)
