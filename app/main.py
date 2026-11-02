@@ -18,26 +18,24 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         get_human_age(15, 15) == [1, 1]
         get_human_age(24, 24) == [2, 2]
     """
-    result = [0, 0]
 
-    if cat_age >= 15:
-        result[0] += 1
-        cat_age -= 15
-        if cat_age >= 9:
-            result[0] += 1
-            cat_age -= 9
-            while cat_age >= 4:
-                result[0] += 1
-                cat_age -= 4
+    if not (isinstance(cat_age, int) and isinstance(dog_age, int)):
+        raise TypeError
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError
 
-    if dog_age >= 15:
-        result[1] += 1
-        dog_age -= 15
-        if dog_age >= 9:
-            result[1] += 1
-            dog_age -= 9
-            while dog_age >= 5:
-                result[1] += 1
-                dog_age -= 5
+    def convert(age: int, step: int) -> int:
+        animal_years = 0
+        if age >= 15:
+            animal_years += 1
+            age -= 15
+            if age >= 9:
+                animal_years += 1
+                age -= 9
+                if age >= step:
+                    animal_years += age // step
+        return animal_years
+
+    result = [convert(cat_age, 4), convert(dog_age, 5)]
 
     return result
