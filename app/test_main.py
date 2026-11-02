@@ -1,15 +1,37 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
-    
-    cat_human_age = 0
-    if cat_age >= 15:
-        cat_human_age = 1
-        if cat_age >= 24:
-            cat_human_age = 2 + (cat_age - 24) // 4
+import pytest
+from app.main import get_human_age
 
-    dog_human_age = 0
-    if dog_age >= 15:
-        dog_human_age = 1
-        if dog_age >= 24:
-            dog_human_age = 2 + (dog_age - 24) // 5
 
-    return [cat_human_age, dog_human_age]
+@pytest.mark.parametrize(
+    "cat_age, dog_age, expected",
+    [
+        (0, 0, [0, 0]),
+        (14, 14, [0, 0]),
+        (15, 15, [1, 1]),
+        (23, 23, [1, 1]),
+        (24, 24, [2, 2]),
+        (27, 27, [2, 2]),
+        (28, 28, [3, 2]),
+        (100, 100, [21, 17]),
+        (-1, -1, [0, 0]),
+    ],
+)
+def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
+    assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("15", 15),
+        (15, None),
+        (None, 15),
+        ("24", "24"),
+    ],
+)
+def test_get_human_age_invalid_types(
+    cat_age: int | str | None,
+    dog_age: int | str | None
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
