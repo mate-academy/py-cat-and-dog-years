@@ -1,23 +1,45 @@
+def convert_to_human(
+    age: int,
+    first_year: int,
+    second_year: int,
+    each_year: int
+) -> int:
+    if (not isinstance(age, int) or isinstance(age, bool)
+            or not isinstance(first_year, int)
+            or isinstance(first_year, bool)
+            or not isinstance(second_year, int)
+            or isinstance(second_year, bool)
+            or not isinstance(each_year, int)
+            or isinstance(each_year, bool)):
+        raise TypeError("All arguments must be integers")
+
+    age = max(0, age)
+
+    if age < first_year:
+        return 0
+    elif age < first_year + second_year:
+        return 1
+
+    return 2 + (age - first_year - second_year) // each_year
+
+
 def get_human_age(cat_age: int, dog_age: int) -> list:
-    """
-    Convert cat and dog ages to human years.
-    
-    Rules:
-    Cat: first 15 years = 1 human year, next 9 = +1, then every 4 = +1
-    Dog: first 15 years = 1 human year, next 9 = +1, then every 5 = +1
-    
-    Args:
-        cat_age: Cat's age in cat years
-        dog_age: Dog's age in dog years
-        
-    Returns:
-        List with [cat_human_age, dog_human_age]
-        
-    Examples:
-        get_human_age(0, 0) == [0, 0]
-        get_human_age(15, 15) == [1, 1]
-        get_human_age(24, 24) == [2, 2]
-    """
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
-    return [0, 0]
+    if (not isinstance(cat_age, int) or isinstance(cat_age, bool)
+            or not isinstance(dog_age, int)
+            or isinstance(dog_age, bool)):
+        raise TypeError("Age must be an integer")
+
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Age must be greater than or equal to 0")
+
+    cat_age = max(0, cat_age)
+    dog_age = max(0, dog_age)
+
+    cat_human_age = convert_to_human(
+        cat_age, first_year=15, second_year=9, each_year=4
+    )
+    dog_human_age = convert_to_human(
+        dog_age, first_year=15, second_year=9, each_year=5
+    )
+
+    return [cat_human_age, dog_human_age]
