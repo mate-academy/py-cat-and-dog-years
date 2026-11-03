@@ -22,3 +22,44 @@ def test_get_human_age_returns_correct_result(
     expected: list[int],
 ) -> None:
     assert get_human_age(cat_age, dog_age) == expected
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, -1),
+        (-1, 10),
+        (10, -1),
+    ],
+)
+def test_get_human_age_with_negative_values(
+    cat_age: int,
+    dog_age: int,
+) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        (15.5, 15),
+        (15, 15.5),
+    ],
+)
+def test_get_human_age_with_invalid_types(
+    cat_age,
+    dog_age,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
+
+
+def test_cat_and_dog_ages_are_calculated_independently() -> None:
+    assert get_human_age(15, 14) == [1, 0]
+
+
+def test_dog_age_boundary_after_28_years() -> None:
+    assert get_human_age(29, 29) == [3, 3]
