@@ -16,7 +16,7 @@ from app.main import get_human_age
         (100, 100, [21, 17]),
     ],
 )
-def test_get_human_age_returns_expected_result(
+def test_get_human_age_returns_correct_result(
     cat_age: int,
     dog_age: int,
     expected: list[int],
