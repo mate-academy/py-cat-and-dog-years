@@ -26,58 +26,47 @@ def test_get_human_age_returns_correct_result(
     dog_age: int,
     expected: list[int],
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
+    result = get_human_age(cat_age, dog_age)
 
-
-@pytest.mark.parametrize(
-    "cat_age, expected",
-    [
-        (0, 0),
-        (14, 0),
-        (15, 1),
-        (23, 1),
-        (24, 2),
-        (27, 2),
-        (28, 3),
-        (31, 3),
-        (32, 4),
-        (100, 21),
-    ],
-)
-def test_cat_age_conversion(
-    cat_age: int,
-    expected: int,
-) -> None:
-    result: list[int] = get_human_age(cat_age, 0)
-
-    assert result[0] == expected
-
-
-@pytest.mark.parametrize(
-    "dog_age, expected",
-    [
-        (0, 0),
-        (14, 0),
-        (15, 1),
-        (23, 1),
-        (24, 2),
-        (28, 2),
-        (29, 3),
-        (33, 3),
-        (34, 4),
-        (100, 17),
-    ],
-)
-def test_dog_age_conversion(
-    dog_age: int,
-    expected: int,
-) -> None:
-    result: list[int] = get_human_age(0, dog_age)
-
-    assert result[1] == expected
-
-
-def test_get_human_age_returns_two_elements() -> None:
-    result: list[int] = get_human_age(28, 29)
-
+    assert result == expected
     assert len(result) == 2
+    assert all(isinstance(age, int) for age in result)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        (-1, 0),
+        (0, -1),
+        (-1, -1),
+        (-15, 20),
+        (20, -15),
+    ],
+)
+def test_get_human_age_rejects_negative_values(
+    cat_age: int,
+    dog_age: int,
+) -> None:
+    with pytest.raises(ValueError):
+        get_human_age(cat_age, dog_age)
+
+
+@pytest.mark.parametrize(
+    "cat_age, dog_age",
+    [
+        ("15", 15),
+        (15, "15"),
+        ("cat", 15),
+        (15, "dog"),
+        (None, 15),
+        (15, None),
+        (15.5, 20),
+        (20, 15.5),
+    ],
+)
+def test_get_human_age_rejects_invalid_types(
+    cat_age: object,
+    dog_age: object,
+) -> None:
+    with pytest.raises(TypeError):
+        get_human_age(cat_age, dog_age)
