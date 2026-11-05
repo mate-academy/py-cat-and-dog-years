@@ -1,4 +1,6 @@
 def convert_to_human(age: int, extra_rate: int) -> int:
+    if not isinstance(age, int) or isinstance(age, bool):
+        raise TypeError("Age must be an integer")
     if age < 15:
         return 0
     if age < 24:
