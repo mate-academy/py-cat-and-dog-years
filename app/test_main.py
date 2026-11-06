@@ -17,6 +17,7 @@ import pytest
         (15, 24, [1, 2]),
         (24, 15, [2, 1]),
         (32, 29, [4, 3]),
+        (10**6, 10**6, [249996, 199997])
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
