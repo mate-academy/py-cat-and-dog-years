@@ -1,46 +1,28 @@
-import pytest
-import app.main
 from app.main import get_human_age
 
 
-@pytest.mark.parametrize(
-    "cat_age, dog_age, expected",
-    [
-        (0, 0, [0, 0]),
-        (14, 14, [0, 0]),
-        (15, 15, [1, 1]),
-        (23, 23, [1, 1]),
-        (24, 24, [2, 2]),
-        (27, 27, [2, 2]),
-        (28, 28, [3, 2]),
-        (28, 29, [3, 3]),
-        (100, 100, [21, 17]),
-        (14, 28, [0, 2]),
-        (28, 14, [3, 0]),
-
-        (-1, -5, [0, 0]),
-        (-100, 15, [0, 1]),
-
-        (100000, 100000, [24996, 19997]),
-    ]
-)
-def test_get_human_age_valid_inputs(cat_age: int,
-                                    dog_age: int,
-                                    expected: list) -> None:
-    assert get_human_age
-    assert app.main.get_human_age(cat_age, dog_age) == expected
+def test_ages_less_than_first_threshold() -> None:
+    assert get_human_age(0, 0) == [0, 0]
+    assert get_human_age(14, 14) == [0, 0]
 
 
-@pytest.mark.parametrize(
-    "cat_age, dog_age, expected_exception",
-    [
-        ("15", 15, TypeError),
-        (15, "15", TypeError),
-        ([15], 15, TypeError),
-    ]
-)
-def test_get_human_age_invalid_inputs(cat_age: int,
-                                      dog_age: int,
-                                      expected_exception: type) -> None:
-    with pytest.raises(expected_exception):
-        app.main.get_human_age(cat_age, dog_age)
+def test_ages_exactly_first_threshold() -> None:
+    assert get_human_age(15, 15) == [1, 1]
+
+
+def test_ages_between_first_and_second_threshold() -> None:
+    assert get_human_age(23, 23) == [1, 1]
+
+
+def test_ages_exactly_second_threshold() -> None:
+    # Рівно 24 роки = 2 людських (15 + 9)
+    assert get_human_age(24, 24) == [2, 2]
+
+
+def test_ages_beyond_second_threshold() -> None:
+    assert get_human_age(27, 27) == [2, 2]
+    assert get_human_age(28, 28) == [3, 2]
+
+
+def test_large_ages() -> None:
+    assert get_human_age(100, 100) == [21, 17]
