@@ -60,6 +60,6 @@ def test_negative_ages(
         (15, None),
     ],
 )
-def test_invalid_types(cat_age: int, dog_age: int) -> None:
+def test_invalid_types(cat_age: object, dog_age: object) -> None:
     with pytest.raises(TypeError):
         get_human_age(cat_age, dog_age)
