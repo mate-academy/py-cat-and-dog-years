@@ -32,4 +32,3 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         convert_age(cat_age, 4),
         convert_age(dog_age, 5)
     ]
-print(get_human_age(23,23))
