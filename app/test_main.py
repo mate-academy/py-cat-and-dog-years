@@ -10,6 +10,7 @@ from app import main
     (24, 24, [2, 2]),
     (27, 28, [2, 2]),
     (28, 29, [3, 3]),
+    (100, 100, [21, 17]),
 ])
 def test_get_human_age(
         cat_age: int,
