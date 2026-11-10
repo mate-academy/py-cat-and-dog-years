@@ -22,9 +22,10 @@ def count_age(pet_age: int, *args) -> int:
 
 
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if not isinstance(cat_age, int) or not isinstance(dog_age, int):
+        raise TypeError("Ages must be integers")
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError("Ages cannot be negative")
     cat_result = count_age(cat_age, 15, 9, 4)
     dog_result = count_age(dog_age, 15, 9, 5)
-
-    # TODO: Implement this function
-    # Write your tests first, then implement the logic
     return [cat_result, dog_result]
