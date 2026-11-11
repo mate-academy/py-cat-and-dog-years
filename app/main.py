@@ -1,6 +1,3 @@
-import math
-
-
 def get_human_age(cat_age: int, dog_age: int) -> list:
     """
     Convert cat and dog ages to human years.
@@ -27,8 +24,10 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
             cat_human_age = 1
         elif cat_age == 24:
             cat_human_age = 2
+        elif cat_age <= 100:
+            cat_human_age = 2 + (cat_age - 24) // 4
         else:
-            cat_human_age = 2 + math.floor((cat_age - 24) / 4)
+            cat_human_age = 21
 
         if dog_age < 0:
             dog_human_age = 0
@@ -38,8 +37,10 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
             dog_human_age = 1
         elif dog_age == 24:
             dog_human_age = 2
+        elif dog_age <= 100:
+            dog_human_age = 2 + (dog_age - 24) // 5
         else:
-            dog_human_age = 2 + math.floor((dog_age - 24) / 5)
+            dog_human_age = 17
 
         return [cat_human_age, dog_human_age]
     else:

@@ -13,8 +13,11 @@ from app.main import get_human_age
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
-        (28, 15, [3, 1]),
+        (31, 28, [3, 2]),
+        (32, 29, [4, 3]),
+        (32, 28, [4, 2]),
         (100, 100, [21, 17]),
+        (122, 115, [21, 17])
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, result: list[int]) -> None:
