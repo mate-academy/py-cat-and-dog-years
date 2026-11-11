@@ -19,7 +19,9 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     """
 
     if isinstance(cat_age, int) and isinstance(dog_age, int):
-        if cat_age < 15:
+        if cat_age < 0:
+            cat_human_age = 0
+        elif cat_age < 15:
             cat_human_age = 0
         elif cat_age < 24:
             cat_human_age = 1
@@ -28,6 +30,8 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         else:
             cat_human_age = 2 + math.floor((cat_age - 24) / 4)
 
+        if dog_age < 0:
+            dog_human_age = 0
         if dog_age < 15:
             dog_human_age = 0
         elif dog_age < 24:
@@ -35,7 +39,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         elif dog_age == 24:
             dog_human_age = 2
         else:
-            dog_human_age = 2 + math.floor((cat_age - 24) / 5)
+            dog_human_age = 2 + math.floor((dog_age - 24) / 5)
 
         return [cat_human_age, dog_human_age]
     else:
