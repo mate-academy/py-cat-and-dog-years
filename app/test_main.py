@@ -38,6 +38,7 @@ def test_get_human_age_type_input(cat_age: int | str | list | float,
         pytest.param(28, 29, [3, 3], id="Check three age - start."),
         pytest.param(31, 33, [3, 3], id="Check three age - end."),
         pytest.param(100, 100, [21, 17], id="Check hundread animal age."),
+        pytest.param(200, 250, [46, 47], id="Check outliers.")
     ]
 )
 def test_get_human_age(cat_age: int,
