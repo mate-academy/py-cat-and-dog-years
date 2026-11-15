@@ -26,8 +26,8 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     # Write your tests first, then implement the logic
     if (not isinstance(cat_age, int)
             or not isinstance(dog_age, int)
-            or cat_age < 0 or cat_age >= 150
-            or dog_age < 0 or dog_age >= 150):
+            or cat_age < 0
+            or dog_age < 0):
         raise BadInputError
 
     if cat_age < 15:
