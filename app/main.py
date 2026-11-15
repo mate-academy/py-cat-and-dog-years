@@ -8,6 +8,6 @@ def get_human_age(cat_age: int, dog_age: int) -> list[int]:
         return 1 if age >= 15 else 0
 
     return [
-        calculate_age(cat_age, 4), 
+        calculate_age(cat_age, 4),
         calculate_age(dog_age, 5)
     ]
