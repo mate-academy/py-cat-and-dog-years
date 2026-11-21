@@ -21,3 +21,5 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
     # TODO: Implement this function
     # Write your tests first, then implement the logic
     return [0, 0]
+
+
