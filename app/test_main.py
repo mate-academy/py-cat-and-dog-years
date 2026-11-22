@@ -1,6 +1,6 @@
 import pytest
 
-from app.main import get_human_age
+import app.main
 
 
 @pytest.mark.parametrize(
@@ -18,14 +18,14 @@ from app.main import get_human_age
     ]
 )
 def test_get_human_age(cat_age: int, dog_age: int, expected: list) -> None:
-    assert get_human_age(cat_age, dog_age) == expected
+    assert app.main.get_human_age(cat_age, dog_age) == expected
 
 
 def test_get_human_age_raises_type_error_for_string() -> None:
     with pytest.raises(TypeError):
-        get_human_age("abc", 2)
+        app.main.get_human_age("abc", 2)
 
 
 def test_get_human_age_raises_value_error() -> None:
     with pytest.raises(ValueError):
-        get_human_age(-2, 15)
+        app.main.get_human_age(-2, 15)
