@@ -34,6 +34,10 @@ import pytest
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
         pytest.param(
+            31, 33, 3, 3,
+            id="should add 1 year for every next 4/5 years for cat/dog"
+        ),
+        pytest.param(
             32, 34, 4, 4,
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
