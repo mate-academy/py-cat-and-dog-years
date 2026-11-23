@@ -1,4 +1,8 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if type(cat_age) is not int or type(dog_age) is not int:
+        raise TypeError
+    if cat_age < 0 or dog_age < 0:
+        raise ValueError
     result = [0, 0]
     if cat_age >= 15:
         result[0] += 1
