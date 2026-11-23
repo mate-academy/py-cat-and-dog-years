@@ -6,59 +6,39 @@ import pytest
     "cat_age, dog_age, cat_human_age, dog_human_age",
     [
         pytest.param(
-            0,
-            0,
-            0,
-            0,
+            0, 0, 0, 0,
             id="should be 0 if pet age < 15"
         ),
         pytest.param(
-            14,
-            14,
-            0,
-            0,
+            14, 14, 0, 0,
             id="should be 0 if pet age < 15"
         ),
         pytest.param(
-            15,
-            15,
-            1,
-            1,
+            15, 15, 1, 1,
             id="should be 1 if pet age in range(15, 24)"
         ),
         pytest.param(
-            23,
-            23,
-            1,
-            1,
+            23, 23, 1, 1,
             id="should be 1 if pet age in range(15, 24)"
         ),
         pytest.param(
-            24,
-            24,
-            2,
-            2,
+            24, 24, 2, 2,
             id="should be 1 if pet age in range(15, 24)"
         ),
         pytest.param(
-            27,
-            27,
-            2,
-            2,
+            27, 28, 2, 2,
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
         pytest.param(
-            28,
-            28,
-            3,
-            2,
+            28, 29, 3, 3,
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
         pytest.param(
-            100,
-            100,
-            21,
-            17,
+            32, 34, 4, 4,
+            id="should add 1 year for every next 4/5 years for cat/dog"
+        ),
+        pytest.param(
+            100, 100, 21, 17,
             id="should add 1 year for every next 4/5 years for cat/dog"
         )
     ]
@@ -76,16 +56,12 @@ def test_human_age(
     "cat_age, dog_age, expected_error",
     [
         pytest.param(
-            '15',
-            20,
-            TypeError,
+            "15", 20, TypeError,
             id="pet's age should be int"
         ),
         pytest.param(
-            10,
-            -5,
-            ValueError,
-            id="pet's age should be between 0 and 100"
+            10, -5, ValueError,
+            id="pet's age should be greater than 0"
         )
     ]
 )
