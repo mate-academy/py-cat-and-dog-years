@@ -1,4 +1,4 @@
-def get_human_age(cat_age: int, dog_age: int) -> list:
+def get_human_age(cat_age: int, dog_age: int) -> list[int]:
     cat_human_age = 0
     dog_human_age = 0
 
@@ -6,7 +6,7 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
         raise TypeError("Invalid type! The pet's age should be integer!")
 
     elif cat_age < 0 or dog_age < 0:
-        raise ValueError("The pet's age should be greater than 0 !")
+        raise ValueError("The pet's age should be greater than 0!")
 
     if cat_age in range(15, 24):
         cat_human_age = 1

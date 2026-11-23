@@ -3,57 +3,64 @@ import pytest
 
 
 @pytest.mark.parametrize(
-    "cat_age, dog_age, cat_human_age, dog_human_age",
+    "cat_age, dog_age, expected_human_age",
     [
         pytest.param(
-            0, 0, 0, 0,
+            0, 0, [0, 0],
             id="should be 0 if pet age < 15"
         ),
         pytest.param(
-            14, 14, 0, 0,
+            14, 14, [0, 0],
             id="should be 0 if pet age < 15"
         ),
         pytest.param(
-            15, 15, 1, 1,
+            15, 15, [1, 1],
             id="should be 1 if pet age in range(15, 24)"
         ),
         pytest.param(
-            23, 23, 1, 1,
+            23, 23, [1, 1],
             id="should be 1 if pet age in range(15, 24)"
         ),
         pytest.param(
-            24, 24, 2, 2,
+            24, 24, [2, 2],
             id="should be 1 if pet age in range(15, 24)"
         ),
         pytest.param(
-            27, 28, 2, 2,
+            27, 27, [2, 2],
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
         pytest.param(
-            28, 29, 3, 3,
+            28, 28, [3, 2],
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
         pytest.param(
-            31, 33, 3, 3,
+            29, 29, [3, 3],
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
         pytest.param(
-            32, 34, 4, 4,
+            31, 33, [3, 3],
             id="should add 1 year for every next 4/5 years for cat/dog"
         ),
         pytest.param(
-            100, 100, 21, 17,
+            32, 34, [4, 4],
             id="should add 1 year for every next 4/5 years for cat/dog"
-        )
+        ),
+        pytest.param(
+            100, 100, [21, 17],
+            id="should add 1 year for every next 4/5 years for cat/dog"
+        ),
+        pytest.param(
+            1000, 1000, [246, 197],
+            id="should add 1 year for every next 4/5 years for cat/dog"
+        ),
     ]
 )
 def test_human_age(
     cat_age: int,
     dog_age: int,
-    cat_human_age: int,
-    dog_human_age: int
+    expected_human_age: list[int]
 ) -> None:
-    assert get_human_age(cat_age, dog_age) == [cat_human_age, dog_human_age]
+    assert get_human_age(cat_age, dog_age) == expected_human_age
 
 
 @pytest.mark.parametrize(
