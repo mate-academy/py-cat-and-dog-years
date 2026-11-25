@@ -25,6 +25,12 @@ def get_human_age(cat_age: int, dog_age: int) -> list:
 
 
 def convert_age(age: int, rate: int) -> int:
+    if type(age) is not int:
+        raise TypeError("Age must be an integer")
+
+    if age < 0:
+        raise ValueError("Age cannot be negative")
+
     if age < 15:
         return 0
 
