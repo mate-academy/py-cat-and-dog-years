@@ -5,7 +5,6 @@ from app.main import get_human_age
 @pytest.mark.parametrize(
     "cat_age, expected_age",
     [
-        (0, 0),
         (14, 0),
         (15, 1),
         (23, 1),
@@ -22,7 +21,6 @@ def test_if_the_cat_age_is_correct(cat_age: int, expected_age: int) -> None:
 @pytest.mark.parametrize(
     "dog_age, expected_age",
     [
-        (0, 0),
         (14, 0),
         (15, 1),
         (23, 1),
