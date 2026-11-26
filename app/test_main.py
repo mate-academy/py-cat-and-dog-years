@@ -21,6 +21,11 @@ def test_should_raise_error_when_age_is_not_int() -> None:
         get_human_age("abc", 5)
 
 
+def test_should_raise_error_when_dog_age_is_not_int() -> None:
+    with pytest.raises(TypeError):
+        get_human_age(5, "abc")
+
+
 def test_should_return_zero_when_age_is_negative() -> None:
     assert get_human_age(-1, -4) == [0, 0]
 
