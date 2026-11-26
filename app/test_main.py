@@ -47,8 +47,11 @@ def test_if_the_dog_age_is_correct(dog_age: int, expected_age: int) -> None:
         (100, 100, [21, 17])
     ]
 )
-def test_if_the_function_works_correctly(cat_age: int, dog_age: int, result: list):
+def test_if_the_function_works_correctly(
+        cat_age: int, dog_age: int, result: list
+) -> None:
     assert get_human_age(cat_age, dog_age) == result
+
 
 @pytest.mark.parametrize(
     "cat_age, dog_age",
