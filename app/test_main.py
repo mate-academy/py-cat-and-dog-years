@@ -13,10 +13,12 @@ from app import main
         (24, 24, [2, 2]),
         (27, 27, [2, 2]),
         (28, 28, [3, 2]),
+        (29, 29, [3, 3]),
+        (32, 34, [4, 4]),
         (100, 100, [21, 17]),
-    ]
+    ],
 )
-def test_should_return_expected_human_age(
+def test_should_convert_cat_and_dog_years_to_human_years(
         cat_age: int,
         dog_age: int,
         expected: list[int]
@@ -25,62 +27,49 @@ def test_should_return_expected_human_age(
 
 
 @pytest.mark.parametrize(
-    "cat_age, expected_cat_age",
+    "cat_age, dog_age",
     [
-        (0, 0),
-        (14, 0),
-        (15, 1),
-        (23, 1),
-        (24, 2),
-        (27, 2),
-        (28, 3),
-        (31, 3),
-        (32, 4),
-        (100, 21),
-    ]
+        (-1, 0),
+        (0, -1),
+        (-1, -1),
+        (-100, 10),
+        (10, -100),
+    ],
 )
-def test_should_convert_cat_age_correctly(
+def test_should_raise_value_error_for_negative_age(
         cat_age: int,
-        expected_cat_age: int
+        dog_age: int
 ) -> None:
-    result = main.get_human_age(cat_age, 0)
-
-    assert result[0] == expected_cat_age
+    with pytest.raises(ValueError):
+        main.get_human_age(cat_age, dog_age)
 
 
 @pytest.mark.parametrize(
-    "dog_age, expected_dog_age",
+    "cat_age, dog_age",
     [
-        (0, 0),
-        (14, 0),
-        (15, 1),
-        (23, 1),
-        (24, 2),
-        (28, 2),
-        (29, 3),
-        (33, 3),
-        (34, 4),
-        (100, 17),
-    ]
+        ("15", 15),
+        (15, "15"),
+        (15.0, 15),
+        (15, 15.0),
+        (None, 15),
+        (15, None),
+    ],
 )
-def test_should_convert_dog_age_correctly(
-        dog_age: int,
-        expected_dog_age: int
+def test_should_raise_type_error_for_incorrect_type(
+        cat_age: object,
+        dog_age: object
 ) -> None:
-    result = main.get_human_age(0, dog_age)
-
-    assert result[1] == expected_dog_age
+    with pytest.raises(TypeError):
+        main.get_human_age(cat_age, dog_age)
 
 
 @pytest.mark.parametrize(
     "cat_age, dog_age",
     [
         (0, 0),
-        (15, 15),
-        (24, 24),
         (28, 29),
         (100, 100),
-    ]
+    ],
 )
 def test_should_return_two_integer_values(
         cat_age: int,
